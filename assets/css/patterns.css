@@ -4994,3 +4994,240 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 		align-self: auto;
 	}
 }
+
+/*
+ * "Insights" (#10395:1022) de la pagina Insights.
+ *
+ * La pagina reusa el hero `Header / 62 /` (`.ocx-i62__*`) y el footer comunes, y anade
+ * dos bloques propios:
+ *
+ *   - `.ocx-ins__filter*`: los chips "Client perspective / Blog / Newsroom" del hero.
+ *   - `.ocx-ins__*`: la seccion de interview (una por testimonio).
+ *
+ * El interview es una variante del `Layout / 627 /` de Industries, no el mismo bloque: en
+ * vez de una fila de 4 columnas con divisores verticales, es un encabezado de dos columnas
+ * (retrato + titulo) seguido de una lista apilada de preguntas y respuestas con reglas
+ * horizontales de 1px y el nombre del interlocutor en H5.
+ */
+
+.ocx-section.ocx-ins__section {
+	padding: var(--Section-Padding-padding-section-large, 112px) var(--Page-Padding-padding-global, 64px);
+}
+
+.ocx-ins__container {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+	max-width: var(--Container-container-large, 1280px);
+}
+
+.ocx-section > .ocx-ins__container {
+	margin-inline: auto;
+}
+
+/*
+ * El Container es una columna de WordPress, y core le deja `align-items: flex-start`, asi
+ * que sus hijos se miden a su hug en vez de llenar los 1280. Sin esto el encabezado se
+ * encoge al titulo mas corto de cada entrevista y el Q&A depende de lo largo del texto.
+ * Es el mismo workaround que llevan `.ocx-l627__title` y `.ocx-l627__list`.
+ */
+.ocx-ins__header,
+.ocx-ins__qa {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+}
+
+/*
+ * "Filters" (#10395:5517): fila `hug` con `align-items: center`, hermana del Container del
+ * hero. Como la seccion del hero es `align-items: center`, la fila queda centrada; los
+ * chips se alinean a la izquierda dentro de la fila.
+ */
+.ocx-ins__filters {
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+
+/*
+ * Cada chip: columna con `padding: 10px 16px` y `gap: 8px`, sin fondo ni borde. Figma
+ * marca el chip activo con subrayado (`{ts3}`) en vez de con un fondo, asi que el activo
+ * se marca por atributo y no por una clase aparte.
+ */
+.ocx-ins__filter {
+	padding: 10px 16px;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000000);
+	background: none;
+	border: 0;
+	cursor: pointer;
+}
+
+.ocx-ins__filter[aria-pressed="true"] {
+	text-decoration: underline;
+}
+
+.ocx-ins__filter:hover {
+	text-decoration: underline;
+}
+
+/*
+ * "Section Title" (#10395:10313): el nodo es `mode: none` con los hijos posicionados a
+ * mano (retrato en 0,0 y texto en 252,0), asi que se reconstruye como fila.
+ *
+ * El `padding-left: 40px` del texto viene del nodo "Section Title" (#10408:632), que lo
+ * declara explicito; el hueco de 16px entre el retrato y ese padding es el `gap` de la
+ * fila, con lo que el texto arranca en 252 + 40 = 292, igual que en Figma.
+ */
+.ocx-ins__header {
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	gap: 16px;
+}
+
+/* El retrato: 236x252 fijos con radio 16, como el nodo. */
+.ocx-ins__portrait {
+	flex: 0 0 236px;
+	width: 236px;
+	height: 252px;
+	border-radius: 16px;
+	overflow: hidden;
+}
+
+.ocx-ins__portrait img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.ocx-ins__heading {
+	align-self: stretch;
+	flex: 1 1 auto;
+	min-width: 0;
+	padding-left: 40px;
+}
+
+/*
+ * "Tagline Wrapper" (#10408:633): el texto "Interview" con Heading/Tagline (16px/600), y
+ * "Content" (#10408:635) con el H2 (52px/500/lh 1.2/ls -0.01em). Los dos a la izquierda.
+ */
+.ocx-ins__tagline,
+.ocx-ins__heading .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	color: var(--Color-Scheme-1-Text, #000000);
+	text-align: left;
+}
+
+.ocx-ins__tagline {
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 600;
+	line-height: 1.5;
+}
+
+.ocx-ins__heading .wp-block-heading {
+	font-size: var(--Text-Sizes-Heading-2, 52px);
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+}
+
+/*
+ * "Row" (#10395:10320): columna con `gap: 10px` y `border-top` de 1px (el
+ * `strokeWeight: 1px 0px 0px` del nodo), que es la misma linea que usan los 627.
+ */
+.ocx-ins__qa {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 10px;
+	border-top: 1px solid rgba(0, 0, 0, 0.15);
+	padding-top: 10px;
+}
+
+/*
+ * "List Item" (#10395:10321): columna con `padding: 10px 0` y `gap: 24px`; "Content"
+ * (#10395:10322) con `gap: 16px`. El label del interlocutor ("OpenCX:", "Dimitrios:",
+ * "Catalina:") es Heading/H5 y la respuesta es Text/Regular/Normal.
+ */
+.ocx-ins__qa-item {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 24px;
+	padding: 10px 0;
+}
+
+.ocx-ins__qa-content {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 16px;
+}
+
+.ocx-ins__qa-label {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Heading-5, 28px);
+	font-weight: 500;
+	line-height: 1.4;
+	letter-spacing: -0.01em;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+.ocx-ins__qa-text {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/*
+ * Los divisores son reglas horizontales de 1px (los nodos son SVG de 1184x2 con trazo de
+ * 1px centrado). Van como `border-bottom` del item en vez de como elemento aparte: el
+ * ultimo item de cada entrevista se queda sin linea, que es justo lo que pasa en Figma.
+ */
+.ocx-ins__qa-item:not(:last-child) {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+	padding-bottom: 20px;
+	margin-bottom: 10px;
+}
+
+/*
+ * Mobile: el retrato y el titulo se apilan, y el `padding-left` de 40px del texto dejaria
+ * un margen sin sentido sin el retrato al lado. El H2 baja al tamano de los otros titulos
+ * de la pagina, que es lo que hace el bloque `ocx-l627__heading` en el mismo breakpoint.
+ */
+@media (max-width: 767.98px) {
+	.ocx-ins__header {
+		flex-direction: column;
+		gap: 24px;
+	}
+
+	.ocx-ins__portrait {
+		flex: none;
+		width: 100%;
+		height: auto;
+		aspect-ratio: 236 / 252;
+	}
+
+	.ocx-ins__heading {
+		padding-left: 0;
+	}
+
+	.ocx-ins__heading .wp-block-heading {
+		font-size: var(--Text-Sizes-Heading-4, 32px);
+	}
+
+	.ocx-ins__qa-label {
+		font-size: var(--Text-Sizes-Text-Medium, 18px);
+	}
+}
