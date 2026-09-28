@@ -5689,3 +5689,366 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 		flex: 1 1 100%;
 	}
 }
+
+/*
+ * Variante centrada de "Header / 64 /", la instancia de la pagina Contact
+ * (#10227:110803). Mismo nodo de Figma que el hero de About pero con otra
+ * configuracion, asi que va como modificador y no como prefijo nuevo:
+ *
+ *   About    -> Component con `sizing.horizontal: fixed` de 904, H1 y parrafo a la
+ *               izquierda, y `padding: 112px 64px 0px` (sin padding abajo).
+ *   Contact  -> Component en `fill` (llena los 1312), H1 y parrafo centrados, y
+ *               `padding: 112px 64px` completo.
+ *
+ * El modificador va en la seccion (para el padding) y en el Component (para el ancho),
+ * con la misma clase en los dos. Como ambas reglas de la base son (0,2,0), el
+ * modificador tiene que ir DESPUES en el archivo para ganar el empate.
+ */
+.ocx-section.ocx-h64--center {
+	padding-bottom: var(--Section-Padding-padding-section-large, 112px);
+}
+
+.ocx-h64--center {
+	width: 100%;
+	max-width: 100%;
+}
+
+.ocx-h64--center .ocx-h64__title,
+.ocx-h64--center .ocx-h64__lead {
+	text-align: center;
+}
+
+/*
+ * Figma "Contact / 4 /" (#10227:111031), la seccion con el formulario de la pagina
+ * Contact. Es el unico bloque nuevo de la pagina: el hero reusa `.ocx-h64__*` con el
+ * modificador `--center` y el footer es el comun.
+ *
+ * A diferencia de las demas secciones, esta no usa la cadena `ocx-section--large` para el
+ * padding sino el token directo, y el gap vertical de la seccion y del Container es de
+ * 48 (no 80 como en el resto de la pagina).
+ *
+ * Los controles del formulario (text input, select, radio, checkbox, textarea) son
+ * instancias de componentes de Figma que no tienen equivalente en bloques de WordPress,
+ * asi que van como HTML plano dentro de un unico bloque `wp:html`. La copy de arriba
+ * (H2 y parrafo) si queda como bloques editables.
+ */
+.ocx-section.ocx-c4__section {
+	padding: var(--Section-Padding-padding-section-large, 112px) var(--Page-Padding-padding-global, 64px);
+	gap: 48px;
+	align-items: stretch;
+}
+
+.ocx-c4__container {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+	align-items: stretch;
+	gap: 48px;
+}
+
+/* "Section Title" (#4174:41782): columna con `gap: 16px`. El Tagline Wrapper (#5322:13514) va vacio en Figma, asi que se omite. */
+.ocx-c4__title {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+	align-items: stretch;
+	gap: 16px;
+}
+
+/* "Content" (#4174:41784): columna con `gap: 24px`, con el H2 y el parrafo. */
+.ocx-c4__body {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+	align-items: stretch;
+	gap: 24px;
+}
+
+.ocx-c4__heading,
+.ocx-c4__lead {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	text-align: left;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+.ocx-c4__heading {
+	font-size: var(--Text-Sizes-Heading-2, 52px);
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+}
+
+.ocx-c4__lead {
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+/* "Form" (#4174:41787): columna con `gap: 24px` que agrupa todos los controles. */
+.ocx-c4__form {
+	display: block;
+	width: 100%;
+}
+
+/*
+ * "Inputs" (#4174:41788 y #4174:41795): dos campos en fila con `gap: 24px`. Cada campo es
+ * una columna con `gap: 8px` entre el label y el control.
+ */
+.ocx-c4__row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 24px;
+}
+
+.ocx-c4__row > .ocx-c4__field {
+	flex: 1 1 0;
+	min-width: 0;
+}
+
+.ocx-c4__field {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin: 0 0 24px;
+}
+
+/*
+ * Los labels usan "Text/Regular/Normal" (16px). Los de la seccion de radios y el del
+ * checkbox usan una variante con `textAlignVertical: CENTER` pero el mismo tamano, asi
+ * que comparten tipo.
+ */
+.ocx-c4__label {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/*
+ * "Text input" (#4174:41791): caja con `padding: 8px 0px` y borde de 1px
+ * rgba(0,0,0,0.15) con `strokeAlign: OUTSIDE`, que en CSS es indistinguible de un
+ * `border` normal. El `padding` lateral es 0 en Figma, asi que el texto arranca pegado
+ * al borde: se respeta y se compensa con un `padding-inline` minimo de 2px para que el
+ * cursor no quede encima de la linea.
+ */
+.ocx-c4__input,
+.ocx-c4__textarea,
+.ocx-c4__select {
+	width: 100%;
+	box-sizing: border-box;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000000);
+	background: transparent;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 0;
+	padding: 8px 2px;
+	appearance: none;
+}
+
+.ocx-c4__input:focus-visible,
+.ocx-c4__textarea:focus-visible,
+.ocx-c4__select:focus-visible {
+	outline: 2px solid var(--Color-Scheme-1-Text, #000000);
+	outline-offset: 2px;
+}
+
+.ocx-c4__input::placeholder,
+.ocx-c4__textarea::placeholder {
+	color: rgba(0, 0, 0, 0.6);
+	opacity: 1;
+}
+
+/*
+ * "Text Area" (#4174:41818): `padding: 12px 12px 12px 0px` y alto FIJO de 180
+ * (`dimensions.height: 180`). Se declara con `min-height` y no con `height` para que en
+ * mobile la caja siga siendo usable si el navegador le da un alto distinto.
+ */
+.ocx-c4__textarea {
+	min-height: 180px;
+	padding: 12px 2px;
+	resize: vertical;
+}
+
+/*
+ * "Select" (#4174:41804): `padding: 8px 12px`, `gap: 16px` y fondo rgba(0,0,0,0.05) con
+ * borde **transparente** (fill_75800f08), o sea que la caja se ve por el fondo, no por el
+ * borde. El chevron va como `background-image` con el SVG, y el `padding-right` deja
+ * lugar para que no se solape con el texto largo.
+ */
+.ocx-c4__select {
+	padding: 8px 40px 8px 12px;
+	background-color: rgba(0, 0, 0, 0.05);
+	/*
+	 * El borde va **transparente** (fill_75800f08 en el nodo), al reves que en los text
+	 * input: la caja del select se ve por su fondo gris, no por el contorno. Sin esto
+	 * heredaba el `rgba(0,0,0,0.15)` de la regla compartida.
+	 */
+	border-color: transparent;
+	background-image: url("../images/chevron-down.svg");
+	background-repeat: no-repeat;
+	background-position: right 12px center;
+	background-size: 24px 24px;
+	cursor: pointer;
+}
+
+/*
+ * "Radios" (#5148:2660): columna con `padding: 16px 0px` y `gap: 16px`. El padding
+ * vertical separa este grupo del select y del textarea de abajo.
+ *
+ * El grupo es un `div role="group" aria-labelledby` en lugar de un `fieldset` con
+ * `legend`: Chrome no renderiza el `legend` como flex item (lo saca del flujo y lo dibuja
+ * sobre el borde del fieldset), y ademas el `fieldset` trae `border: 2px groove` y padding
+ * propios que hay que resetear. El `role="group"` con su etiquetaAccessible es el
+ * equivalente y no arrastra ninguno de los dos problemas.
+ */
+.ocx-c4__radios {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	margin: 0 0 24px;
+	padding: 16px 0;
+}
+
+.ocx-c4__radios-list {
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+/*
+ * "Row" (#5148:2663, #5148:2666, #5148:2669): fila de DOS opciones con `gap: 24px` y alto
+ * fijo de 24 (`dimensions.height: 24`). Son tres filas para las seis opciones.
+ */
+.ocx-c4__radio-row {
+	display: flex;
+	gap: 24px;
+	min-height: 24px;
+}
+
+/* "Radio" (#4179:9093): fila con `gap: 12px` entre el circulo de 18 y el label. */
+.ocx-c4__radio {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	flex: 1 1 0;
+	min-width: 0;
+	margin: 0;
+	/*
+	 * La tipografia va en el label y no en el span del texto: el span solo hereda, y
+	 * si se deja tomaba el `line-height` global del body (1.8 en desktop), que inflaba
+	 * la fila de los 24px fijos de Figma a 28.8.
+	 */
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/*
+ * El circulo: 18x18, `borderRadius: 100px` (o sea, redondo), fondo rgba(0,0,0,0.05) y
+ * borde **transparente** de 1px. Se oculta el input nativo y se dibuja con
+ * `appearance: none`; el estado checked se marca con el borde en negro.
+ */
+.ocx-c4__radio input[type="radio"] {
+	appearance: none;
+	-webkit-appearance: none;
+	flex: 0 0 auto;
+	width: 18px;
+	height: 18px;
+	margin: 0;
+	border: 1px solid transparent;
+	border-radius: 100px;
+	background-color: rgba(0, 0, 0, 0.05);
+	cursor: pointer;
+}
+
+.ocx-c4__radio input[type="radio"]:checked {
+	border-color: var(--Color-Scheme-1-Text, #000000);
+}
+
+.ocx-c4__radio input[type="radio"]:focus-visible {
+	outline: 2px solid var(--Color-Scheme-1-Text, #000000);
+	outline-offset: 2px;
+}
+
+/* "Checkbox" (#4174:41819): `padding: 0 0 16px`, `gap: 8px`, caja de 18x18 sin radio. */
+.ocx-c4__checkbox {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 0 0 16px;
+}
+
+.ocx-c4__checkbox input[type="checkbox"] {
+	appearance: none;
+	-webkit-appearance: none;
+	flex: 0 0 auto;
+	width: 18px;
+	height: 18px;
+	margin: 0;
+	border: 1px solid transparent;
+	border-radius: 0;
+	background-color: rgba(0, 0, 0, 0.05);
+	cursor: pointer;
+}
+
+.ocx-c4__checkbox input[type="checkbox"]:checked {
+	border-color: var(--Color-Scheme-1-Text, #000000);
+}
+
+.ocx-c4__checkbox input[type="checkbox"]:focus-visible {
+	outline: 2px solid var(--Color-Scheme-1-Text, #000000);
+	outline-offset: 2px;
+}
+
+/* El texto del checkbox usa "ts1" (14px) con "Terms" en "ts2", que va subrayado. */
+.ocx-c4__checkbox-text {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Small, 14px);
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+.ocx-c4__checkbox-text a {
+	color: inherit;
+	text-decoration: underline;
+}
+
+/* El boton "Submit" es el primario de siempre, con el padding de 10px 24px del nodo. */
+.ocx-c4__submit {
+	margin: 0;
+}
+
+/*
+ * Responsive. Figma no trae frame de mobile para Contact, asi que los cortes son propios:
+ * los pares de campos y de radios bajan a una columna, que es lo unico que se puede hacer
+ * en 390 sin que el label del radio quede pegado al borde.
+ *
+ * Para las filas de radios hay que habilitar `flex-wrap`: el contenedor es
+ * `flex-direction: row` sin wrap, asi que un `flex: 1 1 100%` en las opciones solo las
+ * encogeria en vez de partirlas en dos filas. Con el wrap, el 100% de base las obliga a
+ * una por fila.
+ */
+@media (max-width: 767.98px) {
+	.ocx-c4__row > .ocx-c4__field {
+		flex: 1 1 100%;
+	}
+
+	.ocx-c4__radio-row {
+		flex-wrap: wrap;
+		gap: 16px;
+	}
+
+	.ocx-c4__radio {
+		flex: 1 1 100%;
+	}
+}

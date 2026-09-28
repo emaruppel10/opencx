@@ -1,0 +1,137 @@
+<!-- wp:template-part {"slug":"header-ecosystem","tagName":"header"} /-->
+
+<!-- wp:group {"alignFullWidth":true,"className":"ocx-section ocx-section--stretch ocx-h64__section ocx-h64--center","style":{"spacing":{"blockGap":"80px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group alignfull ocx-section ocx-section--stretch ocx-h64__section ocx-h64--center">
+
+	<!-- wp:group {"className":"ocx-h64__container","style":{"spacing":{"blockGap":"80px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+	<div class="wp-block-group ocx-h64__container">
+
+		<!-- wp:group {"className":"ocx-h64__component ocx-h64--center","style":{"spacing":{"blockGap":"24px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+		<div class="wp-block-group ocx-h64__component ocx-h64--center">
+
+			<!-- wp:heading {"level":1,"className":"ocx-h64__title"} -->
+			<h1 class="wp-block-heading ocx-h64__title">Let’s see what this looks like inside your business.</h1>
+			<!-- /wp:heading -->
+
+			<!-- wp:paragraph {"className":"ocx-h64__lead"} -->
+			<p class="ocx-h64__lead">No generic demo. Bring a real workflow, and we’ll show you what it looks like automated by a system that actually understands it.</p>
+			<!-- /wp:paragraph -->
+
+		</div>
+		<!-- /wp:group -->
+
+	</div>
+	<!-- /wp:group -->
+
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"alignFullWidth":true,"className":"ocx-section ocx-section--stretch ocx-c4__section","style":{"spacing":{"blockGap":"48px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+<div class="wp-block-group alignfull ocx-section ocx-section--stretch ocx-c4__section">
+
+	<!-- wp:group {"className":"ocx-c4__container","style":{"spacing":{"blockGap":"48px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+	<div class="wp-block-group ocx-c4__container">
+
+		<!-- wp:group {"className":"ocx-c4__title","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+		<div class="wp-block-group ocx-c4__title">
+
+			<!-- wp:group {"className":"ocx-c4__body","style":{"spacing":{"blockGap":"24px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+			<div class="wp-block-group ocx-c4__body">
+				<!-- wp:heading {"level":2,"className":"ocx-c4__heading"} -->
+				<h2 class="wp-block-heading ocx-c4__heading">Contact us</h2>
+				<!-- /wp:heading -->
+
+				<!-- wp:paragraph {"className":"ocx-c4__lead"} -->
+				<p class="ocx-c4__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+				<!-- /wp:paragraph -->
+			</div>
+			<!-- /wp:group -->
+
+		</div>
+		<!-- /wp:group -->
+
+		<!-- wp:html -->
+<!--
+	Los puntos suspensivos del placeholder del select van como `..&#46;` y no como `...`:
+	`wptexturize` de WordPress corre sobre el post_content y convierte cualquier `...` en
+	U+2026, dejando "Select one…". Como el nodo de Figma los pide de tres puntos, se rompe
+	el ultimo en entidad para que el texturizer no vea la secuencia y el navegador imprima
+	igual tres puntos. No volver a escribirlos como `...`.
+-->
+<form class="ocx-c4__form" method="post" action="" novalidate>
+
+	<div class="ocx-c4__row">
+		<p class="ocx-c4__field">
+			<label class="ocx-c4__label" for="ocx-first-name">First name</label>
+			<input class="ocx-c4__input" id="ocx-first-name" name="first_name" type="text" autocomplete="given-name" />
+		</p>
+		<p class="ocx-c4__field">
+			<label class="ocx-c4__label" for="ocx-last-name">Last name</label>
+			<input class="ocx-c4__input" id="ocx-last-name" name="last_name" type="text" autocomplete="family-name" />
+		</p>
+	</div>
+
+	<div class="ocx-c4__row">
+		<p class="ocx-c4__field">
+			<label class="ocx-c4__label" for="ocx-email">Email</label>
+			<input class="ocx-c4__input" id="ocx-email" name="email" type="email" autocomplete="email" />
+		</p>
+		<p class="ocx-c4__field">
+			<label class="ocx-c4__label" for="ocx-phone">Phone number</label>
+			<input class="ocx-c4__input" id="ocx-phone" name="phone" type="tel" autocomplete="tel" />
+		</p>
+	</div>
+
+	<p class="ocx-c4__field">
+		<label class="ocx-c4__label" for="ocx-topic">Choose a topic</label>
+		<select class="ocx-c4__select" id="ocx-topic" name="topic">
+			<option value="" selected>Select one..&#46;</option>
+		</select>
+	</p>
+
+	<div class="ocx-c4__radios" role="group" aria-labelledby="ocx-role-label">
+		<p class="ocx-c4__label" id="ocx-role-label">Which best describes you?</p>
+		<div class="ocx-c4__radios-list">
+			<div class="ocx-c4__radio-row">
+				<label class="ocx-c4__radio" for="ocx-choice-1"><input id="ocx-choice-1" name="role" type="radio" value="first" /><span>First choice</span></label>
+				<label class="ocx-c4__radio" for="ocx-choice-2"><input id="ocx-choice-2" name="role" type="radio" value="second" /><span>Second choice</span></label>
+			</div>
+			<div class="ocx-c4__radio-row">
+				<label class="ocx-c4__radio" for="ocx-choice-3"><input id="ocx-choice-3" name="role" type="radio" value="third" /><span>Third choice</span></label>
+				<label class="ocx-c4__radio" for="ocx-choice-4"><input id="ocx-choice-4" name="role" type="radio" value="fourth" /><span>Fourth choice</span></label>
+			</div>
+			<div class="ocx-c4__radio-row">
+				<label class="ocx-c4__radio" for="ocx-choice-5"><input id="ocx-choice-5" name="role" type="radio" value="fifth" /><span>Fifth choice</span></label>
+				<label class="ocx-c4__radio" for="ocx-other"><input id="ocx-other" name="role" type="radio" value="other" /><span>Other</span></label>
+			</div>
+		</div>
+	</div>
+
+	<p class="ocx-c4__field">
+		<label class="ocx-c4__label" for="ocx-message">Message</label>
+		<textarea class="ocx-c4__textarea" id="ocx-message" name="message" rows="6" placeholder="Type your message..."></textarea>
+	</p>
+
+	<p class="ocx-c4__checkbox">
+		<input id="ocx-terms" name="terms" type="checkbox" value="1" />
+		<label class="ocx-c4__checkbox-text" for="ocx-terms">I accept the <a href="/terms-of-service/">Terms</a></label>
+	</p>
+
+	<!-- wp:buttons {"className":"ocx-c4__submit","layout":{"type":"flex","justifyContent":"left"}} -->
+	<div class="wp-block-buttons ocx-c4__submit">
+		<!-- wp:button {"className":"ocx-btn--primary"} -->
+		<div class="wp-block-button ocx-btn--primary"><a class="wp-block-button__link wp-element-button" href="#" role="button">Submit</a></div>
+		<!-- /wp:button -->
+	</div>
+	<!-- /wp:buttons -->
+
+</form>
+		<!-- /wp:html -->
+
+	</div>
+	<!-- /wp:group -->
+
+</div>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
