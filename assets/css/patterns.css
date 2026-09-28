@@ -4627,6 +4627,11 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
  * center`, asi el espacio que queda a ambos lados del punto (antes y despues)
  * es identico, y el texto de la lista arranca en el mismo x que antes.
  *
+ * El `li` usa `align-items: baseline`: el punto se alinea con la linea base de
+ * la PRIMERA linea de texto del item, de modo que al envolver en varias lineas
+ * el punto queda centrado al medio de la primera letra capitalizada y no en
+ * medio de todo el parrafo (que es lo que daria un `align-items: center`).
+ *
  * `li::marker` no se usa: el navegador coloca ese marker en su propia caja y
  * no da control fino para que el espacio "antes" iguale al "despues" del
  * punto. Con `::before` + flex el canal es determinista.
@@ -4639,7 +4644,7 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 
 .ocx-s4__bullets li {
 	display: flex;
-	align-items: center;
+	align-items: baseline;
 }
 
 .ocx-s4__bullets li::before {
