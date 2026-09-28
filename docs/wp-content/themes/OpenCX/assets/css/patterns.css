@@ -4087,10 +4087,19 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 	max-width: var(--Max-Width-max-width-xlarge, 1024px);
 }
 
-.ocx-l491__row.ocx-l491__row--head {
-	/* el core le da `align-items:center` a `.is-layout-flex`; en la cabecera las
-	 * tres celdas deben estirarse al alto de la fila (fondo #F2F2F2 a tope). */
+.ocx-l491__row.ocx-l491__row {
+	/* El core le da `align-items:center` a `.is-layout-flex`; las celdas deben
+	 * estirarse al alto de la fila para que el border-bottom de las tres
+	 * columnas sea continuo (la línea divisoria no puede cortarse). */
 	align-items: stretch;
+}
+
+.ocx-l491__row:not(.ocx-l491__row--head) .ocx-l491__cell--label,
+.ocx-l491__row:not(.ocx-l491__row--head) .ocx-l491__cell--feat {
+	/* Figma "table rows": celdas de alto 80px. Se usa min-height (no height)
+	 * para que una fila cuyo texto envuelve >2 líneas no quede recortada; la
+	 * columna OpenCX llega a 80 por estiramiento de la fila. */
+	min-height: 80px;
 }
 
 .ocx-l491__row {
@@ -4119,7 +4128,7 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 
 .ocx-l491__cell--feat,
 .ocx-l491__cell--oc {
-	flex: 1 1 0;
+	flex: 1 0 0;
 	min-width: 0;
 	padding: 16px 24px;
 	justify-content: center;
