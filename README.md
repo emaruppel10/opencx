@@ -4,22 +4,25 @@ Block theme de **OpenCX** construido sobre Full Site Editing, que implementa el
 diseño del wireframe de Figma *"OpenCX Wireframes V1.0"*.
 
 Los estilos, tipografías y colores se definen **exclusivamente** en `theme.json` y
-en los tokens de `assets/css/tokens.css`; cada bloque del wireframe se declara en
-HTML como Block Pattern/Group con nombres `ocx-*` y se estiliza en
+en los tokens de `assets/css/tokens.css`; cada componente del wireframe se declara
+en HTML como Block Pattern/Group con nombres `ocx-*` y se estiliza en
 `assets/css/patterns.css`.
+
+[![CI theme-ci](https://github.com/emaruppel10/opencx/actions/workflows/theme-ci.yml/badge.svg)](https://github.com/emaruppel10/opencx/actions/workflows/theme-ci.yml)
 
 ## Estructura
 
-| Ruta            | Contenido                                                    |
-| --------------- | ------------------------------------------------------------ |
-| `templates/`    | Plantillas del tema (`front-page`, `page-ecosystem`, `index`) |
-| `parts/`        | Template parts: headers y footer                             |
-| `patterns/`     | Block patterns registrados en PHP                            |
-| `inc/`          | Setup del tema, enqueue, navegación, custom post types       |
-| `assets/css/`   | `theme.json` → tokens de diseño; `patterns.css` → patrones   |
-| `assets/js/`    | Scripts del front (carousel, logo-intro, count-up, nav)      |
-| `assets/images/`| Imágenes, íconos y fuentes del tema                          |
-| `Variables/`    | Export de variables de diseño desde Figma                    |
+| Ruta             | Contenido                                                  |
+| ---------------- | ---------------------------------------------------------- |
+| `templates/`     | Plantillas del tema (`front-page`, `page-ecosystem`, `index`) |
+| `parts/`         | Template parts: headers y footer                           |
+| `patterns/`      | Block patterns registrados en PHP                          |
+| `inc/`           | Setup del tema, enqueue, navegación, custom post types     |
+| `assets/css/`    | `tokens.css` → valores de diseño; `patterns.css` → patrones |
+| `assets/js/`     | Scripts del front (carousel, logo-intro, count-up, nav)    |
+| `assets/images/` | Imágenes, íconos y fuentes del tema                        |
+| `Variables/`     | Export de variables de diseño desde Figma                  |
+| `.ci/`           | Script de checks estructurales del tema                    |
 
 ## Requisitos
 
@@ -36,13 +39,29 @@ npx wp-env start    # levanta WordPress en http://localhost:8888
 La configuración del entorno está en `.wp-env.json` (monta este tema como active
 theme y activa `WP_DEBUG`).
 
+## CI / Calidad
+
+Cada push o pull request corre el workflow `theme-ci.yml`:
+
+- `php -l` sobre todos los `.php` del tema.
+- `theme.json` y tokens JSON válidos.
+- Llaves balanceadas en `assets/css/`.
+- Balance de comentarios de bloque `wp:*` en `templates/` y `parts/` (detecta
+  secciones mal anidadas antes de que lleguen al navegador).
+
+Para correr los checks localmente:
+
+```bash
+python3 .ci/lint.py
+```
+
 ## Avances
 
 ### Home (`/`)
 
 - Hero con buscador de consulta, logo-in con preloader, contadores animados,
-  grid de pillars, testimonios, secciones de features y footer completo — todo
-  con medición de fidelidad contra el wireframe (píxeles, tokens y tipografía).
+  grid de pillars, testimonios, secciones de features y footer completo — con
+  medición de fidelidad contra el wireframe (píxeles, tokens y tipografía).
 
 ### Ecosistema (`/ecosystem/`)
 
