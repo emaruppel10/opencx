@@ -1,0 +1,227 @@
+/*
+ * OpenCX design tokens.
+ *
+ * Generated from the Figma variable exports in /Variables:
+ *   Primitives.json          -> Color, Opacity
+ *   Spacing & Sizing/*.json  -> Container, Max Width, Page Padding, Section Padding
+ *   Typography/*.json        -> Text Sizes
+ *   UI Styles.json           -> Radius, Stroke
+ *
+ * Each JSON is a DTCG token set, so a token at "Page Padding > padding-global"
+ * becomes --Page-Padding-padding-global: the path is flattened with hyphens,
+ * which is the same shape the Figma code snippets use.
+ *
+ * Desktop.tokens.json and Mobile.tokens.json are the same tokens with different
+ * values, so they land in the same custom properties and the mobile block below
+ * overrides them. The switch is 1199.98px to match the only breakpoint the theme
+ * already declares; see BACKLOG.md.
+ *
+ * theme.json still owns the WordPress palette presets. These are the names the
+ * design system actually uses, and the CSS is written against them.
+ */
+
+:root {
+	/* Color */
+	--Color-White: #FFFFFF;
+	--Color-Neutral-Lightest: #F2F2F2;
+	--Color-Neutral-Lighter: #D8D8D8;
+	--Color-Neutral-Light: #B2B2B2;
+	--Color-Neutral: #7F7F7F;
+	--Color-Neutral-Dark: #4C4C4C;
+	--Color-Neutral-Darker: #191919;
+	--Color-Neutral-Darkest: #000000;
+	--Color-Husk-Lightest: #F7F5ED;
+	--Color-Husk-Lighter: #F0EBDC;
+	--Color-Husk-Light: #CBBB85;
+	--Color-Husk: #B69E52;
+	--Color-Husk-Dark: #917E41;
+	--Color-Husk-Darker: #483F20;
+	--Color-Husk-Darkest: #362F18;
+	--Color-Nile-Blue-Lightest: #E8ECEE;
+	--Color-Nile-Blue-Lighter: #D1DADE;
+	--Color-Nile-Blue-Light: #607F8B;
+	--Color-Nile-Blue: #1C495A;
+	--Color-Nile-Blue-Dark: #163A48;
+	--Color-Nile-Blue-Darker: #0B1D24;
+	--Color-Nile-Blue-Darkest: #08151B;
+	--Color-Voodoo-Lightest: #ECE9ED;
+	--Color-Voodoo-Lighter: #DAD4DB;
+	--Color-Voodoo-Light: #806A83;
+	--Color-Voodoo: #4A2B4F;
+	--Color-Voodoo-Dark: #3B223F;
+	--Color-Voodoo-Darker: #1D111F;
+	--Color-Voodoo-Darkest: #160C17;
+	--Color-Spring-Wood-Lightest: #FEFEFD;
+	--Color-Spring-Wood-Lighter: #FDFDFC;
+	--Color-Spring-Wood-Light: #FAF8F4;
+	--Color-Spring-Wood: #F8F6F0;
+	--Color-Spring-Wood-Dark: #C6C4C0;
+	--Color-Spring-Wood-Darker: #636260;
+	--Color-Spring-Wood-Darkest: #4A4948;
+
+	/* Opacity */
+	--Opacity-Transparent: rgb(255 255 255 / 0%);
+	--Opacity-White-5: rgb(255 255 255 / 5%);
+	--Opacity-White-10: rgb(255 255 255 / 10%);
+	--Opacity-White-15: rgb(255 255 255 / 15%);
+	--Opacity-White-20: rgb(255 255 255 / 20%);
+	--Opacity-White-30: rgb(255 255 255 / 30%);
+	--Opacity-White-40: rgb(255 255 255 / 40%);
+	--Opacity-White-50: rgb(255 255 255 / 50%);
+	--Opacity-White-60: rgb(255 255 255 / 60%);
+	--Opacity-Neutral-Darkest-5: rgb(0 0 0 / 5%);
+	--Opacity-Neutral-Darkest-10: rgb(0 0 0 / 10%);
+	--Opacity-Neutral-Darkest-15: rgb(0 0 0 / 15%);
+	--Opacity-Neutral-Darkest-20: rgb(0 0 0 / 20%);
+	--Opacity-Neutral-Darkest-30: rgb(0 0 0 / 30%);
+	--Opacity-Neutral-Darkest-40: rgb(0 0 0 / 40%);
+	--Opacity-Neutral-Darkest-50: rgb(0 0 0 / 50%);
+	--Opacity-Neutral-Darkest-60: rgb(0 0 0 / 60%);
+
+	/* Container and sizing */
+	--Container-container-large: 1280px;
+	--Container-container-medium: 1024px;
+	--Container-container-small: 768px;
+	--Max-Width-max-width-xxlarge: 1280px;
+	--Max-Width-max-width-xlarge: 1024px;
+	--Max-Width-max-width-large: 768px;
+	--Max-Width-max-width-medium: 560px;
+	--Max-Width-max-width-small: 480px;
+	--Max-Width-max-width-xsmall: 400px;
+	--Max-Width-max-width-xxsmall: 320px;
+	--Page-Padding-padding-global: 64px;
+	--Section-Padding-padding-section-large: 112px;
+	--Section-Padding-padding-section-medium: 80px;
+	--Section-Padding-padding-section-small: 48px;
+
+	/* Typography */
+	--Text-Sizes-Heading-1: 72px;
+	--Text-Sizes-Heading-2: 52px;
+	--Text-Sizes-Heading-3: 44px;
+	--Text-Sizes-Heading-4: 36px;
+	--Text-Sizes-Heading-5: 28px;
+	--Text-Sizes-Heading-6: 22px;
+	--Text-Sizes-Text-Large: 22px;
+	--Text-Sizes-Text-Medium: 18px;
+	--Text-Sizes-Text-Regular: 16px;
+	--Text-Sizes-Text-Small: 14px;
+	--Text-Sizes-Text-Tiny: 12px;
+
+	/* UI styles */
+	--Radius-Small: 16px;
+	--Radius-Medium: 16px;
+	--Radius-Large: 16px;
+	--Stroke-Border-Width: 0px;
+	--Stroke-Divider-Width: 1px;
+
+	/*
+	 * Tokens that are NOT in the /Variables export.
+	 *
+	 * The export is missing at least one variable collection: Ambar and
+	 * OpenCX-White belong to none of Neutrals, Husk, Nile Blue, Voodoo or
+	 * Spring Wood, yet they are the real names the Figma snippets emit for
+	 * #F2EEE1 and #FCFBF9. Those two are the values theme.json had been calling
+	 * `sand` and `off-white`, both of which were invented.
+	 *
+	 * Color Scheme 1's Text is a third case. The export says #000 and that is
+	 * the value used here, but the Industry button and the prompt field
+	 * snippets fall back to #162227. A single custom property cannot be both at
+	 * once, so the two values are split: this token follows the export and
+	 * paints the caret, while Subnav Text holds the #162227 that the 18px hero
+	 * text actually renders at. No primitive matches #162227, so it is a coined
+	 * name rather than an exported one. It is named after the form card the
+	 * control belongs to, so the reason it exists stays greppable.
+	 */
+	--Color-Ambar: #F2EEE1;
+	--Color-OpenCX-White-Lightest: #FCFBF9;
+	--Color-Scheme-1-Text: #000000;
+	--Color-Subnav-Text: #162227;
+	--Color-Scheme-1-Background: #FFFFFF;
+
+	/*
+	 * Shimmer de los links de industria (bloque 3). Los dos colores del barrido
+	 * se derivan de Color Scheme 1, no se escriben a mano: el futuro tema
+	 * oscuro solo tiene que invertir --Color-Scheme-1-Text y
+	 * --Color-Scheme-1-Background, que ya tiene que hacer para el resto del
+	 * theme, y este bloque se recalcula solo sin tocar una sola regla.
+	 *
+	 * Band es el color menos destacado de los dos (40% texto + 60% fondo). Al
+	 * ser una mezcla con el fondo de forma simetrica, el contraste respecto de
+	 * el es el mismo en cualquier esquema: ~3.9:1 ahora con #000 sobre #fff, y
+	 * el mismo con #fff sobre #000. Se mezcla con el fondo y no con un blanco
+	 * fijo porque un blanco fijo daria en dark un barrido invisible al no poder
+	 * aclarar un texto que ya es blanco puro.
+	 *
+	 * La mezcla se bajo tres veces porque el efecto no se notaba:
+	 *
+	 * - 65% -> `#3A3A3A`, 11.37:1. Invisible en la practica: la banda tardaba
+	 *   0.9s en llegar al texto, asi que al pasar el mouse no pasaba nada.
+	 * - 58% -> `#4D4D4D`, 8.45:1. Ya se veia, pero timido, porque el trazo se
+	 *   aclaraba muy poco y el paso duraba medio segundo.
+	 * - 40% -> `#808080`, 3.95:1. Es el actual. El texto es de 36px, o sea texto
+	 *   grande, donde el umbral de AA es 3:1 y no 4.5:1, asi que 3.95:1 sigue
+	 *   cumpliendo y la banda se nota claramente al pasar.
+	 *
+	 * No bajar mas de 40%: por debajo de ~3:1 el trazo empieza a costarse leer
+	 * durante el paso, y el efecto deja de ser un brillo para volverse un fallo
+	 * de legibilidad. Un brillo que no se puede leer no vale la pena.
+	 *
+	 * El barrido va de Band a texto y de vuelta a Band, nunca al reves, por un
+	 * motivo practico: en claro el texto negro se aclara al pasar la banda; en
+	 * oscuro el texto blanco se atenua. En ambos casos la banda es el momento de
+	 * menor enfasis de la palabra, que es lo que hace legible un shimmer sin
+	 * llegar a apagar el texto.
+	 */
+	--ocx-shimmer-band: color-mix(in oklab, var(--Color-Scheme-1-Text, #000000) 40%, var(--Color-Scheme-1-Background, #FFFFFF));
+	--ocx-shimmer-text: var(--Color-Scheme-1-Text, #000000);
+
+	/*
+	 * Color Scheme 1's Border is the one token where the export looks like an
+	 * unfilled default: every scheme in Color Schemes.json lists Border and
+	 * Accent as plain #000000, whereas the Figma snippet for the dropdown panel
+	 * falls back to rgba(0, 0, 0, 0.15). The export value is kept for consistency
+	 * with the rest of the Color Scheme 1 tokens, and the discrepancy is
+	 * invisible in practice because --Stroke-Border-Width is 0px, so the border
+	 * does not render at all. Revisit this only if the width ever becomes 1px.
+	 */
+	--Color-Scheme-1-Border: #000000;
+
+	/*
+	 * The header is not on the 64px global page padding. Figma frames the header at
+	 * 1441px so a 1280px container leaves 80.5px on each side, and the nav column
+	 * depends on it: 157 logo + 217 offset = x374. Using the global 64 here would
+	 * move the nav to x438. Kept separate until the two are reconciled.
+	 */
+	--Header-padding: 80.5px;
+}
+
+/* Mobile mode. Same tokens, phone values. */
+@media (max-width: 1199.98px) {
+	:root {
+		--Container-container-large: 1280px;
+		--Container-container-medium: 1024px;
+		--Container-container-small: 768px;
+		--Max-Width-max-width-xxlarge: 1280px;
+		--Max-Width-max-width-xlarge: 1024px;
+		--Max-Width-max-width-large: 768px;
+		--Max-Width-max-width-medium: 560px;
+		--Max-Width-max-width-small: 480px;
+		--Max-Width-max-width-xsmall: 400px;
+		--Max-Width-max-width-xxsmall: 320px;
+		--Page-Padding-padding-global: 20px;
+		--Section-Padding-padding-section-large: 64px;
+		--Section-Padding-padding-section-medium: 48px;
+		--Section-Padding-padding-section-small: 32px;
+		--Text-Sizes-Heading-1: 40px;
+		--Text-Sizes-Heading-2: 36px;
+		--Text-Sizes-Heading-3: 32px;
+		--Text-Sizes-Heading-4: 24px;
+		--Text-Sizes-Heading-5: 20px;
+		--Text-Sizes-Heading-6: 18px;
+		--Text-Sizes-Text-Large: 18px;
+		--Text-Sizes-Text-Medium: 16px;
+		--Text-Sizes-Text-Regular: 16px;
+		--Text-Sizes-Text-Small: 14px;
+		--Text-Sizes-Text-Tiny: 12px;
+	}
+}

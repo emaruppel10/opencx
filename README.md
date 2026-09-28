@@ -1,0 +1,60 @@
+# OpenCX — Web Theme de WordPress
+
+Block theme de **OpenCX** construido sobre Full Site Editing, que implementa el
+diseño del wireframe de Figma *"OpenCX Wireframes V1.0"*.
+
+Los estilos, tipografías y colores se definen **exclusivamente** en `theme.json` y
+en los tokens de `assets/css/tokens.css`; cada bloque del wireframe se declara en
+HTML como Block Pattern/Group con nombres `ocx-*` y se estiliza en
+`assets/css/patterns.css`.
+
+## Estructura
+
+| Ruta            | Contenido                                                    |
+| --------------- | ------------------------------------------------------------ |
+| `templates/`    | Plantillas del tema (`front-page`, `page-ecosystem`, `index`) |
+| `parts/`        | Template parts: headers y footer                             |
+| `patterns/`     | Block patterns registrados en PHP                            |
+| `inc/`          | Setup del tema, enqueue, navegación, custom post types       |
+| `assets/css/`   | `theme.json` → tokens de diseño; `patterns.css` → patrones   |
+| `assets/js/`    | Scripts del front (carousel, logo-intro, count-up, nav)      |
+| `assets/images/`| Imágenes, íconos y fuentes del tema                          |
+| `Variables/`    | Export de variables de diseño desde Figma                    |
+
+## Requisitos
+
+- WordPress 6.6+ (probado hasta 6.7)
+- PHP 8.0+
+- `@wordpress/env` (Docker) para el entorno local
+
+## Cómo correrlo
+
+```bash
+npx wp-env start    # levanta WordPress en http://localhost:8888
+```
+
+La configuración del entorno está en `.wp-env.json` (monta este tema como active
+theme y activa `WP_DEBUG`).
+
+## Avances
+
+### Home (`/`)
+
+- Hero con buscador de consulta, logo-in con preloader, contadores animados,
+  grid de pillars, testimonios, secciones de features y footer completo — todo
+  con medición de fidelidad contra el wireframe (píxeles, tokens y tipografía).
+
+### Ecosistema (`/ecosystem/`)
+
+Secciones implementadas del wireframe:
+
+- [x] **Header / 62 /** — hero *"Not a feature. The foundation."*
+- [x] **Layout / 71 /** — intro de dos columnas
+- [x] **Layout / 192 /** × 2 — *"AI Orchestrator"* y *"Specialized AI Agents"*
+- [x] **Header / 62 /** — *"Four pillars. One AI operating system."*
+- [x] **Layout / 19 /** — grilla 2×2 de los cuatro pilares
+- [ ] Resto de secciones del wireframe (en curso)
+
+La implementación replica los valores del diseño en los anchos de escritorio y
+tablet (gaps, paddings, alturas de sección y familias/tamaños de tipo de la
+escala de `theme.json`).
