@@ -5697,8 +5697,8 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
  *
  *   About    -> Component con `sizing.horizontal: fixed` de 904, H1 y parrafo a la
  *               izquierda, y `padding: 112px 64px 0px` (sin padding abajo).
- *   Contact  -> Component en `fill` (llena los 1312), H1 y parrafo centrados, y
- *               `padding: 112px 64px` completo.
+ *   Contact  -> Component con tope de 768 centrado en el container, H1 y parrafo
+ *               centrados, y `padding: 112px 64px` completo.
  *
  * El modificador va en la seccion (para el padding) y en el Component (para el ancho),
  * con la misma clase en los dos. Como ambas reglas de la base son (0,2,0), el
@@ -5708,9 +5708,35 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 	padding-bottom: var(--Section-Padding-padding-section-large, 112px);
 }
 
-.ocx-h64--center {
+/*
+ * Las reglas de caja van con los DOS selectores de clase a proposito. La clase
+ * modificadora esta en la seccion (para el padding) y en el Component (para el ancho), y
+ * si estas reglas usaran solo `.ocx-h64--center` se aplicarian tambien a la seccion:
+ * caparian la seccion entera a 768 y el padding de 64 entraria adentro, dejando 640 de
+ * contenido real en vez de 768.
+ */
+.ocx-h64__component.ocx-h64--center {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-self: stretch;
+	gap: 24px;
+	/*
+	 * `width: 100%` es obligatorio, no cosmético: la base `.ocx-h64__component` declara
+	 * `width: 904px`, y mientras haya un `width` explicito el `align-self: stretch` no
+	 * aplica, asi que el tope de 768 no se encoge y desborda por debajo de 768 de viewport
+	 * (40px a 768, 418px a 390). Con el 100% el 768 acts como tope y la caja baja a lo
+	 * que entre en el container, que es lo mismo que hace `.ocx-i62__component`.
+	 */
 	width: 100%;
-	max-width: 100%;
+	max-width: var(--Max-Width-max-width-large, 768px);
+	/*
+	 * `align-self: stretch` estira la caja hasta el container, pero `max-width: 768px`
+	 * la corta y en ese caso el spec la deja pegada al borde de inicio, con el centro en
+	 * 448 en vez de 656. El `margin-inline: auto` la centra en el container, que es el
+	 * mismo apaño que usa `.ocx-i62__component`.
+	 */
+	margin-inline: auto;
 }
 
 .ocx-h64--center .ocx-h64__title,
