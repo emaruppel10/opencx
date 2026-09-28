@@ -4395,3 +4395,106 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 .wp-block-button.ocx-l25__btn-alt .wp-block-button__link:hover {
 	text-decoration: none;
 }
+
+/*
+ * "Header / 62 /" (#10218:66801) de la pagina Solution.
+ *
+ * Es el mismo componente que el hero del ecosistema (`.ocx-h62__*`, que reusa
+ * este template de seccion), pero esta instancia difiere en tres cosas:
+ *
+ *  1. Component tiene `width: 896px` fijo en vez de estirarse a la caja.
+ *  2. Trae un tagline ("SOlaaS (Solution as a service)") como primer hijo.
+ *  3. Todo centrado: section y container con `align-items: center`, texto
+ *     centrado, y el unico boton centrado (igual que el h62 del ecosistema).
+ *
+ * La seccion declara `align-items: center` (el layout dado), que queda anulado
+ * por el `align-self:stretch` del Container para ese item, igual que en h62;
+ * el texto y el boton se centran porque Content y Actions llevan su propio
+ * `justifyContent: center` en el atributo del bloque.
+ */
+.ocx-s62__section {
+	padding: 112px 64px;
+	align-items: center;
+}
+
+.ocx-s62__container {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+	max-width: var(--Container-container-large, 1280px);
+}
+
+.ocx-section > .ocx-s62__container {
+	margin-inline: auto;
+}
+
+/*
+ * "Component" (#10218:66803): `width: 896px` fijo en Figma. Se baja a
+ * `max-width` + `width: 100%` para que por debajo del ancho de diseno el
+ * componente se llene en vez de salirse. Es hijo unico del Container, que ya
+ * centra sus hijos con `align-items: center` (via `justifyContent` del
+ * atributo), asi que no hace falta margin aparte.
+ *
+ * `min-width: 0` evita que una palabra larga del H1 empuje la caja.
+ */
+.ocx-s62__component {
+	align-self: center;
+	width: 100%;
+	min-width: 0;
+	max-width: 896px;
+	align-items: center;
+}
+
+/*
+ * "Tagline" (#10244:33684): Figura "Heading/Tagline", Manrope SemiBold 600 a
+ * 16px con 150% de line height. Es un `p` plano dentro del Component, asi que
+ * se centra via el `align-items` del padre y el texto con `text-align`.
+ */
+.ocx-s62__tagline {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 600;
+	line-height: 1.5;
+	text-align: center;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/*
+ * "Section Title" (#10218:66804) y "Content" (#10218:66807): estiran su ancho
+ * para que el texto quede dentro del Component de 896px. Sin esto el H1 se
+ * encoge a su max-content y el parrafo a los 896, desalineando el margen.
+ */
+.ocx-s62__title,
+.ocx-s62__content {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+}
+
+/*
+ * El tipo va con selectores de hijo igual que `.ocx-h62__*`: el copy sigue
+ * siendo un bloque core plano. "Heading/H1" (55px) y "Text/Medium/Normal"
+ * (18px) declaran `textAlignHorizontal: CENTER`. 55px es el override local del
+ * text style, por eso el literal en vez del token (igual que `.ocx-h62__content`).
+ */
+.ocx-s62__content .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: 55px;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: -0.01em;
+	text-align: center;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+.ocx-s62__content p {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: center;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
