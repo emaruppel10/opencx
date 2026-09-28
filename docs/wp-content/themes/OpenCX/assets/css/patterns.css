@@ -3414,26 +3414,29 @@
 }
 
 /*
- * Padding: 112 arriba / 64 lateral / 112 abajo, los cuatro valores del nodo, fijos en todos los
- * anchos.
- *
- * No alcanza con la cadena de clases. `.ocx-section` (0,1,0) pone
- * `padding: var(--Section-Padding-padding-section-medium, 80px) var(--Page-Padding-padding-global, 64px)`
- * y `.ocx-section--large` (0,1,0) sube el vertical a
- * `var(--Section-Padding-padding-section-large, 112px)`: en desktop eso ya daba 112/64, pero esos
- * tokens se redefinen a valores phone en `tokens.css` dentro de
- * `@media (max-width: 1199.98px)` (`--Page-Padding-padding-global: 20px`,
- * `--Section-Padding-padding-section-large: 64px`), y por debajo de 1200 la seccion bajaba a
- * **64/20**. Con dos clases (0,2,0) esta regla gana en cualquier ancho y sin importar el orden.
- *
  * Ojo: el `style.spacing.padding` del atributo del bloque **no sirve aca**. En los nueve
  * `.ocx-section` esta en el markup y core lo descarta en silencio (ver BACKLOG): el rendered
  * llega con `style="margin-top:0;margin-bottom:0"` y sin padding. Solo el hero, que es
  * `layout: default`, recibe el suyo. Los valores van ahi como px duros, no como
  * `var:preset|spacing|…`, que tampoco se emiten aunque los presets existan en `theme.json`.
+ *
+ * El padding en si va con tokens, en la regla de arriba.
+ */
+/*
+ * Padding por tokens: 112 arriba / 64 lateral / 112 abajo en desktop, y 64/20 por debajo
+ * de 1200.
+ *
+ * Antes iba `112px 64px` duro, con el argumento de que asi gana "en cualquier ancho". El
+ * problema es que 64px es el valor **de desktop** de Figma y a 390 se comia 64 de cada
+ * lado: el Container del CTA quedaba en 262px contra los 350 de las demas secciones de la
+ * misma pagina (medido en Industries y en About). Con los tokens el valor computado a
+ * >=1200 sigue siendo 112/64, o sea que desktop no cambia; lo que se corrige es mobile.
+ *
+ * El `style.spacing.padding` del bloque **no sirve**: core lo descarta en silencio (ver
+ * BACKLOG). Los valores del markup van ahi como px duros.
  */
 .ocx-section.ocx-c25__section {
-	padding: 112px 64px;
+	padding: var(--Section-Padding-padding-section-large, 112px) var(--Page-Padding-padding-global, 64px);
 }
 
 .ocx-c25__container {
@@ -4720,7 +4723,10 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
  * delante para llegar a (0,2,0).
  */
 .ocx-section.ocx-i62__section,
-.ocx-section.ocx-l627__section {
+.ocx-section.ocx-l627__section,
+.ocx-section.ocx-h64__section,
+.ocx-section.ocx-l1__section,
+.ocx-section.ocx-t4__section {
 	padding: var(--Section-Padding-padding-section-large, 112px) var(--Page-Padding-padding-global, 64px);
 }
 
@@ -5271,5 +5277,415 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 
 	.ocx-ins__qa-label {
 		font-size: var(--Text-Sizes-Text-Medium, 18px);
+	}
+}
+
+/* ============================================================================
+ * PAGINA ABOUT
+ *
+ * Tres patrones nuevos. Los otros dos de la pagina reusan codigo existente:
+ * el `CTA / 25 /` (`.ocx-c25__*`) y el `header-ecosystem` / footer comunes.
+ *
+ * Se mantiene el criterio del archivo de un prefijo por nodo de Figma, sin compartir
+ * declarations entre paginas: `patterns.css` es global, asi que un prefijo compartido
+ * cruzaria las paginas y las ataria a la misma evolucion.
+ * --------------------------------------------------------------------------- */
+
+/*
+ * Figma "Header / 64 /" (#10218:66720), el hero de About.
+ *
+ * A diferencia de los heroes `.ocx-i62__*` (centrados, sin parrafo) este es una
+ * columna a la izquierda con H1 y parrafo, y el bloque de texto tiene ancho FIJO de
+ * 904 (`sizing.horizontal: fixed, dimensions.width: 904`), o sea que NO llena el
+ * Container: en flexbox `align-items: stretch` solo aplica cuando el ancho cruzado es
+ * `auto`, asi que el `width: 904px` basta para que quede de 904 pegado a la izquierda
+ * sin needing un `align-self`.
+ *
+ * El `max-width: 100%` es la red de seguridad para anchos menores a 904, donde un ancho
+ * fijo se saldria de la caja.
+ */
+.ocx-section.ocx-h64__section {
+	/*
+	 * El padding **no** va aca: se resuelve con los tokens en la regla compartida de
+	 * `.ocx-section.ocx-i62__section, .ocx-l627__section, …`, arriba. Con `112px 64px`
+	 * duros la seccion se comia 64px de cada lado en mobile y a 390 el contenido quedaba
+	 * en 262px en vez de 350, con el H1 ("intelligence" no parte) desbordando 7px.
+	 *
+	 * Este bloque queda solo para los dos valores que difieren del nodo: el padding
+	 * inferior en 0 y el `gap` de la seccion.
+	 */
+	padding-bottom: 0;
+
+	/* Inerte: la seccion tiene un solo hijo. Se declara para reflejar la estructura. */
+	gap: 80px;
+	align-items: stretch;
+}
+
+.ocx-h64__container {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+
+	/*
+	 * `align-items: stretch` explicito porque core emite `align-items: flex-start` en los
+	 * grupos con `orientation: vertical`, y con flex-start el Component se encoge.
+	 */
+	align-items: stretch;
+
+	/* Inerte: un solo hijo. */
+	gap: 80px;
+}
+
+.ocx-h64__component {
+	width: 904px;
+	max-width: 100%;
+	align-items: stretch;
+	gap: 24px;
+}
+
+.ocx-h64__title,
+.ocx-h64__lead {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	text-align: left;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/* Heading/H1: 55px, weight 500, line-height 1em, letter-spacing -0.01em. */
+.ocx-h64__title {
+	font-size: 55px;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: -0.01em;
+}
+
+/* Text/Medium/Normal: 18px, weight 400, line-height 150%. */
+.ocx-h64__lead {
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+/*
+ * Figma "Layout / 1 /" (#10218:67569 "Human-led AI Philosophy" y #10218:71656
+ * "Why OpenCX"), dos veces en la pagina.
+ *
+ * Es el MISMO nodo de layout que `.ocx-l210__*` (#10218:68751) de la home, con las
+ * columnas invertidas: alla imagen izquierda / texto derecha, aca texto izquierda /
+ * imagen derecha. Misma geometria (fila, `gap: 80px`, `align-items: center`, imagen de
+ * 640 de alto con radio 16), asi que las declaraciones son las mismas y cambia el orden
+ * del DOM, que es el que decide el lado visual. El orden del DOM se deja texto-primero
+ * a proposito: si se invirtiera con `row-reverse` para reusar `l210`, el HTML pondria la
+ * imagen antes del texto y se perderia el orden de lectura.
+ *
+ * Las dos mitades son `sizing.horizontal: fill` en Figma, que no tiene equivalente en
+ * flexbox, asi que la fila reparte con `flex: 1 1 0` en las dos. A 1440 eso da
+ * (1312 - 80) / 2 = 616 para cada una, que es el ancho nativo del PNG.
+ */
+.ocx-section.ocx-l1__section {
+	/* El padding va por tokens en la regla compartida de `.ocx-i62__section`. */
+	gap: 80px;
+	align-items: stretch;
+}
+
+.ocx-l1__container {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+	align-items: stretch;
+	gap: 80px;
+}
+
+/*
+ * `min-height` y no `height`: el nodo dice `sizing.vertical: fixed, dimensions.height:
+ * 640`, pero con altura fija la columna de texto se sale de la fila en cuanto la copy
+ * envuelve a mas lineas (a 768 la mitad mide 324 y el H2 de 52px pasa a 5 lineas). Con
+ * `min-height` la fila mide 640 mientras el texto entre, que es el `max(640, alto del
+ * texto)` que hace Figma, y a 1440 el texto mide ~330 asi que la fila lands en 640
+ * exactos, igual que el diseno.
+ */
+.ocx-l1__component {
+	flex-direction: row;
+	align-items: center;
+	gap: 80px;
+	width: 100%;
+	min-width: 0;
+	min-height: 640px;
+}
+
+.ocx-l1__text {
+	flex: 1 1 0;
+	min-width: 0;
+	align-items: stretch;
+	gap: 32px;
+}
+
+.ocx-l1__media {
+	flex: 1 1 0;
+	min-width: 0;
+	align-items: stretch;
+}
+
+/* El `figure` de core trae margin-bottom propio; el radio va en el `img`. */
+.ocx-l1__image {
+	margin: 0;
+	align-self: stretch;
+	width: 100%;
+}
+
+.ocx-l1__image img {
+	width: 100%;
+	height: 640px;
+	object-fit: cover;
+	border-radius: 16px;
+	display: block;
+}
+
+/* "Section Title" (#10218:67573): columna, `gap: 16px`, con el tagline arriba. */
+.ocx-l1__title {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+	align-items: stretch;
+	gap: 16px;
+}
+
+/* "Content" (#10218:67576): columna, `gap: 24px`, con el H2 y el parrafo. */
+.ocx-l1__body {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+	align-items: stretch;
+	gap: 24px;
+}
+
+.ocx-l1__tagline,
+.ocx-l1__heading,
+.ocx-l1__lead {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	text-align: left;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/* Heading/Tagline: 16px, weight 600, line-height 150%. */
+.ocx-l1__tagline {
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 600;
+	line-height: 1.5;
+}
+
+/*
+ * Heading/H2: 52px, weight 500, line-height 1.2, letter-spacing -0.01em, con el tope de
+ * 768 que viene de la convencion de la pagina (lo mismo que `.ocx-l627__heading`). Aca el
+ * tope casi nunca muerde: la columna mide 616 a 1440, asi que el limite real es el de la
+ * mitad de la fila. Queda declarado para que el H2 no crezca si la copia se ensancha.
+ */
+.ocx-l1__heading {
+	font-size: var(--Text-Sizes-Heading-2, 52px);
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	max-width: var(--Max-Width-max-width-large, 768px);
+}
+
+/* Text/Medium/Normal: 18px, weight 400, line-height 150%. */
+.ocx-l1__lead {
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+/*
+ * Figma "Team / 4 /" (#10218:68001).
+ *
+ * Seccion con el "Section Title" (tagline + H2 + parrafo) y debajo una fila de 4 cards.
+ * El `Content` intermedio (#10218:68009, `gap: 64px`) tiene un solo hijo, asi que su gap
+ * es inerte y se omite el wrapper: el HTML queda con un nivel menos y el editor muestra
+ * la fila de cards directo.
+ *
+ * La fila de cards es `flex-wrap` con `flex: 1 1 0`, que reparte en 4 columnas iguales a
+ * 1440: (1280 - 3 * 32) / 4 = 296, que es exactamente el ancho de la imagen segun el
+ * nodo, asi que la foto queda cuadrada.
+ */
+.ocx-section.ocx-t4__section {
+	/* El padding va por tokens en la regla compartida de `.ocx-i62__section`. */
+	gap: 80px;
+	align-items: stretch;
+}
+
+.ocx-t4__container {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+	align-items: stretch;
+	gap: 80px;
+}
+
+.ocx-t4__title {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+	align-items: stretch;
+	gap: 16px;
+}
+
+.ocx-t4__body {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+	align-items: stretch;
+	gap: 24px;
+}
+
+.ocx-t4__tagline,
+.ocx-t4__heading,
+.ocx-t4__lead {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	text-align: left;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+.ocx-t4__tagline {
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 600;
+	line-height: 1.5;
+}
+
+/* H2 con el tope de 768, igual que en Industries y en la pagina Insights. */
+.ocx-t4__heading {
+	font-size: var(--Text-Sizes-Heading-2, 52px);
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	max-width: var(--Max-Width-max-width-large, 768px);
+}
+
+.ocx-t4__lead {
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+.ocx-t4__row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 32px;
+	width: 100%;
+	min-width: 0;
+}
+
+/* Card (#10218:72002): columna con `gap: 24px` entre foto, cuerpo e iconos. */
+.ocx-t4__card {
+	flex: 1 1 0;
+	min-width: 0;
+	align-items: stretch;
+	gap: 24px;
+}
+
+.ocx-t4__figure {
+	margin: 0;
+	width: 100%;
+}
+
+/*
+ * La imagen es `sizing.vertical: fixed, dimensions.height: 296` con el ancho en `fill`.
+ * Se declara con `aspect-ratio: 1` en vez de `height: 296px` fijo para que no se
+ * deforme cuando la fila pasa a 2 columnas: a 1440 da 296x296 exactos, que es lo que
+ * dice el nodo, y en 2 columnas la foto sigue siendo cuadrada en vez de recortada.
+ */
+.ocx-t4__figure img {
+	width: 100%;
+	height: auto;
+	aspect-ratio: 1;
+	object-fit: cover;
+	border-radius: 16px;
+	display: block;
+}
+
+.ocx-t4__card-body {
+	align-items: stretch;
+	gap: 16px;
+}
+
+/*
+ * "Title" (#10218:72005): columna SIN `gap` en Figma, o sea que el nombre y el rol van
+ * pegados. Se respeta con `gap: 0`.
+ */
+.ocx-t4__name,
+.ocx-t4__role,
+.ocx-t4__bio {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	text-align: left;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+.ocx-t4__name {
+	font-size: 22px;
+	font-weight: 600;
+	line-height: 1.5;
+}
+
+.ocx-t4__role {
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+.ocx-t4__bio {
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+/* "Social Icons" (#10218:72009): fila con `gap: 14px` y un LinkedIn de 24x24. */
+.ocx-t4__social {
+	align-items: center;
+	gap: 14px;
+}
+
+.ocx-t4__social img {
+	width: 24px;
+	height: 24px;
+	flex: 0 0 auto;
+	display: block;
+}
+
+/*
+ * Responsive de las cards. Figma no trae frame de mobile para About, asi que los cortes
+ * son una decision propia: 4 columnas en desktop, 2 en tablet y 1 en phone. El
+ * `gap: 32px` se mantiene y el ancho de cada card se recalcula con `calc` para que las
+ * dos columnas de tablet repartan el espacio parejo.
+ */
+@media (max-width: 1199.98px) {
+	.ocx-t4__card {
+		flex: 1 1 calc(50% - 16px);
+	}
+}
+
+@media (max-width: 767.98px) {
+	/* La "Layout / 1 /" se apila y la imagen deja de tener alto fijo. */
+	.ocx-l1__component {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 40px;
+		min-height: 0;
+	}
+
+	.ocx-l1__text,
+	.ocx-l1__media {
+		flex: none;
+		width: 100%;
+	}
+
+	.ocx-l1__image img {
+		height: auto;
+		aspect-ratio: 616 / 640;
+	}
+
+	.ocx-t4__card {
+		flex: 1 1 100%;
 	}
 }
