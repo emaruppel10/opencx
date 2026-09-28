@@ -43,18 +43,18 @@ theme y activa `WP_DEBUG`).
 
 Para ver las páginas sin instalar nada:
 
-https://emaruppel10.github.io/opencx/preview/          → Home
-https://emaruppel10.github.io/opencx/preview/ecosystem/ → Ecosistema
+https://emaruppel10.github.io/opencx/          → Home
+https://emaruppel10.github.io/opencx/ecosystem/ → Ecosistema
 
 Es una captura estática del HTML renderizado (CSS, JS, fuentes e imágenes
-incluidas) que se publica desde la carpeta `preview/` de este repo mediante
+incluidas) que se publica desde la carpeta `docs/` de este repo mediante
 GitHub Pages.
 
 Para regenerarla tras nuevos cambios, con el WordPress local corriendo:
 
 ```bash
 python3 tools/build-preview.py
-git add preview/ && git commit -m "preview: actualizar captura estática" && git push
+git add docs/ && git commit -m "docs: actualizar captura estática" && git push
 ```
 
 ## CI / Calidad

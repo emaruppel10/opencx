@@ -3,8 +3,8 @@
 
 Descarga el HTML renderizado del WordPress local (localhost:8888) y todos sus
 assets (css/js/imagenes de wp-content y wp-includes), y reescribe las URLs
-absolutas a relativas para que el sitio funcione bajo un subdirectorio
-(<owner>.github.io/opencx/preview/).
+absolutas a relativas para que el sitio funcione bajo la raiz de GitHub Pages
+(<owner>.github.io/opencx/). El resultado se escribe en docs/.
 
 Uso:
     python3 tools/build-preview.py            # requiere WP local en localhost:8888
@@ -19,7 +19,7 @@ from urllib.request import urlopen
 
 BASE = "http://localhost:8888"
 REPO = Path(__file__).resolve().parent.parent
-OUT = REPO / "preview"
+OUT = REPO / "docs"
 
 PAGES = {
     "home": ("/", OUT / "index.html"),
