@@ -3,8 +3,8 @@
  *
  * Generated from the Figma variable exports in /Variables:
  *   Primitives.json          -> Color, Opacity
- *   Spacing & Sizing/*.json  -> Container, Max Width, Page Padding, Section Padding
- *   Typography/*.json        -> Text Sizes
+ *   Spacing & Sizing JSON    -> Container, Max Width, Page Padding, Section Padding
+ *   Typography JSON          -> Text Sizes
  *   UI Styles.json           -> Radius, Stroke
  *
  * Each JSON is a DTCG token set, so a token at "Page Padding > padding-global"

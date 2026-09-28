@@ -1,0 +1,32 @@
+name: theme-ci
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+jobs:
+  checks:
+    name: Checks de estructura y sintaxis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: PHP lint
+        run: |
+          err=0
+          for f in $(git ls-files '*.php'); do
+            php -l "$f" >/dev/null 2>&1 || { echo "::error file=$f::error de sintaxis"; err=1; }
+          done
+          exit $err
+
+      - name: JSON, CSS y balance de bloques
+        run: python3 .ci/lint.py
+
+      - name: Guard de archivos de entorno local
+        run: |
+          for f in wordpress_env BACKLOG.md "OpenCX Wireframes V1.0.fig" transcript_head.json scratch.py step31.json restore_plan.json; do
+            test ! -e "$f" || { echo "::error::$f no debe existir en el repo"; exit 1; }
+          done
+          echo "OK"
