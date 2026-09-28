@@ -4253,3 +4253,145 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 	/* en esta seccion la celda central de la cabecera es blanca, no gris */
 	background: var(--Color-Scheme-1-Background, #FFF);
 }
+
+/*
+ * =============================================================================
+ * "CTA / 25 /" (#10218:72241) — Now see what this looks like in your industry.
+ * =============================================================================
+ *
+ * Es el mismo componente "CTA / 25 /" que el front-page usa como .ocx-c25__*,
+ * pero esta instancia del ecosistema difiere en tres cosas:
+ *
+ * - El Container es de 1280 (Container-large) y el Content de 768
+ *   (Max-Width-large) vive DENTRO de el, centrado; en el front-page el tope de
+ *   768 estaba directamente en el Container y no habia Content ancho.
+ * - Lleva DOS botones: el primario "Let's meet" y un secundario gris
+ *   (fill rgba(0,0,0,.05)) "Explore Industries". El front-page tenia uno solo.
+ * - La seccion se dibuja sobre blanco (el nodo declara el fondo #FFF).
+ *
+ * Estructura (del nodo): Section > Container > Content > [Content(Texto) +
+ * Actions]. Section y Container declaran gap 80 pero tienen un solo hijo, asi
+ * que esos gap son inertes (como en .ocx-c25__section).
+ */
+
+/*
+ * Capa 1 - Section: columna con padding 112/64 y los hijos centrados. Como en
+ * c25, el `align-items: center` del layout queda anulado por el
+ * `align-self: stretch` del container, que es lo que pide el nodo.
+ */
+.ocx-section.ocx-l25__section {
+	padding: 112px 64px;
+	background: var(--Color-Scheme-1-Background, #FFF);
+	align-items: center;
+	gap: 80px;
+}
+
+/*
+ * Capa 2 - Container: tope 1280 centrado con margenes auto. El `align-self:
+ * stretch` en un flex es incompatible con el centrado por margenes (ver la nota
+ * larga de .ocx-c25__container), asi que aqui se usa el `width: 100%` +
+ * `max-width` + `margin-inline: auto`, el mismo patron que .ocx-l5__container.
+ */
+.ocx-section > .ocx-l25__container {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: var(--Container-container-large, 1280px);
+	min-width: 0;
+	margin-inline: auto;
+	gap: 80px;
+}
+
+/*
+ * Capa 3 - Content: el bloque de 768 que vive centrado dentro del Container.
+ * Con `align-self: center` + `width: 100%` + `max-width` se obtiene el 768
+ * centrado y los textos/acciones se reparten los 768 (ver .ocx-l5__content).
+ */
+.ocx-l25__content {
+	box-sizing: border-box;
+	align-self: center;
+	width: 100%;
+	max-width: var(--Max-Width-max-width-large, 768px);
+	min-width: 0;
+	align-items: center;
+	gap: 32px;
+}
+
+/*
+ * Capa 4a - Texto: columna de 24px con los hijos estirados a los 768 para que
+ * el texto centrado quede dentro de la caja completa (mecanismo de
+ * .ocx-c25__text).
+ */
+.ocx-l25__text {
+	align-self: stretch;
+	align-items: stretch;
+	gap: 24px;
+}
+
+.ocx-l25__heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Heading-2, 52px);
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	text-align: center;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+.ocx-l25__text p {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: center;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+/*
+ * Capa 4b - Actions: fila hug con gap 16. Core alinea el contenedor a la
+ * izquierda, asi que el `justify-content: center` es el que centra los dos
+ * botones dentro de los 768.
+ */
+.ocx-l25__actions {
+	gap: 16px;
+	justify-content: center;
+}
+
+/*
+ * Boton primario "Let's meet": componente `Button` Style=Primary (#4179:8872),
+ * reutiliza `.ocx-btn--primary` y agrega los detalles del nodo que la clase
+ * compartida no trae: borde Husk, label Manrope Medium y texto blanco — los
+ * mismos tres detalles que documenta .ocx-c25__btn.
+ */
+.wp-block-button.ocx-l25__btn .wp-block-button__link {
+	border: 1px solid var(--Color-Husk, #b69e52);
+	font-weight: 500;
+	color: var(--Color-White, #fff);
+}
+
+/*
+ * Boton secundario "Explore Industries": componente `Button` con
+ * Style=Secondary (#4179:8892) en SU variante gris de este nodo: fill
+ * rgba(0,0,0,.05), sin borde visible (stroke blanco transparente), label en
+ * negro con Manrope Medium. No reutiliza `.ocx-btn--secondary` del header,
+ * que es un gris distinto con borde Ambar y texto navy.
+ */
+.wp-block-button.ocx-l25__btn-alt .wp-block-button__link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	background: rgba(0, 0, 0, 0.05);
+	color: var(--Color-Scheme-1-Text, #000);
+	border: 1px solid rgba(255, 255, 255, 0);
+	padding: 10px 24px;
+	font-family: Manrope, sans-serif;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 1.5;
+}
+
+.wp-block-button.ocx-l25__btn-alt .wp-block-button__link:hover {
+	text-decoration: none;
+}
