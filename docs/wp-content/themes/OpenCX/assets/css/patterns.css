@@ -4699,22 +4699,33 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
  * "Header / 62 /" (#10218:66749) de la pagina Industries.
  *
  * Es el mismo template de cabecera que el hero del ecosistema (`.ocx-h62__*`),
- * pero esta instancia difiere en tres cosas:
+ * pero esta instancia difiere en dos cosas:
  *
  *  1. No trae tagline: el primer hijo del Component es directamente el
  *     "Section Title" con H1 + parrafo.
- *  2. El Component es `align-self: stretch` (sin el `max-width: 896px` fijo que
- *     lleva la instancia de Solution): el texto se centra por `text-align`, no
- *     por el ancho de la caja.
- *  3. El Section Title y el Content son los dos `align-items: center`, asi que
- *     H1 y parrafo se encogen a su max-content y el centrado sale del padre.
+ *  2. El tope del Component es `--Max-Width-max-width-large` (768px), no los 896px
+ *     fijos de la instancia de Solution.
  *
- * La seccion declara `align-items: stretch` (el layout dado), que queda anulado
- * por el `align-self: stretch` del Container para ese item, igual que en h62.
+ * La cadena de centrado es la misma de h62 y viene de los `align-items: center`
+ * de Section, Container y Component: cada nivel centra al siguiente, con el
+ * `align-self: stretch` de cada hijo anulando el `align-items` del padre para ese
+ * item y dejando que sea el nivel interior el que centre.
+ */
+
+/*
+ * El padding va con los dos tokens del design system y no con literales: es lo
+ * mismo que dice el nodo (`112px 64px`) pero asi baja a 64/20 bajo 1200px, que es
+ * el comportamiento del resto de la pagina. `.ocx-section--stretch` pone
+ * `align-items: stretch` en (0,1,0), asi que el `center` va con `.ocx-section`
+ * delante para llegar a (0,2,0).
  */
 .ocx-section.ocx-i62__section,
 .ocx-section.ocx-l627__section {
-	padding: 112px 64px;
+	padding: var(--Section-Padding-padding-section-large, 112px) var(--Page-Padding-padding-global, 64px);
+}
+
+.ocx-section.ocx-i62__section {
+	align-items: center;
 }
 
 .ocx-i62__container,
@@ -4731,21 +4742,26 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 }
 
 /*
- * "Component" (#10218:66751): columna con `align-items: center`. El unico hijo
- * (Section Title) lleva `align-self: stretch` y cruza los 1280, mientras el
- * centrado del texto llega por `text-align` en el H1 y el parrafo. Igual que
- * `.ocx-h62__component`, el `align-items` llega por `justifyContent` en el
- * atributo del bloque, no por CSS.
+ * "Component" (#10218:66751): columna con `align-items: center` y tope de
+ * `--Max-Width-max-width-large` (768px). El `align-self: stretch` del nodo pide
+ * llenar el Container, pero al recortar con `max-width` la caja queda pegada al
+ * inicio de los 1280, asi que el centrado lo hacen los margenes auto de la regla
+ * siguiente (mismo truco que `.ocx-h62__title > .ocx-h62__content`).
  */
 .ocx-i62__component {
 	align-self: stretch;
 	width: 100%;
 	min-width: 0;
+	max-width: var(--Max-Width-max-width-large, 768px);
+}
+
+.ocx-section > .ocx-i62__container > .ocx-i62__component {
+	margin-inline: auto;
 }
 
 /*
  * "Section Title" (#10218:66752) y "Content" (#10218:66755): estiran su ancho
- * para que el texto quede dentro del Container. Sin esto el H1 se encoge a su
+ * para que el texto quede dentro del tope de 768. Sin esto el H1 se encoge a su
  * max-content y el parrafo a su ancho, desalineando el margen.
  */
 .ocx-i62__title,
@@ -4780,6 +4796,19 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 	line-height: 1.5;
 	text-align: center;
 	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/*
+ * "Actions" (#10218:66758): fila con `align-items: flex-start` y `gap: 16px`.
+ *
+ * El boton queda centrado no por un `justify-content` propio sino porque la fila
+ * es un item del Component (`align-items: center`), que la encoge a su contenido
+ * y la centra en los 768 del tope. Por eso el atributo del bloque no lleva
+ * `justifyContent`: sobra y ademas anula el ancho de contenido de la fila.
+ */
+.ocx-i62__actions {
+	align-items: flex-start;
+	gap: 16px;
 }
 
 /*
