@@ -1,0 +1,3983 @@
+/*
+ * OpenCX pattern styles.
+ *
+ * Reserved for the few cases that cannot be expressed in theme.json.
+ * Prefer design tokens, style variations or core blocks instead.
+ */
+
+/*
+ * Navigation breakpoint.
+ *
+ * The hamburger breakpoint of the core/navigation block is hardcoded at 600px
+ * in wp-includes/blocks/navigation/style.css and cannot be set from theme.json.
+ * With the logo (159px) + 8 links + 2 buttons the header needs ~1267px to stay
+ * on a single row, so between 600px and 1200px the links would wrap onto a
+ * second line. This restores the core mobile (overlay) behaviour for that
+ * range so the row never breaks.
+ *
+ * Selectors are prefixed with .wp-block-navigation to outrank the core rules
+ * (0,4,0 and 0,3,0 vs core's 0,3,0 and 0,2,0) and therefore win regardless of
+ * stylesheet load order.
+ */
+@media (min-width: 600px) and (max-width: 1199.98px) {
+	.wp-block-navigation .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+		display: none;
+		width: auto;
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: auto;
+		background-color: transparent;
+	}
+
+	.wp-block-navigation .wp-block-navigation__responsive-container-open:not(.always-shown) {
+		display: flex;
+	}
+}
+
+/*
+ * Dropdown children typography.
+ *
+ * Figma uses Widescreen 16px (line-height 1.5) for the items inside the About
+ * menu, while the top-level items stay in Manrope 18px. theme.json cannot
+ * express this: `styles.css` is ignored entirely in this WordPress version,
+ * and a `css` rule nested under `styles.blocks` gets re-scoped to
+ * `.wp-block-navigation.<block classes>` with the segments joined by no
+ * space, so the selector can never match a real element.
+ *
+ * The size is left on --wp--preset--font-size--body, which is 18px in
+ * theme.json, so this does NOT render the 16px the paragraph above describes.
+ * Switching it to --Text-Sizes-Text-Regular does produce 16px, and was tried
+ * and reverted on request. Do not "fix" it without asking.
+ */
+.wp-block-navigation-item.has-child .wp-block-navigation-item__content {
+	font-family: var(--wp--preset--font-family--widescreen);
+	font-size: var(--wp--preset--font-size--body);
+	line-height: 1.5;
+}
+
+/*
+ * Desktop placement of the navigation between logo and actions.
+ *
+ * Figma (Navbar / 1 /, 10310:1173) puts the nav column at x=374 inside the
+ * 1280px container and the actions flush right at x=1040, so the gaps are
+ * 217px and 134px. They are not equal, so justify-content: space-between
+ * would place the nav at 332px instead of 374px.
+ *
+ * `style.spacing.margin` cannot express this: core/navigation and
+ * core/buttons declare support for spacing.blockGap but not spacing.margin,
+ * so the attribute is silently dropped. Scoped to the inline breakpoint so
+ * the mobile overlay trigger is not pushed sideways.
+ */
+/*
+ * Full navbar, spec from the user, matching Figma "Navbar / 1 /" (10310:1173):
+ * 1441x160 with 80.5px of horizontal page padding. The 160px comes from the
+ * row being vertically centred (1441 = 80.5 + 1280 + 80.5), which is why the
+ * old 58px top/bottom padding was replaced by `align-items:center`.
+ *
+ * The 58px value was the vertical padding of a group; centring a 44px row in
+ * 160px gives the same 58px, so this is the same layout expressed on the
+ * element Figma actually describes.
+ *
+ * Figma's frame is 1441px wide because its 80.5px padding was rounded up, but
+ * a 1440px viewport only has 1440. `max-width:100%` plus border-box clamps the
+ * box instead of letting it overflow by 1px, which costs 1px of the row width
+ * at the design width and is recorded in BACKLOG.md.
+ */
+.ocx-header {
+	display: flex;
+	box-sizing: border-box;
+	width: 1441px;
+	max-width: 100%;
+	height: 160px;
+	padding: 0 var(--Header-padding);
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+/*
+ * The logo slot. Figma's "Content" frame (10310:1175) is 157x42 at y=1 and
+ * reserves the space that puts the nav column at x=374 (157 + 217). The home
+ * header has no logo, so it reserves the same box with a hidden spacer, which
+ * keeps the nav aligned with the interior pages.
+ */
+.ocx-header__logo {
+	flex: 0 0 auto;
+	width: 157px;
+	height: 42px;
+}
+
+.ocx-header__logo .wp-block-site-logo {
+	width: 147px;
+}
+
+/*
+ * The clone that `assets/js/logo-intro.js` drops into the empty slot for the
+ * intro, and removes again. It is a bare `img` rather than a `core/site-logo`
+ * block, so it needs the same 147px the block gets: the flight is only a
+ * translation because both ends are the same size.
+ *
+ * `pointer-events: none` is load-bearing for the same reason the beam's is: the
+ * clone sits on top of the header row, and a painted-but-clickable logo would
+ * swallow the first click on the nav.
+ */
+.ocx-logo-intro__clone {
+	display: block;
+	width: 147px;
+	height: auto;
+	pointer-events: none;
+}
+
+/*
+ * The 80.5px page padding and the 160px height belong to the 1440 design. Below
+ * 1200px the nav is in the overlay, so the header reverts to auto height and the
+ * theme's root padding provides the inset instead.
+ */
+@media (max-width: 1199.98px) {
+	.ocx-header {
+		height: auto;
+		padding: 0;
+	}
+
+	/* A squeezed button must keep its label on one line, not wrap to 147px. */
+	.ocx-header__row .wp-block-button__link {
+		white-space: nowrap;
+	}
+}
+
+@media (min-width: 1200px) {
+	/*
+	 * Figma "Container" (#10310:1174) is a fixed 1280x44 row holding the logo,
+	 * the nav column and the actions column, centred at x=80.5 inside the 1440
+	 * frame. Scoped to the desktop breakpoint because below 1200px the nav moves
+	 * into the overlay and the row has to stretch to the viewport.
+	 *
+	 * `max-width:100%` is the guard: 1280px only exists above 1440, and between
+	 * 1200 and 1440 a hard 1280 would push the row past the root padding.
+	 */
+	.ocx-header__row {
+		width: var(--Container-container-large);
+		max-width: 100%;
+		height: 44px;
+		flex-shrink: 0;
+	}
+
+	/*
+	 * `nav.ocx-nav--menu` and not `.ocx-nav--menu`: core copies the block's
+	 * className onto the inner <ul> as well, so a bare class selector matched
+	 * both elements and the offset was applied twice.
+	 */
+	nav.ocx-nav--menu {
+		margin-left: 64px;
+		flex: 0 0 auto;
+	}
+
+	/*
+	 * Figma "Nav links" (#10310:1178) is a fixed 532x27 row: five links totalling
+	 * 499px separated by 26px gaps, plus 33px of trailing slack. The gaps check
+	 * out exactly (89+26+70+26+96+26+89+26+51 = 499), so padding-right:33px is
+	 * the remainder of the 532px frame rather than arbitrary spacing.
+	 *
+	 * `width` + `flex-shrink:0` also replace the `flex-wrap:nowrap` patch below:
+	 * with a fixed 532px track the row can no longer be squeezed under 532px.
+	 *
+	 * Figma's 532px is the frame's outer width, so the box has to be border-box.
+	 * Under the default content-box the element rendered 565px (532 + 33 padding).
+	 */
+	nav.ocx-nav--menu .wp-block-navigation__container {
+		flex-wrap: nowrap;
+		align-items: flex-start;
+		gap: 26px;
+		box-sizing: border-box;
+		width: 532px;
+		height: 27px;
+		padding-right: 33px;
+		flex-shrink: 0;
+	}
+
+	.ocx-header .wp-block-buttons {
+		flex-wrap: nowrap;
+		margin-left: auto;
+	}
+}
+
+/*
+ * Figma only specifies the 1440px header, where the nav column sits 217px
+ * after the logo. The row needs 159 + 217 + 478 + 236 = 1090px, which overflows
+ * the 1040px available at the 1200px hamburger breakpoint, so the offset only
+ * reaches its designed value once there is room for it.
+ */
+@media (min-width: 1340px) {
+	nav.ocx-nav--menu {
+		margin-left: 217px;
+	}
+}
+
+/*
+ * The Ecosystem navbar, a different navbar from the one above.
+ *
+ * Figma "Navbar / 1 /" (#10227:110690) on "Platform • Desktop" (#10218:66032) is
+ * 92px tall and 1440 wide with `flex-direction: column` and
+ * `justify-content: flex-end`, so the row sits at the **bottom** of those 92px
+ * rather than centred in them. Its horizontal padding is the page padding, 64px,
+ * and not the 80.5px the default header uses. Inside, "Container" (#10218:66544)
+ * is a `space-between` row that fills the width, and "Column" (#10218:66547) is
+ * the right-hand group: the nav links and the actions separated by 32px.
+ *
+ * The nav links themselves are a `hug` frame with a 32px gap, where the default
+ * header pins them to a fixed 532px track with 26px gaps. That fixed track and
+ * the 217px offset that puts the nav column in the middle of the bar are both
+ * reset below: they belong to the default header's composition, and here the
+ * links are pushed to the right edge by `space-between` instead.
+ *
+ * Every rule here is scoped to `.ocx-header--ecosystem` and every reset is scoped
+ * to the row or the nav inside it, so the default header keeps its own geometry.
+ * Each reset outranks what it replaces without relying on source order: the media
+ * query above is (0,1,0) and (0,2,1) while these are (0,2,0) and (0,3,1).
+ */
+.ocx-header--ecosystem {
+	display: flex;
+	box-sizing: border-box;
+	width: 1441px;
+	max-width: 100%;
+	height: 92px;
+	padding: 0 var(--Page-Padding-padding-global, 64px);
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	flex-shrink: 0;
+	background-color: var(--Color-Scheme-1-Background, #ffffff);
+}
+
+.ocx-header--ecosystem .ocx-header__row {
+	/* Resets the 1280x44 desktop track from the media query above. */
+	width: auto;
+	height: auto;
+	max-width: none;
+	align-self: stretch;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.ocx-header--ecosystem .ocx-header__col {
+	display: flex;
+	align-items: center;
+	gap: 32px;
+	flex-wrap: nowrap;
+}
+
+/* The 217px / 64px offsets belong to the default header's composition. */
+.ocx-header--ecosystem nav.ocx-nav--menu {
+	margin-left: 0;
+	flex: 0 1 auto;
+}
+
+/* Resets the fixed 532px track, the 33px of trailing slack and `align-items:
+ * flex-start`, so the links hug their text like Figma's frame. */
+.ocx-header--ecosystem nav.ocx-nav--menu .wp-block-navigation__container {
+	width: auto;
+	height: auto;
+	padding-right: 0;
+	gap: 32px;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+
+.ocx-header--ecosystem .ocx-header__col .wp-block-buttons {
+	margin-left: 0;
+	flex-wrap: nowrap;
+}
+
+/*
+ * Figma sets the nav labels in "Text/Regular/Normal": Manrope 16px, weight 400,
+ * 1.5em. The default header takes the `body` preset, which is 18px, so the size
+ * has to be stated here; the family and the weight already come out right.
+ */
+.ocx-header--ecosystem nav.ocx-nav--menu .wp-block-navigation-item__content {
+	font-size: 16px;
+	line-height: 1.5em;
+}
+
+/*
+ * El componente Button de Figma, en sus dos tamanos, pone el label en "Text/Regular/Medium"
+ * (16px, peso **500**) sobre un relleno `#B69E52` con un borde del mismo color de 1px.
+ * `.ocx-btn--primary` difiere en tres de las cuatro: `border: 0`, el label en Spring-Wood
+ * y peso 300.
+ *
+ * Las tres van aqui, una sola vez, para los dos usos que ya existen. El `padding` **no** va
+ * aqui porque es lo unico que separa las dos variantes del componente: `Small=True`
+ * (#10218:66566, la navbar) es 8/20 y `Small=False` (#10218:66863, el hero) es 10/24, que es
+ * justo el valor que `.ocx-btn--primary` ya trae, asi que el hero no necesita declarar nada.
+ *
+ * Agregar una seccion nueva que use el boton es sumar su clase a la lista de `:is()`.
+ * Queda pendiente decidir si esto sube a `.ocx-btn--primary` y corrige de una los siete
+ * botones de la home, que hoy tienen los mismos tres desvios: eso ya seria cambiar una
+ * pagina terminada.
+ */
+:is(.ocx-header--ecosystem, .ocx-h62__actions, .ocx-h62b__actions) .wp-block-button.ocx-btn--primary .wp-block-button__link {
+	border: 1px solid var(--Color-Husk);
+	color: #ffffff;
+	font-weight: 500;
+}
+
+/*
+ * El fondo del boton ya es el token correcto: `--Color-Husk` es `#B69E52`, el mismo
+ * dorado con el que Figma rellena el componente Button. El borde es una segunda
+ * declaracion del mismo color, que es lo que dice el nodo, y con el relleno detras solo
+ * se lee como un filo interior de 1px a este tamano.
+ *
+ * `.wp-block-button` tiene que estar en el selector, no solo `.ocx-btn--primary`. La regla
+ * que se corrige aqui es `.wp-block-button.ocx-btn--primary .wp-block-button__link`, asi
+ * que sin ella las dos son (0,3,0) y gana la del header por orden de archivo, por estar mas
+ * abajo. Con `:is()` la especificidad es la de su argumento mas especifico, (0,1,0), y mas
+ * los (0,3,0) de la cola queda en (0,4,0). `CSS.getMatchedStylesForNode` muestra el empate
+ * sin tener que adivinar.
+ */
+.ocx-header--ecosystem .wp-block-button.ocx-btn--primary .wp-block-button__link {
+	padding: 8px 20px;
+}
+
+/*
+ * Figma "Header / 62 /" (#10218:66853), el hero de `Ecosystem`, y sus hijos.
+ *
+ * La caja sale de la cadena `.ocx-section` que ya existe: `--stretch` aporta el
+ * `align-self:stretch` y el `align-items:stretch`, `--large` sube el padding
+ * vertical al token de 112px, y `.ocx-section` ya trae el fondo
+ * `--Color-Scheme-1-Background`. De los cuatro valores que da el nodo, el
+ * `gap:80px` llega por el atributo `blockGap` del bloque y el `flex-direction:column`
+ * por `layout.orientation`, asi que aqui solo quedan el padding y el `align-items`.
+ *
+ * El padding va con dos clases, (0,2,0), y no confiando en el orden: `.ocx-section`
+ * y `.ocx-section--large` son (0,1,0) los dos, y los tokens saltan a valores de
+ * telefono dentro de `@media (max-width: 1199.98px)` en `tokens.css`
+ * (`--Section-Padding-padding-section-large: 64px`, `--Page-Padding-padding-global: 20px`),
+ * con lo que la cadena sola bajaria la seccion a 64/20 por debajo de 1200. Figma no
+ * define frame movil para este frame, asi que los tres valores van fijos en todos los
+ * anchos, que es el mismo criterio que `.ocx-c25__section`.
+ *
+ * **El bottom es 16px y no 112px.** El nodo declara `padding 112px 64px`, pero el bottom
+ * pedido es 16, asi que el shorthand de tres valores deja `112 / 64 / 16`. Como el bloque
+ * va pegado a "Layout / 71 /" (que arranca con 60px de top), lo que se busca es que el aire
+ * entre las dos secciones sea el del bloque de abajo, no el del hero. Verificado: el alto
+ * del hero baja 96px exactos en los siete anchos, que es `112 - 16`.
+ *
+ * El `style.spacing.padding` del atributo del bloque **no sirve aca**: en los
+ * `.ocx-section` core lo descarta en silencio y el rendered llega con
+ * `style="margin-top:0;margin-bottom:0"` y sin padding. Solo el hero de la home,
+ * que es `layout: default`, recibe el suyo.
+ */
+.ocx-section.ocx-h62__section {
+	padding: 112px 64px 16px;
+
+	/*
+	 * `align-items: center` segun el layout dado. Queda anulado por el `align-self:stretch`
+	 * del Container, que en flexbox siempre le gana al `align-items` del padre para ese item,
+	 * asi que el Container sigue ocupando los 1312px de contenido como en Figma. Se declara
+	 * igual porque es lo que dice el nodo, y por (0,2,0) gana sin depender del orden a
+	 * `.ocx-section--stretch`, que tambien pone `align-items:stretch` con (0,1,0).
+	 */
+	align-items: center;
+}
+
+/*
+ * "Container" (#10218:66854) y "Component" (#10218:66855).
+ *
+ * El tope de 1280px es lo que hace cuadrar la caja: a 1440 la seccion deja 1312px de
+ * contenido, y con el tope el Container mide 1280 y quedan 16px a cada lado en vez de
+ * 32. El token no cambia en movil (`--Container-container-large: 1280px` esta fuera del
+ * `@media` de `tokens.css`), asi que por debajo de 1408 el tope deja de morder y el
+ * Container simplemente se llena.
+ *
+ * `align-items: stretch` en el Container tampoco es cosmetico... pero el nodo dice `center`,
+ * asi que lo que va es `center`, y llega por `layout.justifyContent` en el atributo. El
+ * unico hijo, el Component, tiene `align-self: stretch` y sigue llenando los 1280 igual.
+ *
+ * El `width:100%` va con el `align-self:stretch` porque el `stretch` de flexbox solo aplica
+ * "if neither of the cross-axis margins are auto", y el centrado de abajo necesita auto.
+ * `min-width:0` evita que una palabra larga del H1 empuje el Container en vez de partirlo.
+ */
+.ocx-h62__container {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+	max-width: var(--Container-container-large, 1280px);
+}
+
+/*
+ * El centrado del tope va en una regla aparte y no en la de arriba, por la misma razon que
+ * en `.ocx-c25__container`: `.is-layout-flex > :is(*, div) { margin: 0 }` es (0,1,1) y gana
+ * a un `margin-inline: auto` pelado, que es (0,1,0) y ademas computa a 0px. Con el
+ * `.ocx-section >` delante la regla llega a (0,2,0) y el auto si absorbe el sobrante.
+ */
+.ocx-section > .ocx-h62__container {
+	margin-inline: auto;
+}
+
+/*
+ * "Component" (#10218:66855) lleva `align-items: center`, y eso llega por
+ * `layout.justifyContent` en el atributo del bloque, no por CSS.
+ *
+ * En un grupo con `orientation: vertical` core invierte los dos: `justifyContent` es lo
+ * que produce `align-items`, y `verticalAlignment` es lo que produce `justify-content`
+ * (`block-supports/layout.php`, rama `else` de la linea 794). **`horizontalAlignment` no
+ * se mira en esa rama**, asi que ponerlo no da error ni aviso: simplemente se ignora y el
+ * grupo se queda con el `align-items: flex-start` de la linea 808, que es el default
+ * cuando no hay `justifyContent`. Con ahi el boton de "Let's meet" queda pegado a x=64 en
+ * vez de centrado.
+ *
+ * El `align-self:stretch` de arriba no lo contradice: en flexbox el `align-self` siempre le
+ * gana al `align-items` del padre para ese item, asi que el Title sigue cruzando los 1312px
+ * y lo que se centra es el Actions.
+ */
+.ocx-h62__component {
+	/* El unico hijo que se estira es el Title, contra el `align-items:center` del padre. */
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+}
+
+/*
+ * "Section Title" (#10218:66856) y "Content" (#10218:66859).
+ *
+ * Los dos son `align-items: center`, y llega por `layout.justifyContent` en el atributo
+ * del bloque, por el mismo volteo de la rama vertical de core que se explica en
+ * `.ocx-h62__component`. Content **no** es `stretch`: con stretch el H1 y el parrafo se
+ * estirian a los 1312px del contenido y el centrado saldria del `text-align`; con center
+ * cada uno se encoge a su max-content y el centrado sale del `align-items`. Las dos rutas
+ * ponen el texto en el mismo lugar con el copy actual, asi que **el ancho de las cajas si
+ * cambia** (el H1 pasa de 1312px a su max-content) aunque los pixeles no se muevan. El
+ * parrafo no se nota, porque su max-content es mas ancho que los 1312px y se topa ahi.
+ *
+ * El `gap:16px` del Section Title es inerte: su unico hijo es Content. Se deja en el
+ * atributo del bloque igual que los otros, para que el editor muestre la estructura.
+ */
+.ocx-h62__title {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+}
+
+/*
+ * "Content" (#10218:66859), el bloque de texto: H1 + parrafo, `gap: 24px`.
+ *
+ * `align-items: center` llega por `layout.justifyContent` del atributo, no por aqui, porque en
+ * la rama vertical de core el nombre esta volteado. El `align-self: stretch` conserva el ancho
+ * completo cuando no hay tope; con el tope de 768 pasa a ser lo que hace el `width: 100%` +
+ * `max-width` de abajo, que es mas determinista: el `stretch` de flexbox solo aplica "if
+ * neither of the cross-axis margins are auto", y el centrado necesita `auto`.
+ *
+ * `min-width: 0` evita que una palabra larga del H1 empuje la caja en vez de partirla.
+ */
+.ocx-h62__content {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+	max-width: var(--Container-container-small, 768px);
+}
+
+/*
+ * El centrado del tope de 768 va aparte por el mismo motivo que el del Container:
+ * `.is-layout-flex > :is(*, div) { margin: 0 }` es (0,1,1) y le gana a un
+ * `margin-inline: auto` pelado, que ademas computa a `0px/0px`. Con el `.ocx-h62__title >`
+ * delante la regla llega a (0,2,0) y el `auto` si absorbe el sobrante. A 1440 son 256px a
+ * cada lado, que es `(1280 - 768) / 2`.
+ */
+.ocx-h62__title > .ocx-h62__content {
+	margin-inline: auto;
+}
+
+/*
+ * El tipo va con selectores de hijo y no con clases en el heading y el parrafo, para que
+ * el copy siga siendo un bloque core plano que cualquiera pueda reescribir o cambiar desde
+ * el editor sin arrastrar una clase.
+ *
+ * 55px es un override local dentro del propio text style "Heading/H1" de Figma: el token
+ * real --Text-Sizes-Heading-1 es 72px en escritorio y 40px en movil, asi que no hay token
+ * que aliasear y el literal tiene que quedarse. Figma no define valor movil para este
+ * frame, asi que el numero de escritorio se usa en todos los anchos. Es el mismo criterio
+ * y el mismo valor que `.ocx-h90__card`.
+ *
+ * Los dos van centrados: "Heading/H1" y "Text/Medium/Normal" declaran
+ * `textAlignHorizontal: CENTER`, que es la diferencia de este hero respecto del resto de
+ * la pagina.
+ */
+.ocx-h62__content .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: 55px;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: -0.01em;
+	text-align: center;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+.ocx-h62__content p {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: center;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/*
+ * "Layout / 71 /" (#10338:1742) del ecosistema.
+ *
+ * **No es el mismo bloque que el `.ocx-l71__*` de la home (#10218:67647).** Alla el
+ * `Component` es una **fila** de dos columnas; aca es una **columna** de dos columnas. Por
+ * eso el prefijo es `ocx-l71b__` y no `ocx-l71__`, igual que se reservo `ocx-h62b__` para el
+ * segundo "Header / 62 /": `patterns.css` es global, asi que compartir prefijo cruzaria las
+ * dos implementaciones.
+ *
+ * El `background: var(--Color-Scheme-1-Background, #FFF)` del nodo **no necesita regla**:
+ * `.ocx-section` ya lo trae.
+ *
+ * **El padding horizontal va literal, no con `var(--Page-Padding-padding-global)`.** Ese token
+ * es 64px en escritorio pero **20px bajo 1200px**, y el hero de arriba usa 64px fijos en todos
+ * los anchos. Con el token, a 390 el hero tenia 262px de contenido y este bloque 350px, o sea
+ * dos secciones contiguas con distinto padding lateral. Con el literal los dos quedan en
+ * `ancho - 128` en todo el movil. El valor de escritorio es el mismo en los dos casos, asi que
+ * esto no cambia nada de 1200px para arriba. Si aparece el frame movil, el token es el
+ * camino de vuelta y es una sola palabra.
+ */
+.ocx-section.ocx-l71b__section {
+	padding: 60px 64px;
+
+	/*
+	 * `align-items: center` segun el layout dado. Es el mismo reparto que en el hero: con
+	 * `center` los hijos se encogen salvo que lleven `align-self: stretch`, asi que los
+	 * cuatro niveles de abajo lo llevan. Se declara por (0,2,0) para ganarle a
+	 * `.ocx-section--stretch`, que pone `align-items: stretch` con (0,1,0).
+	 */
+	align-items: center;
+}
+
+/*
+ * Los cuatro niveles intermedios se estiran al ancho de contenido. El `align-items: center`
+ * de la seccion los encogeria a su max-content, que para el parrafo largo significa medirse
+ * al texto en vez de a la caja. `width: 100%` y `min-width: 0` son el idioma del tema.
+ *
+ * `align-items: stretch` en el Container y el Component coincide con lo que dice el nodo,
+ * pero queda **anulado**: cada uno tiene un solo hijo con `align-self: stretch`, y en
+ * flexbox el `align-self` del hijo siempre le gana al `align-items` del padre. Se declara
+ * igual por fidelidad al nodo y por determinismo.
+ *
+ * En la columna del tagline **no** se declara `align-items`, a proposito. El nodo no lo dice,
+ * y el `flex-start` que core pone deja que el parrafo del tagline se mida a su hug, que es
+ * justo lo que hacia el "Tagline Wrapper" `hug` (#10338:1746) del nodo, sin el div de mas.
+ */
+.ocx-l71b__container,
+.ocx-l71b__component,
+.ocx-l71b__col,
+.ocx-l71b__content {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+}
+
+.ocx-l71b__container,
+.ocx-l71b__component {
+	align-items: stretch;
+}
+
+/*
+ * Figma "Heading/H2": Manrope 500 a 52px con 120% de line height y -0.01em. El token
+ * `--Text-Sizes-Heading-2` es 52px en escritorio, asi que va el token, no un literal: bajo
+ * 1200px el token baja a 36px y el bloque se adapta. Es la diferencia con el H1 del hero,
+ * que a 55px no tiene token y tube que llevar el literal.
+ */
+.ocx-l71b__col .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Heading-2, 52px);
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/*
+ * Figma "Text/Medium/Normal": Manrope 400 a 18px con 150% de line height, `LEFT`. El token
+ * `--Text-Sizes-Text-Medium` es 18px en escritorio y 16px bajo 1200px.
+ */
+.ocx-l71b__content p {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/*
+ * Figma "Heading/Tagline": Manrope SemiBold 600 a 16px con 150% de line height. No es un
+ * heading sino una etiqueta sobre el H2, asi que va como `core/paragraph` con el peso puesto
+ * por clase, igual que el tagline de "Layout / 121 /" y de "Layout / 59 /". El 600 no tiene
+ * token de font-weight, asi que es literal.
+ */
+.ocx-l71b__label {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 600;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/*
+ * "Layout / 192 /" (#10218:67825), el bloque que va justo despues del "Layout / 71 /".
+ *
+ * Aparece **dos veces** en la pagina con la misma estructura y distinto copy: esta es
+ * "AI Orchestrator" y la segunda (#10361:1774) es "Specialized AI Agents". Se写了 una sola
+ * vez porque el `Component` es identico, asi que las dos instancias comparten estas clases y
+ * lo unico que cambia es el texto.
+ *
+ * El `background: var(--Color-Scheme-1-Background, #FFF)` del nodo **no necesita regla**:
+ * `.ocx-section` ya lo trae.
+ */
+.ocx-section.ocx-l192__section {
+	/*
+	 * El layout dado dice `padding: 60px var(--Page-Padding-padding-global, 64px)`, asi que
+	 * aca va **el token** y no el literal de 64 que lleva el "Layout / 71 /" de arriba.
+	 *
+	 * Ojo con la consecuencia: `--Page-Padding-padding-global` es 64px pero **20px bajo
+	 * 1200px**, asi que este bloque y el de arriba quedan con 64px de lado en escritorio y
+	 * con 64 contra 20 de lado en movil, siendo secciones contiguas. Se deja asi porque es lo
+	 * que pidio el nodo; si se quiere parejo, es cambiar esta linea por `60px 64px`.
+	 */
+	padding: 60px var(--Page-Padding-padding-global, 64px);
+
+	/*
+	 * `align-items: center` segun el layout dado, y es el mismo reparto que en el hero y en
+	 * el "Layout / 71 /": con `center` los hijos se encogen salvo que lleven `align-self:
+	 * stretch`, asi que los niveles de abajo lo llevan. Se declara por (0,2,0) para ganarle
+	 * a `.ocx-section--stretch`, que pone `align-items: stretch` con (0,1,0).
+	 */
+	align-items: center;
+}
+
+/*
+ * Los niveles intermedios se estiran al ancho de contenido. Sin esto el `align-items: center`
+ * de la seccion los mediria a su max-content, y para el parrafo largo eso es medirse al texto
+ * en vez de a la caja.
+ *
+ * `.ocx-l192__content` necesita `width: 100%` y no solo `align-self: stretch`, porque su
+ * padre el `Component` es una **fila**: en una fila el `align-items` gobierna el eje
+ * transversal, o sea el vertical, y el ancho lo decide el ancho propio del hijo. `flex-basis`
+ * auto lo dejaria con el ancho del texto.
+ */
+.ocx-l192__container,
+.ocx-l192__component,
+.ocx-l192__content,
+.ocx-l192__title,
+.ocx-l192__text {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+}
+
+.ocx-l192__container {
+	align-items: stretch;
+}
+
+/*
+ * El `Component` es una **fila**, y el nodo lo declara `alignItems: center`. En una fila eso
+ * gobierna el eje transversal, o sea el vertical, y como tiene un solo hijo que igual mide
+ * el alto del padre queda **anulado**: queda declarado solo por fidelidad al nodo y por
+ * determinismo. El ancho del hijo no depende de esto, va por su `width: 100%`.
+ */
+.ocx-l192__component {
+	align-items: center;
+}
+
+/*
+ * En la columna del "Section Title" **no** se declara `align-items`, a proposito, igual que en
+ * el "Layout / 71 /". El nodo no lo dice, y el `flex-start` que core pone deja que el parrafo
+ * del tagline se mida a su hug, que es justo lo que hacia el "Tagline Wrapper" `hug`
+ * (#10218:67831) del nodo, sin el div de mas. Ese wrapper es una fila `hug` con un unico
+ * texto adentro: no aporta ningun gap y por eso no se emite, igual que en "Layout / 71 /".
+ *
+ * El `gap: 80px` y el `align-items: center` del `Component` quedan **anulados** en el
+ * markup: es una fila con un solo hijo, asi que no hay entre que repartir. Se declaran igual
+ * por fidelidad al nodo y por determinismo.
+ */
+
+/*
+ * Figma "Heading/H2": Manrope 500 a 52px con 120% de line height y -0.01em. El token
+ * `--Text-Sizes-Heading-2` es 52px en escritorio y 36px bajo 1200px, asi que va el token.
+ */
+.ocx-l192__text .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Heading-2, 52px);
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/*
+ * Figma "Text/Medium/Normal": Manrope 400 a 18px con 150% de line height, `LEFT`. El token
+ * `--Text-Sizes-Text-Medium` es 18px en escritorio y 16px bajo 1200px.
+ */
+.ocx-l192__text p {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/*
+ * Figma "Heading/Tagline": Manrope SemiBold 600 a 16px con 150% de line height. No es un
+ * heading sino una etiqueta sobre el H2, asi que va como `core/paragraph` con el peso puesto
+ * por clase. El 600 no tiene token de font-weight, asi que es literal.
+ */
+.ocx-l192__label {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 600;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/*
+ * El segundo "Header / 62 /" (#10344:1758), el que cierra la introduccion con "Four pillars".
+ *
+ * **No es el mismo bloque que el `.ocx-h62__*` de la cabecera (#10218:66853).** La estructura
+ * es identica —seccion > container > component > section title > content, mas actions— pero
+ * el padding y los max-width van en niveles distintos: en el primero el 768 esta en el
+ * `Content` de adentro del Section Title y aca esta en el `Component`. Como `patterns.css` es
+ * global, compartir prefijo cruzaria las dos implementaciones, asi que va `ocx-h62b__`.
+ *
+ * El `background: var(--Color-Scheme-1-Background, #FFF)` del nodo **no necesita regla**:
+ * `.ocx-section` ya lo trae.
+ */
+.ocx-section.ocx-h62b__section {
+	/*
+	 * Aca el padding **si** va con tokens, y son los tres: `--Section-Padding-padding-section-large`
+	 * (112px de escritorio, **64px bajo 1200px**) y `--Page-Padding-padding-global` (64px de
+	 * escritorio, **20px bajo 1200px**). El bottom es el unico literal, 15px.
+	 *
+	 * Ojo con la consecuencia: los dos heroes y el "Layout / 71 /" llevan padding fijo, y este
+	 * es el primero que cede en movil. A 390 queda con 64 de top y 20 de lado contra los 112 y
+	 * 64 del primer hero, siendo el segundo de los dos. Se deja asi porque es lo que pidio el
+	 * nodo, y es la unica de las cuatro secciones que usa el token de arriba.
+	 */
+	padding: var(--Section-Padding-padding-section-large, 112px)
+		var(--Page-Padding-padding-global, 64px) 15px
+		var(--Page-Padding-padding-global, 64px);
+
+	/*
+	 * `align-items: center` segun el layout dado. Con `center` los hijos se encogen salvo que
+	 * lleven `align-self: stretch`, asi que los niveles de abajo lo llevan. Se declara por
+	 * (0,2,0) para ganarle a `.ocx-section--stretch`, que pone `align-items: stretch` con
+	 * (0,1,0).
+	 */
+	align-items: center;
+}
+
+/*
+ * El `Container` lleva el tope de 1280 y el `Component` el de 768, uno dentro del otro, los
+ * dos centrados. Los dos `margin-inline: auto` hacen falta porque `align-items: center` los
+ * ancla a la izquierda en cuanto el `max-width` entra: el `stretch` los llena, el tope los
+ * recorta y sin el margen queda pegado al borde. El selector con padre es a proposito:
+ * `.is-layout-flex > :is(*, div) { margin: 0 }` tiene (0,1,1) y le ganaria a un `auto` a pelo.
+ */
+.ocx-h62b__container {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+	max-width: var(--Container-container-large, 1280px);
+}
+
+.ocx-section > .ocx-h62b__container {
+	margin-inline: auto;
+}
+
+.ocx-h62b__component {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+	max-width: var(--Max-Width-max-width-large, 768px);
+}
+
+.ocx-h62b__container > .ocx-h62b__component {
+	margin-inline: auto;
+}
+
+.ocx-h62b__title,
+.ocx-h62b__content {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+}
+
+/*
+ * Figma "Heading/H1": Manrope 500 a 55px con line height 1 y -0.01em. El literal, no el token:
+ * `--Text-Sizes-Heading-1` es **72px** de escritorio y **40px** bajo 1200px, y ninguno de los
+ * dos es el 55 que pide el nodo. Igual que en el primer hero.
+ */
+.ocx-h62b__content .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: 55px;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: -0.01em;
+	text-align: center;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/*
+ * Figma "Text/Medium/Normal": Manrope 400 a 18px con 150% de line height, `CENTER`. El token
+ * `--Text-Sizes-Text-Medium` es 18px de escritorio y 16px bajo 1200px.
+ */
+.ocx-h62b__content p {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: center;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/*
+ * Header action buttons.
+ *
+ * Figma "Button" (#10310:970) is a flex box, not an inline-block: the label is
+ * centred on both axes with an 8px gap so an optional icon stays on the same
+ * baseline. Core's `.wp-block-button__link` is inline-block with inherited
+ * Roboto, so both the layout and the type have to be stated here.
+ *
+ * The background comes from the real Figma token instead of the `gold` preset.
+ * The preset stays in theme.json as the value source; tokens.css aliases it.
+ */
+.wp-block-button.ocx-btn--primary .wp-block-button__link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	box-sizing: border-box;
+	background-color: var(--Color-Husk);
+	color: var(--Color-Spring-Wood);
+	border: 0;
+	padding: 10px 24px;
+	font-family: Manrope, sans-serif;
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 1.5;
+}
+
+/*
+ * Figma's secondary button pairs an off-white fill with a 1px Ambar border and
+ * sets the label in Widescreen. `.wp-block-button__link` is underlined by core
+ * on hover, which a filled control should not do.
+ */
+.wp-block-button.ocx-btn--secondary .wp-block-button__link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	box-sizing: border-box;
+	background: var(--Color-OpenCX-White-Lightest);
+	color: var(--wp--preset--color--navy);
+	border: 1px solid var(--Color-Ambar);
+	padding: 10px 24px;
+	font-family: Widescreen, sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+.wp-block-button.ocx-btn--secondary .wp-block-button__link:hover {
+	text-decoration: none;
+}
+
+.wp-block-button.ocx-btn--primary .wp-block-button__link:hover {
+	text-decoration: none;
+}
+
+/*
+ * Figma's Button component with Alternate=True (#4179:8942), the one used by
+ * "Header / 90 /". It is a third variant, not a state of the two above: white
+ * fill AND a 1px white stroke, with the label in #000. The hero's primary is
+ * Husk on Spring Wood, so the alternate cannot be derived from it with a hover
+ * or an opacity either.
+ *
+ * The label is Manrope 500 (Text/Regular/Medium) where the hero's primary is
+ * Manrope 300, and the component declares no radius, so it stays 0 like the
+ * other two. The hover rule is here rather than shared because core underlines
+ * .wp-block-button__link on hover and a filled control should not do that.
+ */
+.wp-block-button.ocx-btn--invert .wp-block-button__link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	box-sizing: border-box;
+	background-color: var(--Color-White, #fff);
+	color: var(--Color-Scheme-1-Text, #000);
+	border: 1px solid var(--Color-White, #fff);
+	border-radius: 0;
+	padding: 10px 24px;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 500;
+	line-height: 1.5;
+}
+
+.wp-block-button.ocx-btn--invert .wp-block-button__link:hover {
+	text-decoration: none;
+}
+
+/*
+ * Hero actions column.
+ *
+ * Figma "Actions" (#10218:66911) is a fixed 769px column that hugs its
+ * content, and the form inside is 768px. A core/group has no width dimension
+ * attribute, and the Actions column has to stay a fixed width at 1440 while
+ * still shrinking on narrow screens, so the value lives here.
+ */
+.ocx-hero__actions {
+	width: var(--Container-container-small);
+	max-width: 100%;
+}
+
+/*
+ * Figma centres the logo inside the 769px Actions column while the form below
+ * it fills the full width. A single flex alignment cannot do both, so the
+ * children stretch and the image is centred with text-align instead of
+ * align-items, which would also shrink the form to its content (550px).
+ */
+.ocx-hero__actions > * {
+	align-self: stretch;
+}
+
+.ocx-hero__actions .wp-block-image {
+	text-align: center;
+}
+
+/*
+ * Figma places the two form controls in absolute coordinates rather than in a
+ * row: Button (#10310:1284) at x 24.5 / y 137 and arrow_upload_ready
+ * (#10310:1285) at x 732 / y 169. Those insets break the form's 25px padding
+ * and leave the arrow 22px below the button's centre, so the coordinates are
+ * reproduced literally instead of being normalised into a flex row.
+ *
+ * display:contents removes the wrapper box at the 1440 design width, so the
+ * absolutely positioned buttons resolve against the form (position:relative)
+ * while the block editor still sees a real row. Below 1200px the form is no
+ * longer 768px wide, so a hardcoded left:732px would fall outside it and the
+ * row layout takes over.
+ */
+/*
+ * The doubled class beats the block library's own `.wp-block-group{display:flex}`.
+ * patterns.css is enqueued without a dependency, so load order is not guaranteed
+ * and equal specificity would make the outcome depend on it.
+ */
+@media (min-width: 1200px) {
+	.wp-block-group.ocx-hero__controls {
+		display: contents;
+	}
+}
+
+/*
+ * The absolute offsets travel in the block's inline style, which only !important
+ * can override, so the reset needs it too. Below 1200px the form is narrower than
+ * 768px and a hardcoded left:732px would place the arrow outside it.
+ */
+@media (max-width: 1199.98px) {
+	.ocx-hero__industry,
+	.ocx-hero__submit {
+		position: static !important;
+		top: auto !important;
+		left: auto !important;
+	}
+
+	/*
+	 * The form gave up its 25px padding because the prompt field carries its own
+	 * inset, but at desktop the controls are absolutely positioned inside that
+	 * inset and at mobile they are a normal flex row that would end up flush
+	 * against the form edges. The padding belongs to whichever layout is live.
+	 */
+	.wp-block-group.ocx-hero__controls {
+		padding: 25px;
+	}
+}
+
+.ocx-hero__submit .wp-block-button__link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	padding: 0;
+	background: transparent;
+	border: 0;
+	border-radius: 0;
+}
+
+/*
+ * The hero lives in templates/front-page.html, and a block theme template is
+ * not a PHP file: `<?php echo get_template_directory_uri() ?>` inside one
+ * prints as literal text and corrupts the surrounding attributes. The theme
+ * folder is therefore referenced as a root-relative URL, which is the same
+ * approach already used for the menu targets in the same template.
+ *
+ * The <img> is not optional. A core/button whose anchor has no content at all
+ * is dropped by do_blocks() and never reaches the page, which is why the icon
+ * could not be drawn from a ::before pseudo-element on an empty anchor.
+ * The icon is decorative and the link carries an aria-label, so alt="" is
+ * correct here.
+ */
+.ocx-hero__submit .ocx-hero__arrow {
+	display: block;
+	width: 24px;
+	height: 24px;
+}
+
+/*
+ * The hero logo is a core/site-logo block for the same reason: it renders the
+ * custom logo from the media library, so the template needs no PHP to resolve
+ * the path. Figma centres it inside the 768px actions column.
+ */
+.ocx-hero__logo {
+	width: 147px;
+	align-self: center;
+}
+
+.ocx-hero__logo img {
+	width: 147px;
+	height: auto;
+	display: block;
+}
+
+.ocx-hero__submit .wp-block-button__link:focus-visible {
+	outline: 2px solid var(--Color-Scheme-1-Text);
+	outline-offset: 4px;
+}
+
+/*
+ * Section band: full-bleed column with the content centred on the cross axis.
+ *
+ * Only three of the spec's properties live here, and the reason is that the
+ * block attributes can carry the rest without hardcoding a single value:
+ * `layout.type:flex` + `orientation:vertical` give display:flex and
+ * flex-direction:column, `justifyContent:center` maps to align-items:center in a
+ * vertical flex, `spacing.blockGap:80px` gives the gap, and `alignFullWidth`
+ * already stretches it. Putting those in CSS as well would duplicate what the
+ * editor UI writes, so the Site Editor stays the single source for them.
+ *
+ * The padding has to be here and not in `style.spacing.padding`, because the
+ * block attribute would bake in a literal 64px and the mobile breakpoint of
+ * --Page-Padding-padding-global is 20px. The same applies to the background:
+ * a `color.background` attribute can only point at a theme.json preset, not at
+ * --Color-Scheme-1-Background.
+ *
+ * `.ocx-section` is the box on its own. The two sizing strategies the specs ask
+ * for are modifiers on top of it, so a third section with either one does not
+ * repeat the padding or the background.
+ */
+.ocx-section {
+	box-sizing: border-box;
+	padding: var(--Section-Padding-padding-section-medium, 80px) var(--Page-Padding-padding-global, 64px);
+	background: var(--Color-Scheme-1-Background, #fff);
+}
+
+/*
+ * `--frame` carries `width:1440px`, the Figma frame width, rather than
+ * `align-self:stretch`. It only behaves with `max-width:100%` and
+ * `box-sizing:border-box`: without them the 64px of horizontal padding is added
+ * on top of the 1440 and the box is 1568 wide, overflowing every viewport below
+ * 1440. This is the same trick .ocx-header uses with its 1441px.
+ *
+ * Note that above 1440 this section stops growing while a `--stretch` one keeps
+ * going, so the two are only interchangeable while the design width is the
+ * widest viewport. On a 1920 screen the fixed one is 1440 and sits at the left
+ * edge.
+ */
+.ocx-section--frame {
+	width: 1440px;
+	max-width: 100%;
+}
+
+/*
+ * `--stretch` is the other sizing strategy from the specs, and the one that has
+ * no overflow maths attached: `alignFullWidth` on the block already makes the
+ * wrapper full bleed, so stretching is just the default. It is written out
+ * because the spec names it.
+ *
+ * `align-items:stretch` is not cosmetic. Core emits `align-items:flex-start` for
+ * a vertical group with no `layout.justifyContent`, so a full-bleed section
+ * still shrink-wraps its child to the child's max-content width: the Container
+ * measured 864px instead of the 1312px of content width, and the Card with it.
+ * Figma's frame is alignItems:stretch, and without this the section cannot fill
+ * its own padding box.
+ */
+.ocx-section--stretch {
+	align-self: stretch;
+	align-items: stretch;
+}
+
+/*
+ * Figma "Layout / 71 /" (#10218:67647) is padded with padding-section-large, not
+ * the medium that `.ocx-section` bakes in, so the vertical padding is the single
+ * thing this modifier changes. Writing it as a longhand pair rather than a new
+ * shorthand keeps the horizontal side inherited from `--Page-Padding-padding-global`
+ * and picks up the 112 -> 64 swap of the token for free.
+ */
+.ocx-section--large {
+	padding-top: var(--Section-Padding-padding-section-large, 112px);
+	padding-bottom: var(--Section-Padding-padding-section-large, 112px);
+}
+
+/*
+ * Figma "Header / 90 /" (#10218:67151) and its children.
+ *
+ * The frame is alignItems:stretch, not center, so the section group carries no
+ * `justifyContent`: its single child (Container) has to fill the 1312px of
+ * content width. That is also why the earlier hand-written spec said center, but
+ * the frame itself does not.
+ *
+ * The Card is the only box in the tree with a real paint: #4C4C4C, 16px radius,
+ * 640px tall, and the Column inside it is a fixed 736px. 640 is a FIXED height in
+ * Figma, which `dimensions.minHeight` only approximates, but a fixed height would
+ * clip the text as soon as the copy wraps differently or the viewport narrows.
+ *
+ * The Card's vertical centring cannot come from the block attributes: for a
+ * vertical `wp:group`, core compiles `layout.justifyContent` into
+ * `align-items`, so `center` would centre the Column horizontally and leave it
+ * pinned to the top. Main-axis centring is only reachable from here.
+ *
+ * The 64px horizontal inset is the page padding token rather than a literal, so
+ * the Card inset follows 64 -> 20 at the mobile breakpoint. Figma only defines
+ * the desktop value; 20 is this theme's documented mobile equivalent.
+ */
+
+/*
+ * Figma's Container is alignItems:stretch with a Card that is alignSelf:stretch,
+ * which together are what make the Card span the full 1312px. Core's default
+ * align-items:flex-start instead shrink-wraps both to the Column's 736px, which
+ * measured a 864px Container inside a 1312px content box.
+ *
+ * `width:100%` is the part that actually has to be written, on both boxes, and
+ * `align-items:stretch` alone is not enough. The Column carries a definite
+ * `width:736px`, which becomes the Card's min-content floor, so a stretched Card
+ * still resolved to 736 + 40 = 776 and pushed a 768px viewport into horizontal
+ * scroll. `min-width:0` does not release it either, because the Column's
+ * `max-width:100%` is resolved against a Card width that is itself still being
+ * computed; Chrome settles that cycle in favour of max-content. Giving the Card
+ * a definite 100% breaks the cycle, its content box becomes known, and the
+ * Column's max-width:100% finally has something to resolve against. Measured
+ * with only one of the two widths set: Container 728 / Card 776 / overflow.
+ *
+ * Both boxes keep `min-width:0` so that a long unbreakable string in the copy
+ * can still be handled by the browser instead of pinning the floor.
+ */
+.ocx-h90__container {
+	align-items: stretch;
+	width: 100%;
+	min-width: 0;
+}
+
+.ocx-h90__card {
+	justify-content: center;
+	width: 100%;
+	min-width: 0;
+	padding: 0 var(--Page-Padding-padding-global, 64px);
+}
+
+/*
+ * `align-items:stretch` on Content is Figma's own value and it is what the
+ * heading needs. Core's default flex-start turns the h2 into a shrink-to-fit
+ * flex item: in the first frame it made no difference because its max-content
+ * (1175px) already exceeded the 736px column, but in the second the column is
+ * 1664 at 1920 and the heading settled into a 1175.14px box. It is invisible
+ * with the current copy because the h2 is left aligned, but as soon as the copy
+ * is edited it will wrap at 1175 instead of using the full 1664.
+ */
+.ocx-h90__content {
+	align-items: stretch;
+}
+
+/*
+ * 736px is Figma's fixed column width in the first frame. It needs
+ * `max-width:100%` for the same reason .ocx-section--frame does: a fixed child
+ * inside a padded box overflows the viewport below 736 + 128 = 864px. The left
+ * edge stays put because a child with a definite width is not stretched, so the
+ * Column hugs the padding like Figma's MIN alignment.
+ */
+.ocx-h90__column {
+	width: 736px;
+	max-width: 100%;
+}
+
+/*
+ * El segundo frame "Header / 90 /" (#10218:68525) tiene el contenido en una
+ * columna a la DERECHA, no repartido en todo el ancho de la Card.
+ *
+ * El ancho viene de --Max-Width-max-width-medium (560px, y no cambia en mobile,
+ * asi que el mismo token sirve para los dos breakpoints). `width:100%` +
+ * `max-width` en vez de `width:560px` para que la columna baje a 560 en
+ * cualquier viewport y no reviente el padding de la Card.
+ *
+ * `margin-left:auto` es lo que pega la columna a la derecha. En un contenedor
+ * `flex-direction:column` el eje transversal es el horizontal, y un margen
+ * auto transversal tiene precedencia sobre `align-self`, asi que se resuelve
+ * sin tener que convertir la Card en `flex-direction:row`: el `align-self`
+ * `stretch` de Figma se mantiene y el auto margin reparte el espacio libre
+ * horizontal. La Card sigue siendo columna, asi que su `justify-content:center`
+ * sigue centrando el contenido verticalmente igual que en el primer frame.
+ *
+ * El selector necesita `.ocx-h90__card` delante porque core trae
+ * `.is-layout-flex > :is(*, div) { margin-left:0px }`, que es (0,1,1) y le gana
+ * a un (0,1,0) pelado, anulando el `auto`. Con el card delante la regla queda
+ * (0,2,0) y gana. Medido: `margin-left` computa 624px a 1440 (1184 - 560) y la
+ * columna queda a 64px del borde de la Card, que es su padding.
+ *
+ * `min-width:0` por el mismo motivo que las demas columnas del theme: sin eso
+ * el `min-width:auto` del flex item ancla el piso en el min-content y una
+ * palabra larga en la copy empujaria la Card en vez de partirse.
+ */
+.ocx-h90__card .ocx-h90__column--right {
+	width: 100%;
+	max-width: var(--Max-Width-max-width-medium, 560px);
+	margin-left: auto;
+	align-self: stretch;
+	align-items: flex-start;
+	min-width: 0;
+}
+
+/*
+ * The type is scoped to the Card with child selectors rather than classes on the
+ * heading and the paragraph, so the copy stays plain core blocks that anyone can
+ * retype or replace from the editor without carrying a class with it.
+ *
+ * 55px is a local override inside Figma's own "Heading/H1" text style: the real
+ * token --Text-Sizes-Heading-1 is 72px desktop / 40px mobile, so there is no
+ * token to alias and the literal has to stay. Figma defines no mobile value for
+ * this frame, so the desktop number is used at every width.
+ */
+.ocx-h90__card .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: 55px;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: -0.01em;
+	color: var(--Color-White, #fff);
+}
+
+.ocx-h90__card p {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--Color-White, #fff);
+}
+
+/*
+ * Figma "Layout / 71 /" (#10218:67647).
+ *
+ * "Component" is a row whose two Columns are both sizing:fill, so Figma splits
+ * the row evenly: (1312 - 80 of gap) / 2 = 616 each. Core has no "fill" for
+ * `wp:group`, and leaving the columns on `auto` would size them to their content
+ * instead of splitting the row, so `flex:1 1 0` is what reproduces the fill.
+ * The basis is 0 rather than `auto` so the two columns end up equal no matter
+ * how much text each one holds.
+ *
+ * `min-width:0` is needed for the same reason as in Header / 90: the default
+ * `min-width:auto` floors a column at its min-content width, and a long word in
+ * the heading would then push the row wider than the section instead of wrapping.
+ *
+ * `align-items:stretch` is Figma's own value on both Columns, and it is what the
+ * heading needs: core's default flex-start turns the h2 into a shrink-to-fit
+ * flex item, so instead of filling the column and wrapping it locks to its
+ * min-content width. Measured at 390px before this: a 158.95px h2 (the width of
+ * the word "business." at 36px) sitting inside a 135px column.
+ *
+ * The heading is the one place on this page where the token and the Figma text
+ * style agree, so it uses the token rather than a literal: Heading/H2 is
+ * Manrope 500 52px with -0.01em tracking, and --Text-Sizes-Heading-2 is exactly
+ * 52px. The 1.2 line-height is left as a ratio so it follows 52 -> 36 on mobile.
+ */
+.ocx-l71__col {
+	flex: 1 1 0;
+	min-width: 0;
+	align-items: stretch;
+}
+
+.ocx-l71__col .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Heading-2, 52px);
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+.ocx-l71__col p {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+/*
+ * Workaround para un bug de diseno en Figma, no una decision de diseño.
+ *
+ * "Layout / 71 /" (#10218:67647) no tiene frame mobile, y su "Component" es una
+ * fila de dos columnas `fill` separadas por 80px. A 390px eso deja 135px por
+ * columna y la palabra "business." del H2, a los 36px del token mobile, mide
+ * 158.95px: el titular no entra en su propia columna y se sale 24px. No hay
+ * ancho que lo arregle, `min-width:0` solo achicaria la caja.
+ *
+ * El piso geometrico es W >= 526 ((W - 208) / 2 >= 159). El corte va en 600px y
+ * no en 526 a proposito: 526 sale de este texto exacto y se moveria en cuanto
+ * se edite la copy, mientras que 600 ya es un numero del proyecto (es donde
+ * arranca el overlay del nav) y queda del lado seguro. Por encima de 600 la
+ * fila se queda como Figma; a 768 cierra bien, 324px de columna contra 159.
+ *
+ * El `flex` hay que revertirlo explicitamente: en una fila `flex:1 1 0` reparte
+ * el ancho, pero en una columna el basis `0` pasaria a ser la altura y las dos
+ * columnas se estirarian a la mitad exacta del contenedor.
+ */
+@media (max-width: 600px) {
+	.ocx-l71__component {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.ocx-l71__col {
+		flex: 0 1 auto;
+	}
+}
+
+/*
+ * Mobile de "Header / 90 /", del component set #4174:3432, variante #4174:3442
+ * ("Breakpoint = Mobile", 375px). Son valores de Figma, no ajustes.
+ *
+ * El Card cambia de `0 64px` a `32px` en los cuatro lados, deja de tener altura
+ * fija y pierde el centrado vertical: pasa de `fixed 640` + `justify-content:center`
+ * a `hug`, asi que en mobile la Card crece con la copy en vez de reservar 640px
+ * de alto para contenido que no los llena. El `min-height:640px` hay que
+ * anularlo explicitamente porque viene en el estilo inline del bloque, y el
+ * `!important` es necesario por eso mismo.
+ *
+ * La columna de la derecha (--right) vuelve a ocupar todo el ancho: con el Card
+ * en 32px de padding a 375 el ancho de contenido es 311, asi que los 560 del
+ * token no aplican y el `margin-left:auto` dejaria la copy despegada del borde.
+ * En mobile no hay "derecha" que respetar.
+ *
+ * Los gaps bajan 32 -> 24 (Column) y 24 -> 20 (Content), y el boton Alternate
+ * gana `border-radius: 12px 0px 0px 0px`, que en desktop es 0. Figma solo
+ * define el radio de 12 arriba a la izquierda en el breakpoint mobile.
+ */
+@media (max-width: 1199.98px) {
+	.ocx-h90__card {
+		padding: 32px;
+		justify-content: flex-start;
+	}
+
+	/*
+	 * El `min-height:640px` viene como estilo inline del bloque, y el inline
+	 * le gana a cualquier regla de la hoja sin importar la especificidad, asi
+	 * que hace falta `!important`. Se anula solo (0) en vez de poner un valor:
+	 * en mobile la Card hugs y lo que manda es el alto del contenido.
+	 */
+	.ocx-h90__card {
+		min-height: 0 !important;
+	}
+
+	.ocx-h90__card .ocx-h90__column--right {
+		width: 100%;
+		margin-left: 0;
+	}
+
+	.ocx-h90__column {
+		gap: 24px;
+	}
+
+	.ocx-h90__content {
+		gap: 20px;
+	}
+
+	/*
+	 * Figma mobile (#4174:3442) pone `border-radius: 12px 0px 0px 0px` en el
+	 * boton Alternate, contra el 0 de desktop. Va aca y no en `.ocx-btn--invert`
+	 * porque ese boton lo comparte el hero y ahi el radio de 12 no aplica.
+	 */
+	.ocx-h90__card .ocx-btn--invert .wp-block-button__link {
+		border-radius: 12px 0 0 0;
+	}
+}
+
+/*
+ * Figma "Layout / 210 /" (#10218:68751), quinta seccion de la home.
+ *
+ * El frame ya es `padding 112px 64px` + fondo blanco, o sea exactamente lo que
+ * hace `.ocx-section--large` sobre `.ocx-section`, asi que la seccion reusa las
+ * dos clases y no repite el padding en CSS.
+ *
+ * "Component" es una FILA: la imagen a la izquierda, el contenido a la derecha,
+ * separadas por 80px y con `align-items:center`, o sea que la columna de texto
+ * se centra verticalmente contra la imagen en vez de pegarse al tope.
+ *
+ * La imagen es `sizing.horizontal:fill` con alto FIJO de 640, o sea que es la
+ * que define el ancho de la mitad izquierda. Core no tiene "fill" para una
+ * imagen, asi que la fila reparte con `flex:1 1 0` en las dos mitades: la
+ * imagen y el texto miden lo mismo. Con el 1440 de Figma eso da
+ * (1312 - 80) / 2 = 616 para cada una, que es el ancho real del PNG (616x640).
+ * O sea que el 616 sale del diseno, no de haberlo medido del archivo.
+ *
+ * La imagen necesita `align-self:stretch` aparte porque es una `<figure>` dentro
+ * de un group, y el `align-items:center` de la fila la dejaria con su alto
+ * natural en el centro en vez de emparejarla con la columna de texto.
+ */
+.ocx-l210__section {
+	/* La fila, no la seccion: el group de Figma es alignSelf:stretch. */
+	align-items: stretch;
+}
+
+.ocx-l210__component {
+	flex-direction: row;
+	align-items: center;
+	gap: 80px;
+	width: 100%;
+	min-width: 0;
+}
+
+/*
+ * `flex:1 1 0` en las dos mitades, con basis 0 para que queden iguales
+ * sea cual sea la copy. `min-width:0` porque el default `auto` ancla el piso en el
+ * min-content y una palabra larga en el parrafo empujaria la fila.
+ */
+.ocx-l210__media {
+	flex: 1 1 0;
+	min-width: 0;
+	align-items: stretch;
+}
+
+.ocx-l210__content {
+	flex: 1 1 0;
+	min-width: 0;
+}
+
+/*
+ * El `figure` de core trae su propio margin-bottom, que con la imagen alineada
+ * al centro de la fila la desalinea del alto de la columna de texto. Ademas el
+ * `border-radius` va en el `img` y no en el `figure`, porque el radio del frame
+ * de Figma es de la imagen.
+ *
+ * `align-items:stretch` es necesario para que el `figure` ocupe el ancho de la
+ * mitad. El group de Figma es `alignItems:stretch` pero core le emite
+ * `align-items:flex-start` a un group vertical, y con eso el `figure` se
+ * encoge a su max-content: a 1920 media daba 856 y la imagen 616, clavada en su
+ * ancho natural en vez de llenar.
+ *
+ * La imagen tiene alto FIJO de 640, que es lo que dice el nodo
+ * (`sizing.vertical:fixed, dimensions.height:640`). Con `height:100%` habia un
+ * ciclo de resolucion -- img -> figure -> media -> alto de la fila -> img -- que
+ * Chrome cerraba en favor del alto del texto: a 1200 la fila daba 585 en vez de
+ * 640 y la imagen dejaba de aportar su alto. Con 640px definido la fila toma
+ * max(640, alto del texto), que es lo que hace Figma, y a 1440 da exacto 640
+ * porque el texto mide 441.78.
+ */
+.ocx-l210__image {
+	margin: 0;
+	align-self: stretch;
+	width: 100%;
+}
+
+.ocx-l210__image img {
+	width: 100%;
+	height: 640px;
+	object-fit: cover;
+	border-radius: 16px;
+	display: block;
+}
+
+/*
+ * Los tres parrafos del Figma (#10218:68762) vienen en un solo text node con
+ * saltos de doble linea. Se partieron en tres `core/paragraph` para que cada uno
+ * sea editable por separado desde el editor, que es el requisito del theme. La
+ * escala es la misma: Manrope 400, --Text-Sizes-Text-Medium, 150% de line height.
+ */
+.ocx-l210__title-content .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Heading-2, 52px);
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+.ocx-l210__title-content p {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+/*
+ * Figma "Style=Link, Small=False, Alternate=False, Icon position=Trailing"
+ * (#4179:8937): un control que NO es un boton relleno. Sin fondo, sin borde,
+ * texto Manrope 500 de 16px en #B69E52 y un chevron_right de 24px con 8px de
+ * gap. El `gap` lo provee el propio bloque (que es flex), no hace falta
+ * declararlo, pero el `display:flex` si, porque el markup mete el `<img>` como
+ * hijo del `<a>` y sin esto el chevron caeria en su propia linea.
+ *
+ * El hover quita el subrayado que core pone en `.wp-block-button__link`, igual
+ * que en `.ocx-btn--invert`: es un link de navegacion, no un control de formulario.
+ */
+.wp-block-button.ocx-btn--link .wp-block-button__link {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	background: none;
+	border: 0;
+	padding: 0;
+	color: #b69e52;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 500;
+	line-height: 1.5;
+	text-decoration: none;
+}
+
+.wp-block-button.ocx-btn--link .wp-block-button__link:hover {
+	text-decoration: none;
+}
+
+.ocx-btn--link .ocx-btn__icon {
+	width: 24px;
+	height: 24px;
+	flex: 0 0 auto;
+}
+
+/*
+ * Mobile de "Layout / 210 /".
+ *
+ * Figma no define variante mobile para este frame (es una instancia de la home,
+ * no un component set con variantes, asi que no hay ni desktop ni mobile que
+ * consultar). La seccion ya resuelve su padding sola por tokens
+ * (112 -> 64 y 64 -> 20), asi que lo unico que hay que decidir es el apilado de
+ * la fila.
+ *
+ * El corte va en 1200 y no en el 600 de "Layout / 71 /" porque alli el problema
+ * era que la palabra "business." del titular no entra en una columna de 135px.
+ * Aca no hay tal caso: el H2 es corto y la imagen es una foto, asi que con
+ * partirlo en 600 la mitad de las tablets queda con la imagen a la mitad de ancho
+ * al lado de un bloque de texto estrecho, que no es ni una cosa ni la otra.
+ *
+ * A diferencia de `.ocx-l71`, el `flex` de las dos mitades hay que revertirlo
+ * tambien, por la misma razon: en columna el basis 0 pasaria a ser la altura.
+ */
+@media (max-width: 1199.98px) {
+	.ocx-l210__component {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 40px;
+	}
+
+	.ocx-l210__media {
+		flex: 0 1 auto;
+		align-self: auto;
+		width: 100%;
+	}
+
+	/*
+	 * El 640px fijo es el alto del frame de 1440. Apilada, la imagen tiene que
+	 * acompanar el ancho disponible y mantener su proporcion (616/640), asi
+	 * que el alto sale del `aspect-ratio` y no de un literal.
+	 *
+	 * El `align-self:stretch` del figure hay que revertirlo: en la columna
+	 * `media` pasa a ser el alto del eje transversal, y estira el figure al
+	 * alto de la media en vez de al de la imagen. Medido a 768 daba 728x756.36
+	 * con la caja de 640 sin corresponder a la proporcion 616/640.
+	 */
+	.ocx-l210__image {
+		align-self: auto;
+	}
+
+	.ocx-l210__image img {
+		height: auto;
+		aspect-ratio: 616 / 640;
+	}
+}
+
+/*
+ * The prompt field and the Industry control.
+ *
+ * Both used to carry their colours, fonts and padding as inline styles on the
+ * block markup, which outrank any stylesheet, so theme.json and the design
+ * tokens could not reach them. Only the absolute offsets stay inline, because
+ * the block sets `position` itself and the responsive reset needs !important to
+ * undo it. Everything else moved here.
+ */
+
+/*
+ * Figma "Text/Medium/Normal": Manrope 400 at 18px with a 150% line height, which
+ * is the 27px the spec annotates. 18px is --Text-Sizes-Text-Medium.
+ */
+.ocx-hero__industry .wp-block-button__link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	box-sizing: border-box;
+	background: var(--Color-OpenCX-White-Lightest);
+	color: var(--Color-Subnav-Text);
+	border: 1px solid var(--Color-Ambar);
+	padding: 10px 24px;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Medium);
+	font-style: normal;
+	font-weight: 400;
+	line-height: 150%;
+}
+
+/*
+ * The caret is a text glyph, so it is a 10px Manrope label with a 155% line
+ * height, not an icon. The button's own 18px would otherwise win by inheritance.
+ */
+.ocx-hero__industry .ocx-hero__caret {
+	font-family: Manrope, sans-serif;
+	font-size: 10px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 155%;
+	color: var(--Color-Scheme-1-Text);
+}
+
+/*
+ * The dropdown panel.
+ *
+ * This is the box spec, applied to the navigation submenu container rather than
+ * to a hand-built element, so that any submenu added in the WP menu picks up the
+ * design with no code change: the Industries submenu and any future one are the
+ * same rule.
+ *
+ * The offsets are deliberately NOT here. The spec carries
+ * `right:-12px; bottom:-160px`, which places the panel relative to the hero's
+ * Industry control. A navigation item sits at y=80 in a 160px header, so the
+ * same offsets would push the panel's bottom edge to y=240 and drag its top off
+ * screen. Core's own placement (top:27px, left:-1px, i.e. under the parent
+ * item) is kept. The hero's control does not open a panel yet; if it ever does,
+ * those offsets belong on a rule of their own, anchored to a content-sized
+ * wrapper around the control rather than to the form.
+ *
+ * `--Stroke-Border-Width` is 0px, so `border: 0 solid` is the spec taken
+ * literally rather than a missing style: the panel has no visible border. Core
+ * ships a 1px rgba(0,0,0,0.15) border, which this deliberately removes.
+ *
+ * The selector is deliberately long. Core reaches the same element with
+ * `.wp-block-navigation .has-child .wp-block-navigation__submenu-container`
+ * (0,3,0) for align-items and
+ * `.wp-block-navigation:not(.has-background) .wp-block-navigation__submenu-container`
+ * (0,3,1) for the background and the border, and it loads first. A plain
+ * `.ocx-nav--menu .wp-block-navigation__submenu-container` (0,2,0) loses both
+ * and silently keeps core's `align-items:normal` and its 1px border, so the
+ * prefix below is what makes this rule win.
+ */
+.wp-block-navigation.ocx-nav--menu .has-child .wp-block-navigation__submenu-container,
+.wp-block-navigation.ocx-nav--menu .wp-block-navigation__submenu-container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 16px;
+	box-sizing: border-box;
+	padding: 24px;
+	background: var(--Color-Scheme-1-Background, #fff);
+	border: var(--Stroke-Border-Width, 0) solid var(--Color-Scheme-1-Border, rgba(0, 0, 0, 0.15));
+	border-radius: var(--Radius-Small, 16px);
+}
+
+/*
+ * Core pads the links themselves (9px 18px). Keeping that plus the panel's 24px
+ * would put the labels at a 42px inset and make the 16px gap read as 34px, so
+ * the spacing is moved entirely onto the box and the links go to zero. The row
+ * height is then the 24px line box, which is what the 16px gap is spacing.
+ *
+ * align-items:flex-start above is what lets each row hug its label instead of
+ * being stretched to the widest one, so the panel is only as wide as it needs.
+ *
+ * The selector mirrors core's own
+ * `.wp-block-navigation .has-child .wp-block-navigation__submenu-container >
+ * .wp-block-navigation-item > .wp-block-navigation-item__content` (0,5,1) with
+ * one extra class, because that is the rule that has to lose. A shorter selector
+ * such as `.ocx-nav--menu .wp-block-navigation__submenu-container
+ * .wp-block-navigation-item__content` is (0,3,0) and core's 0.5em 1em padding
+ * wins, leaving the labels at a 42px inset.
+ */
+.wp-block-navigation.ocx-nav--menu .has-child .wp-block-navigation__submenu-container > .wp-block-navigation-item > .wp-block-navigation-item__content {
+	padding: 0;
+}
+
+/*
+ * The hero prompt is a field, not body copy: an inline-flex box that takes a
+ * 25px inset and reserves a 1px transparent border so it lines up with a
+ * bordered control without ever showing a line.
+ *
+ * `width:100%` is needed because inline-flex shrink-wraps to the text, and a
+ * shrink-wrapped field would stop reading as an input. The form no longer
+ * carries the 25px padding: doing both put the text at a 50px inset and broke
+ * the alignment with the Industry control at 24.5px.
+ */
+.ocx-hero__field {
+	display: inline-flex;
+	align-items: flex-start;
+	gap: 12px;
+	box-sizing: border-box;
+	width: 100%;
+	margin: 0;
+	padding: 25px;
+	border: 1px solid var(--Opacity-Transparent);
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Medium);
+	line-height: 1.5;
+	color: var(--Color-Subnav-Text);
+}
+
+/*
+ * Border beam on the hero prompt box.
+ *
+ * The effect is a rotating conic gradient that only survives as a 1px ring. The
+ * mask is the same black gradient painted twice, once clipped to `content-box`
+ * (the padding box minus the 1px `padding`) and once over the whole box;
+ * `exclude` subtracts the first from the second, which is what leaves the ring
+ * and nothing else. `border-radius: inherit` is what makes the ring follow the
+ * box's 16px corners instead of squaring them off.
+ *
+ * `--ocx-beam-angle` is registered with `@property` for a specific reason: an
+ * unregistered custom property is not interpolatable, so the gradient would
+ * jump from 0deg to 360deg once per revolution instead of rotating. Browsers
+ * without `@property` drop the whole `background` declaration at computed-value
+ * time, and the box keeps the borderless look it has today, which is the
+ * graceful outcome rather than a broken one.
+ *
+ * The beam is a comet, not a ring: lit for 70 degrees of the 360 and
+ * transparent for the rest, with the brand gold trailing to its darker
+ * neighbour, so roughly a fifth of the perimeter is lit at any moment.
+ *
+ * `pointer-events: none` is load-bearing, not cosmetic. The Industry and submit
+ * controls are absolutely positioned inside this box (top 137px / 169px) and a
+ * painted-but-clickable ring would swallow their clicks.
+ *
+ * This is the one place in the theme where the Figma node is deliberately not
+ * followed: `10218:70363` draws a flat, borderless prompt box.
+ */
+@property --ocx-beam-angle {
+	syntax: '<angle>';
+	initial-value: 0deg;
+	inherits: false;
+}
+
+/*
+ * The landing flash. Registered as a length so that the rise and the fall of the
+ * glow are both interpolated transitions, and `inherits: true` so the ring's
+ * `drop-shadow` below reads the same animated value as the box it sits on. A
+ * browser without `@property` treats it as a plain custom property, the
+ * transition is ignored, and the flash snaps on and off: still legible, just not
+ * as smooth.
+ */
+@property --ocx-beam-glow {
+	syntax: '<length>';
+	initial-value: 0px;
+	inherits: true;
+}
+
+.ocx-hero__form {
+	transition: --ocx-beam-glow 640ms ease-out;
+}
+
+.ocx-hero__form::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	padding: 1px;
+	background: conic-gradient(
+		from var(--ocx-beam-angle),
+		transparent 0deg,
+		var(--Color-Husk-Dark) 22deg,
+		var(--Color-Husk) 48deg,
+		transparent 70deg,
+		transparent 360deg
+	);
+	-webkit-mask:
+		linear-gradient(#000 0 0) content-box,
+		linear-gradient(#000 0 0);
+	-webkit-mask-composite: xor;
+	mask:
+		linear-gradient(#000 0 0) content-box,
+		linear-gradient(#000 0 0);
+	mask-composite: exclude;
+	pointer-events: none;
+	animation: ocx-beam-spin 5s linear infinite;
+}
+
+/*
+ * The landing flash, and only the landing flash: `assets/js/logo-intro.js` sets
+ * `data-ocx-beam-flash` for the length of the pulse and removes it after.
+ *
+ * The filter is deliberately NOT permanent. A `drop-shadow(0 0 0px ...)` is not
+ * quite a no-op on an antialiased 1px ring: the shadow sits behind a partially
+ * transparent source, so it brightens the brightest pixel of the comet (measured
+ * at 42/255, on 0.18% of the pixels of the box). Scoping it to the pulse means
+ * the box at rest is bit for bit the box it was before this existed.
+ *
+ * Nothing about the comet itself is touched: same gradient, same spin, same
+ * `animation-duration`. Changing the duration mid-flight would visibly restart
+ * the rotation.
+ */
+.ocx-hero__form[data-ocx-beam-flash]::after {
+	filter: drop-shadow(0 0 var(--ocx-beam-glow) var(--Color-Husk));
+}
+
+@keyframes ocx-beam-spin {
+	to {
+		--ocx-beam-angle: 360deg;
+	}
+}
+
+/*
+ * Reduced motion stops the travel and leaves a soft static highlight in place,
+ * so the box still reads as highlighted without anything moving.
+ */
+@media (prefers-reduced-motion: reduce) {
+	.ocx-hero__form::after {
+		animation: none;
+		opacity: 0.35;
+	}
+}
+
+/*
+ * Figma "Layout / 121 /" (#10218:70451), sexta seccion de la home.
+ *
+ * El frame es `padding 112px 64px` + fondo blanco, igual que "Layout / 210 /", asi
+ * que reusa `.ocx-section--large` sobre `.ocx-section` en vez de repetir el padding.
+ * Noveno frame con el mismo `padding 112px 64px`: la serie de secciones "large" de
+ * la home es practicamente identica en su marco y solo cambia el interior.
+ *
+ * "Component" es una fila con dos columnas `fill` y 80px de gap: la de texto
+ * (Column) y el timeline. Igual que en "Layout / 71 /", core no tiene "fill" para un
+ * group, asi que `flex:1 1 0` es lo que reparte el ancho. A 1440 eso da
+ * (1312 - 80) / 2 = 616 para cada una.
+ *
+ * El `flex:1 1 0` tiene que estar en las DOS mitades, no solo en la del texto. Con
+ * el timeline en `flex:0 1 auto` y su `min-width:auto` default, crecia hasta el
+ * min-content de su item mas largo (1173.84px) y la columna de texto se quedaba
+ * con 58.16px: el H2,title de 52px partido en un caracter por linea y el boton
+ * colgando. El `min-width:0` hace lo mismo que en las otras columnas del theme:
+ * deja que sea el flex el que reparta en vez del min-content.
+ *
+ * El timeline son 12 items: 5 de encabezado de grupo y 7 de contenido. Cada item es
+ * una fila con el icono a la izquierda y el texto a la derecha.
+ */
+.ocx-l121__component {
+	flex-direction: row;
+	gap: 80px;
+	width: 100%;
+	min-width: 0;
+}
+
+.ocx-l121__column {
+	flex: 1 1 0;
+	min-width: 0;
+}
+
+.ocx-l121__tagline {
+	gap: 16px;
+}
+
+.ocx-l121__column .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Heading-2, 52px);
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+/*
+ * Figma "Heading/Tagline": Manrope SemiBold 600 a 16px con 150% de line height. No
+ * es un heading sino una etiqueta sobre el H2, asi que va como `core/paragraph` con
+ * el peso puesto por clase. El 600 no tiene token de font-weight, asi que es literal.
+ */
+.ocx-l121__column .ocx-l121__label {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 600;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+/*
+ * Timeline: columna flex de los 12 items (2 de grupo + 10 de concepto).
+ *
+ * Layout indicado para la columna derecha:
+ *
+ *   display: flex;
+ *   flex-direction: column;
+ *   align-items: flex-start;
+ *   gap: 16px;
+ *   flex: 1 0 0;
+ *
+ * El `flex:1 0 0` es `grow 1 / shrink 0 / basis 0`. El basis 0 reparte el ancho
+ * con la otra mitad (616 = (1312 - 80) / 2 a 1440) y el shrink 0 evita que el
+ * timeline ceda espacio, que antes lo faceba crecer hasta el min-content de su
+ * item mas largo y dejaba la columna de texto en 58px.
+ *
+ * `align-items:flex-start` + `gap:16px` es lo que marca el espaciado entre
+ * conceptos: el gap del contenedor es el unico espacio vertical entre items, y
+ * con `align-items:flex-start` cada item se mide contra su propio contenido en vez
+ * de estirarse a la altura del mas alto de la columna.
+ *
+ * `display:flex` y `flex-direction:column` son explicitos aunque core ya emita
+ * `is-layout-flex` + `is-vertical` en el group, para que la regla no dependa de lo
+ * que WordPress.Plugin coverts a markup.
+ */
+.ocx-l121__timeline {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 16px;
+	flex: 1 0 0;
+}
+
+/*
+ * Cada item del timeline es una fila de 40px de gap: la "Content" de izquierda
+ * (icono + divisor) y la de derecha (H5/H6 + parrafo).
+ *
+ * `align-items:flex-start` es necesario porque sin esto el divisor, que es una
+ * linea del alto del item, estira el lado del icono a la misma altura que el texto
+ * y el icono queda descentrado. Figma lo trae explicito en el nodo del Content
+ * izquierdo (`alignItems:center`), pero con el `stretch` default de core la columna
+ * del icono se mide contra el item entero en vez de contra su propio contenido.
+ */
+.ocx-l121__item {
+	flex-direction: row;
+	align-items: flex-start;
+	gap: 40px;
+	width: 100%;
+	min-width: 0;
+}
+
+/*
+ * La columna del icono: un `Relume` de 48x48 y, debajo, el divisor vertical de 2px,
+ * separados por 16px.
+ *
+ * `align-self:stretch` (contra el `align-items:flex-start` del item) hace que la
+ * columna mida el alto del item entero, que es lo que permite que el divisor
+ * reparta el espacio sobrante en vez de medir 100px fijos.
+ */
+.ocx-l121__marker {
+	flex: 0 0 auto;
+	align-self: stretch;
+	align-items: center;
+	gap: 16px;
+}
+
+.ocx-l121__marker img {
+	width: 48px;
+	height: 48px;
+	flex: 0 0 auto;
+	display: block;
+}
+
+/*
+ * Separacion de 42px en los tres puntos del timeline donde un titulo de grupo se
+ * encuentra con un concepto.
+ *
+ * El `gap:16px` del timeline es uniforme para los 12 items, asi que el extra va como
+ * `margin-top` de 26px sobre el item implicado: 16 (gap) + 26 (margen) = 42.
+ *
+ * Son dos selectores de hermano inmediato, y no uno con `:has()`, para no depender de
+ * soporte de `:has()`:
+ *
+ *   .ocx-l121__group + .ocx-l121__item  ->  el concepto que abre un grupo
+ *                                          ("Human-Led" -> "Human-led AI",
+ *                                           "Built to Be Trusted" -> "Own Your AI")
+ *   .ocx-l121__item  + .ocx-l121__group ->  el concepto que cierra el grupo anterior
+ *                                          ("One Vendor, Start to Finish" ->
+ *                                           "Built to Be Trusted")
+ *
+ * Los titulos se leen como encabezado de su grupo y no como un concepto mas de la lista.
+ * Los gaps entre conceptos sueltos se quedan en 16.
+ */
+.ocx-l121__group + .ocx-l121__item,
+.ocx-l121__item + .ocx-l121__group {
+	margin-top: 26px;
+}
+
+/*
+ * El divisor es una LINE de Figma: 0px de ancho, 100px de alto, `strokeWeight:2px`
+ * y `strokeAlign:center` en `rgba(0, 0, 0, 0.15)`. Al ser una linea de 2px centrada
+ * sobre un eje de 0, el ancho visible son 2px. Ese 0.15 no es un token del theme
+ * (los tokens de color son planos), asi que queda como literal.
+ *
+ * Los 100px fijos NO se pueden mantener. En Figma cada item tiene `sizing.vertical:
+ * fixed` con una altura distinta (65, 127, 140, 148, 123, 122, 138, 143...), y esos
+ * valores estan medidos sobre el texto de wireframe: son 1.3x mas altos que lo que
+ * el texto real ocupa en Manrope. Con el texto de verdad, los items miden 94.8px
+ * (2 lineas) o 118.8px (3 lineas), asi que un divisor de 100px pediria 48 + 16 + 100
+ * = 164px y el item se estiraria a 164 aunque su texto termine en 94.8.
+ *
+ * En su lugar el divisor es `flex:1 1 0` dentro del marker estirado: toma
+ * exactamente el espacio que sobra debajo del icono. Con 2 lineas quedan 30.8px
+ * (48 + 16 + 30.8 = 94.8 = alto del item) y con 3 lineas 54.8px, de modo que el
+ * rail siempre llega hasta el borde inferior del item y el hueco de 16px del
+ * timeline lo separa del icono siguiente. Es el mismo resultado visual que una
+ * linea de altura fija, pero sin cortar contenido ni dejar el rail flotando a
+ * media altura cuando el copy se reescribe en el Site Editor.
+ */
+.ocx-l121__divider {
+	width: 2px;
+	flex: 1 1 0;
+	min-height: 0;
+	align-self: center;
+	background: rgba(0, 0, 0, 0.15);
+}
+
+.ocx-l121__body {
+	flex: 1 1 0;
+	min-width: 0;
+	gap: 16px;
+}
+
+/*
+ * Los items de grupo (Human-Led, Built to Be Trusted) usan "Heading/H5" con la
+ * palabra SUBRAYADA, y los de contenido "Heading/H6" sin subrayado. Los H5 llevan
+ * el token --Text-Sizes-Heading-5 y los H6 el --Text-Sizes-Heading-6, que es lo que
+ * los diferencia ademas del tamano.
+ *
+ * El subrayado viene de un `ts1` en el text de Figma (`{ts1}Human-Led{/ts1}`), o
+ * sea un tramo con `textDecoration:UNDERLINE` dentro del mismo text node. Se hizo
+ * con `text-decoration:underline` en el heading del grupo, que es lo mas cerca que
+ * llega el HTML sin partir el texto en dos runs.
+ */
+.ocx-l121__group .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Heading-5, 28px);
+	font-weight: 500;
+	line-height: 1.4;
+	letter-spacing: -0.01em;
+	text-decoration: underline;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+.ocx-l121__body .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Heading-6, 22px);
+	font-weight: 500;
+	line-height: 1.4;
+	letter-spacing: -0.01em;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+.ocx-l121__body p {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+/*
+ * Figma deja los items con `sizing.vertical:fixed` y una altura distinta para cada
+ * uno (65, 127, 140, 148, 123, 122, 138, 143...). Son los valores medidos sobre el
+ * texto de wireframe, no una decision de diseno: si el texto se reescribe o la
+ * fuente tarda en cargar, una altura fija corta el contenido. Por eso los items
+ * crecen con su contenido en vez de medirse.
+ *
+ * El item de grupo (H5) mide 65px de alto, que es el H5 solo con el padding del
+ * gap, asi que tampoco lleva altura fija.
+ */
+
+/*
+ * Mobile de "Layout / 121 /".
+ *
+ * Igual que "Layout / 210 /", Figma no define variante mobile para este frame: es
+ * una instancia de la home, no un component set con variantes. El padding lo
+ * resuelven los tokens (112 -> 64, 64 -> 20).
+ *
+ * El corte va en 1200. Debajo de eso el timeline tiene que ir debajo del texto, y
+ * por el `flex:1 0 0` de ambas mitades: al apilar, el basis 0 pasaria a ser la
+ * altura y las dos columnas se estirarian a la mitad exacta del contenedor, con el
+ * texto partido en una franja de ancho 0.
+ *
+ * Por eso el `flex` de las dos mitades se revierte a `0 1 auto` al apilar. Sin ese
+ * revert el timeline seguia midiendo bien solo por el `min-height:auto` de flex item,
+ * que lo floors contra su contenido: es un mecanismo real pero implicito, y depende
+ * de que nadie lo sobreescriba. El de la columna de texto es el mismo workaround que
+ * lleva `.ocx-l71`.
+ *
+ * El gap del item baja de 40 a 24. Los 40 de Figma estan medidos a 1440 con el
+ * texto en 576 de ancho; a 390 el texto queda en 326 y 40 de gap se comen una
+ * fraccion mayor del disponible. Es el mismo razonamiento del workaround de
+ * "Layout / 71 /", pero aqui no hay un bug que lo justifique: es una decision de
+ * responsive que habria que confirmar contra un frame mobile de Figma.
+ *
+ * El `gap:16px` del timeline no se toca: es el espaciado entre conceptos y es el
+ * mismo en todos los anchos.
+ */
+@media (max-width: 1199.98px) {
+	.ocx-l121__component {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 40px;
+	}
+
+	.ocx-l121__column,
+	.ocx-l121__timeline {
+		flex: 0 1 auto;
+	}
+
+	.ocx-l121__item {
+		gap: 24px;
+	}
+}
+
+/*
+ * Figma "Layout / 59 /" (#10218:70868), septima seccion de la home, antes del footer.
+ *
+ * Mismo marco que "Layout / 210 /" y "Layout / 121 /": `padding 112px 64px` (tokens,
+ * 64/20 en mobile) y fondo blanco, asi que reusa `.ocx-section--large` sobre
+ * `.ocx-section` en vez de repetir el padding.
+ *
+ * El nodo de Figma trae `alignItems:stretch` en el frame; el layout indicado decia
+ * `align-items:center`. Gana Figma, pero en este caso es indistinto: el unico hijo del
+ * frame es "Container", que trae `alignSelf:stretch`, y el `align-self` del hijo pisa
+ * al `align-items` del padre. Con cualquiera de los dos el Container mide el ancho
+ * completo, asi que no hay diferencia de render y queda el del archivo.
+ *
+ * Estructura: Container > Component (fila de 80px) > dos columnas `fill`.
+ */
+.ocx-l59__container {
+	width: 100%;
+	min-width: 0;
+}
+
+.ocx-l59__component {
+	flex-direction: row;
+	gap: 80px;
+	width: 100%;
+	min-width: 0;
+}
+
+/*
+ * Las dos columnas van `flex:1 1 0` por el mismo motivo que en "Layout / 71 /" y
+ * "Layout / 121 /": core no tiene "fill" para un group. A 1440 eso da
+ * (1312 - 80) / 2 = 616 para cada una. El `min-width:0` evita que el min-content de
+ * la columna de texto (que tiene el H2 de 52px) le robe ancho a la otra.
+ */
+.ocx-l59__column {
+	flex: 1 1 0;
+	min-width: 0;
+}
+
+.ocx-l59__column--text {
+	gap: 16px;
+}
+
+/*
+ * Figma "Heading/Tagline": Manrope SemiBold 600 a 16px con 150% de line height, dentro
+ * de un "Tagline Wrapper" `alignItems:center` de tamano hug. El wrapper no aporta nada
+ * visual (un solo text, sin gap) asi que el parrafo va directo; el `align-items` de la
+ * columna es lo que lo alinea a la izquierda.
+ *
+ * El 600 no tiene token de font-weight, asi que es literal, igual que el tagline de
+ * "Layout / 121 /".
+ */
+.ocx-l59__label {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 600;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+.ocx-l59__column--text .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Heading-2, 52px);
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+/*
+ * La columna de texto arranca 54px mas abajo que la de tagline. No es un error de
+ * Figma: es el desfase que hace que el H2 de la izquierda quede alineado con el
+ * parrafo de la derecha en vez de arrancar los dos al mismo alto. Por eso el
+ * `padding-top` va en la columna y no como margen en el texto.
+ *
+ * Se pierde al apilar (ver el `@media` de mas abajo).
+ */
+.ocx-l59__column--body {
+	padding-top: 54px;
+	gap: 32px;
+}
+
+/*
+ * "Content" es un group con `gap:32px` que contiene un solo text, asi que el gap no se
+ * llega a ver. Se conserva el wrapper para mantener la estructura del nodo, y el gap
+ * queda declarado en el markup por si el copy crece con un segundo parrafo.
+ */
+.ocx-l59__content {
+	gap: 32px;
+}
+
+/*
+ * Figma "Text/Medium/Normal": Manrope Regular 400 a 18px con 150% de line height. El
+ * `boldWeight:700` del nodo es el `ts1` ("Bold") del final del texto, o sea un tramo
+ * en negrita dentro del mismo text node, no un estilo del parrafo entero. Se hizo con
+ * `<strong>` para que siga siendo rich text editable en el Site Editor, en vez de
+ * partir el parrafo en dos bloques.
+ *
+ * El 700 tampoco tiene token de font-weight, asi que es literal.
+ */
+.ocx-l59__content p {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+.ocx-l59__content strong {
+	font-weight: 700;
+}
+
+.ocx-l59__actions {
+	gap: 24px;
+}
+
+/*
+ * Mobile de "Layout / 59 /".
+ *
+ * Igual que "Layout / 210 /" y "Layout / 121 /", Figma no define variante mobile para
+ * este frame: es una instancia de la home, no un component set. El padding lo resuelven
+ * los tokens y el H2 baja a 36px solo.
+ *
+ * El corte va en 1200, y al apilar hay que quitar el `padding-top:54px` de la columna
+ * de texto: su unico proposito es el desfase contra el H2 de la izquierda, que apilada
+ * ya no existe. Dejarla seria 54px de aire muerto arriba de cada bloque.
+ *
+ * El `flex:1 1 0` de las dos columnas se revierte a `0 1 auto` porque en columna el
+ * basis 0 pasaria a ser la altura y las dos se estirarian a la mitad exacta.
+ */
+@media (max-width: 1199.98px) {
+	.ocx-l59__component {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 40px;
+	}
+
+	.ocx-l59__column {
+		flex: 0 1 auto;
+	}
+
+	.ocx-l59__column--body {
+		padding-top: 0;
+	}
+}
+
+/*
+ * Figma "Stats / 55 /" (#10218:71520), octava y ultima seccion de la home, antes del
+ * footer.
+ *
+ * Mismo marco que las tres anteriores: `padding 112px 64px` (tokens, 64/20 en mobile) y
+ * fondo blanco, asi que reusa `.ocx-section--large` sobre `.ocx-section`.
+ *
+ * El nodo de Figma trae `alignItems:stretch` en el frame; el layout indicado decia
+ * `align-items:center`. Gana Figma, y aqui es indistinto: el unico hijo del frame es
+ * "Container", que trae `alignSelf:stretch`, y el `align-self` del hijo pisa al
+ * `align-items` del padre. Igual que en "Layout / 59 /".
+ *
+ * Estructura: Container > Content (fila) > H2 a la izquierda + grid de 8 tarjetas
+ * (4 filas de 2) a la derecha.
+ */
+.ocx-l55__container {
+	width: 100%;
+	min-width: 0;
+}
+
+/*
+ * Figma pone las dos mitades con `sizing.horizontal:fixed` (609 la izquierda, 597 la
+ * derecha) y `justifyContent:space-between` en la fila, o sea que el gutter no es un
+ * gap sino el espacio sobrante: 1312 - 609 - 597 = **106px** a 1440.
+ *
+ * Se respectan los dos anchos con `flex:0 1 <basis>` en vez de `flex:1 1 0` como en las
+ * otras dos columnas del theme: aqui las mitadas no son iguales a proposito, y
+ * `1 1 0` las mediria 616/616 perdiendo los 12px de diferencia. El `flex-shrink:1`
+ * deja que bajen proporcionalmente cuando el contenedor no entra (a 1200 mide 541.3 y
+ * 530.3), y el `gap:32px` es el piso del gutter para que nunca se peguen.
+ */
+.ocx-l55__content {
+	flex-direction: row;
+	/*
+	 * `flex-wrap:nowrap` es obligatorio y no es cosmetico.
+	 *
+	 * Core pone `flex-wrap:wrap` en `.is-layout-flex`, y con el basis en px de las dos
+	 * mitadas (609 + 597 + 32 de gap = 1238) el item se salta de linea en cuanto el
+	 * contenedor baja de 1238, o sea entre 1200 y ~1402. A 1200 el H2 y el grid de
+	 * stats quedaban en dos lineas distintas, ambos arrancando en x=64 y con 463px de
+	 * vacio a la derecha del grid.
+	 *
+	 * Lo peligroso es que no se detecta mirando `scrollWidth`: no hay desborde, hay un
+	 * salto de linea, asi que el chequeo de overflow horizontal daba "no" mientras el
+	 * layout estaba roto. Con `nowrap` el `flex-shrink:1` hace lo que debe y las
+	 * mitadas bajan proporcionalmente (a 1200 miden 525.14 y 514.86).
+	 *
+	 * Las otras dos columnas del theme usan `flex:1 1 0`, con basis 0, asi que nunca
+	 * llegan a envolver: por eso este problema es exclusivo de esta seccion.
+	 */
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 32px;
+	width: 100%;
+	min-width: 0;
+}
+
+.ocx-l55__intro {
+	flex: 0 1 609px;
+	min-width: 0;
+}
+
+.ocx-l55__stats {
+	flex: 0 1 597px;
+	min-width: 0;
+	gap: 32px;
+}
+
+.ocx-l55__intro .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Heading-2, 52px);
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+/*
+ * Las 4 filas del grid.
+ *
+ * `align-items:stretch` es lo que hace que las tarjetas de una misma fila midan lo
+ * mismo, la mas alta. Core le pone `align-items:flex-start` a los groups, asi que sin
+ * esto cada tarjeta se mide contra su propio texto y las filas quedan escalonadas:
+ * medido a 1440, la fila 3 daba 219.98 contra 189.19 y la fila 4 189.19 contra 158.39.
+ * Figma lo resuelve con su default MIN (que es stretch) y lo marca explicito como
+ * `alignSelf:stretch` en "#10218:72764".
+ *
+ * Por eso los `sizing.vertical:fill` de "#10218:72767" y el
+ * `dimensions.height:188` de "#10310:911" no llevan altura fija en las demas tarjetas:
+ * con el stretch de la fila se resuelven solas y ninguna queda con el texto cortado.
+ * La unica con altura fija es "Scale AI without losing what made it work in the first
+ * place" (#10310:911), que Figma la marca a 188.
+ */
+.ocx-l55__row {
+	flex-direction: row;
+	align-items: stretch;
+	gap: 32px;
+	width: 100%;
+	min-width: 0;
+}
+
+/*
+ * La tarjeta: `--Color-Neutral-Lightest` de fondo, radio de 16px, borde de 1px y
+ * padding de 32px.
+ *
+ * `flex:1 0 0` (grow 1 / shrink 0 / basis 0) es el valor del nodo: con basis 0 las dos
+ * tarjetas de la fila se reparten el ancho por igual, y el shrink 0 evita que bajen de
+ * ese reparto. Miden (597 - 32) / 2 = 282.5 a 1440, o sea 218.5 de contenido sin contar
+ * el borde, contra los 219 del archivo.
+ *
+ * El `box-sizing:border-box` lo pone core y no es opcional: es lo que hace que el
+ * `height:188px` de "Scale AI" sea el alto total de la caja y no 188 + 64 de padding.
+ *
+ * El borde es el `rgba(0, 0, 0, 0.15)` de Figma, no `--Color-Scheme-1-Border` (que
+ * exporta #000000). El token tiene su propio comentario documentando que la
+ * discrepancia es invisible mientras `--Stroke-Border-Width` sea 0px y que solo
+ * habia que revisarlo "if the width ever becomes 1px": aca es exactamente ese caso, y
+ * con #000000 el borde seria negro solido en vez de una linea al 15%. Es el mismo
+ * criterio que el divisor del timeline de "Layout / 121 /".
+ *
+ * Ojo con el `var()` del nodo: `border: var(--Stroke-Border-Width, 0) solid
+ * var(--Color-Scheme-1-Border, rgba(0, 0, 0, 0.15))` resuelve a `0px solid #000000`
+ * con los tokens reales del theme, o sea **sin borde visible**: el fallback del
+ * `var()` solo aplica si el token no existe, y los dos existen. Por eso el borde va con
+ * los valores de Figma en el estilo inline del bloque y no por token.
+ *
+ * El padding de 32px y los gaps de 32px son literales porque no hay preset de spacing
+ * para 32 (los slugs van 10, 20, 30, 40, 50, 60, 80, 100, 112, 150).
+ */
+.ocx-l55__card {
+	flex: 1 0 0;
+	min-width: 0;
+	padding: 32px;
+	gap: 8px;
+}
+
+/*
+ * La unica tarjeta con alto declarado: "Scale AI without losing what made it work in the
+ * first place" (#10310:911), `height:188px` en Figma.
+ *
+ * Va como `min-height` y no como `height`, y no es cosmetico. Un `height` explicito le
+ * gana al `align-self:stretch` de la fila, asi que la tarjeta se queda clavada en 188
+ * mientras la de al lado sigue el texto: a 1440 daba 188 contra 189.19 y a 1200/1300
+ * 188 contra 219.98 (donde "Adapt as your business" pasa a 5 lineas). Con `min-height`
+ * el 188 acts como piso y el stretch de la fila vuelve a mandar, asi que las dos quedan
+ * iguales a cualquier ancho.
+ *
+ * Es ademas lo que da 188 en lugar de los 219.98/189.19 naturales del texto, que es el
+ * alto que declara el nodo.
+ *
+ * Y va en CSS y no en el estilo inline porque los groups de core solo exponen
+ * `minHeight` en el Site Editor, no `height`. Por suerte `minHeight` es justo lo que hace
+ * falta.
+ */
+.ocx-l55__card--fixed {
+	min-height: 188px;
+}
+
+/*
+ * Variante con numero: `justifyContent:center` para que el bloque de numero +
+ * descripcion quede centrado en el alto de la tarjeta, y `alignItems:stretch` para que
+ * los dos textos ocupen el ancho completo (el centrado es del `text-align`, no del
+ * ancho de la caja).
+ */
+.ocx-l55__card--stat {
+	justify-content: center;
+	align-items: stretch;
+}
+
+/*
+ * Variante solo-texto: sin numero, asi que el H6 va centrado con `align-items:center` y
+ * el resto de la tarjeta queda vacio arriba y abajo.
+ *
+ * El `align-self:stretch` es explicito (Figma lo marca en "#10218:72764") y ademas es lo
+ * que empareja la fila 4: la tarjeta de "Adapt as your business" tiene 4 lineas y la de
+ * "Scale AI" 3, asi que sin esto la fila quedaria con dos alturas.
+ */
+.ocx-l55__card--text {
+	align-self: stretch;
+	align-items: center;
+	text-align: center;
+}
+
+/*
+ * El numero grande. Figma usa **Roboto** Bold 700 a 80px con 1.2 de line height y
+ * centrado, y es el unico nodo de todo el archivo que no usa Manrope.
+ *
+ * Roboto ya venia cargado en el theme (Google Fonts, `Roboto:wght@400;500;600;700`,
+ * registrado en theme.json con slug `roboto`), asi que replicar el nodo exacto no
+ * suma ninguna request ni peso nuevo. Manrope se mantiene en el `font-family` como
+ * fallback por si la fuente llegara a fallar.
+ *
+ * Los 80px son literales y no el preset `display-sm` de theme.json (80px con
+ * `fluid.min:48px`), porque ese preset bajaria el numero a 48px en mobile y Figma lo
+ * tiene fijo. El 700 tampoco tiene token de font-weight.
+ */
+.ocx-l55__value {
+	margin: 0;
+	font-family: Roboto, Manrope, sans-serif;
+	font-size: 80px;
+	font-weight: 700;
+	line-height: 1.2;
+	text-align: center;
+	color: var(--Color-Scheme-1-Text, #000);
+	/*
+	 * Cifras de ancho fijo para el count-up de `assets/js/stat-count-up.js`: sin esto
+	 * cada digito tiene el ancho de su propio glifo y el numero "se mueve" de lado
+	 * mientras sube. El texto sigue siendo el mismo, solo cambia el ancho de los
+	 * digitos. Ver BACKLOG.md.
+	 */
+	font-variant-numeric: tabular-nums;
+}
+
+/* La descripcion del stat: "Text/Medium/Normal", centrado. */
+.ocx-l55__label {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: center;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+/* La tarjeta solo-texto: "Heading/H6", 22px / 1.4, centrado. */
+.ocx-l55__text {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Heading-6, 22px);
+	font-weight: 500;
+	line-height: 1.4;
+	letter-spacing: -0.01em;
+	text-align: center;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+/*
+ * Mobile de "Stats / 55 /".
+ *
+ * Igual que las tres secciones anteriores, Figma no define variante mobile para este
+ * frame: es una instancia de la home y no un component set. El padding lo resuelven los
+ * tokens y H2, descripcion y H6 bajan por sus presets.
+ *
+ * El corte de la fila (H2 arriba, grid abajo) va en 1200. A esa altura el grid todavia
+ * entra en dos columnas: mide 728 y cada tarjeta 348, que levanta el numero de 80px
+ * y los textos de 22px sin problema. Recien por debajo de 600 las tarjetas pasan a una
+ * sola columna, porque a (350 - 32) / 2 = 159 de ancho el numero de 80px y los H6 de
+ * varias lineas quedan ilegibles.
+ *
+ * Los `flex:0 1 <px>` de las dos mitades vuelven a `0 1 auto` al apilar, porque en
+ * columna el basis pasaria a ser la altura.
+ *
+ * El `align-items:stretch` de la fila **no** va en este corte sino en la regla base, que
+ * aplica a todos los anchos. Con la fila en columna, ademas de igualar las alturas, es lo
+ * que hace que las tarjetas ocupen todo el ancho: core les da `align-items:flex-start` y
+ * sin esto cada una se mide contra su texto mas largo, que medidos a 390 daba anchos de
+ * 254.38, 242.06 y 350 en tarjetas de la misma fila.
+ */
+@media (max-width: 1199.98px) {
+	.ocx-l55__content {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 40px;
+	}
+
+	.ocx-l55__intro,
+	.ocx-l55__stats {
+		flex: 0 1 auto;
+	}
+}
+
+@media (max-width: 599.98px) {
+	.ocx-l55__stats {
+		gap: 16px;
+	}
+
+	.ocx-l55__row {
+		flex-direction: column;
+		gap: 16px;
+	}
+
+	/*
+	 * Los 188 de "Scale AI" son un alto de escritorio. Apilada, la tarjeta queda con
+	 * medio cuerpo de padding vacio y el texto pegado al techo, asi que el piso se
+	 * levanta y cada tarjeta vuelve a medir su texto.
+	 */
+	.ocx-l55__card--fixed {
+		min-height: 0;
+	}
+}
+
+/*
+ * Figma "FAQ / 3 /" (#10218:72614), novena seccion de la home, antes del footer.
+ *
+ * Mismo marco que las ocho anteriores: `padding 112px 64px` (tokens, 64/20 en mobile) y
+ * fondo blanco, asi que reusa `.ocx-section--large` sobre `.ocx-section`.
+ *
+ * Estructura: Container > Component (fila) > "Section Title" (H2 + boton) a la izquierda
+ * de 500px fijos + "Accordion List" de 6 items a la derecha. A 1440 la lista mide
+ * 1312 - 500 - 80 = 732.
+ *
+ * El `gap:80px` del "Container" no se declara porque tiene un solo hijo: es inerte, y
+ * declararlo solo suma una linea de CSS que no hace nada. Igual que en "Stats / 55 /".
+ */
+.ocx-f3__container {
+	width: 100%;
+	min-width: 0;
+}
+
+/*
+ * La fila. `align-items:flex-start` es el default MIN de Figma, que este nodo no
+ * sobreescribe: la columna de 500px queda pegada al tope contra una lista de 6 items que
+ * le llega a medir 815px, en vez de centrarse.
+ *
+ * `flex-wrap:nowrap` **no** hace falta aqui, al contrario que en "Stats / 55 /": solo un
+ * hijo lleva basis en px (los 500 de la intro) y el otro usa `1 1 0`, o sea que la suma de
+ * los basis es 580, muy por debajo del contenedor incluso a 1200. Core puede envolver
+ * tranquilamente.
+ */
+.ocx-f3__top {
+	flex-direction: row;
+	align-items: flex-start;
+	gap: 80px;
+	width: 100%;
+	min-width: 0;
+}
+
+/*
+ * "Section Title": `sizing.horizontal:fixed` de 500px, con `gap:32px` entre el H2 y el
+ * boton. Se declara `flex:0 1` y no `0 0` para que en un viewport improbable baje antes
+ * que romper la fila; a 1200 o mas nunca se llega a encoger.
+ */
+.ocx-f3__intro {
+	flex: 0 1 500px;
+	min-width: 0;
+	gap: 32px;
+}
+
+/*
+ * "Accordion List": `flex:1 1 0` para que tome los 732 que sobran. **Sin gap**, porque
+ * Figma no declara ninguno: los items se separan por el borde superior de 1px de cada
+ * pregunta, no por espacio en blanco.
+ *
+ * El `align-items:stretch` es obligatorio y es la tercera vez que este mismo detalle de
+ * core rompe algo (ver "Stats / 55 /" y "Layout / 210 /"). Core pone
+ * `align-items:flex-start` en `.is-layout-flex`, y en una columna el eje transversal es el
+ * horizontal, asi que sin esto cada item se ajusta a su texto y **la linea de arriba de
+ * cada pregunta mide lo que el texto, no la columna**: medido a 1440, la pregunta
+ * "Financial Services" daba 323.55 de ancho dentro de una lista de 732, con la respuesta
+ * al lado midiendo 378.41. Seis reglas de 1px desiguales, que es justo lo contrario de lo
+ * que hace un acordion.
+ */
+.ocx-f3__list {
+	flex: 1 1 0;
+	min-width: 0;
+	align-items: stretch;
+}
+
+/*
+ * El item, con el mismo `align-items:stretch` por el mismo motivo: si el item se ajusta a
+ * su contenido, el heading y el paragraph tampoco se estiran, y el borde de la pregunta
+ * se queda corto otra vez.
+ */
+.ocx-f3__item {
+	align-items: stretch;
+}
+
+/* El H2, tal cual el preset global: Manrope 500, 52px / 1.2, -0.01em, alineado a la izquierda. */
+.ocx-f3__heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Heading-2, 52px);
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	text-align: left;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+/*
+ * La pregunta: H4 de 36px con `padding 20px 0` y `strokeWeight:1px 0px 0px`, o sea un
+ * borde **superior** de 1px y nada mas.
+ *
+ * Figma se lo marca a los **seis** items, incluido el primero, asi que hay linea encima de
+ * la primera pregunta. No se "corrige" quitandosela al primero: seria inventarse un
+ * cambio que el archivo no pide.
+ *
+ * El color del borde es `#000000` de Figma (`fill_34dc0314`), no
+ * `--Color-Scheme-1-Border`, por el mismo motivo que en "Stats / 55 /" y que el divisor
+ * del timeline de "Layout / 121 /": el token del theme exporta negro y aqui el negro es
+ * justo lo que se quiere. Va como atributo del bloque (soporte de bordes por lado de
+ * core) y no en CSS, asi que queda editable en el Site Editor.
+ */
+.ocx-f3__question {
+	padding: 20px 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Heading-4, 36px);
+	font-weight: 500;
+	line-height: 1.3;
+	letter-spacing: -0.01em;
+	text-align: left;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+/*
+ * Los seis links a `/industries/`.
+ *
+ * `color:inherit` no es cosmetico: sin el, el link toma su color del theme y no
+ * del H4, asi que el texto dejaria de ser `--Color-Scheme-1-Text` y el shimmer se
+ * calcularia contra un color que no es el del texto. Con `inherit` el link hereda
+ * el token del H4, y el futuro tema oscuro se los lleva a los dos.
+ *
+ * `text-decoration:none` quita el subrayado que WordPress pone a los links. Figma
+ * no lo pide en este bloque: la separacion visual la hace el borde superior de 1px
+ * del H4, y un subrayado compite con el barrido del shimmer.
+ *
+ * No se toca el anillo de foco que dibuja el navegador: el shimmer ya marca el
+ * foco, pero el anillo del sistema es la garantia de que el teclado se ve, y se
+ * deja como esta.
+ */
+.ocx-f3__question a {
+	color: inherit;
+	text-decoration: none;
+}
+
+/*
+ * Shimmer de las seis preguntas al pasar el mouse, el efecto de "esta pensando".
+ *
+ * Como funciona: la banda se pinta con un gradiente al que se le recorta el fondo
+ * a la forma de las letras (`background-clip:text`), con el color del texto puesto
+ * a `transparent`. Lo que se ve no es un overlay ni un pseudoelemento encima: es el
+ * propio texto con el degradado dentro, asi que sigue siendo texto de verdad,
+ * seleccionable y leible por lectores de pantalla.
+ *
+ * **El portador del fondo es el `<a>`, no el H4**, y esa distincion es lo que hace
+ * que el recorrido no dependa del copy. El H4 tiene que medir el ancho de la columna
+ * para que el borde superior de Figma llegue de borde a borde de la lista: 732px
+ * para un texto de 324px. Un fondo en el H4 se moveria sobre esos 732px, con el 56%
+ * del recorrido por donde no hay letras, y medido eso hacia que la banda tardara
+ * **0.9s** en llegar al texto y luego solo estuviera encima el 35% del ciclo, en
+ * destellos de 50 a 200ms. Con el hover no pasaba nada visible. El `<a>` es en linea
+ * y se ajusta al texto, asi que su caja **es** el texto y el recorrido va a cuento.
+ *
+ * El relleno a transparente va **dentro** de un `@supports` que exige las dos
+ * capacidades, no solo una. Es el detalle que evita el fallo grave de esta tecnica:
+ * `color-mix()` es Baseline 2023 y si no existiera, `--ocx-shimmer-band` seria un
+ * valor invalido, el gradiente entero seria invalido y no habria fondo que recortar
+ * mientras el texto ya es invisible. El color de texto por defecto se declara
+ * primero y solo se pisa cuando se sabe que las dos cosas existen.
+ *
+ * `--ocx-shimmer-band` y `--ocx-shimmer-text` estan en tokens.css y se derivan de
+ * Color Scheme 1, asi que el tema oscuro no necesita tocar nada de este bloque.
+ *
+ * ## Los numeros del recorrido
+ *
+ * `background-size:280%` con la banda entre el 45% y el 55% del gradiente. Como la
+ * caja es el texto, la posicion de la banda es `x = 1.4 - 1.8p` (en fracciones de la
+ * caja, con `p` el `background-position`) y la banda mide un 28% de la caja, o sea la
+ * mitad son 14%. Esta sobre el texto entre `p = 14%` (borde izquierdo) y `p = 86%`
+ * (borde derecho), y esos son los dos keyframes.
+ *
+ * Esos numeros dependen **solo** de `background-size` y del ancho de la banda, no de
+ * cuanto ocupe el texto ni del ancho de la columna. Antes iban atados a la proporcion
+ * texto/caja y habia que remedirlos cada vez que cambiaba el copy; ahora son
+ * constantes. Con ellos la banda esta sobre el texto el 100% del recorrido, sin
+ * zonas muertas. Si se cambia el ancho de la banda, el `280%` o los stops, hay que
+ * rehacer esta cuenta, y sale sola.
+ *
+ * | keyframe | `background-position` | que pasa |
+ * |----------|-----------------------|----------|
+ * | 0%       | 86%                   | la banda entra por la izquierda, **el texto ya esta en el frame 1** |
+ * | 58%      | 14%                   | cruza las palabras y sale por la derecha |
+ * | 100%     | 14%                   | pausa con el texto solido |
+ *
+ * El ciclo es de 2.2s y no de 1.6s, y la banda va del 45% al 55% del gradiente y no
+ * del 46% al 54%, porque con 1.6s y 8% el efecto se veia pero timido: el paso duraba
+ * medio segundo y el trazo se aclaraba poco, asi que no se seguia con la vista. A 2.2s
+ * el barrido dura ~1.27s y la banda es un 28% de la caja. El ancho importa mas de lo
+ * que parece: lo que se percibe es la parte a plena intensidad, y con una banda de 8%
+ * esa parte era de 68px; al 10% son 46-52px de pleno y 60-68px de banda completa, con
+ * un delta medido de +119 sobre el token de 128.
+ *
+ * La pausa del 42% del ciclo es deliberada: es lo que hace que se lea como un destello
+ * y no como un texto que late. En la pausa el `background-position` se queda en 14%,
+ * donde la banda ya esta fuera del texto, y el reinicio del 14% al 86% no se ve porque
+ * los dos estados pintan las palabras enteras en negro.
+ *
+ * Se anima `background-position`, que no se compone en GPU y repinta por frame. Aqui
+ * es barato porque solo hay una linea de 36px y solo mientras hay hover, pero queda
+ * anotado por si se copia el patron a algo mas grande.
+ */
+@supports ((background-clip: text) or (-webkit-background-clip: text)) and (color: color-mix(in oklab, red, blue)) {
+	.ocx-f3__question a:is(:hover, :focus-visible) {
+		background-image: linear-gradient(100deg, var(--ocx-shimmer-text) 0%, var(--ocx-shimmer-text) 45%, var(--ocx-shimmer-band) 50%, var(--ocx-shimmer-text) 55%, var(--ocx-shimmer-text) 100%);
+		background-size: 280% 100%;
+		background-repeat: repeat;
+		background-position: 86% 0;
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+		-webkit-text-fill-color: transparent;
+		animation: ocx-shimmer-sweep 2.2s linear infinite;
+	}
+
+	/*
+	 * Con el relleno transparente, lo seleccionado se ve como un bloque de color
+	 * sin letras dentro. `currentColor` no sirve para arreglarlo porque aqui
+	 * `currentColor` ya es el propio `transparent`, asi que el relleno de la
+	 * seleccion se tiene que volver a poner a mano.
+	 */
+	.ocx-f3__question a::selection {
+		-webkit-text-fill-color: var(--Color-Scheme-1-Text, #000000);
+	}
+}
+
+@keyframes ocx-shimmer-sweep {
+	0% {
+		background-position: 86% 0;
+	}
+
+	58% {
+		background-position: 14% 0;
+	}
+
+	100% {
+		background-position: 14% 0;
+	}
+}
+
+/*
+ * Sin movimiento, la banda se queda congelada en el centro en vez de desaparecer: el
+ * hover sigue cambiando el aspecto de las palabras, pero ya no hay animacion. Es un
+ * cambio de color y no un desplazamiento, asi que no es lo que la preferencia pide
+ * evitar. El 50% es el centro exacto de la caja, y como la caja es el texto, es el
+ * numero que siempre se esperaria.
+ */
+@media (prefers-reduced-motion: reduce) {
+	.ocx-f3__question a:is(:hover, :focus-visible) {
+		animation: none;
+		background-position: 50% 0;
+	}
+}
+
+/*
+ * El `padding 20px 0` de la pregunta y el `padding 0 0 24px` de la respuesta van en CSS y
+ * no como atributo del bloque a proposito. El preset de 20px si existe, pero al setear
+ * solo `top` y `bottom` core deja el horizontal en su default y mete los 24px de
+ * `var:preset|spacing|50` en los lados, que corria la lista 48px. Y el 24 de la respuesta
+ * no es preset. Con los dos en CSS el padding horizontal queda en 0, que es lo del nodo.
+ */
+.ocx-f3__answer {
+	margin: 0;
+	padding-bottom: 24px;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+/*
+ * Mobile de "FAQ / 3 /".
+ *
+ * Figma no define variante mobile para este frame: es una instancia de la home y no un
+ * component set, asi que no hay ni desktop ni mobile que consultar. El padding de la
+ * seccion lo resuelven los tokens y el H2 y el H4 bajan por sus presets (52 -> 36 y
+ * 36 -> 24).
+ *
+ * El corte de la fila va en 1200, el mismo que en "Layout / 59 /", "Layout / 121 /",
+ * "Layout / 210 /" y "Stats / 55 /". Abajo de 1200 la columna de 500px+Q no dejan ancho
+ * util para la lista: a 1199 el contenido es 1071 y la lista se caeria a 491 con un H4 de
+ * 36px, queTodavia entra, pero ya a 1100 daria 392 y las preguntas empezarían a cortar.
+ * Apiladas, la lista toma los 1159 completos y las preguntas quedan en una linea.
+ *
+ * El `flex:0 1 500px` de la intro vuelve a `0 1 auto` al apilar, porque en columna el
+ * basis pasaria a ser la altura. Los gaps bajan a 40 (fila) y 16 (intro), como en las
+ * demas secciones.
+ */
+@media (max-width: 1199.98px) {
+	.ocx-f3__top {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 40px;
+	}
+
+	.ocx-f3__intro {
+		flex: 0 1 auto;
+		gap: 16px;
+	}
+}
+
+/* ---------------------------------------------------------------------------
+ * Columna fija en las tres secciones de dos columnas
+ *
+ * "Layout / 121 /" (Why OpenCX), "Stats / 55 /" (Results) e "Industries / 3 /"
+ * comparten un mismo comportamiento pedido explícitamente: la columna de la
+ * izquierda -- etiqueta, H2 y botón -- queda inmóvil mientras la de la derecha
+ * avanza, y se suelta sola cuando la derecha termina de pasar. Es
+ * `position: sticky` pelado, sin JS ni scroll listener: eso ya lo hace el
+ * navegador, y con `top` fijo el elemento se despega solo al llegar al final de
+ * su contenedor, que es exactamente el "hasta que finalice el scroll de la
+ * derecha".
+ *
+ * Va en un bloque compartido y no en la regla base de cada sección por dos
+ * razones. Las tres apilan en el mismo corte (`max-width: 1199.98px`), así que el
+ * comportamiento es idéntico en las tres y repetirlo tres veces solo multiplica la
+ * chance de que una se quede sin actualizar. Y el `top` no es un número inventado
+ * sino el padding de la sección.
+ *
+ * El `top` es el padding de la sección (112px a >=1200) a propósito: cuando el
+ * borde superior de la sección llega a y=0, la columna está a y=112, y `top:112px`
+ * la deja exactamente ahí. El anclaje no da un salto, y mientras queda clavada
+ * sigue alineada con el primer ítem de la columna derecha, que también arranca a
+ * 112. Un `top` inventado (digamos 40px) dejaría la columna flotando con un margen
+ * distinto al del resto de la sección.
+ *
+ * El `align-self: start` está aunque las tres filas ya declaren
+ * `align-items: flex-start`. Un ítem flex estirado no tiene recorrido: `position:
+ * sticky` sobre él no se mueve nunca y no falla de ninguna forma visible, solo deja
+ * de hacer efecto. Es el fallo clásico de esto, así que la defensa va al lado de la
+ * regla que la evita en vez de confiar en que nadie va a tocar la fila.
+ */
+@media (min-width: 1200px) {
+	.ocx-l121__column,
+	.ocx-l55__intro,
+	.ocx-f3__intro {
+		position: sticky;
+		top: var(--Section-Padding-padding-section-large, 112px);
+		align-self: start;
+	}
+}
+
+/*
+ * Figma "Testimonial / 23 /" (#10218:72914), decima seccion de la home, antes del footer.
+ *
+ * Mismo marco que las nueve anteriores: `padding 112px 64px` (tokens) y fondo blanco, asi
+ * que reusa `.ocx-section--large` sobre `.ocx-section`.
+ *
+ * Estructura: Container (gap 80) > "Section Title" (H2 centrado) + "Content" (gap 48) >
+ * fila de 6 tarjetas + "Slider Dots" + boton "Explore Testimonials".
+ *
+ * El `gap:24px` del "Section Title" no se declara: tiene un solo hijo, el H2.
+ */
+.ocx-t23__container {
+	width: 100%;
+	min-width: 0;
+	gap: 80px;
+}
+
+/*
+ * Titulo: el tope de 768px va en el **grupo** y no en el `h2`, que es donde lo declara Figma.
+ * Antes el `max-width` estaba en el `h2` (675px) y eso centraba el texto dentro de la caja pero
+ * dejaba la caja pegada al inicio del contenedor: medido, el centro del titulo quedaba 318px a
+ * la izquierda a 1440 y 558px a 1920. Ver el bloque de abajo y el BACKLOG.
+ */
+.ocx-t23__title {
+	/*
+	 * Layout del titulo, segun Figma: columna, hijos centrados, tope de 768 y 24 de gap.
+	 *
+	 * `align-self` es `center` y no el `stretch` literal de Figma a proposito, y es medido:
+	 * con `stretch` + `max-width` el bloque queda de 768px pero **pegado al inicio** del
+	 * contenedor, porque flexbox alinea al cross-start un item estirado cuyo transversal
+	 * quedo limitado por `max-width`. Medido a 1440 el centro del titulo caia 272px a la
+	 * izquierda del centro del contenedor, y 512px a 1920. Con `center` el desvio es 0.
+	 * `width: 100%` mantiene el comportamiento "llena lo disponible hasta el tope" del
+	 * `stretch`, que es lo que hace que el `max-width` sea el que corta.
+	 *
+	 * El `gap: 24px` gana al `:where(.is-layout-flex) { gap: 0 }` de los global styles por
+	 * especificidad (`:where` no cuenta) y por orden de carga, y es el mismo mecanismo que
+	 * usan `.ocx-t23__container` y `.ocx-t23__body`.
+	 */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 24px;
+	align-self: center;
+	width: 100%;
+	max-width: var(--Max-Width-max-width-large, 768px);
+}
+
+.ocx-t23__heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Heading-2, 52px);
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	text-align: center;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+/*
+ * "Content": columna con `alignItems:center` y gap 48. El centrado solo afecta al boton,
+ * que es `hug`; la fila y los dots llevan `alignSelf:stretch` en Figma, asi que acá van con
+ * `width:100%`.
+ */
+.ocx-t23__body {
+	align-items: center;
+	gap: 48px;
+	width: 100%;
+	min-width: 0;
+}
+
+/*
+ * El track: la fila de 6 tarjetas.
+ *
+ * **Es un carrusel, no una fila.** 6 x 405 + 5 x 32 = 2590 de ancho en un contenedor de
+ * 1312: entran 3.2 tarjetas, que es justo lo que dibuja Figma (la 4ta asoma 31px, y la
+ * flecha derecha esta en x=1260, encima de ese borde).
+ *
+ * Por eso el track es un contenedor de scroll horizontal con `scroll-snap`, que es lo unico
+ * que da un carrusel **real sin JS**: se desliza con el dedo, con la rueda y con shift+rueda,
+ * y engancha en cada tarjeta. El scrollbar se oculta porque Figma no lo tiene.
+ *
+ * `flex-wrap:nowrap` es obligatorio: core pone `flex-wrap:wrap` en `.is-layout-flex` y las 6
+ * tarjetas se irian a 3 filas de 2 en vez de desbordar. Es el problema del "Stats / 55 /"
+ * de nuevo, pero aca al revés: sin el `nowrap` no hay desborde, hay wrap, y `scrollWidth`
+ * da 1312 (el del contenedor) porque el track scrollea, asi que el chequeo de overflow
+ * tampoco lo detecta.
+ *
+ * `align-items:flex-start` es el default MIN de Figma, que este nodo no sobreescribe: cada
+ * tarjeta es `vertical:hug`, o sea que quedan pegadas al tope con finales desiguales. Es lo
+ * que dice el archivo, pero con contenido real de 6 testimonios de largo parecido lo natural
+ * seria estirarlas; ver el BACKLOG.
+ */
+.ocx-t23__track {
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	gap: 32px;
+	width: 100%;
+	min-width: 0;
+	overflow-x: auto;
+	overscroll-behavior-x: contain;
+	scroll-snap-type: x mandatory;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.ocx-t23__track::-webkit-scrollbar {
+	display: none;
+}
+
+/*
+ * La tarjeta: `sizing.horizontal:fixed` de 405px, `padding 32px`, `gap 32px`, fondo
+ * `--Color-Neutral-Lightest`, radio 16px y borde de 1px (el `rgba(0, 0, 0, 0.15)` de
+ * Figma, no `--Color-Scheme-1-Border`: ver "Stats / 55 /").
+ *
+ * `flex:0 0 min(405px, 100%)` resuelve el ancho sin ningun breakpoint: 405px mientras entre
+ * y `100%` cuando el contenedor se queda sin lugar, que recien pasa a 437px de viewport
+ * (405 + los 32 de padding de la seccion en mobile). El `scroll-snap-align:start` es lo que
+ * hace que cada tarjeta sea un punto de enganche.
+ *
+ * El fondo, el radio y el borde van como atributos del bloque para que queden editables en el
+ * Site Editor, igual que en las tarjetas de "Stats / 55 /". El padding y los gaps van en CSS
+ * porque 32 no es preset de spacing.
+ */
+.ocx-t23__card {
+	flex: 0 0 min(405px, 100%);
+	min-width: 0;
+	padding: 32px;
+	gap: 32px;
+	scroll-snap-align: start;
+}
+
+/*
+ * El grupo que envuelve logo + contenido en las tarjetas 5 y 6 ("Content", `gap 48`). En las
+ * tarjetas 1 a 3 el nodo equivalente tiene un solo hijo, asi que su gap de 48 es inerte y se
+ * colapsa: por eso el markup no es uniforme entre tarjetas, igual que en el archivo.
+ */
+.ocx-t23__group {
+	gap: 48px;
+}
+
+/*
+ * El contenido de la tarjeta ("Content", `gap 24`). El `align-items:stretch` es
+ * obligatorio y es la cuarta vez que el `align-items:flex-start` de core rompe algo: en una
+ * columna el eje transversal es el horizontal, asi que sin esto la fila del avatar se
+ * ajustaria a su texto en vez de ocupar los 339px de contenido de la tarjeta.
+ */
+.ocx-t23__inner {
+	align-items: stretch;
+	gap: 24px;
+}
+
+/* La cita: `Text/Medium/Normal`, o sea 18px / 1.5, peso 400, alineada a la izquierda. */
+.ocx-t23__quote {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+/* La fila del avatar: `alignItems:center` y `gap 16`. */
+.ocx-t23__avatar {
+	align-items: center;
+	gap: 16px;
+}
+
+/*
+ * El avatar: un `ELLIPSE` de 48x48 con `objectFit:cover`, o sea que se recorta al centro. El
+ * `img` es un rectangulo y el circulo lo hace el `border-radius`; aca solo va el tamano,
+ * el recorte real va en el hijo (ver `.ocx-t23__avatar-img img` mas abajo).
+ *
+ * El archivo es `avatar-1.png`, que ya estaba en el theme sin usarse y resulto ser
+ * **byte-identico** al `imageRef` que exporta Figma para los 6 avatares (`imageRef` es unico
+ * porque las 6 son instancias de la misma plantilla `EL-18ba1cef`): md5
+ * `3e4a862abafeecc87ecada3720a7943d`, 1260x709. No se agrega una copia.
+ */
+.ocx-t23__avatar-img {
+	width: 48px;
+	height: 48px;
+	flex: 0 0 auto;
+	overflow: hidden;
+}
+
+/*
+ * Nombre y rol: `Text/Regular/Semi Bold` (600) y `Text/Regular/Normal` (400), los dos de
+ * 16px / 1.5. El grupo **no** declara gap, o sea 0 entre las dos lineas, que es lo que
+ * hace que el bloque mida justo 48 y combine con la altura del avatar.
+ */
+.ocx-t23__name,
+.ocx-t23__role {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+.ocx-t23__name {
+	font-weight: 600;
+}
+
+.ocx-t23__role {
+	font-weight: 400;
+}
+
+/*
+ * La imagen del avatar. El bloque `core/image` pone la clase en el `<figure>`, no en el
+ * `<img>`, asi que el recorte circular y el `object-fit` van en el hijo: si se dejaran en la
+ * figura, el `img` conservaria su relacion natural (1260x709) y se veria achatado a 48x27
+ * dentro de un circulo vacio.
+ *
+ * El selector lleva dos clases a proposito: `core` declara `.wp-block-image img` con
+ * `height:auto` y `max-width:100%`, que tiene la misma especificidad (0,1,1) que
+ * `.ocx-t23__avatar-img img` y depende del orden de carga. Anadir `.ocx-t23__avatar` sube a
+ * (0,2,1) y gana siempre.
+ */
+.ocx-t23__avatar .ocx-t23__avatar-img img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	max-width: none;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+/* Los logos de cliente: 120x48 fijos, dos variantes distintas ("Logo=1" y "Logo=2"). */
+.ocx-t23__logo {
+	width: 120px;
+	height: 48px;
+}
+
+/*
+ * Los dots: fila centrada con gap 8 y `sizing.vertical:fixed` de 28, o sea que los 8px de
+ * cada dot van centrados en una banda de 28. El primero es el activo (`#000000` opaco) y los
+ * otros 5 al 20% de opacidad.
+ *
+ * Son `core/spacer` y no paragraphs vacios: es un bloque de core justamente para separar o
+ * decorar, y viene con `aria-hidden`, asi que no mete un `<p>` vacio en el documento.
+ *
+ * Los dots son **estaticos**: reflejan la posicion 1 de 6 que dibuja Figma, pero sin JS
+ * no pueden seguir el scroll del track. Y las flechas de "Slider Arrow" (que Figma posiciona
+ * en absoluto en x=-28 y x=1260) no se implementaron: son controles y sin JS serian botones
+ * que no hacen nada. Ver el BACKLOG.
+ */
+.ocx-t23__dots {
+	/*
+	 * `display:flex` va aca y no viene de core: los dots son un bloque `core/html`, no un
+	 * `core/group`, asi que no reciben `is-layout-flex`. Sin esto los botones quedan inline y
+	 * el whitespace entre ellos en el HTML cuenta como separador (medido: pitch 11.61 en vez
+	 * de 16, y la banda 28.8 en vez de 28 por la linea base).
+	 */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	min-height: 28px;
+	width: 100%;
+}
+
+/*
+ * El viewport del track: un contenedor sin layout propio que solo aporta `position:relative`
+ * para que las flechas puedan superponerse. Hace falta porque las flechas **no** pueden ir
+ * dentro del track: un `position:absolute` dentro de un contenedor con scroll se posiciona
+ * contra su *padding box* pero **se mueve con el contenido**, asi que viaja con el scroll.
+ *
+ * `layout:default` en el markup para que el div no sea un flex container: el track tiene que
+ * seguir siendo un bloque de ancho completo.
+ *
+ * El `width:100%` no es cosmetico. El body es una columna con `align-items:center`, asi que
+ * sin el el viewport seria un flex item `fit-content` y su ancho se derivaria de su contenido:
+ * el `100%` del track se volveria **ciclico** (el padre se define por el hijo que se define
+ * por el padre) y el navegador lo resuelve con la parte en px, dejando las tarjetas en 405 y
+ * desbordando la pagina a 390 (medido: `scrollWidth` 1084 con viewport 390). Con el viewport
+ * en 350 el `min(405px, 100%)` de la tarjeta resuelve a 350 y el pitch pasa a 382.
+ */
+.ocx-t23__viewport {
+	position: relative;
+	width: 100%;
+	min-width: 0;
+}
+
+/*
+ * Las flechas. Se posicionan en absoluto sobre `inset:0`, o sea exactamente la caja del
+ * track, y se reparten con `space-between`: la anterior en el borde izquierdo visible y la
+ * siguiente en el derecho. `pointer-events:none` en el contenedor y `auto` en los botones para
+ * que el track siga scrolleando a traves de ellas.
+ *
+ * Figma las pone en absoluto en `x:-28` y `x:1260` respecto de la seccion, pero la **izquierda
+ * quedaria fuera del viewport** (el padding lateral de la seccion es de 64, asi que un `-28`
+ * se recorta) y la derecha quedaria a 52 del borde, no en el borde. Se descarta la posicion
+ * literal: superpuestas sobre los bordes del area visible es lo unico que las hace usables, y
+ * es el montage estandar de un carrusel. Ver el BACKLOG.
+ *
+ * `display:none` por defecto: son **controles**, y sin JS serian dos botones que no hacen
+ * nada. El JS marca la seccion con `data-ocx-carousel="ready"` recien cuando ya estan
+ * conectados, y recien ahi aparecen.
+ */
+.ocx-t23__arrows {
+	display: none;
+	position: absolute;
+	inset: 0;
+	align-items: center;
+	justify-content: space-between;
+	padding-inline: 16px;
+	pointer-events: none;
+}
+
+.ocx-t23__section[data-ocx-carousel] .ocx-t23__arrows {
+	display: flex;
+}
+
+/*
+ * El boton de flecha envuelve el SVG exportado de Figma, que es de 48x48 e **incluye el fondo
+ * `#F2F2F2` y el borde blanco cocinados dentro** (por eso el boton no necesita fondo ni borde
+ * ni padding). El area de 48x48 es el minimo tactil razonable.
+ */
+.ocx-t23__arrow {
+	flex: 0 0 auto;
+	padding: 0;
+	border: 0;
+	background: none;
+	line-height: 0;
+	cursor: pointer;
+	/*
+	 * `pointer-events` se hereda y el contenedor lo apaga para no tapar el scroll del track,
+	 * asi que cada boton lo tiene que volver a prender. Sin esto los dots funcionan pero las
+	 * flechas no: el click pasa de largo y solo responden a `.click()` desde JS.
+	 */
+	pointer-events: auto;
+}
+
+.ocx-t23__arrow img {
+	display: block;
+	width: 48px;
+	height: 48px;
+}
+
+.ocx-t23__arrow:hover:not(:disabled) img {
+	opacity: 0.75;
+}
+
+/* En los extremos no hay a donde ir, asi que el boton se apaga en vez de quedar inerte. */
+.ocx-t23__arrow:disabled {
+	cursor: default;
+}
+
+.ocx-t23__arrow:disabled img {
+	opacity: 0.35;
+}
+
+/* Los dots ahora son `<button>` reales (ver el JS): 8x8, sin padding ni borde de core. */
+.ocx-t23__dot {
+	width: 8px;
+	height: 8px;
+	flex: 0 0 auto;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: var(--Color-Scheme-1-Text, #000);
+	appearance: none;
+	-webkit-appearance: none;
+}
+
+.ocx-t23__dot[aria-current] {
+	opacity: 1;
+}
+
+.ocx-t23__dot:not([aria-current]) {
+	opacity: 0.2;
+}
+
+/*
+ * `disabled` en el markup y el JS lo saca: sin JS los dots no son tabulables y se ven
+ * exactamente igual que la version decorativa anterior. Con JS pasan a ser controles.
+ */
+.ocx-t23__dot:disabled {
+	cursor: default;
+}
+
+.ocx-t23__dot:not(:disabled) {
+	cursor: pointer;
+}
+
+.ocx-t23__dot:not(:disabled):hover {
+	opacity: 0.6;
+}
+
+/* Foco visible en los tres controles y en el track. */
+.ocx-t23__arrow:focus-visible,
+.ocx-t23__dot:focus-visible {
+	outline: 2px solid var(--Color-Scheme-1-Text, #000);
+	outline-offset: 4px;
+	border-radius: 2px;
+}
+
+.ocx-t23__track:focus-visible {
+	outline: 2px solid var(--Color-Scheme-1-Text, #000);
+	outline-offset: -2px;
+}
+
+/*
+ * Mobile de "Testimonial / 23 /".
+ *
+ * Figma no define variante mobile: es una instancia de la home y no un component set. El
+ * padding de la seccion lo resuelven los tokens y el H2 baja 52 -> 36.
+ *
+ * **No hay breakpoint para el ancho de la tarjeta**: `flex:0 0 min(405px, 100%)` la baja a
+ * `100%` sola cuando no entra. Por debajo de 600 el quote baja de 18 a 16 por el token
+ * `--Text-Sizes-Text-Medium`, asi que las tarjetas quedan un poco mas bajas.
+ */
+@media (max-width: 599.98px) {
+	.ocx-t23__container {
+		gap: 40px;
+	}
+
+	.ocx-t23__body {
+		gap: 24px;
+	}
+}
+
+/*
+ * La variante "Read case study" de los botones de tarjeta.
+ *
+ * Es la misma instancia del set 4179:8871 que "Explore Testimonials", pero con dos overrides
+ * en el texto: `#000000` en vez de `#B69E52` y `Text/Regular/Normal` (400) en vez de
+ * `Text/Regular/Medium` (500). El chevron no lleva override, asi que sigue siendo el
+ * `chevron_right` negro de siempre, igual que en el boton dorado.
+ *
+ * El `borderRadius:"12px 0px 12px 0px"` del nodo tampoco se replica, por lo mismo que en
+ * "FAQ / 3 /": sin fondo ni borde ni padding el radio no dibuja nada.
+ *
+ * Ojo con el selector: hace falta la clase del boton **y** la del modificador, porque
+ * `.ocx-btn--link` define el color y el peso con la misma especificidad (0,2,0) y el orden en
+ * el archivo no alcanza para desempatar.
+ */
+.wp-block-button.ocx-btn--link.ocx-btn--link--plain .wp-block-button__link {
+	color: var(--Color-Scheme-1-Text, #000);
+	font-weight: 400;
+}
+
+/* ---------------------------------------------------------------------------
+ * "CTA / 25 /" — seccion de cierre: H2 + parrafo + un boton, todo centrado.
+ *
+ * El fondo **no** se declara aca: es `backgroundColor:"base"` en el markup, que es el fondo de
+ * seccion (`#FFFFFF` en el nodo).
+ *
+ * El padding si, y a proposito: los valores del nodo son fijos
+ * (`padding: 112px 64px`) y los de la cadena de clases no los dan. Ver la nota de padding mas
+ * abajo, que es la razon de que esta regla tenga dos clases y no una.
+ *
+ * Los dos `gap: 80px` de Figma (seccion y Container) son inertes: cada uno de esos nodos
+ * tiene un solo hijo. Quedan declarados igual para que el editor muestre la estructura del
+ * archivo, que es el criterio que se viene usando.
+ * --------------------------------------------------------------------------- */
+.ocx-c25__section {
+	gap: 80px;
+
+	/*
+	 * `align-items: center` segun el layout dado. Queda anulado por el `align-self: stretch`
+	 * del container, que en flexbox siempre le gana al `align-items` del padre para ese item,
+	 * asi que el container sigue ocupando el ancho completo como en Figma. Se declara igual
+	 * porque es lo que dice el nodo, y depende del orden: esta regla esta DESPUES de
+	 * `.ocx-section--stretch`, que tambien pone `align-items: stretch` con la misma
+	 * especificidad (0,1,0).
+	 */
+	align-items: center;
+}
+
+/*
+ * Padding: 112 arriba / 64 lateral / 112 abajo, los cuatro valores del nodo, fijos en todos los
+ * anchos.
+ *
+ * No alcanza con la cadena de clases. `.ocx-section` (0,1,0) pone
+ * `padding: var(--Section-Padding-padding-section-medium, 80px) var(--Page-Padding-padding-global, 64px)`
+ * y `.ocx-section--large` (0,1,0) sube el vertical a
+ * `var(--Section-Padding-padding-section-large, 112px)`: en desktop eso ya daba 112/64, pero esos
+ * tokens se redefinen a valores phone en `tokens.css` dentro de
+ * `@media (max-width: 1199.98px)` (`--Page-Padding-padding-global: 20px`,
+ * `--Section-Padding-padding-section-large: 64px`), y por debajo de 1200 la seccion bajaba a
+ * **64/20**. Con dos clases (0,2,0) esta regla gana en cualquier ancho y sin importar el orden.
+ *
+ * Ojo: el `style.spacing.padding` del atributo del bloque **no sirve aca**. En los nueve
+ * `.ocx-section` esta en el markup y core lo descarta en silencio (ver BACKLOG): el rendered
+ * llega con `style="margin-top:0;margin-bottom:0"` y sin padding. Solo el hero, que es
+ * `layout: default`, recibe el suyo. Los valores van ahi como px duros, no como
+ * `var:preset|spacing|…`, que tampoco se emiten aunque los presets existan en `theme.json`.
+ */
+.ocx-section.ocx-c25__section {
+	padding: 112px 64px;
+}
+
+.ocx-c25__container {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+	gap: 80px;
+
+	/*
+	 * Figma: `alignItems:stretch`. Hace falta declararlo porque core pone
+	 * `align-items: flex-start` en los grupos con `orientation: vertical`, y con flex-start el
+	 * hijo se encoge a su max-content en vez de llenar. Sin esto el `Content` midio 1279.81
+	 * (el max-content del H2) en vez de 1792, y todo el bloque quedo 256px a la izquierda.
+	 */
+	align-items: stretch;
+
+	/*
+	 * El tope de 768 del nodo va **aca**, en el Container, y no solo en el Content. Es la unica
+	 * forma de que el Content mida 768 y quede centrado a la vez, porque el `align-self: stretch`
+	 * y los margenes auto son mutuamente excluyentes en flexbox (el `stretch` solo aplica "if
+	 * neither of the cross-axis margins are auto"). Ver la nota larga de `.ocx-c25__content`.
+	 *
+	 * Con el `width: 100%` mas este `max-width`, el Container mide 768 y los margenes auto lo
+	 * centran; despues el Content si se estira a 768 con su `align-self: stretch`.
+	 */
+	max-width: var(--Max-Width-max-width-large, 768px);
+}
+
+/*
+ * Centrado del Container, con margenes auto.
+ *
+ * Hace falta el selector con combinador de hijo, no un `.ocx-c25__container` pelado, porque
+ * **WordPress resetea los margenes de los hijos de un flex layout**:
+ * `.is-layout-flex > :is(*, div) { margin: 0 }`. Esa regla es (0,1,1) —la clase mas el tipo que
+ * `:is()` toma de su argumento mas especifico, `div`—, asi que le gana a (0,1,0). Con
+ * `margin-inline: auto` en la regla pelada computaba `0px/0px` y no movia nada. Con el
+ * combinador de hijo queda (0,2,0) y gana.
+ */
+.ocx-section > .ocx-c25__container {
+	margin-inline: auto;
+}
+
+/*
+ * Figma: `alignSelf:stretch, maxWidth:768px` y `alignItems:center, gap:32px`.
+ *
+ * El `align-self: stretch` se mantiene, y el `max-width: 768px` tambien, pero **el tope que produce
+ * la caja de 768 esta en el Container** (arriba), no aca. Con el `max-width` solo en el Content:
+ *
+ * - `stretch` + `max-width` deja el bloque de 768 pegado al inicio de la linea, porque un item
+ *   estirado que topa con su `max-width` se alinea como si fuera `flex-start`. Medido: el bloque
+ *   en `x=64`, con el H2 y el boton 512px a la izquierda del centro en 1920.
+ * - Centrarlo con `margin-inline: auto` aca **funciona pero rompe el ancho**: el flexbox dice que
+ *   `stretch` solo aplica "if neither of the cross-axis margins are auto", asi que con margenes auto
+ *   el Content deja de estirarse y se dimensiona por su contenido. Medido: `719.33px`, que es el
+ *   max-content del parrafo, en vez de 768.
+ *
+ * O sea que los margenes auto y el `align-self: stretch` son **mutuamente excluyentes**. Por eso
+ * el `max-width` de aca es no-op (el Content nunca pasa de 768 porque su padre ya mide 768): se
+ * deja declarado porque el nodo lo pide, y la caja de 768 la produce el del Container.
+ */
+.ocx-c25__content {
+	align-self: stretch;
+	max-width: var(--Max-Width-max-width-large, 768px);
+	align-items: center;
+	gap: 32px;
+}
+
+/*
+ * Figma: `alignSelf:stretch, alignItems:stretch, sizing:fill, gap:24px`. El `stretch` del
+ * `align-items` es el que estira el H2 y el parrafo a todo el ancho: sin esto serian
+ * fit-content y, como el grupo padre los alineaba al inicio, el texto quedaria a la izquierda
+ * aunque lleve `text-align: center` (el `center` centraria dentro de una caja que ya esta
+ * corrida). Es el mismo mecanismo del descentrado del titulo de "Testimonial / 23 /".
+ */
+.ocx-c25__text {
+	align-self: stretch;
+	align-items: stretch;
+	gap: 24px;
+}
+
+/* `Heading/H2`: Manrope Medium 52, lh 1.2, ls -0.01em, centrado, #000. */
+.ocx-c25__heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Heading-2, 52px);
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	text-align: center;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+/* `Text/Medium/Normal`: Manrope Regular 18, lh 1.5, centrado, #000. */
+.ocx-c25__lead {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: center;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+/* `Actions`: fila, gap 16, `hug`. Centrada porque el padre las centra en el eje transversal. */
+.ocx-c25__actions {
+	gap: 16px;
+	justify-content: center;
+}
+
+/*
+ * El boton es el componente `Button` con `Style=Primary` (`#4179:8872`), el mismo que usan
+ * los dos headers, asi que se reusa `.ocx-btn--primary` y no se toca esa clase: solo se
+ * agregan los tres detalles que el nodo de esta seccion tiene y la clase no.
+ *
+ * - `strokes: #B69E52, strokeWeight: 1px`: la clase compartida declara `border: 0`.
+ * - `Text/Regular/Medium` es Manrope **Medium (500)**; la clase compartida usa `font-weight: 300`.
+ * - El label del nodo esta en `#FFFFFF`; la clase compartida usa `--Color-Spring-Wood`
+ *   (`#F8F6F0`), que es un blanco con un pelo de crema. La diferencia no se ve, pero el nodo
+ *   dice blanco y el token `--Color-White` existe.
+ *
+ * Especificidad (0,3,0) contra (0,2,0) de `.ocx-btn--primary`, asi que gana sin depender del
+ * orden en el archivo. Queda pendiente de decision si esos tres detalles deberian ser globales
+ * (ver BACKLOG).
+ */
+.wp-block-button.ocx-c25__btn .wp-block-button__link {
+	border: 1px solid var(--Color-Husk, #b69e52);
+	font-weight: 500;
+	color: var(--Color-White, #fff);
+}
+
+/*
+ * =============================================================================
+ * Footer / 3 / (#10244:544)
+ * =============================================================================
+ *
+ * Es el unico template part compartido por `front-page.html` e `index.html`, asi
+ * que estos estilos no pueden depender de ninguna de las dos plantillas.
+ *
+ * Capa 1 - caja de la seccion. Reusa `.ocx-section` para el padding tokenizado
+ * (80/64 escritorio, 48/20 por debajo de 1200) y el fondo, y declara el ancho
+ * de 1440px del nodo. `.ocx-section--frame` hace lo mismo pero se alinea a la
+ * izquierda por encima de 1440; aqui se centra, que es lo que corresponde a una
+ * pagina que grows hacia los dos lados.
+ *
+ * `align-items: center` es la directiva del layout; el unico hijo lleva
+ * `align-self: stretch`, asi que el resultado es el `stretch` de Figma.
+ */
+.ocx-footer {
+	box-sizing: border-box;
+	width: 1440px;
+	max-width: 100%;
+	margin-inline: auto;
+	align-items: center;
+	gap: 80px;
+}
+
+/*
+ * Capa 2 - `Container`: columna de 80px entre `Content` y `Credits`.
+ *
+ * `align-items: stretch` es obligatorio: core pone `flex-start` en las columnas
+ * y sin esto `Content` se midiera al contenido (359px en vez del ancho del
+ * nodo) en vez de ocupar toda la caja.
+ *
+ * El tope de 1280px es lo que hace cuadrar las medidas de las dos columnas:
+ * `816 + 64 + 400 = 1280`. Sin el, las columnas de `Content` se repartirian
+ * los 1312px disponibles a partes iguales (624 y 624) en vez de 816 y 400.
+ *
+ * `width: 100%` + `max-width` y no `align-self: stretch` + `max-width`: con
+ * `stretch` Chrome estira el hijo hasta el tope y lo deja pegado al inicio, y
+ * los `margin: auto` no absorben el sobrante, de modo que el bloque de 1280
+ * quedaba en `x=64` con 96px de vacio a la derecha en vez de 80 y 80.
+ */
+.ocx-footer__container {
+	align-items: stretch;
+	gap: 80px;
+	width: 100%;
+	max-width: var(--Container-container-large, 1280px);
+	margin-inline: auto;
+}
+
+/*
+ * Capa 3 - `Content`: fila de 64px, `align-self: stretch` y `align-items:
+ * flex-start`.
+ *
+ * El `flex-start` corrige el `center` por defecto de core: la columna izquierda
+ * mide 288px y la derecha 185px, asi que centrarlas las separaria 48px, que es
+ * justo lo que Figma no hace.
+ */
+.ocx-footer__main {
+	align-self: stretch;
+	align-items: flex-start;
+	gap: 64px;
+}
+
+/*
+ * Capa 4 - las dos columnas.
+ *
+ * `flex: 1 0 0` en las dos reparte el sobrante a partes iguales, y el
+ * `max-width: 400px` de la derecha recorta el reparto: de los 1216px libres
+ * (`1280 - 64` del gap) la derecha se queda con 400 y lo que sobra, 816, es
+ * para la izquierda. Es la unica combinacion que produce las dos medidas del
+ * nodo, y por eso el `flex-shrink: 0` no desborda en ningun ancho.
+ *
+ * El `min-width: 320px` de la izquierda corrige un artefacto de layout de
+ * Chrome, no una medida del diseno. Al repartir el sobrante, el navegador
+ * calcula la altura de la linea con el ancho *intermedio* de la columna
+ * (su max-content, 318px: el ancho maximo de la linea de direccion) y no la
+ * recalcula despues del crecimiento a 816px. A 318px la direccion parte en
+ * dos lineas, y esos 21px se quedaban como una franja vacia entre las columnas
+ * y el divisor: `.ocx-footer__main` media 309px en vez de 288px y el footer
+ * 603px en vez de 582px. Con un minimo de 320px la direccion nunca parte en
+ * esa pasada intermedia, las dos alturas coinciden en 288px y el ancho visible
+ * no cambia (816 > 320 siempre que las dos columnas van en fila).
+ *
+ * Ojo: si la direccion llega a medir mas de 320px en una sola linea, este
+ * workaround hay que volver a subirlo.
+ */
+.ocx-footer__brand {
+	align-items: flex-start;
+	gap: 32px;
+	flex: 1 0 0;
+	min-width: 320px;
+}
+
+.ocx-footer__links {
+	align-items: flex-start;
+	gap: 24px;
+	flex: 1 0 0;
+	min-width: 0;
+	max-width: var(--Max-Width-max-width-xsmall, 400px);
+}
+
+/*
+ * El componente `Company Logo` es un frame fijo de 148x63 con la imagen de
+ * 147x35 adentro. Sin el alto de 63px el logo mediria 35px y `Address` subira
+ * 28px, moviendo todo el bloque de contacto.
+ */
+.ocx-footer .wp-block-site-logo {
+	display: flex;
+	align-items: center;
+	width: 148px;
+	height: 63px;
+}
+
+.ocx-footer .wp-block-site-logo img {
+	width: 148px;
+	height: auto;
+}
+
+/* Capa 5 - los dos bloques de texto: label semibold, valor normal, 4px entre lineas. */
+.ocx-footer__contact {
+	gap: 24px;
+}
+
+.ocx-footer__block {
+	gap: 4px;
+}
+
+.ocx-footer__block-links {
+	gap: 0;
+}
+
+.ocx-footer__label,
+.ocx-footer__text {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: 14px;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000);
+}
+
+.ocx-footer__label {
+	font-weight: 600;
+}
+
+/*
+ * `Text/Small/Link` lleva subrayado. Se aplica al elemento `<a>`, no al
+ * parrafo, para no subrayar tambien el padding del bloque de contacto.
+ */
+.ocx-footer__link {
+	color: inherit;
+	text-decoration: underline;
+}
+
+/* Capa 6 - social links: `Social Links` es hug con 12px de gap y 24x24. */
+.ocx-footer__social {
+	align-items: center;
+}
+
+.ocx-footer__social .wp-social-link {
+	width: 24px;
+	height: 24px;
+}
+
+.ocx-footer__social .wp-social-link svg {
+	width: 24px;
+	height: 24px;
+}
+
+/*
+ * Capa 7 - las dos listas de links. Cada `Link` de Figma es un frame `fill` con
+ * `padding: 8px 0`, asi que el area clicable ocupa todo el ancho de la lista y
+ * entre items quedan 16px.
+ *
+ * `nav.ocx-footer__nav` y no `.ocx-footer__nav`: core copia el className del
+ * bloque al `<ul>` interno, y un selector sin `nav` aplicaria el padding dos
+ * veces.
+ *
+ * El ancho, el `gap`, el `align-items` y el `flex` de la columna que las contiene
+ * estan en la capa 4; aca solo se reparten las dos listas dentro de sus 400px.
+ */
+.ocx-footer__links > * {
+	flex: 1 1 0;
+	min-width: 0;
+}
+
+nav.ocx-footer__nav .wp-block-navigation__container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0;
+	width: 100%;
+}
+
+nav.ocx-footer__nav .wp-block-navigation__container > li {
+	width: 100%;
+}
+
+nav.ocx-footer__nav .wp-block-navigation-item__content {
+	display: block;
+	width: 100%;
+	padding: 8px 0;
+	color: inherit;
+	font-family: Manrope, sans-serif;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.5;
+	text-align: left;
+	text-decoration: none;
+}
+
+/* Capa 8 - `Credits`: divider de 1px y fila inferior con space-between. */
+.ocx-footer__credits {
+	align-self: stretch;
+	gap: 32px;
+}
+
+.ocx-footer__divider {
+	width: 100%;
+	align-self: stretch;
+	margin: 0;
+	border: 0;
+	border-top: 1px solid rgba(0, 0, 0, 0.15);
+	opacity: 1;
+}
+
+.ocx-footer__legal {
+	align-self: stretch;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+}
+
+.ocx-footer__legal-links {
+	align-items: center;
+	gap: 24px;
+}
+
+/*
+ * Por debajo de 768px las dos columnas y la fila de credits no caben en una
+ * sola linea y se apilan. El nodo solo esta definido para 1440, asi que el
+ * breakpoint sale de la media de las dos columnas mas los 64px de gap: 768 deja
+ * 728px utiles, y a 1440 hacen falta 816 + 64 + 400 = 1280.
+ *
+ * `flex: 0 0 auto` y no solo `flex-basis: auto`: en una columna el `flex-basis`
+ * de `flex: 1 0 0` pasa a governar el **alto**, y con `flex-grow: 1` las dos
+ * columnas se repartirian la altura del contenedor en mitades en vez de medir
+ * lo que miden. El `max-width: 400px` de la derecha tambien se va, porque en una
+ * sola columna ocuparia el ancho de la pantalla, y el `min-width: 320px` de la
+ * izquierda con el, porque por debajo de 360px de pantalla el container mide
+ * menos de 320 y desbordaria.
+ */
+@media (max-width: 767.98px) {
+	.ocx-footer {
+		gap: 48px;
+	}
+
+	.ocx-footer__container {
+		gap: 48px;
+	}
+
+	.ocx-footer__main {
+		flex-direction: column;
+		gap: 48px;
+	}
+
+	.ocx-footer__brand,
+	.ocx-footer__links {
+		flex: 0 0 auto;
+		width: 100%;
+		min-width: 0;
+		max-width: none;
+	}
+
+	.ocx-footer__legal {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 16px;
+	}
+
+	.ocx-footer__legal-links {
+		flex-wrap: wrap;
+	}
+}
+
+/*
+ * "Layout / 19 /" (#10338:1712) del ecosistema, la grilla 2x2 de los cuatro pilares.
+ *
+ * Diferencia clave con el resto: el `Container` es una **grilla** 2x2 con columnas
+ * `minmax(0,1fr)` y filas `fit-content(100%)`, dentro de una seccion de **alto fijo
+ * `1381px`**. La grilla completa va en CSS y **no** en los atributos del bloque: el
+ * Container se deja sin `layout` y sin `blockGap` para que core no genere ningun
+ * `wp-container-*` con `grid-template-rows: repeat(2, minmax(0,1fr))` peleandose por
+ * especificidad y enterrando el `fit-content(100%)` del nodo.
+ *
+ * La seccion lleva `ocx-section--large` por el `padding: 112px 64px`; bajo 1200px los
+ * tokens cambian a 64px/20px. `height: 1381px` viene del `designedHeight` del nodo y es
+ * fijo en **todos** los anchos: acarrea el mismo riesgo del caso de los 418 del hero
+ * (el contenido se recorta si no cabe), y a 390 las columnas de `minmax(0,1fr)` se
+ * quedan en ~135px. No hay frame movil en Figma asi que se deja como esta y se reporta
+ * la consecuencia.
+ */
+.ocx-section.ocx-l19__section {
+	height: 1381px;
+
+	/*
+	 * `align-items: center` segun el layout dado. En la practica queda anulado por el
+	 * `align-self: stretch` del Container, que en flexbox siempre le gana al `align-items`
+	 * del padre. Se declara igual por (0,2,0) para ganarle a `.ocx-section--stretch`, que
+	 * pone `align-items: stretch` con (0,1,0).
+	 */
+	align-items: center;
+}
+
+/*
+ * "Container" (#10338:1713). El selector con padre es a proposito: `.is-layout-flex >
+ * :is(*, div) { margin: 0 }` es (0,1,1) y le ganaria a un `margin-inline: auto` pelado,
+ * que es (0,1,0) y ademas computa a 0px. Con el `.ocx-section >` delante la regla llega
+ * a (0,2,0) y el auto absorbe lo que sobra del tope lateral de 1280px: a 1440 la seccion
+ * deja 1312px y el Container mide 1280 con 16px a cada lado.
+ *
+ * `display: inline-grid` de un flex item se blockifica a `grid`, asi que da lo mismo que
+ * `display: grid`; se deja el valor que da el nodo. `grid-auto-flow: row` ordena las
+ * cuatro tarjetas en dos filas de a dos.
+ */
+.ocx-section > .ocx-l19__container {
+	display: inline-grid;
+	box-sizing: border-box;
+	max-width: var(--Container-container-large, 1280px);
+	row-gap: 80px;
+	column-gap: 80px;
+	grid-template-rows: repeat(2, fit-content(100%));
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	grid-auto-flow: row;
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+	margin-inline: auto;
+}
+
+/*
+ * "Component" (#10338:1714, #10218:70620, #10218:70724, #10338:1729). Item de la grilla:
+ * los defaults de una grilla (`align-self: stretch`, `justify-self: stretch`) hacen que
+ * cada tarjeta llene el track, asi que en la fila mas alta de las dos, la mas baja se
+ * estira y las dos de la fila quedan del mismo alto. Las alturas fijas 555/528 del
+ * `Content` en Figma son ruido del wireframe (no cuadran con los 1381 del nodo: serian
+ * 1414) y se ignoran: todo va a hug.
+ */
+.ocx-l19__component {
+	min-width: 0;
+}
+
+/*
+ * "Content" y "Section Title": `align-items: center` llega por `layout.justifyContent`
+ * en el atributo del bloque (el volteo de la rama vertical de core). Con `center` los
+ * hijos se encogen salvo que lleven `align-self: stretch`, asi que el nivel siguiente lo
+ * lleva junto con `width: 100%` y `min-width: 0`.
+ */
+.ocx-l19__content,
+.ocx-l19__title {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+}
+
+/*
+ * El bloque de H3 + parrafo. En Figma la cabecera sale centrada y el parrafo pegado a la
+ * izquierda, para lo que hace falta que los dos llenen el ancho de la tarjeta: contra el
+ * `align-items: center` del grupo (el default de `.is-layout-flex`), cada uno se lleva su
+ * propio `align-self: stretch`.
+ */
+.ocx-l19__text > :is(.wp-block-heading, p) {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+}
+
+.ocx-l19__image {
+	margin: 0;
+}
+
+.ocx-l19__image img {
+	width: 227px;
+	height: 227px;
+	object-fit: cover;
+	border-radius: 16px;
+	display: block;
+}
+
+.ocx-l19__label {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 600;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+.ocx-l19__title .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Heading-3, 44px);
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	text-align: center;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+.ocx-l19__text > p {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000000);
+}

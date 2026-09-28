@@ -1,0 +1,10 @@
+wordpress_env/
+.DS_Store
+.agents/
+OpenCX Wireframes V1.0.fig
+BACKLOG.md
+transcript_head.json
+step31.json
+restore_plan.json
+scratch.py
+scratch2.py
