@@ -4167,3 +4167,87 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 	line-height: 1.5;
 	color: var(--Color-Scheme-1-Text, #000000);
 }
+
+/*
+ * "Comparison / 5 /" (#10218:71272) — Why Not Just Use Open Sourced LLM's.
+ *
+ * Reusa la tabla comparativa de .ocx-l491__* tal cual (misma estructura de
+ * filas/celdas y specs de border-bottom continuo). La diferencia sobre l491:
+ * - Sin container gris: el container es solo un eje centrado (gap 80) sin
+ *   fondo ni padding, max-width 1280.
+ * - Titulo centrado de 956px: tagline 16 SemiBold + H2 52 Medium (no 55) +
+ *   lead 18 Regular, todos centrados (text-align center); el lead trae \n\n.
+ * - La celda del medio de la cabecera es blanca (#FFF), no #F2F2F2.
+ */
+.ocx-section > .ocx-l5__container {
+	display: flex;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: var(--Container-container-large, 1280px);
+	margin-inline: auto;
+	align-self: stretch;
+}
+
+.ocx-l5__title {
+	box-sizing: border-box;
+	width: 956px;
+	max-width: 100%;
+	min-width: 0;
+}
+
+.ocx-l5__title-content.ocx-l5__title-content {
+	/* el core alinea centro en `.is-layout-flex`; el contenido del titulo debe
+	 * estirarse al ancho del titulo (956) y centrar su H2 y su párrafo. */
+	align-items: stretch;
+}
+
+.ocx-l5__title .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: 52px;
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+	text-align: center;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+.ocx-l5__tagline,
+.ocx-l5__lead {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+.ocx-l5__tagline {
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 600;
+	line-height: 1.5;
+	text-align: center;
+}
+
+.ocx-l5__lead {
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: center;
+	/* un solo nodo de texto con \n\n entre parrafos */
+	white-space: pre-line;
+}
+
+/*
+ * Bloque de la tabla: se centra en el container y mide hasta 1024
+ * (Max-Width-xlarge). Las filas/celdas heredan todo de .ocx-l491__row/cell.
+ */
+.ocx-l5__content {
+	box-sizing: border-box;
+	align-self: center;
+	width: 100%;
+	max-width: var(--Max-Width-max-width-xlarge, 1024px);
+	min-width: 0;
+}
+
+.ocx-l5__content .ocx-l491__row--head .ocx-l491__cell--feat {
+	/* en esta seccion la celda central de la cabecera es blanca, no gris */
+	background: var(--Color-Scheme-1-Background, #FFF);
+}
