@@ -4616,12 +4616,25 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 }
 
 /*
- * Los bullets del item "Business Impact" vienen en un solo nodo de texto con
- * `\n` entre lineas (la misma convencion que el lead de l491): cada linea
- * arranca con "  - ". `white-space: pre-line` conserva los saltos.
+ * Viñetas del item "Business Impact": el nodo de Figma trae el texto con "\n"
+ * entre lineas, pero en el template van como una lista real (`wp:list`). Cada
+ * viñeta es un punto ("middle dot") en negrita, centrado verticalmente al
+ * medio de la altura de la fuente, en lugar del guion del wireframe.
+ *
+ * El estilo del marker va en `::marker`: el navegador lo dibuja en su propia
+ * caja, centrado con la line box del item, y el `font-weight` lo pide el
+ * diseño. El meadador del marker no se puede desactivar (`list-style: none`
+ * haria que `::marker` no se renderice), asi que se conserva el `list-style:
+ * disc` base y el `content` sustituye el disco por el punto en negrita.
  */
 .ocx-s4__bullets {
-	white-space: pre-line;
+	margin: 0;
+	padding-left: 1.25em;
+}
+
+.ocx-s4__bullets li::marker {
+	content: "•";
+	font-weight: 700;
 }
 
 /*
