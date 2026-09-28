@@ -5106,11 +5106,27 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 	display: block;
 }
 
+/*
+ * El texto del encabezado: `width: 545px` es el ancho fijo del nodo "Section Title"
+ * (#10408:632, `dimensions: {width: 545}`), con el `padding-left: 40px` que el mismo nodo
+ * declara explicito, asi que el texto corre a 236 + 16 + 40 = 292 como en Figma.
+ *
+ * El `max-width` de 768 no hace nada con el ancho de 545 al lado, pero queda como red de
+ * seguridad para cuando se edite el ancho desde el Site Editor. El `max-width: 100%` de
+ * abajo si hace falta: sin el, el item se mide a sus 545 fijos y desborda a 390, donde la
+ * fila ya no es fila.
+ *
+ * No lleva `flex: 1 1 auto` a proposito: con `flex-grow: 1` el `width: 545px` se ignora y
+ * el titulo se estira hasta llenar los 1280, que es justo lo que se quiere evitar.
+ */
 .ocx-ins__heading {
-	align-self: stretch;
-	flex: 1 1 auto;
-	min-width: 0;
+	display: flex;
+	width: 545px;
+	max-width: min(100%, var(--Max-Width-max-width-large, 768px));
 	padding-left: 40px;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 16px;
 }
 
 /*
@@ -5220,6 +5236,7 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 	}
 
 	.ocx-ins__heading {
+		width: 100%;
 		padding-left: 0;
 	}
 
