@@ -4621,20 +4621,33 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
  * viñeta es un punto ("middle dot") en negrita, centrado verticalmente al
  * medio de la altura de la fuente, en lugar del guion del wireframe.
  *
- * El estilo del marker va en `::marker`: el navegador lo dibuja en su propia
- * caja, centrado con la line box del item, y el `font-weight` lo pide el
- * diseño. El meadador del marker no se puede desactivar (`list-style: none`
- * haria que `::marker` no se renderice), asi que se conserva el `list-style:
- * disc` base y el `content` sustituye el disco por el punto en negrita.
+ * El punto va en `::before` de cada `li` como un flex item de 20px (la misma
+ * franja que antes dejaba el `padding-inline-start` del `ul` y que empujaba el
+ * texto a x=100). El punto se centra dentro de esa franja con `text-align:
+ * center`, asi el espacio que queda a ambos lados del punto (antes y despues)
+ * es identico, y el texto de la lista arranca en el mismo x que antes.
+ *
+ * `li::marker` no se usa: el navegador coloca ese marker en su propia caja y
+ * no da control fino para que el espacio "antes" iguale al "despues" del
+ * punto. Con `::before` + flex el canal es determinista.
  */
 .ocx-s4__bullets {
 	margin: 0;
-	padding-left: 1.25em;
+	padding: 0;
+	list-style: none;
 }
 
-.ocx-s4__bullets li::marker {
+.ocx-s4__bullets li {
+	display: flex;
+	align-items: center;
+}
+
+.ocx-s4__bullets li::before {
 	content: "•";
 	font-weight: 700;
+	flex: 0 0 20px;
+	text-align: center;
+	line-height: 1;
 }
 
 /*
