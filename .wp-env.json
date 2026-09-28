@@ -3,6 +3,9 @@
   "themes": [
     "."
   ],
+  "plugins": [
+    "./plugins/opencx-testimonials"
+  ],
   "port": 8888,
   "config": {
     "WP_DEBUG": true,
