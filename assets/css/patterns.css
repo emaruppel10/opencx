@@ -317,7 +317,7 @@
  * botones de la home, que hoy tienen los mismos tres desvios: eso ya seria cambiar una
  * pagina terminada.
  */
-:is(.ocx-header--ecosystem, .ocx-h62__actions, .ocx-h62b__actions) .wp-block-button.ocx-btn--primary .wp-block-button__link {
+:is(.ocx-header--ecosystem, .ocx-h62__actions, .ocx-h62b__actions, .ocx-i62__actions) .wp-block-button.ocx-btn--primary .wp-block-button__link {
 	border: 1px solid var(--Color-Husk);
 	color: #ffffff;
 	font-weight: 500;
@@ -4693,4 +4693,251 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 	aspect-ratio: 106 / 113;
 	object-fit: cover;
 	border-radius: var(--Radius-Large, 16px);
+}
+
+/*
+ * "Header / 62 /" (#10218:66749) de la pagina Industries.
+ *
+ * Es el mismo template de cabecera que el hero del ecosistema (`.ocx-h62__*`),
+ * pero esta instancia difiere en tres cosas:
+ *
+ *  1. No trae tagline: el primer hijo del Component es directamente el
+ *     "Section Title" con H1 + parrafo.
+ *  2. El Component es `align-self: stretch` (sin el `max-width: 896px` fijo que
+ *     lleva la instancia de Solution): el texto se centra por `text-align`, no
+ *     por el ancho de la caja.
+ *  3. El Section Title y el Content son los dos `align-items: center`, asi que
+ *     H1 y parrafo se encogen a su max-content y el centrado sale del padre.
+ *
+ * La seccion declara `align-items: stretch` (el layout dado), que queda anulado
+ * por el `align-self: stretch` del Container para ese item, igual que en h62.
+ */
+.ocx-section.ocx-i62__section,
+.ocx-section.ocx-l627__section {
+	padding: 112px 64px;
+}
+
+.ocx-i62__container,
+.ocx-l627__container {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+	max-width: var(--Container-container-large, 1280px);
+}
+
+.ocx-section > .ocx-i62__container,
+.ocx-section > .ocx-l627__container {
+	margin-inline: auto;
+}
+
+/*
+ * "Component" (#10218:66751): columna con `align-items: center`. El unico hijo
+ * (Section Title) lleva `align-self: stretch` y cruza los 1280, mientras el
+ * centrado del texto llega por `text-align` en el H1 y el parrafo. Igual que
+ * `.ocx-h62__component`, el `align-items` llega por `justifyContent` en el
+ * atributo del bloque, no por CSS.
+ */
+.ocx-i62__component {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+}
+
+/*
+ * "Section Title" (#10218:66752) y "Content" (#10218:66755): estiran su ancho
+ * para que el texto quede dentro del Container. Sin esto el H1 se encoge a su
+ * max-content y el parrafo a su ancho, desalineando el margen.
+ */
+.ocx-i62__title,
+.ocx-i62__content {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+}
+
+/*
+ * El tipo va con selectores de hijo igual que `.ocx-h62__*`: el copy sigue
+ * siendo un bloque core plano. "Heading/H1" (55px) y "Text/Medium/Normal"
+ * (18px) declaran `textAlignHorizontal: CENTER`. 55px es el override local del
+ * text style, por eso el literal en vez del token (igual que `.ocx-h62__content`).
+ */
+.ocx-i62__content .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: 55px;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: -0.01em;
+	text-align: center;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+.ocx-i62__content p {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: center;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/*
+ * "Layout / 627 /" (#10218:67224) de la pagina Industries: Financial Services.
+ *
+ * Columna con tagline + H2 y, debajo, una fila de 4 List Items separados por
+ * divisores verticales de 1px rgba(0,0,0,0.15). La fila lleva `border-top` de
+ * 1px del mismo color (el `strokeWeight: 1px 0px 0px` del nodo). Debajo, el
+ * Actions con un boton link "Talk to a X AI Specialist" + chevron.
+ *
+ * El container es igual al de las otras secciones (1280 centrado).
+ */
+
+/*
+ * "Section Title" (#10218:67226): columna con `align-items: flex-start`. El
+ * tagline y el H2 van a la izquierda sobre el mismo margen; estiran su ancho
+ * para que el H2 no se encoe a su max-content.
+ */
+.ocx-l627__title,
+.ocx-l627__heading,
+.ocx-l627__content,
+.ocx-l627__list {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+}
+
+/*
+ * El tipo del titulo: tagline "Financial Services" (Heading/Tagline, 16px
+ * SemiBold 600, 150% lh) y H2 (52px/500/lh 1.2/ls -0.01em). Todo a la izquierda.
+ */
+.ocx-l627__tagline,
+.ocx-l627__heading .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	color: var(--Color-Scheme-1-Text, #000000);
+	text-align: left;
+}
+
+.ocx-l627__tagline {
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 600;
+	line-height: 1.5;
+}
+
+.ocx-l627__heading .wp-block-heading {
+	font-size: var(--Text-Sizes-Heading-2, 52px);
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+}
+
+/*
+ * "Row" (#10218:69129): fila con `gap: 32px` y `border-top: 1px solid
+ * rgba(0,0,0,0.15)`. Los 4 items se reparten el ancho y los divisores son las
+ * lineas verticales que separan cada par.
+ */
+.ocx-l627__row {
+	display: flex;
+	align-items: stretch;
+	gap: 32px;
+	border-top: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+/*
+ * "List Item" (#10218:69130): columna con `padding: 32px 0`, `justify-content:
+ * center` y `align-items: stretch`, para que el contenido quede pegado a la
+ * izquierda y a lo mismo alto que el item.
+ */
+.ocx-l627__item {
+	flex: 1 1 0;
+	min-width: 0;
+	padding: 32px 0;
+	align-items: stretch;
+}
+
+/*
+ * "Divider" (#10218:69135): IMAGE-SVG con stroke vertical de 1px
+ * rgba(0,0,0,0.15). Se pinta de izquierda a derecha con una regla en vez de un
+ * divisor, y queda igual de alto que la fila.
+ */
+.ocx-l627__divider {
+	width: 1px;
+	align-self: stretch;
+	background: rgba(0, 0, 0, 0.15);
+}
+
+/*
+ * El tipo de los items: H5 (28px/500/lh 1.4/ls -0.01em) y parrafo
+ * (Text/Regular/Normal, 16px/400/lh 1.5). El nodo declara "Roboto" en el token
+ * pero el resto del sitio usa Manrope (y el editor carga Manrope para el body),
+ * asi que se usa Manrope y se reporta la diferencia.
+ */
+.ocx-l627__item .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Heading-5, 28px);
+	font-weight: 500;
+	line-height: 1.4;
+	letter-spacing: -0.01em;
+	text-align: left;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+.ocx-l627__item p {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 400;
+	line-height: 1.5;
+	text-align: left;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/*
+ * "Actions" (#10328:1385): fila con `align-items: center` y `gap: 24px`. El
+ * boton es un link `ocx-btn--link` (ya existe en `.ocx-btn--link` de la home),
+ * con el texto en #B69E52 y el chevron al final.
+ */
+.ocx-l627__actions {
+	gap: 24px;
+}
+
+/*
+ * `min-width: 0` en el contenido de cada item: sin esto una palabra larga (o
+ * el ancho min-content de la caja flex) empuja el item por encima de la cuota
+ * que le toca en la fila.
+ */
+.ocx-l627__item-content {
+	min-width: 0;
+}
+
+@media (max-width: 767.98px) {
+	/*
+	 * Mobile de "Layout / 627 /": Figma no define frame movil para este bloque, asi
+	 * que se decide por comportamiento. A 4 columnas con 3 divisores y 32px de gap
+	 * entre cada hijo, a 390px cada item quedaba en ~17px de ancho y el texto
+	 * desbordaba el viewport (14px de overflow). La fila se apila a una columna,
+	 * los items dejan de repartirse (`flex: none`) y cada uno conserva su
+	 * `padding: 32px 0`.
+	 *
+	 * Los divisores giran: en columna un trait vertical de 1px entre items apilados
+	 * no separa nada visible, asi que pasan a ser reglas horizontales de 1px que
+	 * cumplen el mismo papel de separador entre bloques.
+	 */
+	.ocx-l627__row {
+		flex-direction: column;
+		gap: 0;
+	}
+
+	.ocx-l627__item {
+		flex: none;
+		width: 100%;
+	}
+
+	.ocx-l627__divider {
+		width: 100%;
+		height: 1px;
+		align-self: auto;
+	}
 }
