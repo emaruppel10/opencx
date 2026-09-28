@@ -4828,12 +4828,36 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
  * para que el H2 no se encoe a su max-content.
  */
 .ocx-l627__title,
-.ocx-l627__heading,
 .ocx-l627__content,
 .ocx-l627__list {
 	align-self: stretch;
 	width: 100%;
 	min-width: 0;
+}
+
+/*
+ * El H2 ("Content", #10218:68603): columna con `align-items: flex-start`,
+ * `gap: 24px` y `align-self: stretch`, mas un tope de
+ * `--Max-Width-max-width-large` (768px).
+ *
+ * El tope es una decision de diseno que se aparta de Figma: ahi el "Content" es
+ * `fill` sin tope, asi que el H2 mide lo mismo que el Container (1280px medidos a
+ * 1440). Los seis titulos de la pagina se envuelven a 768.
+ *
+ * El `stretch` con `max-width` deja la caja pegada al inicio del Container, que es
+ * justo lo que se busca: el H2 alinea su margen izquierdo con el tagline de arriba.
+ * Por eso no lleva margenes auto (al reves que el "Component" del hero i62, que si
+ * va centrado y los necesita).
+ */
+.ocx-l627__heading {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 24px;
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+	max-width: var(--Max-Width-max-width-large, 768px);
 }
 
 /*
