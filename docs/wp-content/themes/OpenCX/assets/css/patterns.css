@@ -3981,3 +3981,180 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 	line-height: 1.5;
 	color: var(--Color-Scheme-1-Text, #000000);
 }
+
+/*
+ * "Layout / 491 /" (#10218:69803) — Security, Governance & Data Ownership.
+ *
+ * La seccion usa el padding 112px/64px de `ocx-section--large` (bajo 1200 pasa a
+ * 64/20 por tokens) y un Container gris #F2F2F2 de 1280px (radius 16, padding
+ * 78/124). Adentro: un bloque de 920px (tagline + H1 55 + parrafo 18) y un
+ * bloque centrado con los features (909px) y la tabla comparativa de 1024px.
+ *
+ * No hay frame movil en Figma: los valores fijos (columnas 440, tabla 1024,
+ * padding 78/124) se conservan bajo breakpoint y a teléfonos la tabla puede
+ * desbordar, igual que en l19 se deja y se reporta la consecuencia.
+ *
+ * El Container se centra con `margin-inline: auto` (0,2,0) para ganarle a
+ * `.is-layout-flex > :is(*, div) { margin: 0 }` (0,1,1). Los gaps de los
+ * grupos en columna llegan por los `blockGap` del markup (clases wp-container).
+ */
+.ocx-section > .ocx-l491__container {
+	display: flex;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: var(--Container-container-large, 1280px);
+	padding: 78px 124px;
+	margin-inline: auto;
+	align-self: stretch;
+	background: var(--Color-Neutral-Lightest, #F2F2F2);
+	border-radius: 16px;
+}
+
+/*
+ * Los dos "Content". El primero (#10218:69805) es ancho 920 fijo con padding
+ * 40px 1px; el segundo (#10390:566) va a hug (lo define la tabla, 1024) y cae
+ * centrado con `align-self: center`.
+ */
+.ocx-l491__block {
+	box-sizing: border-box;
+	width: 920px;
+	max-width: 100%;
+	min-width: 0;
+	padding: 40px 1px;
+}
+
+.ocx-l491__block--compare {
+	width: auto;
+	padding: 40px 0;
+	align-self: center;
+}
+
+.ocx-l491__title,
+.ocx-l491__features,
+.ocx-l491__content {
+	min-width: 0;
+}
+
+.ocx-l491__features {
+	width: 909px;
+	max-width: 100%;
+}
+
+.ocx-l491__tagline,
+.ocx-l491__lead {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+.ocx-l491__tagline {
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 600;
+	line-height: 1.5;
+}
+
+.ocx-l491__lead {
+	font-size: var(--Text-Sizes-Text-Medium, 18px);
+	font-weight: 400;
+	line-height: 1.5;
+	/* La copia de Figma es UN nodo de texto con saltos \n entre parrafos. */
+	white-space: pre-line;
+}
+
+.ocx-l491__title .wp-block-heading,
+.ocx-l491__features .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: 55px;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: -0.01em;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/*
+ * Tabla comparativa (#10390:576). Ancho 1024 (max-width-xlarge), columna de
+ * etiquetas fija 440 y dos columnas flexibles. Cada celda lleva su borde
+ * inferior rgba(0,0,0,0.15). No se fuerza height: 514px del nodo: el alto
+ * natural (la cabecera text-wrapea con "Traditional Enterprise Platform") ya
+ * cuadra cerca de ese total, y forzarlo dejaria hueco fantasma en el pie.
+ */
+.ocx-l491__table,
+.ocx-l491__table.ocx-l491__table {
+	display: block;
+	width: 100%;
+	min-width: 0;
+	max-width: var(--Max-Width-max-width-xlarge, 1024px);
+}
+
+.ocx-l491__row.ocx-l491__row--head {
+	/* el core le da `align-items:center` a `.is-layout-flex`; en la cabecera las
+	 * tres celdas deben estirarse al alto de la fila (fondo #F2F2F2 a tope). */
+	align-items: stretch;
+}
+
+.ocx-l491__row {
+	display: flex;
+}
+
+.ocx-l491__cell {
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	margin: 0;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.ocx-l491__cell--label {
+	flex: 0 0 440px;
+	width: 440px;
+	min-width: 0;
+	padding: 16px 24px 16px 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+.ocx-l491__cell--feat,
+.ocx-l491__cell--oc {
+	flex: 1 1 0;
+	min-width: 0;
+	padding: 16px 24px;
+	justify-content: center;
+	text-align: center;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 600;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+.ocx-l491__row--head .ocx-l491__cell {
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding-top: 24px;
+	padding-bottom: 24px;
+}
+
+.ocx-l491__row--head .ocx-l491__cell--label {
+	justify-content: normal;
+	align-items: stretch;
+}
+
+.ocx-l491__row--head .ocx-l491__cell--feat {
+	/* la celda del medio de la cabecera es la unica con fondo propio en el nodo */
+	background: var(--Color-Neutral-Lightest, #F2F2F2);
+}
+
+.ocx-l491__row--head .ocx-l491__cell--feat .wp-block-heading,
+.ocx-l491__row--head .ocx-l491__cell--oc .wp-block-heading {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	font-size: var(--Text-Sizes-Text-Large, 22px);
+	font-weight: 700;
+	line-height: 1.5;
+	color: var(--Color-Scheme-1-Text, #000000);
+}
