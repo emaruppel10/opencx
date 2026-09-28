@@ -5764,12 +5764,40 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 	align-items: stretch;
 }
 
+/*
+ * El Container lleva tope de 768px, igual que el hero, y se centra en la seccion. Se
+ * aparta del nodo de Figma, que lo tiene en `fill` a los 1312: el tope es una decision de
+ * diseño, no lo que dice el wireframe.
+ *
+ * `width: 100%` es lo que hace que el 768 sea un tope y no un ancho fijo (mismo motivo que
+ * en `.ocx-h64__component.ocx-h64--center`).
+ *
+ * El `gap` sigue en 48 y no en 24: 48 es lo que pide el Container del nodo, y 24 corresponde
+ * al `Form` (#4174:41787), que es un nivel mas adentro.
+ *
+ * El `align-items: flex-start` va aqui y no en el `Form`: en el form, los hijos son el
+ * select, el textarea y los checkbox, y con flex-start cada uno se encogeria al ancho de
+ * su contenido en vez de ocupar los 768.
+ */
 .ocx-c4__container {
 	align-self: stretch;
 	width: 100%;
 	min-width: 0;
-	align-items: stretch;
+	max-width: var(--Max-Width-max-width-large, 768px);
+	align-items: flex-start;
 	gap: 48px;
+}
+
+/*
+ * El centrado del tope va en una regla aparte y no en la de arriba, por la misma razon que
+ * en `.ocx-h62__container` y `.ocx-c25__container`:
+ * `.is-layout-flex > :is(*, div) { margin: 0 }` es (0,1,1) y gana a un
+ * `margin-inline: auto` pelado, que es (0,1,0) y ademas computa a 0px, dejando la caja de
+ * 768 pegada al borde de inicio en vez de centrada. Con el `.ocx-section >` delante la regla
+ * llega a (0,2,0) y el auto si absorbe el sobrante.
+ */
+.ocx-section > .ocx-c4__container {
+	margin-inline: auto;
 }
 
 /* "Section Title" (#4174:41782): columna con `gap: 16px`. El Tagline Wrapper (#5322:13514) va vacio en Figma, asi que se omite. */
