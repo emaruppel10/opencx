@@ -4193,6 +4193,7 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 	width: 956px;
 	max-width: 100%;
 	min-width: 0;
+	align-self: center;
 }
 
 .ocx-l5__title-content.ocx-l5__title-content {
@@ -4224,6 +4225,7 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 	font-weight: 600;
 	line-height: 1.5;
 	text-align: center;
+	align-self: stretch;
 }
 
 .ocx-l5__lead {
