@@ -4498,3 +4498,164 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 	text-align: center;
 	color: var(--Color-Scheme-1-Text, #000000);
 }
+
+/*
+ * "Layout / 4 /" (#10218:67365) de la pagina Solution: workflow automation.
+ *
+ * Fila en dos columnas: Content (flex 1, columna con tagline + H2 + grilla 2x2
+ * de items) y una imagen placeholder fija de 469x500 con radius 16. El
+ * Component alinea sus hijos con `align-items: flex-end` (como dice el layout
+ * dado), asi que Content e imagen bajan al fondo de la fila.
+ *
+ * La seccion lleva `ocx-section--large` por el `padding: 112px 64px` y fondo
+ * blanco.
+ */
+
+/*
+ * Container: `align-items: flex-start` segun el layout dado. El unico hijo, el
+ * Component, lleva `align-self: stretch` (llega por el `alignFullWidth` / la
+ * base), asi que en flexbox el `align-items` del padre queda anulado para ese
+ * item y el Component igual llena los 1280. Se declara porque es lo que dice
+ * el nodo, igual que en las otras secciones.
+ */
+.ocx-s4__container {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+	max-width: var(--Container-container-large, 1280px);
+	align-items: flex-start;
+}
+
+.ocx-section > .ocx-s4__container {
+	margin-inline: auto;
+}
+
+/*
+ * "Component" (#10218:67367): fila con `align-items: flex-end` y `gap: 80px`.
+ * El `verticalAlignment: bottom` en el atributo del bloque es lo que produce
+ * el `align-items: flex-end` (en la rama horizontal de core esa combinacion
+ * no esta volteada como en la vertical).
+ */
+.ocx-s4__component {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+}
+
+/*
+ * "Content" (#10218:67368): columna con `flex: 1 0 0` para que tome el lugar
+ * que deja la imagen fija de 469px. `min-width: 0` evita que una palabra larga
+ * estire la columna por encima de lo que le toca en la fila.
+ */
+.ocx-s4__content {
+	flex: 1 0 0;
+	min-width: 0;
+	align-items: flex-start;
+}
+
+/*
+ * Contenido interno: estira el ancho de la columna para que tagline, H2 y los
+ * items de la grilla queden alineados a la izquierda (flex-start) sobre el
+ * mismo margen, sin `align-items: stretch` no lo harian.
+ */
+.ocx-s4__body,
+.ocx-s4__title,
+.ocx-s4__heading,
+.ocx-s4__list {
+	align-self: stretch;
+	width: 100%;
+	min-width: 0;
+}
+
+/*
+ * El tipo: tagline "Workflow Automation" (Heading/Tagline, 16px SemiBold 600,
+ * 150% lh), H2 (52px/500/lh 1.2/ls -0.01em) y los H6 de los items (22px/500/
+ * lh 1.4/ls -0.01em). Todo va a la izquierda.
+ */
+.ocx-s4__tagline,
+.ocx-s4__heading .wp-block-heading,
+.ocx-s4__card .wp-block-heading,
+.ocx-s4__card p,
+.ocx-s4__bullets {
+	margin: 0;
+	font-family: Manrope, sans-serif;
+	color: var(--Color-Scheme-1-Text, #000000);
+	text-align: left;
+}
+
+.ocx-s4__tagline {
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 600;
+	line-height: 1.5;
+}
+
+.ocx-s4__heading .wp-block-heading {
+	font-size: 52px;
+	font-weight: 500;
+	line-height: 1.2;
+	letter-spacing: -0.01em;
+}
+
+.ocx-s4__card {
+	min-width: 0;
+	align-items: stretch;
+}
+
+.ocx-s4__card .wp-block-heading {
+	font-size: var(--Text-Sizes-Heading-6, 22px);
+	font-weight: 500;
+	line-height: 1.4;
+	letter-spacing: -0.01em;
+}
+
+.ocx-s4__card p,
+.ocx-s4__bullets {
+	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-weight: 400;
+	line-height: 1.5;
+}
+
+/*
+ * Los bullets del item "Business Impact" vienen en un solo nodo de texto con
+ * `\n` entre lineas (la misma convencion que el lead de l491): cada linea
+ * arranca con "  - ". `white-space: pre-line` conserva los saltos.
+ */
+.ocx-s4__bullets {
+	white-space: pre-line;
+}
+
+/*
+ * "Row" (#10218:69116): grilla 2x2 de los items (Problem, Solution, Business
+ * Impact). Va en CSS igual que la grilla de l19, para que core no genere un
+ * `wp-container-*` que pelee por especificidad. `padding: 8px 0` viene del
+ * nodo. gap 24 entre celdas.
+ */
+.ocx-s4__grid {
+	display: grid;
+	box-sizing: border-box;
+	width: 100%;
+	min-width: 0;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	grid-template-rows: repeat(2, fit-content(100%));
+	gap: 24px;
+	padding: 8px 0;
+}
+
+/*
+ * Imagen placeholder (#10218:67386): 469x500 fija con radius 16. A bajo ancho
+ * la imagen fija se mantiene y el Content (flex 1) cede ancho primero.
+ */
+.ocx-s4__image {
+	margin: 0;
+	max-width: 100%;
+}
+
+.ocx-s4__image img {
+	display: block;
+	width: 469px;
+	max-width: 100%;
+	height: 500px;
+	aspect-ratio: 106 / 113;
+	object-fit: cover;
+	border-radius: var(--Radius-Large, 16px);
+}
