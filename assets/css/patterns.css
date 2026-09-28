@@ -5052,27 +5052,52 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 
 /*
  * Cada chip: columna con `padding: 10px 16px` y `gap: 8px`, sin fondo ni borde. Figma
- * marca el chip activo con subrayado (`{ts3}`) en vez de con un fondo, asi que el activo
- * se marca por atributo y no por una clase aparte.
+ * marca el chip activo con subrayado (`{ts3}`) en vez de con un fondo.
+ *
+ * Los estilos van sobre `.wp-block-button__link` y no sobre el `div.wp-block-button` que
+ * genera el bloque: el texto vive en el link de adentro, que trae `background-color`,
+ * `padding` y `font-family` propios de core. Poner la tipografia en el div no hacia nada
+ * (medido: renderizaba Roboto, fondo blanco y sin subrayado). Es la misma convencion que
+ * usa `.wp-block-button.ocx-btn--link`.
  */
-.ocx-ins__filter {
+.wp-block-button.ocx-ins__filter {
+	padding: 0;
+}
+
+.wp-block-button.ocx-ins__filter .wp-block-button__link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
 	padding: 10px 16px;
 	font-family: Manrope, sans-serif;
 	font-size: var(--Text-Sizes-Text-Regular, 16px);
+	font-style: normal;
 	font-weight: 400;
-	line-height: 1.5;
-	color: var(--Color-Scheme-1-Text, #000000);
+	line-height: 150%;
+	color: var(--Color-Scheme-1-Text, #000);
 	background: none;
 	border: 0;
+	border-radius: 0;
 	cursor: pointer;
 }
 
-.ocx-ins__filter[aria-pressed="true"] {
-	text-decoration: underline;
+/*
+ * El subrayado es la senal de la ventana activa, asi que solo lo lleva la que esta
+ * seleccionada. "Blog" y "Newsroom" quedan sin rayar en reposo, y tampoco lo toman al pasar
+ * el mouse: si underlines al hover, el subrayado deja de distinguir la activa.
+ */
+.wp-block-button.ocx-ins__filter .wp-block-button__link[aria-pressed="true"] {
+	text-decoration-line: underline;
+	text-decoration-style: solid;
+	text-decoration-skip-ink: none;
+	text-decoration-thickness: auto;
+	text-underline-offset: auto;
+	text-underline-position: from-font;
 }
 
-.ocx-ins__filter:hover {
-	text-decoration: underline;
+.wp-block-button.ocx-ins__filter .wp-block-button__link[aria-pressed="false"] {
+	text-decoration-line: none;
 }
 
 /*
