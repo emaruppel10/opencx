@@ -36,7 +36,47 @@ define( 'OPENCX_TESTIMONIALS_URL', plugin_dir_url( __FILE__ ) );
 require_once OPENCX_TESTIMONIALS_DIR . 'includes/class-post-type.php';
 require_once OPENCX_TESTIMONIALS_DIR . 'includes/class-fields.php';
 require_once OPENCX_TESTIMONIALS_DIR . 'includes/class-slider.php';
+require_once OPENCX_TESTIMONIALS_DIR . 'includes/class-story.php';
 
 OpenCX_Testimonials_Post_Type::init();
 OpenCX_Testimonials_Fields::init();
 OpenCX_Testimonials_Slider::init();
+OpenCX_Testimonials_Story::init();
+
+register_activation_hook( OPENCX_TESTIMONIALS_FILE, 'opencx_testimonials_activate' );
+
+if ( ! function_exists( 'opencx_testimonials_activate' ) ) {
+	/**
+	 * Registers the post type and rebuilds the rewrite rules on activation.
+	 *
+	 * A custom post type is registered on `init`, but the rewrite rules are stored in the
+	 * `rewrite_rules` option and were generated before this plugin existed. Without this
+	 * flush, `/testimonials/<slug>/` resolves to a 404 on every site that already had rules
+	 * written, while the post type still works everywhere else. That is the worst shape for
+	 * a bug: the admin looks right and the links are dead.
+	 *
+	 * `register()` runs first because the rules are generated from the registered post type.
+	 *
+	 * @return void
+	 */
+	function opencx_testimonials_activate() {
+		OpenCX_Testimonials_Post_Type::register();
+		flush_rewrite_rules();
+	}
+}
+
+if ( ! function_exists( 'opencx_testimonials_deactivate' ) ) {
+	/**
+	 * Rebuilds the rewrite rules on deactivation.
+	 *
+	 * The rules are left in place rather than removed: the post type is only unregistered on
+	 * the next request, so expiring them here would 404 every testimonial for one request.
+	 *
+	 * @return void
+	 */
+	function opencx_testimonials_deactivate() {
+		flush_rewrite_rules();
+	}
+}
+
+register_deactivation_hook( OPENCX_TESTIMONIALS_FILE, 'opencx_testimonials_deactivate' );
