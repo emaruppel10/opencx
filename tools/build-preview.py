@@ -22,9 +22,17 @@ REPO = Path(__file__).resolve().parent.parent
 OUT = REPO / "docs"
 
 PAGES = {
-    "home": ("/", OUT / "index.html"),
-    "ecosystem": ("/ecosystem/", OUT / "ecosystem" / "index.html"),
+    "home": ("/", "index.html"),
+    "ecosystem": ("/ecosystem/", "ecosystem/index.html"),
+    "industries": ("/industries/", "industries/index.html"),
+    "contact": ("/contact/", "contact/index.html"),
 }
+
+# Prefijo de cada ruta exportada (sin la barra final) -> ruta de salida. Se arma
+# desde PAGES para no mantener la lista de dos lugares. Lo que no aparece aca
+# queda como link muerto (#), que es lo que corresponde a las paginas que dependen
+# de contenido local y no van al repo (los testimonios sueltos).
+ROUTES = {url.rstrip("/"): dest for url, dest in PAGES.values()}
 
 # rutas internas que NO son assets ni pages exportadas -> link muerto controlado
 DEAD_LINK = "#"
@@ -41,10 +49,11 @@ def fetch(url):
 
 def classify(path):
     """Devuelve la ruta de salida (relativa a OUT) de una URL de sitio, o None."""
-    if path in ("", "/", "/index.html"):
-        return "index.html"
-    if path in ("/ecosystem", "/ecosystem/"):
-        return "ecosystem/index.html"
+    clean = path.split("?", 1)[0].split("#", 1)[0].rstrip("/")
+    if clean in ROUTES:
+        return ROUTES[clean]
+    if clean == "/index.html":
+        return ROUTES[""]
     if path.startswith("/wp-content/") or path.startswith("/wp-includes/"):
         return path.lstrip("/")
     return None
@@ -117,7 +126,8 @@ def main():
     shutil.rmtree(OUT, ignore_errors=True)
 
     assets = set()
-    for name, (page_url, dest) in PAGES.items():
+    for name, (page_url, out_rel) in PAGES.items():
+        dest = OUT / out_rel
         html = fetch(BASE + page_url)
         html, found = scan_and_rewrite(html, dest.parent)
         assets |= found
