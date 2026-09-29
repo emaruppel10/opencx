@@ -74,9 +74,60 @@ add_filter( 'opencx_testimonial_card_url', function ( $url, $testimonial ) {
 
 ## The single view
 
-The card permalink (`/testimonials/<slug>/`) is live, but no single template is registered
-yet, so those URLs return 404 until one is added. The post content is the reserved slot for
-the full story.
+The card permalink (`/testimonials/<slug>/`) is a working page. It is rendered by the theme's
+`templates/single-opencx_testimonial.html`, which is thin: header, the shortcode, footer.
+
+```
+[opencx_testimonial]
+```
+
+With no attributes it renders the post currently in the loop, which is the single template
+case. An `id` renders a specific one, as a post ID or a slug, for putting a story inside
+another page or a block.
+
+| Attribute | Default | What it does |
+| --- | --- | --- |
+| `id` | current post | Post ID or slug of the testimonial to render. |
+
+The view is the hero (logo, name, role, avatar and the short comment) plus the story body.
+It reuses the theme's existing `.ocx-h64` and `.ocx-c4` components, so it needs no new CSS.
+
+The body is the post content, edited in the block editor, and the section is dropped
+entirely when it is empty, so a testimonial carrying only a quote still renders a valid page.
+
+The case study layout from the wireframe ("Portfolio Page / 1 /", with the hero image, tags,
+Client/Date/Role/Website list, gallery and related entries) is **not** built. Those need
+fields the post type does not have.
+
+```
+o───────   o───────   o───────   o───────   o───────
+│ Avatar  │ Avatar  │ Avatar  │ Avatar  │ Avatar  │
+└────┬────┘ └────┬────┘ └────┬────┘ └────┬────┘ └────┬────┘
+     │ Name      │ Name      │ Name      │ Name      │ Name
+     │ Role      │ Role      │ Role      │ Role      │ Role
+o───────   o───────   o───────   o───────   o───────
+│ Quote    │ Quote    │ Quote    │ Quote    │ Quote
+└──────────┘ └──────────┘ └──────────┘ └──────────┘ └──────────┘
+
+              o────────────────────────────────
+              │  o───   o───   o───   o───   o───
+              │  │ Logo│ │ Logo│ │ Logo│ │ Logo│
+              │  └───┘  └───┘  └───┘  └───┘  └───┘
+              │  Name
+              │  Role
+              │  “Quote…”           ── Read case study
+              │  [avatar]           ──
+              │  o─── o─── o───
+              │  P     P     P
+              │  P     P     P
+              │  H2
+              │  P     P     P
+              │  P     P     P
+              │  H2
+              │  P     P     P
+              │  P     P     P
+              └────────────────────────────────
+```
 
 ## The cards are not shipped
 
