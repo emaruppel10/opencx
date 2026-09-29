@@ -3864,10 +3864,9 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
  *
  * La seccion lleva `ocx-section--large` por el `padding: 112px 64px`; bajo 1200px los
  * tokens cambian a 64px/20px. `height: 1381px` viene del `designedHeight` del nodo y es
- * fijo en **todos** los anchos: acarrea el mismo riesgo del caso de los 418 del hero
- * (el contenido se recorta si no cabe), y a 390 las columnas de `minmax(0,1fr)` se
- * quedan en ~135px. No hay frame movil en Figma asi que se deja como esta y se reporta
- * la consecuencia.
+ * fijo en todos los anchos, con el mismo riesgo del caso de los 418 del hero (el
+ * contenido se recorta si no cabe). No hay frame movil en Figma, asi que el mobile lo
+ * define el `@media` de mas abajo de esta seccion: una sola columna y el alto caido.
  */
 .ocx-section.ocx-l19__section {
 	height: 1381px;
@@ -3924,9 +3923,15 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
  * en el atributo del bloque (el volteo de la rama vertical de core). Con `center` los
  * hijos se encogen salvo que lleven `align-self: stretch`, asi que el nivel siguiente lo
  * lleva junto con `width: 100%` y `min-width: 0`.
+ *
+ * `.ocx-l19__text` va en la misma lista y no es cosmetico: sin `stretch` se ajusta a
+ * max-content, y a 375 la tarjeta de la grilla 2x2 mide 128px mientras el H3 a 32px
+ * necesita 202, con lo que el texto se salia 5px del viewport. Al estirar, el
+ * `width: 100%` de los hijos pasa a ser el de la tarjeta y el H3 envuelve.
  */
 .ocx-l19__content,
-.ocx-l19__title {
+.ocx-l19__title,
+.ocx-l19__text {
 	align-self: stretch;
 	width: 100%;
 	min-width: 0;
@@ -3983,6 +3988,35 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 	font-weight: 400;
 	line-height: 1.5;
 	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/*
+ * Movil de "Layout / 19 /" — la grilla 2x2 a una columna.
+ *
+ * Figma no tiene frame movil para este nodo (es un FRAME suelto, no un component set),
+ * asi que se sigue la convencion del resto de la hoja: apilar a una columna y bajar los
+ * gaps. A 375 las dos columnas de `minmax(0,1fr)` quedaban en 128px, con la imagen de
+ * 227 reescalada a 128 y un H3 de 32px que no cabe.
+ *
+ * El `height: 1381px` de la seccion es el `designedHeight` del nodo y se cae en mobile
+ * por el mismo motivo que los 418 del hero: apiladas, las cuatro tarjetas necesitan mas
+ * de 1381 y el alto fijo las recortaria.
+ */
+@media (max-width: 599.98px) {
+	.ocx-section.ocx-l19__section {
+		height: auto;
+	}
+
+	.ocx-section > .ocx-l19__container {
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-rows: none;
+		row-gap: 40px;
+		column-gap: 0;
+	}
+
+	.ocx-l19__component {
+		gap: 24px;
+	}
 }
 
 /*
@@ -4169,6 +4203,71 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 	font-weight: 700;
 	line-height: 1.5;
 	color: var(--Color-Scheme-1-Text, #000000);
+}
+
+/*
+ * Movil (375, Figma "Comparison / 5 /" #5634:1062) — la tabla de tres columnas
+ * no cabe: la etiqueta tiene `flex: 0 0 440px` fijo y las otras dos celdas
+ * `flex: 1 0 0` (shrink 0), asi que la fila no baja de 584px y desborda
+ * cualquier viewport de menos de eso. El nodo movil resuelve el desborde
+ * dejando `wrap: true` en la fila: la etiqueta ocupa el 100% y los dos valores
+ * caen en una fila 50/50 debajo. La cabecera (que solo tiene los dos nombres de
+ * producto) se queda en dos celdas de 50% al lado, y la celda de etiqueta
+ * vacia se oculta porque no hay nada que alinear.
+ *
+ * El container gris tambien baja su padding de 78/124: a 390px los 124px
+ * horizontales dejaban 102px utiles de contenido y el H2 se partia en 4 lineas.
+ * El mobile del nodo pagina a 64/20, y el gris queda a 48/20.
+ *
+ * El apilado de la tabla va hasta 767.98 y no hasta 599.98 porque la fila de
+ * escritorio necesita 584px (440 de etiqueta + 2 celdas de 72) mas los 40 del
+ * padding de la seccion: entre 600 y 623 el layout de tres columnas seguia
+ * desbordando, y de 624 a 767 las celdas de valor quedaban con 92-144px de texto
+ * partido. Figma no define tablet para estos nodos, asi que se elige el corte
+ * donde la grilla de tres columnas deja de caber.
+ */
+@media (max-width: 599.98px) {
+	.ocx-section > .ocx-l491__container {
+		padding: 48px 20px;
+	}
+
+	.ocx-l491__block,
+	.ocx-l491__features {
+		width: 100%;
+		padding: 24px 0;
+	}
+}
+
+@media (max-width: 767.98px) {
+	.ocx-l491__row {
+		flex-wrap: wrap;
+	}
+
+	.ocx-l491__row--head .ocx-l491__cell--empty {
+		display: none;
+	}
+
+	.ocx-l491__row--head .ocx-l491__cell--feat,
+	.ocx-l491__row--head .ocx-l491__cell--oc {
+		flex: 1 1 0;
+		width: 50%;
+		padding: 16px 8px;
+	}
+
+	.ocx-l491__row:not(.ocx-l491__row--head) .ocx-l491__cell--label {
+		flex: 1 0 100%;
+		width: 100%;
+		min-height: 0;
+		padding: 16px 0;
+	}
+
+	.ocx-l491__row:not(.ocx-l491__row--head) .ocx-l491__cell--feat,
+	.ocx-l491__row:not(.ocx-l491__row--head) .ocx-l491__cell--oc {
+		flex: 1 1 0;
+		width: 50%;
+		padding: 16px 8px;
+		min-height: 0;
+	}
 }
 
 /*
