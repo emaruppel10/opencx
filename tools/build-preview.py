@@ -25,6 +25,9 @@ PAGES = {
     "home": ("/", "index.html"),
     "ecosystem": ("/ecosystem/", "ecosystem/index.html"),
     "industries": ("/industries/", "industries/index.html"),
+    "solution": ("/solution/", "solution/index.html"),
+    "insights": ("/insights/", "insights/index.html"),
+    "about": ("/about/", "about/index.html"),
     "contact": ("/contact/", "contact/index.html"),
 }
 
