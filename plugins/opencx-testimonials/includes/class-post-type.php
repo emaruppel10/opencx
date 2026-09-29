@@ -54,6 +54,16 @@ class OpenCX_Testimonials_Post_Type {
 	const META_AVATAR = '_ocx_testimonial_avatar';
 
 	/**
+	 * Form field name for the short comment.
+	 *
+	 * The value it carries is `post_excerpt`, not meta. Kept as a constant because the meta
+	 * box and the save handler both need to agree on the name.
+	 *
+	 * @var string
+	 */
+	const FIELD_EXCERPT = 'opencx_testimonial_excerpt';
+
+	/**
 	 * Hooks the registration in.
 	 *
 	 * @return void
@@ -98,13 +108,22 @@ class OpenCX_Testimonials_Post_Type {
 				'show_in_rest' => true,
 				'menu_icon'    => 'format-quote',
 				/*
-				 * `excerpt` is what carries the short comment the slider shows, and
-				 * `page-attributes` exposes the core "Order" field, which is what the
-				 * slider sorts by. `thumbnail` is deliberately absent: the avatar is its
-				 * own field, and a second image control in the sidebar would be ambiguous
-				 * about which one is which.
+				 * `page-attributes` exposes the core "Order" field, which is what the slider
+				 * sorts by.
+				 *
+				 * `excerpt` is deliberately NOT supported, even though the excerpt is where the
+				 * short comment is stored. Supporting it makes the block editor render its own
+				 * "Excerpt" panel in the document sidebar, and then the short comment has two
+				 * inputs: that panel and the labelled field in the meta box. Editors could not
+				 * tell which one the slider reads, and the two would drift apart. Dropping the
+				 * support hides the native panel and leaves the meta box as the only place to
+				 * edit it. The column itself still works, so `get_the_excerpt()` and the REST API
+				 * keep seeing the value.
+				 *
+				 * `thumbnail` is also absent: the avatar is its own field, and a second image
+				 * control in the sidebar would be ambiguous about which one is which.
 				 */
-				'supports'     => array( 'title', 'editor', 'excerpt', 'page-attributes' ),
+				'supports'     => array( 'title', 'editor', 'page-attributes' ),
 				'has_archive'  => false,
 				'rewrite'      => array( 'slug' => 'testimonials' ),
 				'menu_position' => 20,
