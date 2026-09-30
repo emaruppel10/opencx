@@ -148,6 +148,18 @@
 	}
 }
 
+/*
+ * 320px. `--Max-Width-max-width-xxsmall` de `tokens.css` es 320, asi que el viewport
+ * entra en el diseno y hay que cerrarlo: con el padding global de 20 quedan 280
+ * utilizables y la fila pide 333 (logo 157 + nav 24 + gap 32 + boton "Let's meet" 120).
+ *
+ * El corte se hace sin cambiar el diseno >= 360 porque el desborde solo aparece por
+ * debajo: a 360 la fila entra y `scrollWidth` da 0. Baja el slot de logo a 116, el gap
+ * a 16 y el padding del boton a 14, con lo que la fila queda en 264 y sobran 16 de
+ * holgura. El `height` del logo baja a 36 para no dejar un caja de 42 con un logo de
+ * 108.
+ */
+
 @media (min-width: 1200px) {
 	/*
 	 * Figma "Container" (#10310:1174) is a fixed 1280x44 row holding the logo,
@@ -4798,6 +4810,33 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 }
 
 /*
+ * Por debajo de 768px la fila imagen + contenido no entra: la imagen fija de 469px
+ * mas el `blockGap` de 80px del bloque dejan 11px a `.ocx-s4__content` en un viewport
+ * de 600 (560 del container), y el tagline, los H6 y las viñetas se derraman 91px.
+ *
+ * El corte apila la fila y suelta el alto fijo de la imagen, que solo tiene sentido con
+ * la imagen al lado. `overflow-wrap: break-word` queda como red de seguridad: con la
+ * columna a una fraccion el `minmax(0, 1fr)` ya parte bien, pero una palabra sola
+ * FollowWordNoExistente seguira pidiendo ancho.
+ */
+@media (max-width: 767.98px) {
+	.ocx-s4__component {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 24px;
+	}
+
+	.ocx-s4__image img {
+		width: 100%;
+		height: auto;
+	}
+
+	.ocx-s4__content {
+		width: 100%;
+	}
+}
+
+/*
  * "Header / 62 /" (#10218:66749) de la pagina Industries.
  *
  * Es el mismo template de cabecera que el hero del ecosistema (`.ocx-h62__*`),
@@ -6203,5 +6242,44 @@ nav.ocx-footer__nav .wp-block-navigation-item__content {
 
 	.ocx-c4__radio {
 		flex: 1 1 100%;
+	}
+}
+
+@media (max-width: 359.98px) {
+	.ocx-header__logo {
+		width: 116px;
+		height: 36px;
+	}
+
+	.ocx-header__logo .wp-block-site-logo {
+		width: 108px;
+	}
+
+	/* El clon de `logo-intro.js` tiene que medir lo mismo que el logo: el vuelo es una
+	 * traslacion porque los dos extremos son identicos. */
+	.ocx-logo-intro__clone {
+		width: 108px;
+	}
+
+	.ocx-header__col {
+		gap: 16px;
+	}
+
+	.ocx-header--ecosystem .wp-block-button.ocx-btn--primary .wp-block-button__link {
+		padding: 8px 14px;
+	}
+
+	/* Ajuste de tipografia para 320: baja los H1/H2 grandes que heredan 55px */
+	.ocx-h62__content .wp-block-heading,
+	.ocx-h62b__content .wp-block-heading {
+		font-size: 40px;
+	}
+
+	.ocx-h90__card .wp-block-heading {
+		font-size: 40px;
+	}
+
+	.ocx-h64__title {
+		font-size: 40px;
 	}
 }
