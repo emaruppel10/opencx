@@ -1084,12 +1084,32 @@ body.page-template-page-contact .wp-site-blocks {
 /* Tablets Portrait (768px to 991px) */
 @media (min-width: 768px) and (max-width: 991.98px) {
 	.ocx-section.ocx-h62__section {
-		padding: 0 24px 0 !important;
+		padding: 0 10px 0 !important;
+	}
+
+	.ocx-h62__outer {
+		width: 100% !important;
+		max-width: 100% !important;
+		height: auto !important;
+		min-height: auto !important;
+		margin: 0 auto !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+		box-sizing: border-box !important;
 	}
 
 	.ocx-h62__container {
+		width: 100% !important;
+		max-width: 100% !important;
+		height: auto !important;
+		min-height: auto !important;
+		margin: 0 !important;
 		padding: 40px 32px !important;
-		border-radius: 18px !important;
+		border: none !important;
+		border-radius: 0 !important;
+		background: transparent !important;
+		box-sizing: border-box !important;
 	}
 
 	.ocx-h62__card {
@@ -1123,9 +1143,29 @@ body.page-template-page-contact .wp-site-blocks {
 		padding: 0 10px 0 !important;
 	}
 
+	.ocx-h62__outer {
+		width: 100% !important;
+		max-width: 100% !important;
+		height: auto !important;
+		min-height: auto !important;
+		margin: 0 auto !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+		box-sizing: border-box !important;
+	}
+
 	.ocx-h62__container {
+		width: 100% !important;
+		max-width: 100% !important;
+		height: auto !important;
+		min-height: auto !important;
+		margin: 0 !important;
 		padding: 28px 20px !important;
-		border-radius: 16px !important;
+		border: none !important;
+		border-radius: 0 !important;
+		background: transparent !important;
+		box-sizing: border-box !important;
 	}
 
 	.ocx-h62__card {
@@ -1248,23 +1288,61 @@ body.page-template-page-contact .wp-site-blocks {
 		min-height: auto !important;
 	}
 
+	.ocx-aios__outer {
+		width: 100% !important;
+		max-width: 100% !important;
+		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+		box-sizing: border-box !important;
+	}
+
 	.ocx-aios__container {
+		width: 100% !important;
+		max-width: 100% !important;
+		margin: 0 !important;
 		padding: 80px 48px !important;
+		border: none !important;
+		border-radius: 0 !important;
+		background: transparent !important;
+		box-sizing: border-box !important;
 		gap: 60px !important;
 	}
 }
 
 @media (max-width: 991px) {
+	.ocx-aios__outer {
+		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+	}
+
 	.ocx-aios__container {
 		padding: 60px 32px !important;
+		border: none !important;
+		border-radius: 0 !important;
+		background: transparent !important;
+		margin: 0 !important;
 		gap: 40px !important;
 	}
 }
 
 @media (max-width: 767px) {
+	.ocx-aios__outer {
+		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+	}
+
 	.ocx-aios__container {
 		padding: 40px 20px !important;
-		border-radius: 16px !important;
+		border: none !important;
+		border-radius: 0 !important;
+		background: transparent !important;
+		margin: 0 !important;
 		gap: 32px !important;
 	}
 }
@@ -1592,29 +1670,65 @@ body.page-template-page-contact .wp-site-blocks {
 }
 
 @media (max-width: 1200px) {
-	.ocx-eco-pillars__outer,
-	.ocx-eco-pillars__card {
+	.ocx-eco-pillars__outer {
 		height: auto !important;
 		min-height: auto !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+		box-sizing: border-box !important;
 	}
 
 	.ocx-eco-pillars__card {
+		height: auto !important;
+		min-height: auto !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		margin: 0 !important;
+		border: none !important;
+		border-radius: 0 !important;
+		background: transparent !important;
+		box-sizing: border-box !important;
 		padding: 60px 0 !important;
 		gap: 48px !important;
 	}
 }
 
 @media (max-width: 991px) {
+	.ocx-eco-pillars__outer {
+		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+	}
+
 	.ocx-eco-pillars__card {
 		padding: 48px 0 !important;
+		border: none !important;
+		border-radius: 0 !important;
+		background: transparent !important;
+		margin: 0 !important;
 		gap: 40px !important;
 	}
 }
 
 @media (max-width: 767px) {
+	.ocx-eco-pillars__outer {
+		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+	}
+
 	.ocx-eco-pillars__card {
 		padding: 40px 0 !important;
-		border-radius: 16px !important;
+		border: none !important;
+		border-radius: 0 !important;
+		background: transparent !important;
+		margin: 0 !important;
 		gap: 36px !important;
 	}
 }
@@ -3317,9 +3431,25 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 }
 
 @media (max-width: 991px) {
-	.ocx-solaas-hero__outer,
-	.ocx-solaas-hero__container {
+	.ocx-solaas-hero__outer {
+		width: 100% !important;
+		max-width: 100% !important;
 		min-height: auto !important;
+		margin: 0 auto !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+		box-sizing: border-box !important;
+	}
+	.ocx-solaas-hero__container {
+		width: 100% !important;
+		max-width: 100% !important;
+		min-height: auto !important;
+		margin: 0 !important;
+		border: none !important;
+		border-radius: 0 !important;
+		background: transparent !important;
+		box-sizing: border-box !important;
 	}
 	.ocx-solaas-hero__card {
 		padding: 50px 24px 0 !important;
@@ -3349,12 +3479,24 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 		padding: 0 10px !important;
 	}
 	.ocx-solaas-hero__outer {
-		border-radius: 0 !important;
+		width: 100% !important;
+		max-width: 100% !important;
 		min-height: auto !important;
+		margin: 0 auto !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+		box-sizing: border-box !important;
 	}
 	.ocx-solaas-hero__container {
-		border-radius: 16px !important;
+		width: 100% !important;
+		max-width: 100% !important;
 		min-height: auto !important;
+		margin: 0 !important;
+		border: none !important;
+		border-radius: 0 !important;
+		background: transparent !important;
+		box-sizing: border-box !important;
 	}
 	.ocx-solaas-hero__card {
 		padding: 36px 16px 0 !important;
@@ -3957,6 +4099,24 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	.ocx-solaas-benefits__section {
 		padding: 0 10px !important;
 	}
+	.ocx-solaas-benefits__outer {
+		width: 100% !important;
+		max-width: 100% !important;
+		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+		box-sizing: border-box !important;
+	}
+	.ocx-solaas-benefits__container {
+		width: 100% !important;
+		max-width: 100% !important;
+		margin: 0 !important;
+		border: none !important;
+		border-radius: 0 !important;
+		background: transparent !important;
+		box-sizing: border-box !important;
+	}
 	.ocx-solaas-benefit {
 		padding: 60px 32px !important;
 		gap: 32px !important;
@@ -3989,6 +4149,12 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	.ocx-solaas-cta__container {
 		padding: 64px 32px !important;
 		min-height: auto !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+		box-sizing: border-box !important;
 	}
 	.ocx-solaas-cta__heading {
 		font-size: 40px !important;
@@ -3996,6 +4162,23 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 }
 
 @media (max-width: 767px) {
+	.ocx-solaas-benefits__outer {
+		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+	}
+	.ocx-solaas-benefits__container {
+		border: none !important;
+		border-radius: 0 !important;
+		background: transparent !important;
+		margin: 0 !important;
+	}
+	.ocx-solaas-cta__container {
+		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+	}
 	.ocx-solaas-benefits__section {
 		padding: 0 10px !important;
 	}
@@ -12340,6 +12523,45 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		box-sizing: border-box !important;
 	}
 
+	/* Universal hairline border & flat container stabilization for Ecosystem, Industries & Solution */
+	.ocx-h62__outer,
+	.ocx-industries-hero__outer,
+	.ocx-solaas-hero__outer {
+		margin: 0 auto !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+		box-sizing: border-box !important;
+	}
+
+	.ocx-aios__outer,
+	.ocx-industries__outer,
+	.ocx-solaas-benefits__outer,
+	.ocx-eco-pillars__outer {
+		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+		box-sizing: border-box !important;
+	}
+
+	.ocx-h62__container,
+	.ocx-aios__container,
+	.ocx-industries-hero__container,
+	.ocx-industries__container,
+	.ocx-solaas-hero__container,
+	.ocx-solaas-benefits__container,
+	.ocx-solaas-cta__container,
+	.ocx-eco-pillars__card {
+		width: 100% !important;
+		max-width: 100% !important;
+		margin: 0 !important;
+		border: none !important;
+		border-radius: 0 !important;
+		background: transparent !important;
+		box-sizing: border-box !important;
+	}
+
 	/* --------------------------------------------------------------------------
 	   TESTIMONIAL TABLET & MOBILE (<= 1199.98px)
 	   Figma: "Testimonial" #12478:20293 (Mobile & Tablet)
@@ -15161,13 +15383,24 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		max-width: 100% !important;
 		height: auto !important;
 		min-height: auto !important;
+		margin: 0 auto !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+		box-sizing: border-box !important;
 	}
 
 	.ocx-industries-hero__container {
+		width: 100% !important;
+		max-width: 100% !important;
 		height: auto !important;
 		min-height: auto !important;
+		margin: 0 !important;
 		padding: 48px 32px !important;
-		border-radius: 18px !important;
+		border: none !important;
+		border-radius: 0 !important;
+		background: transparent !important;
+		box-sizing: border-box !important;
 	}
 
 	.ocx-industries-hero__card {
@@ -15199,9 +15432,29 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		padding: 0 10px 0 !important;
 	}
 
+	.ocx-industries-hero__outer {
+		width: 100% !important;
+		max-width: 100% !important;
+		height: auto !important;
+		min-height: auto !important;
+		margin: 0 auto !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+		box-sizing: border-box !important;
+	}
+
 	.ocx-industries-hero__container {
+		width: 100% !important;
+		max-width: 100% !important;
+		height: auto !important;
+		min-height: auto !important;
+		margin: 0 !important;
 		padding: 36px 20px !important;
-		border-radius: 16px !important;
+		border: none !important;
+		border-radius: 0 !important;
+		background: transparent !important;
+		box-sizing: border-box !important;
 	}
 
 	.ocx-industries-hero__col-content {
@@ -15488,12 +15741,9 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	.ocx-industries__outer {
 		width: 100% !important;
 		max-width: 100% !important;
-		margin: 0 auto !important;
+		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
 		background: var(--Color-OpenCX-White, #FCFBF9) !important;
-		border-left: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
-		border-right: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
-		border-top: none !important;
-		border-bottom: none !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border-radius: 0 !important;
 		box-sizing: border-box !important;
 	}
