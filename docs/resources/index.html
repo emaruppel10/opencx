@@ -1,0 +1,2342 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name='robots' content='max-image-preview:large' />
+<title>Resources &#8211; OpenCX</title>
+<link rel='dns-prefetch' href='#' />
+<link rel='dns-prefetch' href='#' />
+<link rel="alternate" type="application/rss+xml" title="OpenCX &raquo; Feed" href="#" />
+<link rel="alternate" type="application/rss+xml" title="OpenCX &raquo; Comments Feed" href="#" />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="#" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="#" />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-block-group-inline-css">
+.wp-block-group {
+  box-sizing: border-box;
+}
+
+:where(.wp-block-group.wp-block-group-is-layout-constrained) {
+  position: relative;
+}
+/*# sourceURL=../wp-includes/blocks/group/style.css */
+</style>
+<style id="wp-block-navigation-link-inline-css">
+/**
+ * Colors
+ */
+/**
+ * SCSS Variables.
+ *
+ * Please use variables from this sheet to ensure consistency across the UI.
+ * Don't add to this sheet unless you're pretty sure the value will be reused in many places.
+ * For example, don't add rules to this sheet that affect block visuals. It's purely for UI.
+ */
+/**
+ * Fonts & basic variables.
+ */
+/**
+ * Typography
+ */
+/**
+ * Grid System.
+ * https://make.wordpress.org/design/2019/10/31/proposal-a-consistent-spacing-system-for-wordpress/
+ */
+/**
+ * Radius scale.
+ */
+/**
+ * Elevation scale.
+ */
+/**
+ * Dimensions.
+ */
+/**
+ * Mobile specific styles
+ */
+/**
+ * Editor styles.
+ */
+/**
+ * Block & Editor UI.
+ */
+/**
+ * Block paddings.
+ */
+/**
+ * React Native specific.
+ * These variables do not appear to be used anywhere else.
+ */
+.wp-block-navigation .wp-block-navigation-item__label {
+  overflow-wrap: break-word;
+}
+.wp-block-navigation .wp-block-navigation-item__description {
+  display: none;
+}
+
+.link-ui-tools {
+  outline: 1px solid #f0f0f0;
+  padding: 8px;
+}
+
+.link-ui-block-inserter {
+  padding-top: 8px;
+}
+
+.link-ui-block-inserter__back {
+  margin-left: 8px;
+  text-transform: uppercase;
+}
+/*# sourceURL=../wp-includes/blocks/navigation-link/style.css */
+</style>
+<style id="wp-block-navigation-inline-css">
+/**
+ * Typography
+ */
+/**
+ * SCSS Variables.
+ *
+ * Please use variables from this sheet to ensure consistency across the UI.
+ * Don't add to this sheet unless you're pretty sure the value will be reused in many places.
+ * For example, don't add rules to this sheet that affect block visuals. It's purely for UI.
+ */
+/**
+ * Colors
+ */
+/**
+ * Fonts & basic variables.
+ */
+/**
+ * Typography
+ */
+/**
+ * Grid System.
+ * https://make.wordpress.org/design/2019/10/31/proposal-a-consistent-spacing-system-for-wordpress/
+ */
+/**
+ * Radius scale.
+ */
+/**
+ * Elevation scale.
+ */
+/**
+ * Dimensions.
+ */
+/**
+ * Mobile specific styles
+ */
+/**
+ * Editor styles.
+ */
+/**
+ * Block & Editor UI.
+ */
+/**
+ * Block paddings.
+ */
+/**
+ * React Native specific.
+ * These variables do not appear to be used anywhere else.
+ */
+/**
+ * Breakpoints & Media Queries
+ */
+/**
+*  Converts a hex value into the rgb equivalent.
+*
+* @param {string} hex - the hexadecimal value to convert
+* @return {string} comma separated rgb values
+*/
+/**
+ * Long content fade mixin
+ *
+ * Creates a fading overlay to signify that the content is longer
+ * than the space allows.
+ */
+/**
+ * Breakpoint mixins
+ */
+/**
+ * Focus styles.
+ */
+/**
+ * Standard focus rings for the WordPress Design System.
+ *
+ * Apply `outset-ring__focus` inside the relevant pseudo-class at the call site,
+ * e.g. `&:focus { @include outset-ring__focus(); }`.
+ */
+/**
+ * Applies editor left position to the selector passed as argument
+ */
+/**
+ * Styles that are reused verbatim in a few places
+ */
+/**
+ * Allows users to opt-out of animations via OS-level preferences.
+ */
+/**
+ * Reset default styles for JavaScript UI based pages.
+ * This is a WP-admin agnostic reset
+ */
+/**
+ * Reset the WP Admin page styles for Gutenberg-like pages.
+ */
+/**
+ * Creates a checkerboard pattern background to indicate transparency.
+ * @param {String} $size - The size of the squares in the checkerboard pattern. Default is 12px.
+ */
+.wp-block-navigation {
+  position: relative;
+}
+.wp-block-navigation ul {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  padding-left: 0;
+}
+.wp-block-navigation ul,
+.wp-block-navigation ul li {
+  list-style: none;
+}
+.wp-block-navigation .wp-block-navigation-item {
+  background-color: inherit;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.wp-block-navigation .wp-block-navigation-item .wp-block-navigation__submenu-container:empty {
+  display: none;
+}
+.wp-block-navigation .wp-block-navigation-item__content {
+  display: block;
+  z-index: 1;
+}
+.wp-block-navigation .wp-block-navigation-item__content.wp-block-navigation-item__content {
+  color: inherit;
+}
+.wp-block-navigation.has-text-decoration-underline .wp-block-navigation-item__content {
+  text-decoration: underline;
+}
+.wp-block-navigation.has-text-decoration-underline .wp-block-navigation-item__content:focus, .wp-block-navigation.has-text-decoration-underline .wp-block-navigation-item__content:active {
+  text-decoration: underline;
+}
+.wp-block-navigation.has-text-decoration-line-through .wp-block-navigation-item__content {
+  text-decoration: line-through;
+}
+.wp-block-navigation.has-text-decoration-line-through .wp-block-navigation-item__content:focus, .wp-block-navigation.has-text-decoration-line-through .wp-block-navigation-item__content:active {
+  text-decoration: line-through;
+}
+.wp-block-navigation :where(a), .wp-block-navigation :where(a:focus), .wp-block-navigation :where(a:active) {
+  text-decoration: none;
+}
+.wp-block-navigation .wp-block-navigation__submenu-icon {
+  align-self: center;
+  line-height: 0;
+  display: inline-block;
+  font-size: inherit;
+  padding: 0;
+  background-color: inherit;
+  color: currentColor;
+  border: none;
+  width: 0.6em;
+  height: 0.6em;
+  margin-left: 0.25em;
+}
+.wp-block-navigation .wp-block-navigation__submenu-icon svg {
+  display: inline-block;
+  stroke: currentColor;
+  width: inherit;
+  height: inherit;
+  margin-top: 0.075em;
+}
+.wp-block-navigation {
+  --navigation-layout-justification-setting: flex-start;
+  --navigation-layout-direction: row;
+  --navigation-layout-wrap: wrap;
+  --navigation-layout-justify: flex-start;
+  --navigation-layout-align: center;
+}
+.wp-block-navigation.is-vertical {
+  --navigation-layout-direction: column;
+  --navigation-layout-justify: initial;
+  --navigation-layout-align: flex-start;
+}
+.wp-block-navigation.no-wrap {
+  --navigation-layout-wrap: nowrap;
+}
+.wp-block-navigation.items-justified-center {
+  --navigation-layout-justification-setting: center;
+  --navigation-layout-justify: center;
+}
+.wp-block-navigation.items-justified-center.is-vertical {
+  --navigation-layout-align: center;
+}
+.wp-block-navigation.items-justified-right {
+  --navigation-layout-justification-setting: flex-end;
+  --navigation-layout-justify: flex-end;
+}
+.wp-block-navigation.items-justified-right.is-vertical {
+  --navigation-layout-align: flex-end;
+}
+.wp-block-navigation.items-justified-space-between {
+  --navigation-layout-justification-setting: space-between;
+  --navigation-layout-justify: space-between;
+}
+
+:where(.wp-block-navigation) ul li {
+  padding: 0;
+}
+
+.wp-block-navigation .has-child .wp-block-navigation__submenu-container {
+  background-color: inherit;
+  color: inherit;
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: normal;
+  opacity: 0;
+}
+@media not (prefers-reduced-motion) {
+  .wp-block-navigation .has-child .wp-block-navigation__submenu-container {
+    transition: opacity 0.1s linear;
+  }
+}
+.wp-block-navigation .has-child .wp-block-navigation__submenu-container {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+.wp-block-navigation .has-child .wp-block-navigation__submenu-container > .wp-block-navigation-item > .wp-block-navigation-item__content {
+  display: flex;
+  flex-grow: 1;
+  padding: 0.5em 1em;
+}
+.wp-block-navigation .has-child .wp-block-navigation__submenu-container > .wp-block-navigation-item > .wp-block-navigation-item__content .wp-block-navigation__submenu-icon {
+  margin-right: 0;
+  margin-left: auto;
+}
+.wp-block-navigation .has-child .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+  margin: 0;
+}
+.wp-block-navigation .has-child .wp-block-navigation__submenu-container {
+  left: -1px;
+  top: 100%;
+}
+@media (min-width: 782px) {
+  .wp-block-navigation .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container {
+    left: 100%;
+    top: -1px;
+  }
+  .wp-block-navigation .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container::before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    height: 100%;
+    display: block;
+    width: 0.5em;
+    background: transparent;
+  }
+  .wp-block-navigation .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-icon {
+    margin-right: 0.25em;
+  }
+  .wp-block-navigation .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-icon svg {
+    transform: rotate(-90deg);
+  }
+}
+@media (hover: hover) {
+  .wp-block-navigation .has-child:not(.open-on-click):hover > .wp-block-navigation__submenu-container {
+    visibility: visible;
+    overflow: visible;
+    opacity: 1;
+    width: auto;
+    height: auto;
+    min-width: 200px;
+  }
+}
+.wp-block-navigation .has-child:not(.open-on-click):not(.open-on-hover-click):focus-within > .wp-block-navigation__submenu-container,
+.wp-block-navigation .has-child .wp-block-navigation-submenu__toggle[aria-expanded=true] ~ .wp-block-navigation__submenu-container {
+  visibility: visible;
+  overflow: visible;
+  opacity: 1;
+  width: auto;
+  height: auto;
+  min-width: 200px;
+}
+.wp-block-navigation .has-child.open-always {
+  flex-wrap: var(--navigation-layout-wrap, wrap);
+  flex-direction: var(--navigation-layout-direction, initial);
+  justify-content: var(--navigation-layout-justify, initial);
+  align-items: var(--navigation-layout-align, initial);
+  gap: var(--wp--style--block-gap, 2em);
+}
+.wp-block-navigation .has-child.open-always .wp-block-navigation-item {
+  justify-content: var(--navigation-layout-justify, initial);
+}
+.wp-block-navigation .has-child.open-always.wp-block-navigation-submenu,
+.wp-block-navigation .has-child.open-always .wp-block-navigation__submenu-container {
+  gap: var(--wp--style--block-gap, 2em);
+}
+.wp-block-navigation .has-child.open-always.wp-block-navigation-submenu,
+.wp-block-navigation .has-child.open-always .wp-block-navigation__submenu-container,
+.wp-block-navigation .has-child.open-always .wp-block-navigation-item {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.wp-block-navigation .has-child.open-always .wp-block-navigation__submenu-container {
+  padding-left: var(--wp--style--block-gap, 2em);
+  padding-right: var(--wp--style--block-gap, 2em);
+}
+.wp-block-navigation .has-child.open-always .wp-block-navigation__submenu-container .wp-block-navigation-item__content {
+  padding: 0;
+}
+.wp-block-navigation .has-child.open-always > .wp-block-navigation-item__content,
+.wp-block-navigation .has-child.open-always .wp-block-navigation__submenu-container > .wp-block-navigation-item > .wp-block-navigation-item__content {
+  flex-grow: 0;
+}
+.wp-block-navigation .has-child.open-always > .wp-block-navigation__submenu-container {
+  visibility: visible;
+  overflow: visible;
+  opacity: 1;
+  width: auto;
+  height: auto;
+  flex-basis: 100%;
+  position: static;
+  border: none;
+  background-color: transparent;
+  color: inherit;
+}
+
+.wp-block-navigation.has-background .has-child .wp-block-navigation__submenu-container {
+  left: 0;
+  top: 100%;
+}
+@media (min-width: 782px) {
+  .wp-block-navigation.has-background .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container {
+    left: 100%;
+    top: 0;
+  }
+}
+
+.wp-block-navigation-submenu {
+  position: relative;
+  display: flex;
+}
+.wp-block-navigation-submenu .wp-block-navigation__submenu-icon svg {
+  stroke: currentColor;
+}
+
+button.wp-block-navigation-item__content {
+  background-color: transparent;
+  border: none;
+  color: currentColor;
+  font-size: inherit;
+  font-family: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  text-transform: inherit;
+  text-align: left;
+}
+
+.wp-block-navigation-submenu__toggle {
+  cursor: pointer;
+}
+.wp-block-navigation-submenu__toggle[aria-expanded=true] + .wp-block-navigation__submenu-icon > svg,
+.wp-block-navigation-submenu__toggle[aria-expanded=true] > svg {
+  transform: rotate(180deg);
+}
+
+.wp-block-navigation-item.open-on-click .wp-block-navigation-submenu__toggle {
+  padding-left: 0;
+  padding-right: 0.85em;
+}
+.wp-block-navigation-item.open-on-click .wp-block-navigation-submenu__toggle + .wp-block-navigation__submenu-icon {
+  margin-left: -0.6em;
+  pointer-events: none;
+}
+
+.wp-block-navigation-item.open-on-click button.wp-block-navigation-item__content:not(.wp-block-navigation-submenu__toggle) {
+  padding: 0;
+}
+
+/**
+ * Margins
+ */
+.wp-block-navigation__responsive-container,
+.wp-block-navigation__responsive-close,
+.wp-block-navigation__responsive-dialog,
+.wp-block-navigation .wp-block-page-list,
+.wp-block-navigation__container,
+.wp-block-navigation__responsive-container-content {
+  gap: inherit;
+}
+
+/**
+ * Paddings
+ */
+:where(.wp-block-navigation.has-background .wp-block-navigation-item a:not(.wp-element-button)),
+:where(.wp-block-navigation.has-background .wp-block-navigation-submenu a:not(.wp-element-button)) {
+  padding: 0.5em 1em;
+}
+
+:where(.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-item a:not(.wp-element-button)),
+:where(.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-submenu a:not(.wp-element-button)),
+:where(.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-navigation-submenu button.wp-block-navigation-item__content),
+:where(.wp-block-navigation .wp-block-navigation__submenu-container .wp-block-pages-list__item button.wp-block-navigation-item__content) {
+  padding: 0.5em 1em;
+}
+
+/**
+ * Justifications.
+ */
+.wp-block-navigation.items-justified-space-between .wp-block-page-list > .has-child:last-child .wp-block-navigation__submenu-container,
+.wp-block-navigation.items-justified-space-between > .wp-block-navigation__container > .has-child:last-child .wp-block-navigation__submenu-container,
+.wp-block-navigation.items-justified-right .wp-block-page-list > .has-child .wp-block-navigation__submenu-container,
+.wp-block-navigation.items-justified-right .wp-block-navigation__container .has-child .wp-block-navigation__submenu-container {
+  left: auto;
+  right: 0;
+}
+.wp-block-navigation.items-justified-space-between .wp-block-page-list > .has-child:last-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container,
+.wp-block-navigation.items-justified-space-between > .wp-block-navigation__container > .has-child:last-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container,
+.wp-block-navigation.items-justified-right .wp-block-page-list > .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container,
+.wp-block-navigation.items-justified-right .wp-block-navigation__container .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container {
+  left: -1px;
+  right: -1px;
+}
+@media (min-width: 782px) {
+  .wp-block-navigation.items-justified-space-between .wp-block-page-list > .has-child:last-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container,
+  .wp-block-navigation.items-justified-space-between > .wp-block-navigation__container > .has-child:last-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container,
+  .wp-block-navigation.items-justified-right .wp-block-page-list > .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container,
+  .wp-block-navigation.items-justified-right .wp-block-navigation__container .has-child .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container {
+    left: auto;
+    right: 100%;
+  }
+}
+
+.wp-block-navigation:not(.has-background) .wp-block-navigation__submenu-container {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.wp-block-navigation.has-background .wp-block-navigation__submenu-container {
+  background-color: inherit;
+}
+
+.wp-block-navigation:not(.has-text-color) .wp-block-navigation__submenu-container {
+  color: #000;
+}
+
+.wp-block-navigation__container {
+  display: flex;
+  flex-wrap: var(--navigation-layout-wrap, wrap);
+  flex-direction: var(--navigation-layout-direction, initial);
+  justify-content: var(--navigation-layout-justify, initial);
+  align-items: var(--navigation-layout-align, initial);
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+.wp-block-navigation__container .is-responsive {
+  display: none;
+}
+
+.wp-block-navigation__container:only-child,
+.wp-block-page-list:only-child {
+  flex-grow: 1;
+}
+
+/**
+ * Mobile menu.
+ */
+@keyframes overlay-menu__fade-in-animation {
+  from {
+    opacity: 0;
+    transform: translateY(0.5em);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.wp-block-navigation__responsive-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.wp-block-navigation__responsive-container :where(.wp-block-navigation-item a) {
+  color: inherit;
+}
+.wp-block-navigation__responsive-container .wp-block-navigation__responsive-container-content {
+  display: flex;
+  flex-wrap: var(--navigation-layout-wrap, wrap);
+  flex-direction: var(--navigation-layout-direction, initial);
+  justify-content: var(--navigation-layout-justify, initial);
+  align-items: var(--navigation-layout-align, initial);
+}
+.wp-block-navigation__responsive-container:not(.is-menu-open.is-menu-open) {
+  color: inherit !important;
+  background-color: inherit !important;
+}
+.wp-block-navigation__responsive-container.is-menu-open {
+  display: flex;
+  flex-direction: column;
+  background-color: inherit;
+}
+@media not (prefers-reduced-motion) {
+  .wp-block-navigation__responsive-container.is-menu-open {
+    animation: overlay-menu__fade-in-animation 0.1s ease-out;
+    animation-fill-mode: forwards;
+  }
+}
+.wp-block-navigation__responsive-container.is-menu-open:not(.disable-default-overlay) {
+  padding-top: clamp(1rem, var(--wp--style--root--padding-top), 20rem);
+  padding-right: clamp(1rem, var(--wp--style--root--padding-right), 20rem);
+  padding-bottom: clamp(1rem, var(--wp--style--root--padding-bottom), 20rem);
+  padding-left: clamp(1rem, var(--wp--style--root--padding-left), 20rem);
+}
+.wp-block-navigation__responsive-container.is-menu-open {
+  overflow: auto;
+  z-index: 100000;
+}
+.wp-block-navigation__responsive-container.is-menu-open:not(.disable-default-overlay) .wp-block-navigation__responsive-container-content {
+  padding-top: calc(2rem + 24px);
+}
+.wp-block-navigation__responsive-container.is-menu-open:where(:not(.disable-default-overlay)) .wp-block-navigation__responsive-container-content {
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: var(--navigation-layout-justification-setting, inherit);
+}
+.wp-block-navigation__responsive-container.is-menu-open:where(:not(.disable-default-overlay)) .wp-block-navigation__responsive-container-content,
+.wp-block-navigation__responsive-container.is-menu-open:where(:not(.disable-default-overlay)) .wp-block-navigation__responsive-container-content .wp-block-page-list,
+.wp-block-navigation__responsive-container.is-menu-open:where(:not(.disable-default-overlay)) .wp-block-navigation__responsive-container-content .wp-block-navigation__container {
+  justify-content: flex-start;
+}
+.wp-block-navigation__responsive-container.is-menu-open:where(:not(.disable-default-overlay)) .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-icon {
+  display: none;
+}
+.wp-block-navigation__responsive-container.is-menu-open:where(:not(.disable-default-overlay)) .wp-block-navigation__responsive-container-content .has-child .wp-block-navigation__submenu-container {
+  opacity: 1;
+  visibility: visible;
+  height: auto;
+  width: auto;
+  overflow: initial;
+  min-width: 200px;
+  position: static;
+  border: none;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.wp-block-navigation__responsive-container.is-menu-open:where(:not(.disable-default-overlay)) .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container,
+.wp-block-navigation__responsive-container.is-menu-open:where(:not(.disable-default-overlay)) .wp-block-navigation__responsive-container-content .wp-block-navigation__container {
+  gap: inherit;
+}
+.wp-block-navigation__responsive-container.is-menu-open:where(:not(.disable-default-overlay)) .wp-block-navigation__responsive-container-content .wp-block-navigation__submenu-container {
+  padding-top: var(--wp--style--block-gap, 2em);
+}
+.wp-block-navigation__responsive-container.is-menu-open:where(:not(.disable-default-overlay)) .wp-block-navigation__responsive-container-content .wp-block-navigation-item__content {
+  padding: 0;
+}
+.wp-block-navigation__responsive-container.is-menu-open:where(:not(.disable-default-overlay)) .wp-block-navigation__responsive-container-content .wp-block-navigation__container,
+.wp-block-navigation__responsive-container.is-menu-open:where(:not(.disable-default-overlay)) .wp-block-navigation__responsive-container-content .wp-block-navigation-item,
+.wp-block-navigation__responsive-container.is-menu-open:where(:not(.disable-default-overlay)) .wp-block-navigation__responsive-container-content .wp-block-page-list {
+  display: flex;
+  flex-direction: column;
+  align-items: var(--navigation-layout-justification-setting, initial);
+}
+.wp-block-navigation__responsive-container.is-menu-open:where(:not(.disable-default-overlay)) .wp-block-navigation-item .wp-block-navigation__submenu-container,
+.wp-block-navigation__responsive-container.is-menu-open:where(:not(.disable-default-overlay)) .wp-block-navigation__container,
+.wp-block-navigation__responsive-container.is-menu-open:where(:not(.disable-default-overlay)) .wp-block-navigation-item,
+.wp-block-navigation__responsive-container.is-menu-open:where(:not(.disable-default-overlay)) .wp-block-page-list {
+  color: inherit !important;
+  background: transparent !important;
+}
+.wp-block-navigation__responsive-container.is-menu-open:where(:not(.disable-default-overlay)) .wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container {
+  right: auto;
+  left: auto;
+}
+.wp-block-navigation__responsive-container.disable-default-overlay .wp-block-navigation__overlay-container {
+  display: none;
+  width: 100%;
+}
+.wp-block-navigation__responsive-container.disable-default-overlay .wp-block-navigation__responsive-close {
+  max-width: none;
+}
+.wp-block-navigation__responsive-container.disable-default-overlay.is-menu-open .wp-block-navigation__responsive-container-content > *:not(.wp-block-navigation__overlay-container) {
+  display: none;
+}
+.wp-block-navigation__responsive-container.disable-default-overlay.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation__overlay-container {
+  display: block;
+}
+.wp-block-navigation__responsive-container.disable-default-overlay.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation__overlay-container .wp-block-navigation__submenu-container {
+  right: auto;
+  left: 0;
+}
+@media (min-width: 600px) {
+  .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) {
+    display: block;
+    width: 100%;
+    position: relative;
+    z-index: auto;
+    background-color: inherit;
+  }
+  .wp-block-navigation__responsive-container:not(.hidden-by-default):not(.is-menu-open) .wp-block-navigation__responsive-container-close {
+    display: none;
+  }
+  .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container.wp-block-navigation__submenu-container {
+    left: 0;
+  }
+}
+
+.wp-block-navigation:not(.has-background) .wp-block-navigation__responsive-container.is-menu-open:not(.disable-default-overlay) {
+  background-color: #fff;
+}
+
+.wp-block-navigation:not(.has-text-color) .wp-block-navigation__responsive-container.is-menu-open:not(.disable-default-overlay) {
+  color: #000;
+}
+
+.wp-block-navigation__toggle_button_label {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.wp-block-navigation__responsive-container-open,
+.wp-block-navigation__responsive-container-close {
+  vertical-align: middle;
+  cursor: pointer;
+  color: currentColor;
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  text-transform: inherit;
+}
+.wp-block-navigation__responsive-container-open svg,
+.wp-block-navigation__responsive-container-close svg {
+  fill: currentColor;
+  pointer-events: none;
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.wp-block-navigation__responsive-container-open {
+  display: flex;
+}
+.wp-block-navigation__responsive-container-open.wp-block-navigation__responsive-container-open.wp-block-navigation__responsive-container-open {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+}
+@media (min-width: 600px) {
+  .wp-block-navigation__responsive-container-open:not(.always-shown) {
+    display: none;
+  }
+}
+
+.wp-block-navigation__responsive-container-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+}
+.wp-block-navigation__responsive-container-close.wp-block-navigation__responsive-container-close.wp-block-navigation__responsive-container-close {
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+.disable-default-overlay .wp-block-navigation__responsive-container-close {
+  top: clamp(1rem, var(--wp--style--root--padding-left), 20rem);
+  right: clamp(1rem, var(--wp--style--root--padding-left), 20rem);
+}
+
+.wp-block-navigation__responsive-close {
+  width: 100%;
+}
+.has-modal-open .wp-block-navigation__responsive-close {
+  max-width: var(--wp--style--global--wide-size, 100%);
+  margin-left: auto;
+  margin-right: auto;
+}
+.wp-block-navigation__responsive-close:focus {
+  outline: none;
+}
+
+.is-menu-open .wp-block-navigation__responsive-close,
+.is-menu-open .wp-block-navigation__responsive-dialog,
+.is-menu-open .wp-block-navigation__responsive-container-content {
+  box-sizing: border-box;
+}
+
+.wp-block-navigation__responsive-dialog {
+  position: relative;
+}
+
+.has-modal-open .admin-bar .is-menu-open:where(:not(.disable-default-overlay)) .wp-block-navigation__responsive-dialog {
+  margin-top: 46px;
+}
+@media (min-width: 782px) {
+  .has-modal-open .admin-bar .is-menu-open:where(:not(.disable-default-overlay)) .wp-block-navigation__responsive-dialog {
+    margin-top: 32px;
+  }
+}
+
+html.has-modal-open {
+  overflow: hidden;
+}
+/*# sourceURL=../wp-includes/blocks/navigation/style.css */
+</style>
+<style id="wp-emoji-styles-inline-css">
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+/**
+ * Colors
+ */
+/**
+ * Typography
+ */
+/**
+ * SCSS Variables.
+ *
+ * Please use variables from this sheet to ensure consistency across the UI.
+ * Don't add to this sheet unless you're pretty sure the value will be reused in many places.
+ * For example, don't add rules to this sheet that affect block visuals. It's purely for UI.
+ */
+/**
+ * Fonts & basic variables.
+ */
+/**
+ * Typography
+ */
+/**
+ * Grid System.
+ * https://make.wordpress.org/design/2019/10/31/proposal-a-consistent-spacing-system-for-wordpress/
+ */
+/**
+ * Radius scale.
+ */
+/**
+ * Elevation scale.
+ */
+/**
+ * Dimensions.
+ */
+/**
+ * Mobile specific styles
+ */
+/**
+ * Editor styles.
+ */
+/**
+ * Block & Editor UI.
+ */
+/**
+ * Block paddings.
+ */
+/**
+ * React Native specific.
+ * These variables do not appear to be used anywhere else.
+ */
+/**
+ * Breakpoints & Media Queries
+ */
+/**
+*  Converts a hex value into the rgb equivalent.
+*
+* @param {string} hex - the hexadecimal value to convert
+* @return {string} comma separated rgb values
+*/
+/**
+ * Long content fade mixin
+ *
+ * Creates a fading overlay to signify that the content is longer
+ * than the space allows.
+ */
+/**
+ * Breakpoint mixins
+ */
+/**
+ * Focus styles.
+ */
+/**
+ * Standard focus rings for the WordPress Design System.
+ *
+ * Apply `outset-ring__focus` inside the relevant pseudo-class at the call site,
+ * e.g. `&:focus { @include outset-ring__focus(); }`.
+ */
+/**
+ * Applies editor left position to the selector passed as argument
+ */
+/**
+ * Styles that are reused verbatim in a few places
+ */
+/**
+ * Allows users to opt-out of animations via OS-level preferences.
+ */
+/**
+ * Reset default styles for JavaScript UI based pages.
+ * This is a WP-admin agnostic reset
+ */
+/**
+ * Reset the WP Admin page styles for Gutenberg-like pages.
+ */
+/**
+ * Creates a checkerboard pattern background to indicate transparency.
+ * @param {String} $size - The size of the squares in the checkerboard pattern. Default is 12px.
+ */
+:root {
+  --wp-block-synced-color: #7a00df;
+  --wp-block-synced-color--rgb: 122, 0, 223;
+  --wp-bound-block-color: var(--wp-block-synced-color);
+  --wp-editor-canvas-background: #ddd;
+  --wp-admin-theme-color: #007cba;
+  --wp-admin-theme-color--rgb: 0, 124, 186;
+  --wp-admin-theme-color-darker-10: rgb(0, 107, 160.5);
+  --wp-admin-theme-color-darker-10--rgb: 0, 107, 160.5;
+  --wp-admin-theme-color-darker-20: #005a87;
+  --wp-admin-theme-color-darker-20--rgb: 0, 90, 135;
+  --wp-admin-border-width-focus: 2px;
+}
+@media (min-resolution: 192dpi) {
+  :root {
+    --wp-admin-border-width-focus: 1.5px;
+  }
+}
+
+/**
+ * Element styles.
+ */
+.wp-element-button {
+  cursor: pointer;
+}
+
+:root .has-very-light-gray-background-color {
+  background-color: #eee;
+}
+:root .has-very-dark-gray-background-color {
+  background-color: #313131;
+}
+:root .has-very-light-gray-color {
+  color: #eee;
+}
+:root .has-very-dark-gray-color {
+  color: #313131;
+}
+/* stylelint-disable @stylistic/function-comma-space-after -- We can not use spacing because of WP multi site kses rule. */
+
+:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background {
+  background: linear-gradient(135deg, rgb(0, 208, 132) 0%, rgb(6, 147, 227) 100%);
+}
+:root .has-purple-crush-gradient-background {
+  background: linear-gradient(135deg, rgb(52, 226, 228) 0%, rgb(71, 33, 251) 50%, rgb(171, 29, 254) 100%);
+}
+:root .has-hazy-dawn-gradient-background {
+  background: linear-gradient(135deg, rgb(250, 172, 168) 0%, rgb(218, 208, 236) 100%);
+}
+:root .has-subdued-olive-gradient-background {
+  background: linear-gradient(135deg, rgb(250, 250, 225) 0%, rgb(103, 166, 113) 100%);
+}
+:root .has-atomic-cream-gradient-background {
+  background: linear-gradient(135deg, rgb(253, 215, 154) 0%, rgb(0, 74, 89) 100%);
+}
+:root .has-nightshade-gradient-background {
+  background: linear-gradient(135deg, rgb(51, 9, 104) 0%, rgb(49, 205, 207) 100%);
+}
+:root .has-midnight-gradient-background {
+  background: linear-gradient(135deg, rgb(2, 3, 129) 0%, rgb(40, 116, 252) 100%);
+}
+:root {
+  /* stylelint-enable @stylistic/function-comma-space-after */
+  --wp--preset--font-size--normal: 16px;
+  --wp--preset--font-size--huge: 42px;
+}
+
+.has-regular-font-size {
+  font-size: 1em;
+}
+
+.has-larger-font-size {
+  font-size: 2.625em;
+}
+
+.has-normal-font-size {
+  font-size: var(--wp--preset--font-size--normal);
+}
+
+.has-huge-font-size {
+  font-size: var(--wp--preset--font-size--huge);
+}
+
+:root .has-text-align-center {
+  text-align: center;
+}
+
+:root .has-text-align-left {
+  /*rtl:ignore*/
+  text-align: left;
+}
+
+:root .has-text-align-right {
+  /*rtl:ignore*/
+  text-align: right;
+}
+
+.has-fit-text {
+  white-space: nowrap !important;
+}
+
+#end-resizable-editor-section {
+  display: none;
+}
+
+.aligncenter {
+  clear: both;
+}
+
+.items-justified-left {
+  justify-content: flex-start;
+}
+
+.items-justified-center {
+  justify-content: center;
+}
+
+.items-justified-right {
+  justify-content: flex-end;
+}
+
+.items-justified-space-between {
+  justify-content: space-between;
+}
+
+.screen-reader-text {
+  border: 0;
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+  word-break: normal !important;
+}
+
+.screen-reader-text:focus {
+  background-color: #ddd;
+  clip-path: none;
+  color: #444;
+  display: block;
+  font-size: 1em;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+}
+
+/**
+ * The following provide a simple means of applying a default border style when
+ * a user first makes a selection in the border block support panel.
+ * This prevents issues such as where the user could set a border width
+ * and see no border due there being no border style set.
+ *
+ * This is intended to be removed once intelligent defaults can be set while
+ * making border selections via the block support.
+ *
+ * See: https://github.com/WordPress/gutenberg/pull/33743
+ */
+html :where(.has-border-color) {
+  border-style: solid;
+}
+
+html :where([style^=border-color],
+[style*=";border-color"],
+[style*="; border-color"]) {
+  border-style: solid;
+}
+
+html :where([style^=border-top-color],
+[style*=";border-top-color"],
+[style*="; border-top-color"]) {
+  border-top-style: solid;
+}
+
+html :where([style^=border-right-color],
+[style*=";border-right-color"],
+[style*="; border-right-color"]) {
+  /*rtl:ignore*/
+  border-right-style: solid;
+}
+
+html :where([style^=border-bottom-color],
+[style*=";border-bottom-color"],
+[style*="; border-bottom-color"]) {
+  border-bottom-style: solid;
+}
+
+html :where([style^=border-left-color],
+[style*=";border-left-color"],
+[style*="; border-left-color"]) {
+  /*rtl:ignore*/
+  border-left-style: solid;
+}
+
+html :where([style^=border-width],
+[style*=";border-width"],
+[style*="; border-width"]) {
+  border-style: solid;
+}
+
+html :where([style^=border-top-width],
+[style*=";border-top-width"],
+[style*="; border-top-width"]) {
+  border-top-style: solid;
+}
+
+html :where([style^=border-right-width],
+[style*=";border-right-width"],
+[style*="; border-right-width"]) {
+  /*rtl:ignore*/
+  border-right-style: solid;
+}
+
+html :where([style^=border-bottom-width],
+[style*=";border-bottom-width"],
+[style*="; border-bottom-width"]) {
+  border-bottom-style: solid;
+}
+
+html :where([style^=border-left-width],
+[style*=";border-left-width"],
+[style*="; border-left-width"]) {
+  /*rtl:ignore*/
+  border-left-style: solid;
+}
+
+/**
+ * Provide baseline responsiveness for images.
+ */
+html :where(img[class*=wp-image-]) {
+  height: auto;
+  max-width: 100%;
+}
+
+/**
+ * Reset user agent styles for figure element margins.
+ */
+:where(figure) {
+  margin: 0 0 1em 0;
+}
+
+html :where(.is-position-sticky) {
+  --wp-admin--admin-bar--position-offset: var(--wp-admin--admin-bar--height, 0px);
+}
+
+@media screen and (max-width: 600px) {
+  html :where(.is-position-sticky) {
+    --wp-admin--admin-bar--position-offset: 0px;
+  }
+}
+/*# sourceURL=/wp-includes/css/dist/block-library/common.css */
+</style>
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--navy: #162227;--wp--preset--color--graphite: #4c4c4c;--wp--preset--color--gold: #b69e52;--wp--preset--color--stone: #f2f2f2;--wp--preset--color--off-white: #fcfbf9;--wp--preset--color--bone: #f8f6f0;--wp--preset--color--dune-lightest: #f8f6f0;--wp--preset--color--dune-lighter: #f0ebdc;--wp--preset--color--dune-light: #cbbb85;--wp--preset--color--dune: #b69e52;--wp--preset--color--sand: #f2eee1;--wp--preset--color--border-grey: #d8d8d8;--wp--preset--color--border-soft: rgba(0, 0, 0, 0.15);--wp--preset--color--border-faint: rgba(0, 0, 0, 0.05);--wp--preset--color--disabled: rgba(0, 0, 0, 0.2);--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.179), 16px);--wp--preset--font-size--medium: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.536), 20px);--wp--preset--font-size--large: clamp(22.041px, 1.378rem + ((1vw - 3.2px) * 1.246), 36px);--wp--preset--font-size--x-large: clamp(25.014px, 1.563rem + ((1vw - 3.2px) * 1.517), 42px);--wp--preset--font-size--body: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.357), 18px);--wp--preset--font-size--body-lg: clamp(14px, 0.875rem + ((1vw - 3.2px) * 0.536), 20px);--wp--preset--font-size--lead: clamp(14.642px, 0.915rem + ((1vw - 3.2px) * 0.657), 22px);--wp--preset--font-size--tiny: 12px;--wp--preset--font-size--heading-6: clamp(14.642px, 0.915rem + ((1vw - 3.2px) * 0.657), 22px);--wp--preset--font-size--heading-5: clamp(17.905px, 1.119rem + ((1vw - 3.2px) * 0.901), 28px);--wp--preset--font-size--heading-4: clamp(24px, 1.5rem + ((1vw - 3.2px) * 1.071), 36px);--wp--preset--font-size--heading-3: clamp(32px, 2rem + ((1vw - 3.2px) * 1.071), 44px);--wp--preset--font-size--heading-2: clamp(36px, 2.25rem + ((1vw - 3.2px) * 1.429), 52px);--wp--preset--font-size--heading-1: clamp(40px, 2.5rem + ((1vw - 3.2px) * 2.857), 72px);--wp--preset--font-size--display-sm: clamp(48px, 3rem + ((1vw - 3.2px) * 2.857), 80px);--wp--preset--font-size--display: clamp(48px, 3rem + ((1vw - 3.2px) * 3.214), 84px);--wp--preset--font-family--manrope: Manrope, sans-serif;--wp--preset--font-family--inter: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;--wp--preset--font-family--roboto: Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;--wp--preset--font-family--widescreen: widescreen, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;--wp--preset--font-family--widescreen-ex: "Widescreen Ex";--wp--preset--spacing--20: 20px;--wp--preset--spacing--30: 30px;--wp--preset--spacing--40: 40px;--wp--preset--spacing--50: 50px;--wp--preset--spacing--60: 60px;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 80px;--wp--preset--spacing--10: 10px;--wp--preset--spacing--16: 16px;--wp--preset--spacing--28: 28px;--wp--preset--spacing--32: 32px;--wp--preset--spacing--36: 36px;--wp--preset--spacing--48: 48px;--wp--preset--spacing--64: 64px;--wp--preset--spacing--100: 100px;--wp--preset--spacing--112: 112px;--wp--preset--spacing--150: 150px;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);--wp--preset--border-radius--sm: 15px;--wp--preset--border-radius--md: 16px;--wp--preset--border-radius--full: 50%;}.wp-block-button{--wp--preset--dimension--25: 25%;--wp--preset--dimension--50: 50%;--wp--preset--dimension--75: 75%;--wp--preset--dimension--100: 100%;}:root { --wp--style--global--content-size: 1280px;--wp--style--global--wide-size: 1440px; }:where(body) { margin: 0; }.wp-site-blocks { padding-top: var(--wp--style--root--padding-top); padding-bottom: var(--wp--style--root--padding-bottom); }.has-global-padding { padding-right: var(--wp--style--root--padding-right); padding-left: var(--wp--style--root--padding-left); }.has-global-padding > .alignfull { margin-right: calc(var(--wp--style--root--padding-right) * -1); margin-left: calc(var(--wp--style--root--padding-left) * -1); }.has-global-padding :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) { padding-right: 0; padding-left: 0; }.has-global-padding :where(:not(.alignfull.is-layout-flow) > .has-global-padding:not(.wp-block-block, .alignfull)) > .alignfull { margin-left: 0; margin-right: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 0px; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 0px; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 0px;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 0px;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 0px;}:root :where(.is-layout-grid){gap: 0px;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{background-color: var(--wp--preset--color--white);border-radius: 0px;border-color: var(--wp--preset--color--border-soft);border-width: 0px;border-style: solid;color: var(--wp--preset--color--black);font-family: var(--wp--preset--font-family--widescreen);font-size: var(--wp--preset--font-size--body);letter-spacing: 0;line-height: 1.6;--wp--style--root--padding-top: 0px;--wp--style--root--padding-right: 80px;--wp--style--root--padding-bottom: 0px;--wp--style--root--padding-left: 80px;}a:where(:not(.wp-element-button)){color: var(--wp--preset--color--navy);text-decoration: none;}:root :where(a:where(:not(.wp-element-button)):hover){color: var(--wp--preset--color--navy);text-decoration: underline;}:root :where(a:where(:not(.wp-element-button)):focus){color: var(--wp--preset--color--navy);}h1, h2, h3, h4, h5, h6{color: var(--wp--preset--color--black);font-family: var(--wp--preset--font-family--widescreen);font-weight: 500;letter-spacing: -0.01em;line-height: 1.4;}h1{font-family: var(--wp--preset--font-family--widescreen);font-size: var(--wp--preset--font-size--display);font-weight: 700;letter-spacing: 0.01em;line-height: 1.1;}h2{font-family: var(--wp--preset--font-family--widescreen);font-size: var(--wp--preset--font-size--heading-1);font-weight: 700;letter-spacing: 0.01em;line-height: 1.2;}h3{font-family: var(--wp--preset--font-family--widescreen);font-size: var(--wp--preset--font-size--heading-2);font-weight: 500;letter-spacing: -0.01em;line-height: 1.3;}h4{font-family: var(--wp--preset--font-family--widescreen);font-size: var(--wp--preset--font-size--heading-4);font-weight: 700;letter-spacing: 0.01em;line-height: 1.2;}h5{font-family: var(--wp--preset--font-family--widescreen);font-size: var(--wp--preset--font-size--lead);font-weight: 500;letter-spacing: -0.01em;line-height: 1.4;}h6{font-family: var(--wp--preset--font-family--widescreen);font-size: var(--wp--preset--font-size--small);font-weight: 600;line-height: 1.5;}:root :where(.wp-element-button, .wp-block-button__link){background-color: var(--wp--preset--color--white);border-radius: 0px;border-color: var(--wp--preset--color--black);border-width: 1px;border-style: solid;color: var(--wp--preset--color--black);font-family: var(--wp--preset--font-family--widescreen);font-size: var(--wp--preset--font-size--small);font-style: inherit;font-weight: 400;letter-spacing: inherit;line-height: 1.5;padding-top: 9px;padding-right: 24px;padding-bottom: 9px;padding-left: 24px;text-decoration: none;text-transform: inherit;}:root :where(.wp-element-button:hover, .wp-block-button__link:hover){background-color: var(--wp--preset--color--white);border-color: var(--wp--preset--color--black);}:root :where(.wp-element-button:focus, .wp-block-button__link:focus){background-color: var(--wp--preset--color--white);border-color: var(--wp--preset--color--black);}:root :where(.wp-element-button:active, .wp-block-button__link:active){background-color: var(--wp--preset--color--stone);}:root :where(.wp-element-caption, .wp-block-audio figcaption, .wp-block-embed figcaption, .wp-block-gallery figcaption, .wp-block-image figcaption, .wp-block-table figcaption, .wp-block-video figcaption){color: var(--wp--preset--color--black);font-family: var(--wp--preset--font-family--widescreen);font-size: var(--wp--preset--font-size--small);line-height: 1.5;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-navy-color{color: var(--wp--preset--color--navy) !important;}.has-graphite-color{color: var(--wp--preset--color--graphite) !important;}.has-gold-color{color: var(--wp--preset--color--gold) !important;}.has-stone-color{color: var(--wp--preset--color--stone) !important;}.has-off-white-color{color: var(--wp--preset--color--off-white) !important;}.has-bone-color{color: var(--wp--preset--color--bone) !important;}.has-dune-lightest-color{color: var(--wp--preset--color--dune-lightest) !important;}.has-dune-lighter-color{color: var(--wp--preset--color--dune-lighter) !important;}.has-dune-light-color{color: var(--wp--preset--color--dune-light) !important;}.has-dune-color{color: var(--wp--preset--color--dune) !important;}.has-sand-color{color: var(--wp--preset--color--sand) !important;}.has-border-grey-color{color: var(--wp--preset--color--border-grey) !important;}.has-border-soft-color{color: var(--wp--preset--color--border-soft) !important;}.has-border-faint-color{color: var(--wp--preset--color--border-faint) !important;}.has-disabled-color{color: var(--wp--preset--color--disabled) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-navy-background-color{background-color: var(--wp--preset--color--navy) !important;}.has-graphite-background-color{background-color: var(--wp--preset--color--graphite) !important;}.has-gold-background-color{background-color: var(--wp--preset--color--gold) !important;}.has-stone-background-color{background-color: var(--wp--preset--color--stone) !important;}.has-off-white-background-color{background-color: var(--wp--preset--color--off-white) !important;}.has-bone-background-color{background-color: var(--wp--preset--color--bone) !important;}.has-dune-lightest-background-color{background-color: var(--wp--preset--color--dune-lightest) !important;}.has-dune-lighter-background-color{background-color: var(--wp--preset--color--dune-lighter) !important;}.has-dune-light-background-color{background-color: var(--wp--preset--color--dune-light) !important;}.has-dune-background-color{background-color: var(--wp--preset--color--dune) !important;}.has-sand-background-color{background-color: var(--wp--preset--color--sand) !important;}.has-border-grey-background-color{background-color: var(--wp--preset--color--border-grey) !important;}.has-border-soft-background-color{background-color: var(--wp--preset--color--border-soft) !important;}.has-border-faint-background-color{background-color: var(--wp--preset--color--border-faint) !important;}.has-disabled-background-color{background-color: var(--wp--preset--color--disabled) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-navy-border-color{border-color: var(--wp--preset--color--navy) !important;}.has-graphite-border-color{border-color: var(--wp--preset--color--graphite) !important;}.has-gold-border-color{border-color: var(--wp--preset--color--gold) !important;}.has-stone-border-color{border-color: var(--wp--preset--color--stone) !important;}.has-off-white-border-color{border-color: var(--wp--preset--color--off-white) !important;}.has-bone-border-color{border-color: var(--wp--preset--color--bone) !important;}.has-dune-lightest-border-color{border-color: var(--wp--preset--color--dune-lightest) !important;}.has-dune-lighter-border-color{border-color: var(--wp--preset--color--dune-lighter) !important;}.has-dune-light-border-color{border-color: var(--wp--preset--color--dune-light) !important;}.has-dune-border-color{border-color: var(--wp--preset--color--dune) !important;}.has-sand-border-color{border-color: var(--wp--preset--color--sand) !important;}.has-border-grey-border-color{border-color: var(--wp--preset--color--border-grey) !important;}.has-border-soft-border-color{border-color: var(--wp--preset--color--border-soft) !important;}.has-border-faint-border-color{border-color: var(--wp--preset--color--border-faint) !important;}.has-disabled-border-color{border-color: var(--wp--preset--color--disabled) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-body-font-size{font-size: var(--wp--preset--font-size--body) !important;}.has-body-lg-font-size{font-size: var(--wp--preset--font-size--body-lg) !important;}.has-lead-font-size{font-size: var(--wp--preset--font-size--lead) !important;}.has-tiny-font-size{font-size: var(--wp--preset--font-size--tiny) !important;}.has-heading-6-font-size{font-size: var(--wp--preset--font-size--heading-6) !important;}.has-heading-5-font-size{font-size: var(--wp--preset--font-size--heading-5) !important;}.has-heading-4-font-size{font-size: var(--wp--preset--font-size--heading-4) !important;}.has-heading-3-font-size{font-size: var(--wp--preset--font-size--heading-3) !important;}.has-heading-2-font-size{font-size: var(--wp--preset--font-size--heading-2) !important;}.has-heading-1-font-size{font-size: var(--wp--preset--font-size--heading-1) !important;}.has-display-sm-font-size{font-size: var(--wp--preset--font-size--display-sm) !important;}.has-display-font-size{font-size: var(--wp--preset--font-size--display) !important;}.has-manrope-font-family{font-family: var(--wp--preset--font-family--manrope) !important;}.has-inter-font-family{font-family: var(--wp--preset--font-family--inter) !important;}.has-roboto-font-family{font-family: var(--wp--preset--font-family--roboto) !important;}.has-widescreen-font-family{font-family: var(--wp--preset--font-family--widescreen) !important;}.has-widescreen-ex-font-family{font-family: var(--wp--preset--font-family--widescreen-ex) !important;}
+:root :where(.wp-block-navigation){font-family: var(--wp--preset--font-family--widescreen);font-size: var(--wp--preset--font-size--body);line-height: 1.6;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+<style id="core-block-supports-inline-css">
+/**
+ * Core styles: block-supports
+ */
+.wp-container-core-group-is-layout-aab3afb4 {
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
+.wp-container-core-group-is-layout-e259ee6b {
+	justify-content: center;
+	align-items: center;
+}
+.wp-container-core-group-is-layout-1bbac977 {
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+/*# sourceURL=core-block-supports-inline-css */
+</style>
+<style id="wp-block-template-skip-link-inline-css">
+.skip-link.screen-reader-text {
+	border: 0;
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	/* Many screen reader and browser combinations announce broken words as they would appear visually. */
+	word-wrap: normal !important;
+	word-break: normal !important;
+}
+
+.skip-link.screen-reader-text:focus {
+	background-color: #eee;
+	clip-path: none;
+	color: #444;
+	display: block;
+	font-size: 1em;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+}
+
+/*# sourceURL=/wp-includes/css/wp-block-template-skip-link.css */
+</style>
+<link rel='stylesheet' id='contact-form-7-css' href='../wp-content/plugins/contact-form-7/includes/css/styles.css?ver=6.2.2' media='all' />
+<link rel='stylesheet' id='opencx-fonts-widescreen-css' href='https://use.typekit.net/yas5ftt.css' media='all' />
+<link rel='stylesheet' id='opencx-fonts-local-css' href='../wp-content/themes/OpenCX/assets/css/fonts.css?ver=1791682979' media='all' />
+<link rel='stylesheet' id='opencx-fonts-css' href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&#038;family=Manrope:wght@300;400;500;600;700;800&#038;family=Roboto:wght@400;500;600;700&#038;display=swap' media='all' />
+<link rel='stylesheet' id='opencx-tokens-css' href='../wp-content/themes/OpenCX/assets/css/tokens.css?ver=1791691416' media='all' />
+<link rel='stylesheet' id='opencx-patterns-css' href='../wp-content/themes/OpenCX/assets/css/patterns.css?ver=1791833619' media='all' />
+<link rel="https://api.w.org/" href="#" /><link rel="alternate" title="JSON" type="application/json" href="#" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="#" />
+<meta name="generator" content="WordPress 7.1.3" />
+<link rel="canonical" href="index.html" />
+<link rel='shortlink' href='../index.html' />
+<style class="wp-fonts-local">
+@font-face{font-family:Manrope;font-style:normal;font-weight:200;font-display:fallback;src:url('../wp-content/uploads/fonts/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk59FO_A87jxeN7B.woff2') format('woff2');}
+@font-face{font-family:Manrope;font-style:normal;font-weight:300;font-display:fallback;src:url('../wp-content/uploads/fonts/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk6jFO_A87jxeN7B.woff2') format('woff2');}
+@font-face{font-family:Manrope;font-style:normal;font-weight:400;font-display:fallback;src:url('../wp-content/uploads/fonts/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk79FO_A87jxeN7B.woff2') format('woff2');}
+@font-face{font-family:Manrope;font-style:normal;font-weight:500;font-display:fallback;src:url('../wp-content/uploads/fonts/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk7PFO_A87jxeN7B.woff2') format('woff2');}
+@font-face{font-family:Manrope;font-style:normal;font-weight:600;font-display:fallback;src:url('../wp-content/uploads/fonts/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk4jE-_A87jxeN7B.woff2') format('woff2');}
+@font-face{font-family:Manrope;font-style:normal;font-weight:700;font-display:fallback;src:url('../wp-content/uploads/fonts/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk4aE-_A87jxeN7B.woff2') format('woff2');}
+@font-face{font-family:Manrope;font-style:normal;font-weight:800;font-display:fallback;src:url('../wp-content/uploads/fonts/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk59E-_A87jxeN7B.woff2') format('woff2');}
+@font-face{font-family:"Widescreen Ex";font-style:normal;font-weight:400;font-display:fallback;src:url('../wp-content/uploads/fonts/Widescreen-Ex-Regular.ttf') format('truetype');}
+</style>
+</head>
+
+<body class="wp-singular page-template-default page page-id-68 page-parent wp-custom-logo wp-embed-responsive wp-theme-OpenCX page-resources">
+
+<a class="skip-link screen-reader-text" id="wp-skip-link" href="#wp--skip-link--target">Skip to content</a><div class="wp-site-blocks"><header class="wp-block-template-part">
+<div class="wp-block-group alignfull full-width ocx-header ocx-header--ecosystem ocx-header--resources has-background is-horizontal is-content-justification-center is-layout-flex wp-container-core-group-is-layout-e259ee6b wp-block-group-is-layout-flex">
+
+	
+	<div class="wp-block-group ocx-header__row is-horizontal is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-is-layout-aab3afb4 wp-block-group-is-layout-flex">
+
+		<!-- Logo (Left) -->
+		<div class="ocx-header__logo">
+			<a href="../index.html" class="ocx-header__logo-link" aria-label="OpenCX Home">
+				<img decoding="async" src="../wp-content/themes/OpenCX/assets/images/opencx-logo-black.svg" alt="OpenCX" class="ocx-header__logo-img" width="158" height="42" />
+			</a>
+		</div>
+
+		<!-- Nav Track (Desktop: nav links + action buttons) -->
+		<div class="ocx-header__track">
+			<nav class="ocx-nav--menu" aria-label="Main Navigation"><div class="ocx-nav-item ocx-nav-item--has-dropdown"><a href="../ecosystem/index.html" class="ocx-nav-link" aria-haspopup="true" aria-expanded="false"><span>Ecosystem</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="ocx-nav-plus" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12H19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 5V19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="ocx-nav-dropdown" role="menu" aria-label="Ecosystem Submenu"><a href="../ecosystem/index.html#aiframework" class="ocx-nav-dropdown__link" role="menuitem"><span>AI Framework</span></a><a href="../ecosystem/index.html#integrations" class="ocx-nav-dropdown__link" role="menuitem"><span>Integrations</span></a><a href="../ecosystem/index.html#omnichannel" class="ocx-nav-dropdown__link" role="menuitem"><span>Omnichannel</span></a><a href="../ecosystem/index.html#analyticsbi" class="ocx-nav-dropdown__link" role="menuitem"><span>Analytics &amp; BI</span></a></div></div><div class="ocx-nav-item"><a href="../solution/index.html" class="ocx-nav-link"><span>Solution</span></a></div><div class="ocx-nav-item ocx-nav-item--has-dropdown"><a href="../industries/index.html" class="ocx-nav-link" aria-haspopup="true" aria-expanded="false"><span>Industries</span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="ocx-nav-plus" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M5 12H19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 5V19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg></a><div class="ocx-nav-dropdown" role="menu" aria-label="Industries Submenu"><a href="../industries/index.html#financial-services" class="ocx-nav-dropdown__link" role="menuitem"><span>Financial Services</span></a><a href="../industries/index.html#hospitality" class="ocx-nav-dropdown__link" role="menuitem"><span>Hospitality</span></a><a href="../industries/index.html#retail" class="ocx-nav-dropdown__link" role="menuitem"><span>Retail</span></a><a href="../industries/index.html#education" class="ocx-nav-dropdown__link" role="menuitem"><span>Education</span></a><a href="../industries/index.html#healthcare" class="ocx-nav-dropdown__link" role="menuitem"><span>Healthcare</span></a><a href="../industries/index.html#manufacturing" class="ocx-nav-dropdown__link" role="menuitem"><span>Manufacturing</span></a></div></div><div class="ocx-nav-item"><a href="index.html" class="ocx-nav-link ocx-nav-link--active"><span>Resources</span></a></div><div class="ocx-nav-item"><a href="../about/index.html" class="ocx-nav-link"><span>About</span></a></div></nav>
+
+			<!-- Actions: Sign In + Let's meet -->
+			<div class="ocx-header__actions">
+				<a href="#" class="ocx-header__signin" aria-label="Sign In">
+					<img decoding="async" src="../wp-content/themes/OpenCX/assets/images/icon-login-nav.svg" alt="Sign In" width="61" height="44" />
+				</a>
+				<a href="../contact/index.html" class="ocx-btn--meet">Let&#8217;s meet</a>
+			</div>
+		</div>
+
+		<!-- Mobile menu toggle button -->
+		<button class="ocx-mobile-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="ocx-mobile-drawer">
+			<img decoding="async" src="../wp-content/themes/OpenCX/assets/images/menu-hamburger.svg" alt="" class="ocx-icon-hamburger" width="24" height="24" />
+			<img loading="lazy" decoding="async" src="../wp-content/themes/OpenCX/assets/images/menu-close.svg" alt="" class="ocx-icon-close" width="24" height="24" />
+		</button>
+
+	</div>
+	
+
+	<!-- Mobile Drawer Menu -->
+	<div id="ocx-mobile-drawer" class="ocx-mobile-drawer" aria-hidden="true">
+		<nav class="ocx-mobile-nav" aria-label="Mobile Navigation">
+			<ul class="ocx-mobile-nav__list"><li class="ocx-mobile-nav__item ocx-mobile-nav__item--has-dropdown"><div class="ocx-mobile-nav__row"><a href="../ecosystem/index.html" class="ocx-mobile-nav__link"><span>Ecosystem</span></a><button type="button" class="ocx-mobile-nav__toggle" aria-expanded="false" aria-label="Toggle Ecosystem submenu"><img src="../wp-content/themes/OpenCX/assets/images/icon-nav-plus.svg" alt="" class="ocx-mobile-nav__plus" width="18" height="18" aria-hidden="true" /></button></div><ul class="ocx-mobile-nav__submenu" aria-hidden="true"><li class="ocx-mobile-nav__subitem"><a href="../ecosystem/index.html#aiframework" class="ocx-mobile-nav__sublink">AI Framework</a></li><li class="ocx-mobile-nav__subitem"><a href="../ecosystem/index.html#integrations" class="ocx-mobile-nav__sublink">Integrations</a></li><li class="ocx-mobile-nav__subitem"><a href="../ecosystem/index.html#omnichannel" class="ocx-mobile-nav__sublink">Omnichannel</a></li><li class="ocx-mobile-nav__subitem"><a href="../ecosystem/index.html#analyticsbi" class="ocx-mobile-nav__sublink">Analytics &amp; BI</a></li></ul></li><li class="ocx-mobile-nav__item"><a href="../solution/index.html" class="ocx-mobile-nav__link"><span>Solution</span></a></li><li class="ocx-mobile-nav__item ocx-mobile-nav__item--has-dropdown"><div class="ocx-mobile-nav__row"><a href="../industries/index.html" class="ocx-mobile-nav__link"><span>Industries</span></a><button type="button" class="ocx-mobile-nav__toggle" aria-expanded="false" aria-label="Toggle Industries submenu"><img src="../wp-content/themes/OpenCX/assets/images/icon-nav-plus.svg" alt="" class="ocx-mobile-nav__plus" width="18" height="18" aria-hidden="true" /></button></div><ul class="ocx-mobile-nav__submenu" aria-hidden="true"><li class="ocx-mobile-nav__subitem"><a href="../industries/index.html#financial-services" class="ocx-mobile-nav__sublink">Financial Services</a></li><li class="ocx-mobile-nav__subitem"><a href="../industries/index.html#hospitality" class="ocx-mobile-nav__sublink">Hospitality</a></li><li class="ocx-mobile-nav__subitem"><a href="../industries/index.html#retail" class="ocx-mobile-nav__sublink">Retail</a></li><li class="ocx-mobile-nav__subitem"><a href="../industries/index.html#education" class="ocx-mobile-nav__sublink">Education</a></li><li class="ocx-mobile-nav__subitem"><a href="../industries/index.html#healthcare" class="ocx-mobile-nav__sublink">Healthcare</a></li><li class="ocx-mobile-nav__subitem"><a href="../industries/index.html#manufacturing" class="ocx-mobile-nav__sublink">Manufacturing</a></li></ul></li><li class="ocx-mobile-nav__item"><a href="index.html" class="ocx-mobile-nav__link ocx-mobile-nav__link--active"><span>Resources</span></a></li><li class="ocx-mobile-nav__item"><a href="../about/index.html" class="ocx-mobile-nav__link"><span>About</span></a></li></ul>
+			<div class="ocx-mobile-nav__actions">
+				<a href="#" class="ocx-btn-mobile--secondary">Sign In</a>
+				<a href="../contact/index.html" class="ocx-btn-mobile--primary">Let&#8217;s meet</a>
+			</div>
+		</nav>
+	</div>
+
+</div>
+
+</header>
+
+<main id="wp--skip-link--target" class="ocx-resources-page">
+
+	<!-- Hero - Insights / Resources -->
+	<section class="ocx-res-hero__section">
+		<div class="ocx-res-hero__outer">
+			<div class="ocx-res-hero__card">
+				<div class="ocx-res-hero__content">
+					<p class="ocx-res-hero__tagline">Resources</p>
+					<h1 class="ocx-res-hero__title">Things worth knowing before <span class="ocx-res-hero__accent">your next AI decision.</span></h1>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Textured Divider with Filter Tabs -->
+	<section class="ocx-res-divider__section">
+		<div class="ocx-res-divider__container">
+			<div class="ocx-res-divider__filters" role="tablist" aria-label="Resource Categories">
+				<button type="button" class="ocx-res-filter-btn ocx-res-filter-btn--active" role="tab" aria-selected="true" data-filter="client-perspective">Client perspective</button>
+				<button type="button" class="ocx-res-filter-btn" role="tab" aria-selected="false" data-filter="blog">Blog</button>
+				<button type="button" class="ocx-res-filter-btn" role="tab" aria-selected="false" data-filter="newsroom">Newsroom</button>
+			</div>
+		</div>
+	</section>
+
+	<!-- Client perspective Section -->
+	<section class="ocx-res-perspective__section" id="client-perspective">
+		<div class="ocx-res-perspective__wrapper">
+			<div class="ocx-res-perspective__outer">
+				<div class="ocx-res-perspective__inner">
+
+					<header class="ocx-res-perspective__header">
+						<h2 class="ocx-res-perspective__heading">Client<br>perspective</h2>
+					</header>
+
+					<!-- Cards Grid -->
+					<div class="ocx-res-perspective__grid" id="perspective-grid">
+
+						<!-- Card 1: Dimitrios Politis -->
+						<article class="ocx-res-card" data-interview="dimitrios-politis" tabindex="0" role="button" aria-expanded="false" aria-controls="interview-dimitrios-politis">
+							<div class="ocx-res-card__body">
+								<span class="ocx-res-card__tagline">Interview</span>
+								<h3 class="ocx-res-card__title">Dimitrios Politis,<br>Owner and Operator, Nexx Burger</h3>
+							</div>
+							<div class="ocx-res-card__media">
+								<img src="../wp-content/themes/OpenCX/assets/images/ins-dimitrios-politis.png" alt="Dimitrios Politis, Owner and Operator, Nexx Burger" class="ocx-res-card__img" width="174" height="186" loading="lazy" />
+							</div>
+						</article>
+
+						<!-- Card 2: Catalina Aristizabal -->
+						<article class="ocx-res-card" data-interview="catalina-aristizabal" tabindex="0" role="button" aria-expanded="false" aria-controls="interview-catalina-aristizabal">
+							<div class="ocx-res-card__body">
+								<span class="ocx-res-card__tagline">Interview</span>
+								<h3 class="ocx-res-card__title">Catalina Aristizabal, RL Funeral Service</h3>
+							</div>
+							<div class="ocx-res-card__media">
+								<img src="../wp-content/themes/OpenCX/assets/images/ins-catalina-aristizabal.png" alt="Catalina Aristizabal, RL Funeral Service" class="ocx-res-card__img" width="174" height="186" loading="lazy" />
+							</div>
+						</article>
+
+						<!-- Card 3: Placeholder Frame -->
+						<div class="ocx-res-card ocx-res-card--placeholder" aria-hidden="true"></div>
+
+						<!-- Card 4: Placeholder Frame -->
+						<div class="ocx-res-card ocx-res-card--placeholder" aria-hidden="true"></div>
+					</div>
+
+					<!-- Expandable In-Page Interview Panels Container -->
+					<div class="ocx-interview-expand-container">
+
+						<!-- =========================================================
+						     PANEL 1: Dimitrios Politis Interview
+						     ========================================================= -->
+						<div class="ocx-interview-panel" id="interview-dimitrios-politis" role="region" aria-label="Interview Dimitrios Politis">
+							<div class="ocx-interview-panel__content">
+
+								<div class="ocx-interview__main">
+
+									<!-- Top Navigation Bar -->
+									<div class="ocx-interview-top-nav">
+										<button type="button" class="ocx-interview-back-btn" data-close="dimitrios-politis">
+											<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+											<span>Back to all perspectives</span>
+										</button>
+									</div>
+
+									<!-- Author Header -->
+									<div class="ocx-interview__author" id="author-dimitrios-politis">
+										<img src="../wp-content/themes/OpenCX/assets/images/ins-dimitrios-politis.png" alt="Dimitrios Politis, Owner and Operator, Nexx Burger" class="ocx-interview__avatar" width="236" height="252" loading="lazy" />
+										<div class="ocx-interview__meta">
+											<span class="ocx-interview__tagline">Interview</span>
+											<h3 class="ocx-interview__name">Dimitrios Politis,<br>Owner and Operator, Nexx Burger</h3>
+										</div>
+									</div>
+
+									<!-- Q&A List -->
+									<div class="ocx-interview__qa-list">
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">OpenCX:</h4>
+											<p class="ocx-interview__qa-text">What does a day running the operation of Nexx Burger actually look like for you?</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">Dimitrios:</h4>
+											<p class="ocx-interview__qa-text">We currently have three restaurants and one catering truck. What I do is oversee the operation, seeing how we can improve it, not just operations, but service and food too, the whole picture. How can we make customers come in and leave with a smile, and come back again? I like to see it from the customer&#8217;s journey first, then work my way back to the business.</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">OpenCX:</h4>
+											<p class="ocx-interview__qa-text">And where are those locations?</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">Dimitrios:</h4>
+											<p class="ocx-interview__qa-text">We&#8217;re based in California. Our Downey store is in Los Angeles County. In Orange County we have two stores, in the city of Orange and in Santa Ana. Our food truck is based out of Bell Gardens, right next to Downey, and it drives out to corporate events, birthday parties, weddings, wherever it&#8217;s needed.</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">OpenCX:</h4>
+											<p class="ocx-interview__qa-text">So before OpenCX ever entered the picture, what was the actual moment that got you thinking about AI in the first place?</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">Dimitrios:</h4>
+											<p class="ocx-interview__qa-text">In the fast food industry, sometimes the volume and traffic get so high that we don&#8217;t have time to pick up the phone. And that&#8217;s a missed phone call, which means possibly missed revenue, whether that&#8217;s a phone order or a catering order, which is usually a lot bigger. That&#8217;s what made me start looking into AI, to see how I could improve the operation without losing revenue, while letting my team focus on the customers on site instead of someone having to leave the register to take a call.</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">OpenCX:</h4>
+											<p class="ocx-interview__qa-text">You mentioned the catering side specifically feels that pain the most. Walk me through what changed there.</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">Dimitrios:</h4>
+											<p class="ocx-interview__qa-text">We incorporated it into our catering truck. Now if you call us, the AI picks up, gives you all the information about the truck, requirements, and how to book. You can even ask if we&#8217;re available on a specific date, and it checks the calendar and tells you. That process used to take five to ten minutes on the phone, and if we&#8217;re busy, that&#8217;s five to ten minutes. I&#8217;ve lost a team member who could be helping push out service.</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">OpenCX:</h4>
+											<p class="ocx-interview__qa-text">Before any of this, when you first heard &#8220;AI&#8221; tied to a business solution, what went through your head?</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">Dimitrios:</h4>
+											<p class="ocx-interview__qa-text">I&#8217;m a tech guy, I like technology. I thought, this is going to change the game. I didn&#8217;t know exactly how yet, but I knew it would be a game changer for business owners and operators. I think we&#8217;re just scratching the surface. You guys are doing a great job, but there&#8217;s so much untapped potential, at least in the food industry, to help business owners maximize profits and provide the best service.</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">OpenCX:</h4>
+											<p class="ocx-interview__qa-text">Now that it&#8217;s actually running, what can Nexx Burger do today that it genuinely couldn&#8217;t do before?</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">Dimitrios:</h4>
+											<p class="ocx-interview__qa-text">Specifically for our catering truck, it&#8217;s a game changer. Our food minimum for the truck is $1,750, so missing a call like that and losing it to a competitor really hurts the brand. Right now it&#8217;s optimized my phone presence while improving in-store service. And there&#8217;s a positive trend beyond that too, everyone feels more relaxed. When you&#8217;re really busy and the phone keeps ringing, you&#8217;re running back and forth between the register and the phone. That relieves a lot of pressure for my team, and I think they work better under less pressure. It translates down to the customer.</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">OpenCX:</h4>
+											<p class="ocx-interview__qa-text">With options out there ranging from a general AI assistant to other enterprise platforms, what tipped it toward OpenCX for you?</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">Dimitrios:</h4>
+											<p class="ocx-interview__qa-text">Your team is phenomenal. They really understood my vision, and even took it further, giving me ideas on how to make it better. They weren&#8217;t shoving the product down my throat, it was more like, &#8220;here&#8217;s what we could do for you, take some time, think about it.&#8221; Raul did a great job explaining what the company could do. Once I signed up and started working with the engineers, it felt very family-friendly, and Nexx Burger is a family-owned business, so I really felt that culture. Everything you guys say you could do, you honor, and you go above and beyond. And the platform is so user-friendly, it&#8217;s like an iPhone. You could give it to someone who&#8217;s 70 or someone who&#8217;s 10, and they&#8217;d both know how to use it.</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">OpenCX:</h4>
+											<p class="ocx-interview__qa-text">Beyond recovering revenue, how does this actually change the edge you have against other places in the industry?</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">Dimitrios:</h4>
+											<p class="ocx-interview__qa-text">I see competitors where the phone rings and rings and eventually stops, that&#8217;s potential revenue lost. First, I&#8217;m not losing that revenue anymore. On top of that, when you call us, the AI can educate you about our product, sometimes even better than a new hire would. A new trainee has a learning curve, the AI already knows the answers. So if a customer asks something important, we have the knowledge to back it up, and we&#8217;re not wasting time grabbing a manager. It&#8217;s also a load off my team. When you&#8217;re relaxed instead of stressed, that comes through to the customer, you can smile, and they feel it.</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">OpenCX:</h4>
+											<p class="ocx-interview__qa-text">Last question, where do you see this going for Nexx Burger from here?</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">Dimitrios:</h4>
+											<p class="ocx-interview__qa-text">I think the next step is potentially integrating AI into our drive-thru. That doesn&#8217;t mean cutting staff, it means pushing our people more toward better front-of-house service. I&#8217;m all about service, the product has to be good and the service has to be good. I definitely see the company growing with OpenCX, a long-term partnership. We&#8217;re a family-owned business planning to expand, my goal is 25 stores, and I really think working with OpenCX is going to help me bring in more revenue and keep my team relaxed and happy.</p>
+										</div>
+
+									</div>
+
+									<!-- Actions -->
+									<div class="ocx-interview__actions">
+										<button type="button" class="ocx-interview__top-btn" data-scroll-top="author-dimitrios-politis">
+											<span>Top</span>
+											<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+										</button>
+									</div>
+
+								</div>
+
+								<!-- More Content Section -->
+								<div class="ocx-interview__more">
+									<div class="ocx-interview__more-card is-current" aria-current="true">
+										<div class="ocx-interview__more-body">
+											<span class="ocx-interview__more-tagline">Interview</span>
+											<h4 class="ocx-interview__more-title">Dimitrios Politis,<br>Owner and Operator, Nexx Burger</h4>
+										</div>
+										<img src="../wp-content/themes/OpenCX/assets/images/ins-dimitrios-politis.png" alt="Dimitrios Politis, Owner and Operator, Nexx Burger" class="ocx-interview__more-img" width="174" height="186" loading="lazy" />
+									</div>
+
+									<article class="ocx-interview__more-card" data-switch-interview="catalina-aristizabal" tabindex="0" role="button" aria-label="Switch to interview with Catalina Aristizabal">
+										<div class="ocx-interview__more-body">
+											<span class="ocx-interview__more-tagline">Interview</span>
+											<h4 class="ocx-interview__more-title">Catalina Aristizabal, RL Funeral Service</h4>
+										</div>
+										<img src="../wp-content/themes/OpenCX/assets/images/ins-catalina-aristizabal.png" alt="Catalina Aristizabal, RL Funeral Service" class="ocx-interview__more-img" width="174" height="186" loading="lazy" />
+									</article>
+								</div>
+
+							</div>
+						</div>
+
+						<!-- =========================================================
+						     PANEL 2: Catalina Aristizabal Interview
+						     ========================================================= -->
+						<div class="ocx-interview-panel" id="interview-catalina-aristizabal" role="region" aria-label="Interview Catalina Aristizabal">
+							<div class="ocx-interview-panel__content">
+
+								<div class="ocx-interview__main">
+
+									<!-- Top Navigation Bar -->
+									<div class="ocx-interview-top-nav">
+										<button type="button" class="ocx-interview-back-btn" data-close="catalina-aristizabal">
+											<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+											<span>Back to all perspectives</span>
+										</button>
+									</div>
+
+									<!-- Author Header -->
+									<div class="ocx-interview__author" id="author-catalina-aristizabal">
+										<img src="../wp-content/themes/OpenCX/assets/images/ins-catalina-aristizabal.png" alt="Catalina Aristizabal, RL Funeral Service" class="ocx-interview__avatar" width="236" height="252" loading="lazy" />
+										<div class="ocx-interview__meta">
+											<span class="ocx-interview__tagline">Interview</span>
+											<h3 class="ocx-interview__name">Catalina Aristizabal,<br>RL Funeral Service</h3>
+										</div>
+									</div>
+
+									<!-- Q&A List -->
+									<div class="ocx-interview__qa-list">
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">OpenCX:</h4>
+											<p class="ocx-interview__qa-text">What’s the motivation for a service company like yours to bring artificial intelligence into your client care process?</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">Catalina:</h4>
+											<p class="ocx-interview__qa-text">It’s obviously a super interesting challenge, something genuinely important, and it’s part of the present, not the future. It lets us reach more of the right audience, better understand our clients, and take repetitive tasks off our team so we can hand that work to automation instead. Even though we’re a pre-need funeral service, offering support in the most difficult moment for families, we have the opportunity to automate and still hand our clients that same confidence, because we also have technology processes implemented within RL.</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">OpenCX:</h4>
+											<p class="ocx-interview__qa-text">How do you make sure AI still supports that human side of the service, given how sensitive the moment is for your clients?</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">Catalina:</h4>
+											<p class="ocx-interview__qa-text">There will always be a human touch required in this kind of service. But I feel that the AI we have today helps us deliver that warmth, that care, and guide the client through the right process with the right communication from the team.</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">OpenCX:</h4>
+											<p class="ocx-interview__qa-text">Why did you choose Intico over the other options out there?</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">Catalina:</h4>
+											<p class="ocx-interview__qa-text">I’ll let you in on something not many people know, I’m a systems engineer by training. What I liked most about Intico is that I get to keep my own framework. If today I’m very happy with the service, but tomorrow, or whenever, anything changes, I have the ability to take everything I’ve built, all my intellectual property, everything I’ve implemented through AI, and move it to any other AI provider. Or even customize it myself. That felt like something wonderful to me. That’s the most winning thing you have, that the client keeps ownership, not just of the data, but of the model built from that data.</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">OpenCX:</h4>
+											<p class="ocx-interview__qa-text">Any final thoughts for other business owners considering this?</p>
+											<hr class="ocx-interview__qa-divider" />
+										</div>
+
+										<div class="ocx-interview__qa-item">
+											<h4 class="ocx-interview__qa-speaker">Catalina:</h4>
+											<p class="ocx-interview__qa-text">If you have family living in any Latin American country or here in the U.S., it’s important to let them know that being protected with a company like RL Funeral Service, that provides the service and helps families avoid unnecessary expenses, is extremely important. Knowing you’re covered for costs that could otherwise be sudden and unnecessary, if you plan ahead, that’s the most important thing. Companies that offer that possibility, it’s worth taking.</p>
+										</div>
+
+									</div>
+
+									<!-- Actions -->
+									<div class="ocx-interview__actions">
+										<button type="button" class="ocx-interview__top-btn" data-scroll-top="author-catalina-aristizabal">
+											<span>Top</span>
+											<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+										</button>
+									</div>
+
+								</div>
+
+								<!-- More Content Section -->
+								<div class="ocx-interview__more">
+									<article class="ocx-interview__more-card" data-switch-interview="dimitrios-politis" tabindex="0" role="button" aria-label="Switch to interview with Dimitrios Politis">
+										<div class="ocx-interview__more-body">
+											<span class="ocx-interview__more-tagline">Interview</span>
+											<h4 class="ocx-interview__more-title">Dimitrios Politis,<br>Owner and Operator, Nexx Burger</h4>
+										</div>
+										<img src="../wp-content/themes/OpenCX/assets/images/ins-dimitrios-politis.png" alt="Dimitrios Politis, Owner and Operator, Nexx Burger" class="ocx-interview__more-img" width="174" height="186" loading="lazy" />
+									</article>
+
+									<div class="ocx-interview__more-card is-current" aria-current="true">
+										<div class="ocx-interview__more-body">
+											<span class="ocx-interview__more-tagline">Interview</span>
+											<h4 class="ocx-interview__more-title">Catalina Aristizabal, RL Funeral Service</h4>
+										</div>
+										<img src="../wp-content/themes/OpenCX/assets/images/ins-catalina-aristizabal.png" alt="Catalina Aristizabal, RL Funeral Service" class="ocx-interview__more-img" width="174" height="186" loading="lazy" />
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+</main>
+
+<script>
+(function() {
+	function initInterviews() {
+		const cards = document.querySelectorAll('.ocx-res-card[data-interview]');
+		const panels = document.querySelectorAll('.ocx-interview-panel');
+		const switcherCards = document.querySelectorAll('[data-switch-interview]');
+		const closeButtons = document.querySelectorAll('[data-close]');
+		const topButtons = document.querySelectorAll('[data-scroll-top]');
+
+		function openInterview(id, shouldScroll) {
+			panels.forEach(p => {
+				if (p.id === 'interview-' + id) {
+					p.classList.add('is-open');
+				} else {
+					p.classList.remove('is-open');
+				}
+			});
+
+			cards.forEach(c => {
+				const match = c.dataset.interview === id;
+				c.classList.toggle('is-active', match);
+				c.setAttribute('aria-expanded', match ? 'true' : 'false');
+			});
+
+			// Update hash without jump
+			if (window.history && window.history.replaceState) {
+				window.history.replaceState(null, '', '#' + id);
+			}
+
+			if (shouldScroll) {
+				const targetAuthor = document.getElementById('author-' + id);
+				if (targetAuthor) {
+					setTimeout(() => {
+						targetAuthor.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}, 150);
+				}
+			}
+		}
+
+		function closeInterview() {
+			panels.forEach(p => p.classList.remove('is-open'));
+			cards.forEach(c => {
+				c.classList.remove('is-active');
+				c.setAttribute('aria-expanded', 'false');
+			});
+			if (window.history && window.history.replaceState) {
+				window.history.replaceState(null, '', window.location.pathname);
+			}
+			const grid = document.getElementById('perspective-grid');
+			if (grid) {
+				grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+			}
+		}
+
+		// Click on main grid cards
+		cards.forEach(card => {
+			const id = card.dataset.interview;
+			card.addEventListener('click', function(e) {
+				e.preventDefault();
+				const panel = document.getElementById('interview-' + id);
+				if (panel && panel.classList.contains('is-open')) {
+					closeInterview();
+				} else {
+					openInterview(id, true);
+				}
+			});
+			card.addEventListener('keydown', function(e) {
+				if (e.key === 'Enter' || e.key === ' ') {
+					e.preventDefault();
+					card.click();
+				}
+			});
+		});
+
+		// Switcher cards inside "More content"
+		switcherCards.forEach(btn => {
+			const targetId = btn.dataset.switchInterview;
+			btn.addEventListener('click', function(e) {
+				e.preventDefault();
+				openInterview(targetId, true);
+			});
+			btn.addEventListener('keydown', function(e) {
+				if (e.key === 'Enter' || e.key === ' ') {
+					e.preventDefault();
+					btn.click();
+				}
+			});
+		});
+
+		// Close / back buttons
+		closeButtons.forEach(btn => {
+			btn.addEventListener('click', function(e) {
+				e.preventDefault();
+				closeInterview();
+			});
+		});
+
+		// Top buttons
+		topButtons.forEach(btn => {
+			btn.addEventListener('click', function(e) {
+				e.preventDefault();
+				const targetId = btn.dataset.scrollTop;
+				const el = document.getElementById(targetId);
+				if (el) {
+					el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				} else {
+					const grid = document.getElementById('perspective-grid');
+					if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				}
+			});
+		});
+
+		// Check on load if URL has a hash
+		const initialHash = window.location.hash.replace('#', '');
+		if (initialHash === 'dimitrios-politis' || initialHash === 'catalina-aristizabal') {
+			openInterview(initialHash, true);
+		}
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initInterviews);
+	} else {
+		initInterviews();
+	}
+})();
+</script>
+
+<footer class="wp-block-template-part">
+<footer class="wp-block-group ocx-section ocx-footer is-vertical is-layout-flex wp-container-core-group-is-layout-1bbac977 wp-block-group-is-layout-flex">
+
+	
+	<div class="wp-block-group ocx-footer__container">
+
+		<!-- Top Row for Mobile (Social Links aligned to the top-right per Figma #12589:90410) -->
+		<div class="ocx-footer__social ocx-footer__social--top">
+			<a href="https://www.instagram.com/opencx" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="ocx-footer__social-link">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M16 3.24219H8C5.23858 3.24219 3 5.48077 3 8.24219V16.2422C3 19.0036 5.23858 21.2422 8 21.2422H16C18.7614 21.2422 21 19.0036 21 16.2422V8.24219C21 5.48077 18.7614 3.24219 16 3.24219ZM19.25 16.2422C19.2445 18.0348 17.7926 19.4867 16 19.4922H8C6.20735 19.4867 4.75549 18.0348 4.75 16.2422V8.24219C4.75549 6.44954 6.20735 4.99768 8 4.99219H16C17.7926 4.99768 19.2445 6.44954 19.25 8.24219V16.2422ZM16.75 8.49219C17.3023 8.49219 17.75 8.04447 17.75 7.49219C17.75 6.93991 17.3023 6.49219 16.75 6.49219C16.1977 6.49219 15.75 6.93991 15.75 7.49219C15.75 8.04447 16.1977 8.49219 16.75 8.49219ZM12 7.74219C9.51472 7.74219 7.5 9.75691 7.5 12.2422C7.5 14.7275 9.51472 16.7422 12 16.7422C14.4853 16.7422 16.5 14.7275 16.5 12.2422C16.5027 11.0479 16.0294 9.90176 15.1849 9.05727C14.3404 8.21278 13.1943 7.73953 12 7.74219ZM9.25 12.2422C9.25 13.761 10.4812 14.9922 12 14.9922C13.5188 14.9922 14.75 13.761 14.75 12.2422C14.75 10.7234 13.5188 9.49219 12 9.49219C10.4812 9.49219 9.25 10.7234 9.25 12.2422Z" fill="#162227"/>
+				</svg>
+			</a>
+			<a href="https://www.linkedin.com/company/opencx" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="ocx-footer__social-link">
+				<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 3.24219C3.67157 3.24219 3 3.91376 3 4.74219V19.7422C3 20.5706 3.67157 21.2422 4.5 21.2422H19.5C20.3284 21.2422 21 20.5706 21 19.7422V4.74219C21 3.91376 20.3284 3.24219 19.5 3.24219H4.5ZM8.52076 7.24491C8.52639 8.20116 7.81061 8.79038 6.96123 8.78616C6.16107 8.78194 5.46357 8.14491 5.46779 7.24632C5.47201 6.40116 6.13998 5.72194 7.00764 5.74163C7.88795 5.76132 8.52639 6.40679 8.52076 7.24491ZM12.2797 10.0039H9.75971H9.7583V18.5638H12.4217V18.3641C12.4217 17.9842 12.4214 17.6042 12.4211 17.2241C12.4203 16.2103 12.4194 15.1954 12.4246 14.1819C12.426 13.9358 12.4372 13.6799 12.5005 13.445C12.7381 12.5675 13.5271 12.0008 14.4074 12.1401C14.9727 12.2286 15.3467 12.5563 15.5042 13.0893C15.6013 13.4225 15.6449 13.7811 15.6491 14.1285C15.6605 15.1761 15.6589 16.2237 15.6573 17.2714C15.6567 17.6412 15.6561 18.0112 15.6561 18.381V18.5624H18.328V18.3571C18.328 17.9051 18.3278 17.4532 18.3275 17.0013C18.327 15.8718 18.3264 14.7423 18.3294 13.6124C18.3308 13.1019 18.276 12.5985 18.1508 12.1049C17.9638 11.3708 17.5771 10.7633 16.9485 10.3246C16.5027 10.0124 16.0133 9.81129 15.4663 9.78879C15.404 9.7862 15.3412 9.78281 15.2781 9.7794C14.9984 9.76428 14.7141 9.74892 14.4467 9.80285C13.6817 9.95613 13.0096 10.3063 12.5019 10.9236C12.4429 10.9944 12.3852 11.0663 12.2991 11.1736L12.2797 11.1979V10.0039ZM5.68164 18.5666H8.33242V10.0095H5.68164V18.5666Z" fill="#162227"/>
+				</svg>
+			</a>
+		</div>
+
+		<!-- Brand Row: Logo + Tagline -->
+		<div class="ocx-footer__brand-row">
+			<a href="../index.html" class="ocx-footer__logo-link">
+				<img loading="lazy" decoding="async" src="../wp-content/themes/OpenCX/assets/images/opencx-logo-black.svg" alt="OpenCX" width="163" height="41" />
+			</a>
+			<div class="ocx-footer__tagline">
+				<img loading="lazy" decoding="async" src="../wp-content/themes/OpenCX/assets/images/illogically-true.svg" alt="illogically true" width="277" height="27" />
+			</div>
+		</div>
+
+		<!-- Main Content: Left Column (Address & Socials) + Right Column (Links) -->
+		<div class="ocx-footer__main">
+
+			<div class="ocx-footer__left">
+				<div class="ocx-footer__block">
+					<p class="ocx-footer__label">Address</p>
+					<p class="ocx-footer__text">Level 1, 12 Sample St, Sydney NSW 2000</p>
+				</div>
+
+				<div class="ocx-footer__social ocx-footer__social--desktop">
+					<a href="https://www.linkedin.com/company/opencx" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="ocx-footer__social-link">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M4.5 3.24219C3.67157 3.24219 3 3.91376 3 4.74219V19.7422C3 20.5706 3.67157 21.2422 4.5 21.2422H19.5C20.3284 21.2422 21 20.5706 21 19.7422V4.74219C21 3.91376 20.3284 3.24219 19.5 3.24219H4.5ZM8.52076 7.24491C8.52639 8.20116 7.81061 8.79038 6.96123 8.78616C6.16107 8.78194 5.46357 8.14491 5.46779 7.24632C5.47201 6.40116 6.13998 5.72194 7.00764 5.74163C7.88795 5.76132 8.52639 6.40679 8.52076 7.24491ZM12.2797 10.0039H9.75971H9.7583V18.5638H12.4217V18.3641C12.4217 17.9842 12.4214 17.6042 12.4211 17.2241C12.4203 16.2103 12.4194 15.1954 12.4246 14.1819C12.426 13.9358 12.4372 13.6799 12.5005 13.445C12.7381 12.5675 13.5271 12.0008 14.4074 12.1401C14.9727 12.2286 15.3467 12.5563 15.5042 13.0893C15.6013 13.4225 15.6449 13.7811 15.6491 14.1285C15.6605 15.1761 15.6589 16.2237 15.6573 17.2714C15.6567 17.6412 15.6561 18.0112 15.6561 18.381V18.5624H18.328V18.3571C18.328 17.9051 18.3278 17.4532 18.3275 17.0013C18.327 15.8718 18.3264 14.7423 18.3294 13.6124C18.3308 13.1019 18.276 12.5985 18.1508 12.1049C17.9638 11.3708 17.5771 10.7633 16.9485 10.3246C16.5027 10.0124 16.0133 9.81129 15.4663 9.78879C15.404 9.7862 15.3412 9.78281 15.2781 9.7794C14.9984 9.76428 14.7141 9.74892 14.4467 9.80285C13.6817 9.95613 13.0096 10.3063 12.5019 10.9236C12.4429 10.9944 12.3852 11.0663 12.2991 11.1736L12.2797 11.1979V10.0039ZM5.68164 18.5666H8.33242V10.0095H5.68164V18.5666Z" fill="#162227"/>
+						</svg>
+					</a>
+					<a href="https://www.instagram.com/opencx" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="ocx-footer__social-link">
+						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+							<path fill-rule="evenodd" clip-rule="evenodd" d="M16 3.24219H8C5.23858 3.24219 3 5.48077 3 8.24219V16.2422C3 19.0036 5.23858 21.2422 8 21.2422H16C18.7614 21.2422 21 19.0036 21 16.2422V8.24219C21 5.48077 18.7614 3.24219 16 3.24219ZM19.25 16.2422C19.2445 18.0348 17.7926 19.4867 16 19.4922H8C6.20735 19.4867 4.75549 18.0348 4.75 16.2422V8.24219C4.75549 6.44954 6.20735 4.99768 8 4.99219H16C17.7926 4.99768 19.2445 6.44954 19.25 8.24219V16.2422ZM16.75 8.49219C17.3023 8.49219 17.75 8.04447 17.75 7.49219C17.75 6.93991 17.3023 6.49219 16.75 6.49219C16.1977 6.49219 15.75 6.93991 15.75 7.49219C15.75 8.04447 16.1977 8.49219 16.75 8.49219ZM12 7.74219C9.51472 7.74219 7.5 9.75691 7.5 12.2422C7.5 14.7275 9.51472 16.7422 12 16.7422C14.4853 16.7422 16.5 14.7275 16.5 12.2422C16.5027 11.0479 16.0294 9.90176 15.1849 9.05727C14.3404 8.21278 13.1943 7.73953 12 7.74219ZM9.25 12.2422C9.25 13.761 10.4812 14.9922 12 14.9922C13.5188 14.9922 14.75 13.761 14.75 12.2422C14.75 10.7234 13.5188 9.49219 12 9.49219C10.4812 9.49219 9.25 10.7234 9.25 12.2422Z" fill="#162227"/>
+						</svg>
+					</a>
+				</div>
+			</div>
+
+			<div class="ocx-footer__links is-vertical is-layout-flex wp-container-core-group-is-layout-1bbac977 wp-block-group-is-layout-flex">
+				<nav class="ocx-nav--footer--a ocx-footer__link-col wp-block-navigation is-layout-flex wp-block-navigation-is-layout-flex"><ul class="wp-block-navigation__container ocx-nav--footer--a ocx-footer__link-col wp-block-navigation"><li class="wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="../ecosystem/index.html"><span class="wp-block-navigation-item__label">Ecosystem</span></a></li><li class="wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="../solution/index.html"><span class="wp-block-navigation-item__label">Solution</span></a></li><li class="wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="../industries/index.html"><span class="wp-block-navigation-item__label">Industries</span></a></li><li class="wp-block-navigation-item current-menu-item ocx-nav-link--active wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="index.html"><span class="wp-block-navigation-item__label">Resources</span></a></li><li class="wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="../about/index.html"><span class="wp-block-navigation-item__label">About</span></a></li></ul></nav>
+				<nav class="ocx-nav--footer--b ocx-footer__link-col wp-block-navigation is-layout-flex wp-block-navigation-is-layout-flex" aria-label=" 2"><ul class="wp-block-navigation__container ocx-nav--footer--b ocx-footer__link-col wp-block-navigation"><li class="wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="../contact/index.html"><span class="wp-block-navigation-item__label">Contact</span></a></li><li class="wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="#"><span class="wp-block-navigation-item__label">Careers</span></a></li><li class="wp-block-navigation-item wp-block-navigation-link"><a class="wp-block-navigation-item__content"  href="#"><span class="wp-block-navigation-item__label">Support</span></a></li></ul></nav>
+			</div>
+
+		</div>
+
+		<!-- Credits & Legal -->
+		<div class="ocx-footer__credits">
+			<hr class="ocx-footer__divider" />
+			<div class="ocx-footer__legal">
+				<p class="ocx-footer__copyright">© 2026 OpenCX. All rights reserved.</p>
+				<div class="ocx-footer__legal-links">
+					<a class="ocx-footer__link" href="#">Privacy policy</a>
+					<a class="ocx-footer__link" href="#">Terms of service</a>
+					<a class="ocx-footer__link" href="#">Cookies settings</a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	
+
+</footer>
+
+</footer>
+</div>
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/OpenCX/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="wp-hooks-js" src="../wp-includes/js/dist/hooks.js?ver=f0f188028580e8dc1255"></script>
+<script id="wp-i18n-js" src="../wp-includes/js/dist/i18n.js?ver=1dfe7db3940c23ea9216"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+</script>
+<script id="swv-js" src="../wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=6.2.2"></script>
+<script id="contact-form-7-js-before">
+var wpcf7 = {
+    "api": {
+        "root": "http:\/\/localhost:8888\/wp-json\/",
+        "namespace": "contact-form-7\/v1"
+    }
+};
+//# sourceURL=contact-form-7-js-before
+</script>
+<script id="contact-form-7-js" src="../wp-content/plugins/contact-form-7/includes/js/index.js?ver=6.2.2"></script>
+<script data-wp-strategy="defer" defer id="opencx-navigation-js" src="../wp-content/themes/OpenCX/assets/js/navigation.js?ver=1791752509"></script>
+<script data-wp-strategy="defer" defer id="opencx-testimonial-carousel-js" src="../wp-content/themes/OpenCX/assets/js/testimonial-carousel.js?ver=1791165936"></script>
+<script data-wp-strategy="defer" defer id="opencx-stat-count-up-js" src="../wp-content/themes/OpenCX/assets/js/stat-count-up.js?ver=1791553918"></script>
+<script data-wp-strategy="defer" defer id="opencx-logo-intro-js" src="../wp-content/themes/OpenCX/assets/js/logo-intro.js?ver=1790489061"></script>
+<script data-wp-strategy="defer" defer id="opencx-why-accordion-js" src="../wp-content/themes/OpenCX/assets/js/why-accordion.js?ver=1791153506"></script>
+<script data-wp-strategy="defer" defer id="opencx-ecosystem-nav-js" src="../wp-content/themes/OpenCX/assets/js/ecosystem-nav.js?ver=1791693970"></script>
+<script data-wp-strategy="defer" defer id="opencx-industries-nav-js" src="../wp-content/themes/OpenCX/assets/js/industries-nav.js?ver=1791743291"></script>
+<script data-wp-strategy="defer" defer id="opencx-industries-preview-loop-js" src="../wp-content/themes/OpenCX/assets/js/industries-preview-loop.js?ver=1791747155"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"wpemoji":"../wp-includes/js/wp-emoji.js","twemoji":"../wp-includes/js/twemoji.js"}}
+</script>
+<script type="module">
+/**
+ * @output wp-includes/js/wp-emoji-loader.js
+ */
+
+/* eslint-env es6 */
+
+// Note: This is loaded as a script module, so there is no need for an IIFE to prevent pollution of the global scope.
+
+/**
+ * Emoji Settings as exported in PHP via _print_emoji_detection_script().
+ * @typedef WPEmojiSettings
+ * @type {object}
+ * @property {?object} source
+ * @property {?string} source.concatemoji
+ * @property {?string} source.twemoji
+ * @property {?string} source.wpemoji
+ */
+
+const selector = 'script#wp-emoji-settings';
+const script = document.querySelector( selector );
+if ( ! ( script instanceof HTMLScriptElement ) ) {
+	throw new Error( `Element missing: ${ selector }`);
+}
+const settings = /** @type {WPEmojiSettings} */ ( JSON.parse( script.text ) );
+
+// For compatibility with other scripts that read from this global, in particular wp-includes/js/wp-emoji.js (source file: js/_enqueues/wp/emoji.js).
+window._wpemojiSettings = settings;
+
+/**
+ * Support tests.
+ * @typedef SupportTests
+ * @type {object}
+ * @property {?boolean} flag
+ * @property {?boolean} emoji
+ */
+
+const sessionStorageKey = 'wpEmojiSettingsSupports';
+const tests = [ 'flag', 'emoji' ];
+
+/**
+ * Checks whether the browser supports offloading to a Worker.
+ *
+ * @since 6.3.0
+ *
+ * @private
+ *
+ * @returns {boolean}
+ */
+function supportsWorkerOffloading() {
+	return (
+		typeof Worker !== 'undefined' &&
+		typeof OffscreenCanvas !== 'undefined' &&
+		typeof URL !== 'undefined' &&
+		URL.createObjectURL &&
+		typeof Blob !== 'undefined'
+	);
+}
+
+/**
+ * @typedef SessionSupportTests
+ * @type {object}
+ * @property {number} timestamp
+ * @property {SupportTests} supportTests
+ */
+
+/**
+ * Get support tests from session.
+ *
+ * @since 6.3.0
+ *
+ * @private
+ *
+ * @returns {?SupportTests} Support tests, or null if not set or older than 1 week.
+ */
+function getSessionSupportTests() {
+	try {
+		/** @type {SessionSupportTests} */
+		const item = JSON.parse(
+			sessionStorage.getItem( sessionStorageKey )
+		);
+		if (
+			typeof item === 'object' &&
+			typeof item.timestamp === 'number' &&
+			new Date().valueOf() < item.timestamp + 604800 && // Note: Number is a week in seconds.
+			typeof item.supportTests === 'object'
+		) {
+			return item.supportTests;
+		}
+	}
+	return null;
+}
+
+/**
+ * Persist the supports in session storage.
+ *
+ * @since 6.3.0
+ *
+ * @private
+ *
+ * @param {SupportTests} supportTests Support tests.
+ */
+function setSessionSupportTests( supportTests ) {
+	try {
+		/** @type {SessionSupportTests} */
+		const item = {
+			supportTests: supportTests,
+			timestamp: new Date().valueOf()
+		};
+
+		sessionStorage.setItem(
+			sessionStorageKey,
+			JSON.stringify( item )
+		);
+	}
+}
+
+/**
+ * Checks if two sets of Emoji characters render the same visually.
+ *
+ * This is used to determine if the browser is rendering an emoji with multiple data points
+ * correctly. set1 is the emoji in the correct form, using a zero-width joiner. set2 is the emoji
+ * in the incorrect form, using a zero-width space. If the two sets render the same, then the browser
+ * does not support the emoji correctly.
+ *
+ * This function may be serialized to run in a Worker. Therefore, it cannot refer to variables from the containing
+ * scope. Everything must be passed by parameters.
+ *
+ * @since 4.9.0
+ *
+ * @private
+ *
+ * @param {CanvasRenderingContext2D} context 2D Context.
+ * @param {string} set1 Set of Emoji to test.
+ * @param {string} set2 Set of Emoji to test.
+ *
+ * @return {boolean} True if the two sets render the same.
+ */
+function emojiSetsRenderIdentically( context, set1, set2 ) {
+	// Cleanup from previous test.
+	context.clearRect( 0, 0, context.canvas.width, context.canvas.height );
+	context.fillText( set1, 0, 0 );
+	const rendered1 = new Uint32Array(
+		context.getImageData(
+			0,
+			0,
+			context.canvas.width,
+			context.canvas.height
+		).data
+	);
+
+	// Cleanup from previous test.
+	context.clearRect( 0, 0, context.canvas.width, context.canvas.height );
+	context.fillText( set2, 0, 0 );
+	const rendered2 = new Uint32Array(
+		context.getImageData(
+			0,
+			0,
+			context.canvas.width,
+			context.canvas.height
+		).data
+	);
+
+	return rendered1.every( ( rendered2Data, index ) => {
+		return rendered2Data === rendered2[ index ];
+	} );
+}
+
+/**
+ * Checks if the center point of a single emoji is empty.
+ *
+ * This is used to determine if the browser is rendering an emoji with a single data point
+ * correctly. The center point of an incorrectly rendered emoji will be empty. A correctly
+ * rendered emoji will have a non-zero value at the center point.
+ *
+ * This function may be serialized to run in a Worker. Therefore, it cannot refer to variables from the containing
+ * scope. Everything must be passed by parameters.
+ *
+ * @since 6.8.2
+ *
+ * @private
+ *
+ * @param {CanvasRenderingContext2D} context 2D Context.
+ * @param {string} emoji Emoji to test.
+ *
+ * @return {boolean} True if the center point is empty.
+ */
+function emojiRendersEmptyCenterPoint( context, emoji ) {
+	// Cleanup from previous test.
+	context.clearRect( 0, 0, context.canvas.width, context.canvas.height );
+	context.fillText( emoji, 0, 0 );
+
+	// Test if the center point (16, 16) is empty (0,0,0,0).
+	const centerPoint = context.getImageData(16, 16, 1, 1);
+	for ( let i = 0; i < centerPoint.data.length; i++ ) {
+		if ( centerPoint.data[ i ] !== 0 ) {
+			// Stop checking the moment it's known not to be empty.
+			return false;
+		}
+	}
+
+	return true;
+}
+
+/**
+ * Determines if the browser properly renders Emoji that Twemoji can supplement.
+ *
+ * This function may be serialized to run in a Worker. Therefore, it cannot refer to variables from the containing
+ * scope. Everything must be passed by parameters.
+ *
+ * @since 4.2.0
+ *
+ * @private
+ *
+ * @param {CanvasRenderingContext2D} context 2D Context.
+ * @param {string} type Whether to test for support of "flag" or "emoji".
+ * @param {Function} emojiSetsRenderIdentically Reference to emojiSetsRenderIdentically function, needed due to minification.
+ * @param {Function} emojiRendersEmptyCenterPoint Reference to emojiRendersEmptyCenterPoint function, needed due to minification.
+ *
+ * @return {boolean} True if the browser can render emoji, false if it cannot.
+ */
+function browserSupportsEmoji( context, type, emojiSetsRenderIdentically, emojiRendersEmptyCenterPoint ) {
+	let isIdentical;
+
+	switch ( type ) {
+		case 'flag':
+			/*
+			 * Test for Transgender flag compatibility. Added in Unicode 13.
+			 *
+			 * To test for support, we try to render it, and compare the rendering to how it would look if
+			 * the browser doesn't render it correctly (white flag emoji + transgender symbol).
+			 */
+			isIdentical = emojiSetsRenderIdentically(
+				context,
+				'\uD83C\uDFF3\uFE0F\u200D\u26A7\uFE0F', // as a zero-width joiner sequence
+				'\uD83C\uDFF3\uFE0F\u200B\u26A7\uFE0F' // separated by a zero-width space
+			);
+
+			if ( isIdentical ) {
+				return false;
+			}
+
+			/*
+			 * Test for Sark flag compatibility. This is the least supported of the letter locale flags,
+			 * so gives us an easy test for full support.
+			 *
+			 * To test for support, we try to render it, and compare the rendering to how it would look if
+			 * the browser doesn't render it correctly ([C] + [Q]).
+			 */
+			isIdentical = emojiSetsRenderIdentically(
+				context,
+				'\uD83C\uDDE8\uD83C\uDDF6', // as the sequence of two code points
+				'\uD83C\uDDE8\u200B\uD83C\uDDF6' // as the two code points separated by a zero-width space
+			);
+
+			if ( isIdentical ) {
+				return false;
+			}
+
+			/*
+			 * Test for English flag compatibility. England is a country in the United Kingdom, it
+			 * does not have a two letter locale code but rather a five letter sub-division code.
+			 *
+			 * To test for support, we try to render it, and compare the rendering to how it would look if
+			 * the browser doesn't render it correctly (black flag emoji + [G] + [B] + [E] + [N] + [G]).
+			 */
+			isIdentical = emojiSetsRenderIdentically(
+				context,
+				// as the flag sequence
+				'\uD83C\uDFF4\uDB40\uDC67\uDB40\uDC62\uDB40\uDC65\uDB40\uDC6E\uDB40\uDC67\uDB40\uDC7F',
+				// with each code point separated by a zero-width space
+				'\uD83C\uDFF4\u200B\uDB40\uDC67\u200B\uDB40\uDC62\u200B\uDB40\uDC65\u200B\uDB40\uDC6E\u200B\uDB40\uDC67\u200B\uDB40\uDC7F'
+			);
+
+			return ! isIdentical;
+		case 'emoji':
+			/*
+			 * Is there a large, hairy, humanoid mythical creature living in the browser?
+			 *
+			 * To test for Emoji 17.0 support, try to render a new emoji: Hairy Creature.
+			 *
+			 * The hairy creature emoji is a single code point emoji. Testing for browser
+			 * support required testing the center point of the emoji to see if it is empty.
+			 *
+			 * 0xD83E 0x1FAC8 (\uD83E\u1FAC8) == 🫈 Hairy creature.
+			 *
+			 * When updating this test, please ensure that the emoji is either a single code point
+			 * or switch to using the emojiSetsRenderIdentically function and testing with a zero-width
+			 * joiner vs a zero-width space.
+			 */
+			const notSupported = emojiRendersEmptyCenterPoint( context, '\uD83E\u1FAC8' );
+			return ! notSupported;
+	}
+
+	return false;
+}
+
+/**
+ * Checks emoji support tests.
+ *
+ * This function may be serialized to run in a Worker. Therefore, it cannot refer to variables from the containing
+ * scope. Everything must be passed by parameters.
+ *
+ * @since 6.3.0
+ *
+ * @private
+ *
+ * @param {string[]} tests Tests.
+ * @param {Function} browserSupportsEmoji Reference to browserSupportsEmoji function, needed due to minification.
+ * @param {Function} emojiSetsRenderIdentically Reference to emojiSetsRenderIdentically function, needed due to minification.
+ * @param {Function} emojiRendersEmptyCenterPoint Reference to emojiRendersEmptyCenterPoint function, needed due to minification.
+ *
+ * @return {SupportTests} Support tests.
+ */
+function testEmojiSupports( tests, browserSupportsEmoji, emojiSetsRenderIdentically, emojiRendersEmptyCenterPoint ) {
+	let canvas;
+	if (
+		typeof WorkerGlobalScope !== 'undefined' &&
+		self instanceof WorkerGlobalScope
+	) {
+		canvas = new OffscreenCanvas( 300, 150 ); // Dimensions are default for HTMLCanvasElement.
+	} else {
+		canvas = document.createElement( 'canvas' );
+	}
+
+	const context = canvas.getContext( '2d', { willReadFrequently: true } );
+
+	/*
+	 * Chrome on OS X added native emoji rendering in M41. Unfortunately,
+	 * it doesn't work when the font is bolder than 500 weight. So, we
+	 * check for bold rendering support to avoid invisible emoji in Chrome.
+	 */
+	context.textBaseline = 'top';
+	context.font = '600 32px Arial';
+
+;
+	tests.forEach( ( test ) => {
+		supports[ test ] = browserSupportsEmoji( context, test, emojiSetsRenderIdentically, emojiRendersEmptyCenterPoint );
+	} );
+	return supports;
+}
+
+/**
+ * Adds a script to the head of the document.
+ *
+ * @ignore
+ *
+ * @since 4.2.0
+ *
+ * @param {string} src The url where the script is located.
+ *
+ * @return {void}
+ */
+function addScript( src ) {
+	const script = document.createElement( 'script' );
+	script.src = src;
+	script.defer = true;
+	document.head.appendChild( script );
+}
+
+settings.supports = {
+	everything: true,
+	everythingExceptFlag: true
+};
+
+// Obtain the emoji support from the browser, asynchronously when possible.
+new Promise( ( resolve ) => {
+	let supportTests = getSessionSupportTests();
+	if ( supportTests ) {
+		resolve( supportTests );
+		return;
+	}
+
+	if ( supportsWorkerOffloading() ) {
+		try {
+			// Note that the functions are being passed as arguments due to minification.
+			const workerScript =
+				'postMessage(' +
+				testEmojiSupports.toString() +
+				'(' +
+				[
+					JSON.stringify( tests ),
+					browserSupportsEmoji.toString(),
+					emojiSetsRenderIdentically.toString(),
+					emojiRendersEmptyCenterPoint.toString()
+				].join( ',' ) +
+				'));';
+			const blob = new Blob( [ workerScript ], {
+				type: 'text/javascript'
+			} );
+			const worker = new Worker( URL.createObjectURL( blob ), { name: 'wpTestEmojiSupports' } );
+			worker.onmessage = ( event ) => {
+				supportTests = event.data;
+				setSessionSupportTests( supportTests );
+				worker.terminate();
+				resolve( supportTests );
+			};
+			return;
+		}
+	}
+
+	supportTests = testEmojiSupports( tests, browserSupportsEmoji, emojiSetsRenderIdentically, emojiRendersEmptyCenterPoint );
+	setSessionSupportTests( supportTests );
+	resolve( supportTests );
+} )
+	// Once the browser emoji support has been obtained from the session, finalize the settings.
+	.then( ( supportTests ) => {
+		/*
+		 * Tests the browser support for flag emojis and other emojis, and adjusts the
+		 * support settings accordingly.
+		 */
+		for ( const test in supportTests ) {
+			settings.supports[ test ] = supportTests[ test ];
+
+			settings.supports.everything =
+				settings.supports.everything && settings.supports[ test ];
+
+			if ( 'flag' !== test ) {
+				settings.supports.everythingExceptFlag =
+					settings.supports.everythingExceptFlag &&
+					settings.supports[ test ];
+			}
+		}
+
+		settings.supports.everythingExceptFlag =
+			settings.supports.everythingExceptFlag &&
+			! settings.supports.flag;
+
+		// When the browser can not render everything we need to load a polyfill.
+		if ( ! settings.supports.everything ) {
+;
+
+			if ( src.concatemoji ) {
+				addScript( src.concatemoji );
+			} else if ( src.wpemoji && src.twemoji ) {
+				addScript( src.twemoji );
+				addScript( src.wpemoji );
+			}
+		}
+	} );
+//# sourceURL=../wp-includes/js/wp-emoji-loader.js
+</script>
+</body>
+</html>
