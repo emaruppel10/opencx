@@ -111,9 +111,46 @@
 		window.addEventListener('scroll', onScroll, { passive: true });
 	}
 
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', initEcosystemNav);
-	} else {
+	function initTableSwipeHints() {
+		var hints = document.querySelectorAll('.ocx-eco-swipe-hint');
+		if (!hints.length) return;
+
+		hints.forEach(function(hint) {
+			var card = hint.closest('.ocx-eco-compare__card, .ocx-eco-llm__card');
+			if (!card) return;
+			var wrap = card.querySelector('.ocx-eco-compare__table-wrap, .ocx-eco-llm__table-wrap');
+			var pill = hint.querySelector('.ocx-eco-swipe-hint__pill');
+			if (!wrap) return;
+
+			// Fade out hint when user scrolls to reveal OpenCX, reappear if scrolled back
+			wrap.addEventListener('scroll', function() {
+				if (wrap.scrollLeft > 30) {
+					hint.classList.add('is-scrolled');
+				} else {
+					hint.classList.remove('is-scrolled');
+				}
+			}, { passive: true });
+
+			// Tap pill to smooth scroll between OpenCX and start
+			if (pill) {
+				pill.addEventListener('click', function(e) {
+					e.preventDefault();
+					var maxScroll = wrap.scrollWidth - wrap.clientWidth;
+					var target = wrap.scrollLeft > 30 ? 0 : maxScroll;
+					wrap.scrollTo({ left: target, behavior: 'smooth' });
+				});
+			}
+		});
+	}
+
+	function initAll() {
 		initEcosystemNav();
+		initTableSwipeHints();
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initAll);
+	} else {
+		initAll();
 	}
 })();
