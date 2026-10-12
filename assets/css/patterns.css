@@ -15478,9 +15478,23 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		width: 100% !important;
 		max-width: 100% !important;
 		margin: 0 auto !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		border-left: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-right: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-top: none !important;
+		border-bottom: none !important;
+		border-radius: 0 !important;
+		box-sizing: border-box !important;
 	}
 
 	.ocx-industries__container {
+		width: 100% !important;
+		max-width: 100% !important;
+		margin: 0 !important;
+		border: none !important;
+		border-radius: 0 !important;
+		background: transparent !important;
+		box-sizing: border-box !important;
 		flex-direction: column !important;
 		padding: 48px 24px 64px !important;
 		gap: 40px !important;
@@ -15534,7 +15548,8 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 
 	.ocx-industries__container {
 		padding: 32px 16px 48px !important;
-		border-radius: 16px !important;
+		border: none !important;
+		border-radius: 0 !important;
 		gap: 32px !important;
 	}
 
