@@ -85,3 +85,20 @@ if ( ! function_exists( 'opencx_setup' ) ) {
 	}
 }
 add_action( 'after_setup_theme', 'opencx_setup' );
+
+/**
+ * Adds page slug to body classes for consistent page-level targeting.
+ *
+ * @param array $classes Existing body classes.
+ * @return array Modified body classes.
+ */
+function opencx_body_classes( $classes ) {
+	if ( is_page() ) {
+		global $post;
+		if ( isset( $post->post_name ) ) {
+			$classes[] = 'page-' . sanitize_html_class( $post->post_name );
+		}
+	}
+	return $classes;
+}
+add_filter( 'body_class', 'opencx_body_classes' );

@@ -1,3 +1,5 @@
+@import url("./fonts.css");
+
 /*
  * OpenCX design tokens.
  *
@@ -59,6 +61,15 @@
 	--Color-Spring-Wood-Darker: #636260;
 	--Color-Spring-Wood-Darkest: #4A4948;
 
+	/* OpenCX Dune & Figma aliases */
+	--Color-OpenCX-Dune-Lightest: #F8F6F0;
+	--Color-OpenCX-Dune-Lighter: #F0EBDC;
+	--Color-OpenCX-Dune-Light: #CBBB85;
+	--Color-OpenCX-Dune: #B69E52;
+	--Color-Blackberry-Light: #8F459C;
+	--Color-Amber-Light: #FAF8F4;
+	--Stroke-Hairline: 0.5px;
+
 	/* Opacity */
 	--Opacity-Transparent: rgb(255 255 255 / 0%);
 	--Opacity-White-5: rgb(255 255 255 / 5%);
@@ -93,9 +104,14 @@
 	--Section-Padding-padding-section-large: 112px;
 	--Section-Padding-padding-section-medium: 80px;
 	--Section-Padding-padding-section-small: 48px;
+	--Section-Padding-padding-section-special: 36px;
+	--Section-Padding-padding-section-xsmall: 20px;
+	--Section-Padding-padding-section-none: 0px;
+	--Section-Padding-padding-section-thin: 10px;
 
 	/* Typography */
 	--Text-Sizes-Heading-1: 72px;
+	--Text-Sizes-Heading-1-Accent: 55px;
 	--Text-Sizes-Heading-2: 52px;
 	--Text-Sizes-Heading-3: 44px;
 	--Text-Sizes-Heading-4: 36px;
@@ -109,8 +125,8 @@
 
 	/* UI styles */
 	--Radius-Small: 16px;
-	--Radius-Medium: 16px;
-	--Radius-Large: 16px;
+	--Radius-Medium: 20px;
+	--Radius-Large: 20px;
 	--Stroke-Border-Width: 0px;
 	--Stroke-Divider-Width: 1px;
 
@@ -208,10 +224,14 @@
 		--Max-Width-max-width-small: 480px;
 		--Max-Width-max-width-xsmall: 400px;
 		--Max-Width-max-width-xxsmall: 320px;
-		--Page-Padding-padding-global: 20px;
+		--Page-Padding-padding-global: 10px;
 		--Section-Padding-padding-section-large: 64px;
 		--Section-Padding-padding-section-medium: 48px;
 		--Section-Padding-padding-section-small: 32px;
+		--Section-Padding-padding-section-special: 28px;
+		--Section-Padding-padding-section-xsmall: 16px;
+		--Section-Padding-padding-section-none: 0px;
+		--Section-Padding-padding-section-thin: 10px;
 		--Text-Sizes-Heading-1: 40px;
 		--Text-Sizes-Heading-2: 36px;
 		--Text-Sizes-Heading-3: 32px;
@@ -223,5 +243,11 @@
 		--Text-Sizes-Text-Regular: 16px;
 		--Text-Sizes-Text-Small: 14px;
 		--Text-Sizes-Text-Tiny: 12px;
+	}
+}
+
+@media (max-width: 991.98px) {
+	:root {
+		--Page-Padding-padding-global: 10px;
 	}
 }

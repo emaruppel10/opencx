@@ -23,17 +23,48 @@ if ( ! function_exists( 'opencx_enqueue_scripts' ) ) {
 		$theme_dir = get_template_directory();
 
 		/*
-		 * Web fonts.
+		 * Widescreen / Widescreen Ex (Adobe Fonts kit yas5ftt).
 		 *
-		 * theme.json declares the family names and the design tokens, but it
-		 * does not fetch the files. The families below are the ones referenced
-		 * in theme.json; if they are ever self-hosted under /assets/fonts,
-		 * replace this call with a "fontFace" declaration in theme.json and
-		 * drop the external request entirely.
+		 * Widescreen is not on Google Fonts: a `family=Widescreen` param there
+		 * is ignored silently (the stylesheet still returns 200, with only
+		 * Inter/Manrope/Roboto in it), so every rule using it fell through to
+		 * the system fallback. It is a licensed Adobe kit, so it has to be
+		 * served from use.typekit.net.
+		 *
+		 * The kit exposes both families in 300/400/600:
+		 *   widescreen      -> Widescreen      (Regular / Light / SemiBold)
+		 *   widescreen-ex   -> Widescreen Ex   (Regular / Light / SemiBold)
+		 * which is exactly the set the Figma text styles use.
+		 *
+		 * Enqueued as a stylesheet rather than a bare <link> so it stays
+		 * cache-busted and ordered before the pattern CSS. The kit is
+		 * domain-locked on the Adobe side; add every domain that serves this
+		 * site (including localhost) in the Adobe Fonts kit settings.
+		 */
+		wp_enqueue_style(
+			'opencx-fonts-widescreen',
+			'https://use.typekit.net/yas5ftt.css',
+			array(),
+			null
+		);
+
+		$local_fonts_path = $theme_dir . '/assets/css/fonts.css';
+		if ( file_exists( $local_fonts_path ) ) {
+			wp_enqueue_style(
+				'opencx-fonts-local',
+				$theme_uri . '/assets/css/fonts.css',
+				array(),
+				(string) filemtime( $local_fonts_path )
+			);
+		}
+
+		/*
+		 * Remaining Google-hosted families. Widescreen was dropped from this
+		 * query because it never resolved there; see above.
 		 */
 		wp_enqueue_style(
 			'opencx-fonts',
-			'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Roboto:wght@400;500;600;700&family=Widescreen&display=swap',
+			'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Roboto:wght@400;500;600;700&display=swap',
 			array(),
 			null
 		);
@@ -59,6 +90,10 @@ if ( ! function_exists( 'opencx_enqueue_scripts' ) ) {
 			'testimonial-carousel' => '/assets/js/testimonial-carousel.js',
 			'stat-count-up'        => '/assets/js/stat-count-up.js',
 			'logo-intro'           => '/assets/js/logo-intro.js',
+			'why-accordion'        => '/assets/js/why-accordion.js',
+			'ecosystem-nav'           => '/assets/js/ecosystem-nav.js',
+			'industries-nav'          => '/assets/js/industries-nav.js',
+			'industries-preview-loop' => '/assets/js/industries-preview-loop.js',
 		);
 
 		foreach ( $scripts as $slug => $relative_path ) {
@@ -126,7 +161,15 @@ if ( ! function_exists( 'opencx_enqueue_block_editor_assets' ) ) {
 			return;
 		}
 
-		$deps = array();
+		$fonts_css = $theme_dir . '/assets/css/fonts.css';
+		if ( file_exists( $fonts_css ) ) {
+			wp_enqueue_style(
+				'opencx-fonts-editor',
+				get_template_directory_uri() . '/assets/css/fonts.css',
+				array(),
+				(string) filemtime( $fonts_css )
+			);
+		}
 
 		if ( file_exists( $tokens ) ) {
 			wp_enqueue_style(

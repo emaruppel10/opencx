@@ -1,12 +1,14 @@
 <!-- wp:group {"className":"ocx-header","layout":{"type":"flex","orientation":"horizontal","justifyContent":"center","verticalAlignment":"center"}} -->
 <div class="wp-block-group ocx-header">
 
-	<!-- wp:group {"className":"ocx-header__row","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"left","verticalAlignment":"center"}} -->
+	<!-- wp:group {"className":"ocx-header__row","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 	<div class="wp-block-group ocx-header__row">
 
 		<!-- wp:group {"className":"ocx-header__logo","layout":{"type":"flex","justifyContent":"left","verticalAlignment":"center"}} -->
 		<div class="wp-block-group ocx-header__logo">
-			<!-- wp:site-logo {"width":147} /-->
+			<a href="/" class="ocx-header__logo-link" aria-label="OpenCX Home">
+				<img src="/wp-content/themes/OpenCX/assets/images/opencx-logo-black.svg" alt="OpenCX" class="ocx-header__logo-img" width="168" height="38" />
+			</a>
 		</div>
 		<!-- /wp:group -->
 
@@ -18,11 +20,57 @@
 			<!-- /wp:button -->
 
 			<!-- wp:button {"className":"ocx-btn--primary"} -->
-			<div class="wp-block-button ocx-btn--primary"><a class="wp-block-button__link wp-element-button" href="/lets-meet/">Let’s meet</a></div>
+			<div class="wp-block-button ocx-btn--primary"><a class="wp-block-button__link wp-element-button" href="/contact/">Let’s meet</a></div>
 			<!-- /wp:button -->
 		</div>
 		<!-- /wp:buttons -->
+
+		<!-- Mobile menu toggle button -->
+		<button class="ocx-mobile-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="ocx-mobile-drawer">
+			<img src="/wp-content/themes/OpenCX/assets/images/menu-hamburger.svg" alt="" class="ocx-icon-hamburger" width="24" height="24" />
+			<img src="/wp-content/themes/OpenCX/assets/images/menu-close.svg" alt="" class="ocx-icon-close" width="24" height="24" />
+		</button>
 	</div>
 	<!-- /wp:group -->
+
+	<!-- Mobile Drawer Menu -->
+	<div id="ocx-mobile-drawer" class="ocx-mobile-drawer" aria-hidden="true">
+		<nav class="ocx-mobile-nav" aria-label="Mobile Navigation">
+			<ul class="ocx-mobile-nav__list">
+				<li class="ocx-mobile-nav__item">
+					<a href="/ecosystem/" class="ocx-mobile-nav__link">
+						<span>Ecosystem</span>
+						<img src="/wp-content/themes/OpenCX/assets/images/icon-nav-plus.svg" alt="" class="ocx-mobile-nav__plus" width="18" height="18" />
+					</a>
+				</li>
+				<li class="ocx-mobile-nav__item">
+					<a href="/solution/" class="ocx-mobile-nav__link">
+						<span>Solution</span>
+					</a>
+				</li>
+				<li class="ocx-mobile-nav__item">
+					<a href="/industries/" class="ocx-mobile-nav__link">
+						<span>Industries</span>
+						<img src="/wp-content/themes/OpenCX/assets/images/icon-nav-plus.svg" alt="" class="ocx-mobile-nav__plus" width="18" height="18" />
+					</a>
+				</li>
+				<li class="ocx-mobile-nav__item">
+					<a href="/insights/" class="ocx-mobile-nav__link">
+						<span>Resources</span>
+					</a>
+				</li>
+				<li class="ocx-mobile-nav__item">
+					<a href="/about/" class="ocx-mobile-nav__link">
+						<span>About</span>
+					</a>
+				</li>
+			</ul>
+			<div class="ocx-mobile-nav__actions">
+				<a href="/sign-in/" class="ocx-btn-mobile--secondary">Sign In</a>
+				<a href="/contact/" class="ocx-btn-mobile--primary">Let's meet</a>
+			</div>
+		</nav>
+	</div>
+
 </div>
 <!-- /wp:group -->

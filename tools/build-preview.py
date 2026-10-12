@@ -26,7 +26,7 @@ PAGES = {
     "ecosystem": ("/ecosystem/", "ecosystem/index.html"),
     "industries": ("/industries/", "industries/index.html"),
     "solution": ("/solution/", "solution/index.html"),
-    "insights": ("/insights/", "insights/index.html"),
+    "resources": ("/resources/", "resources/index.html"),
     "about": ("/about/", "about/index.html"),
     "contact": ("/contact/", "contact/index.html"),
 }
@@ -64,19 +64,25 @@ def classify(path):
 
 def rewrite_url(value, from_dir):
     """Reescribe una URL (single o srcset) segun de donde se referencia."""
+    hash_part = ""
+    if "#" in value:
+        val_no_hash, hash_val = value.split("#", 1)
+        value = val_no_hash
+        hash_part = "#" + hash_val
+
     if value.startswith(BASE + "/"):
         path = value[len(BASE):]
     elif value.startswith("/"):
         path = value
     else:
-        return value
+        return value + hash_part
     target = classify(path)
     if target is None:
         return DEAD_LINK
     rel = str(Path(os.path.relpath(OUT / target, from_dir)))
     if rel == ".":
         rel = "index.html"
-    return rel
+    return rel + hash_part
 
 
 def scan_and_rewrite(html, from_dir):
