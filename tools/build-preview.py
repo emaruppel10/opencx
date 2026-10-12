@@ -131,6 +131,17 @@ def scan_and_rewrite(html, from_dir):
     return html, assets
 
 
+def remove_empty_rulesets(text):
+    def repl(m):
+        selector = m.group(1).strip()
+        comment = m.group(2)
+        if selector.startswith("@"):
+            return m.group(0)
+        return (comment.strip() + "\n") if comment else ""
+
+    return re.sub(r"([^{}\r\n;]+)\{\s*(/\*[\s\S]*?\*/\s*)?\}", repl, text)
+
+
 def main():
     shutil.rmtree(OUT, ignore_errors=True)
 
@@ -141,6 +152,7 @@ def main():
         html, found = scan_and_rewrite(html, dest.parent)
         assets |= found
         dest.parent.mkdir(parents=True, exist_ok=True)
+        html = remove_empty_rulesets(html)
         dest.write_text(html, encoding="utf-8")
         print(f"[page] {name}: {dest.relative_to(REPO)}")
 
@@ -151,6 +163,10 @@ def main():
         out.parent.mkdir(parents=True, exist_ok=True)
         try:
             data = urlopen(BASE + path, timeout=60).read()
+            if path.endswith(".css"):
+                css_text = data.decode("utf-8", errors="replace")
+                css_text = remove_empty_rulesets(css_text)
+                data = css_text.encode("utf-8")
             out.write_bytes(data)
             print(f"[asset] {path}")
         except Exception as exc:  # noqa: BLE001

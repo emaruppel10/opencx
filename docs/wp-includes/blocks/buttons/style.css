@@ -35,9 +35,7 @@
 .wp-block-buttons.aligncenter {
   text-align: center;
 }
-.wp-block-buttons {
-  /* stylelint-disable @stylistic/indentation -- Disable the stylelint rule, otherwise this selector is ugly! */
-}
+/* stylelint-disable @stylistic/indentation -- Disable the stylelint rule, otherwise this selector is ugly! */
 .wp-block-buttons:not(.is-content-justification-space-between,
 .is-content-justification-right,
 .is-content-justification-left,
