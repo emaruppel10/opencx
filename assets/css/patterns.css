@@ -1084,7 +1084,7 @@ body.page-template-page-contact .wp-site-blocks {
 /* Tablets Portrait (768px to 991px) */
 @media (min-width: 768px) and (max-width: 991.98px) {
 	.ocx-section.ocx-h62__section {
-		padding: 0 10px 0 !important;
+		padding: var(--Section-Padding-padding-section-xsmall, 16px) 10px 0 10px !important;
 	}
 
 	.ocx-h62__outer {
@@ -1093,22 +1093,22 @@ body.page-template-page-contact .wp-site-blocks {
 		height: auto !important;
 		min-height: auto !important;
 		margin: 0 auto !important;
-		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		background: var(--Color-OpenCX-Lighter, #B1C9D3) !important;
 		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border-radius: 0 !important;
 		box-sizing: border-box !important;
 	}
 
 	.ocx-h62__container {
-		width: 100% !important;
-		max-width: 100% !important;
+		width: calc(100% + 1px) !important;
+		max-width: none !important;
 		height: auto !important;
 		min-height: auto !important;
-		margin: 0 !important;
+		margin: -0.5px !important;
 		padding: 40px 32px !important;
-		border: none !important;
-		border-radius: 0 !important;
-		background: transparent !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: var(--Radius-Small, 16px) !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
 		box-sizing: border-box !important;
 	}
 
@@ -1140,7 +1140,7 @@ body.page-template-page-contact .wp-site-blocks {
 /* Mobile Portrait & Landscape (<= 767px) */
 @media (max-width: 767.98px) {
 	.ocx-section.ocx-h62__section {
-		padding: 0 10px 0 !important;
+		padding: var(--Section-Padding-padding-section-xsmall, 16px) 10px 0 10px !important;
 	}
 
 	.ocx-h62__outer {
@@ -1149,22 +1149,22 @@ body.page-template-page-contact .wp-site-blocks {
 		height: auto !important;
 		min-height: auto !important;
 		margin: 0 auto !important;
-		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		background: var(--Color-OpenCX-Lighter, #B1C9D3) !important;
 		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border-radius: 0 !important;
 		box-sizing: border-box !important;
 	}
 
 	.ocx-h62__container {
-		width: 100% !important;
-		max-width: 100% !important;
+		width: calc(100% + 1px) !important;
+		max-width: none !important;
 		height: auto !important;
 		min-height: auto !important;
-		margin: 0 !important;
+		margin: -0.5px !important;
 		padding: 28px 20px !important;
-		border: none !important;
-		border-radius: 0 !important;
-		background: transparent !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: var(--Radius-Small, 16px) !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
 		box-sizing: border-box !important;
 	}
 
@@ -1292,20 +1292,20 @@ body.page-template-page-contact .wp-site-blocks {
 		width: 100% !important;
 		max-width: 100% !important;
 		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
-		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		background: var(--Color-OpenCX-Lighter, #B1C9D3) !important;
 		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border-radius: 0 !important;
 		box-sizing: border-box !important;
 	}
 
 	.ocx-aios__container {
-		width: 100% !important;
-		max-width: 100% !important;
-		margin: 0 !important;
+		width: calc(100% + 1px) !important;
+		max-width: none !important;
+		margin: -0.5px !important;
 		padding: 80px 48px !important;
-		border: none !important;
-		border-radius: 0 !important;
-		background: transparent !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: var(--Radius-Small, 16px) !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
 		box-sizing: border-box !important;
 		gap: 60px !important;
 	}
@@ -1314,17 +1314,20 @@ body.page-template-page-contact .wp-site-blocks {
 @media (max-width: 991px) {
 	.ocx-aios__outer {
 		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
-		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		background: var(--Color-OpenCX-Lighter, #B1C9D3) !important;
 		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border-radius: 0 !important;
 	}
 
 	.ocx-aios__container {
+		width: calc(100% + 1px) !important;
+		max-width: none !important;
+		margin: -0.5px !important;
 		padding: 60px 32px !important;
-		border: none !important;
-		border-radius: 0 !important;
-		background: transparent !important;
-		margin: 0 !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: var(--Radius-Small, 16px) !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		box-sizing: border-box !important;
 		gap: 40px !important;
 	}
 }
@@ -1332,17 +1335,20 @@ body.page-template-page-contact .wp-site-blocks {
 @media (max-width: 767px) {
 	.ocx-aios__outer {
 		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
-		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		background: var(--Color-OpenCX-Lighter, #B1C9D3) !important;
 		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border-radius: 0 !important;
 	}
 
 	.ocx-aios__container {
+		width: calc(100% + 1px) !important;
+		max-width: none !important;
+		margin: -0.5px !important;
 		padding: 40px 20px !important;
-		border: none !important;
-		border-radius: 0 !important;
-		background: transparent !important;
-		margin: 0 !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: var(--Radius-Small, 16px) !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		box-sizing: border-box !important;
 		gap: 32px !important;
 	}
 }
@@ -1676,7 +1682,7 @@ body.page-template-page-contact .wp-site-blocks {
 		width: 100% !important;
 		max-width: 100% !important;
 		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
-		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		background: #E5EDF0 !important;
 		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border-radius: 0 !important;
 		box-sizing: border-box !important;
@@ -1685,12 +1691,12 @@ body.page-template-page-contact .wp-site-blocks {
 	.ocx-eco-pillars__card {
 		height: auto !important;
 		min-height: auto !important;
-		width: 100% !important;
-		max-width: 100% !important;
-		margin: 0 !important;
-		border: none !important;
-		border-radius: 0 !important;
-		background: transparent !important;
+		width: calc(100% + 1px) !important;
+		max-width: none !important;
+		margin: -0.5px !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: var(--Radius-Small, 16px) !important;
+		background: var(--Color-OpenCX-Dune-Lightest, #F8F6F0) !important;
 		box-sizing: border-box !important;
 		padding: 60px 0 !important;
 		gap: 48px !important;
@@ -1700,17 +1706,18 @@ body.page-template-page-contact .wp-site-blocks {
 @media (max-width: 991px) {
 	.ocx-eco-pillars__outer {
 		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
-		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		background: #E5EDF0 !important;
 		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border-radius: 0 !important;
 	}
 
 	.ocx-eco-pillars__card {
 		padding: 48px 0 !important;
-		border: none !important;
-		border-radius: 0 !important;
-		background: transparent !important;
-		margin: 0 !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: var(--Radius-Small, 16px) !important;
+		background: var(--Color-OpenCX-Dune-Lightest, #F8F6F0) !important;
+		width: calc(100% + 1px) !important;
+		margin: -0.5px !important;
 		gap: 40px !important;
 	}
 }
@@ -1718,17 +1725,18 @@ body.page-template-page-contact .wp-site-blocks {
 @media (max-width: 767px) {
 	.ocx-eco-pillars__outer {
 		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
-		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		background: #E5EDF0 !important;
 		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border-radius: 0 !important;
 	}
 
 	.ocx-eco-pillars__card {
 		padding: 40px 0 !important;
-		border: none !important;
-		border-radius: 0 !important;
-		background: transparent !important;
-		margin: 0 !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: var(--Radius-Small, 16px) !important;
+		background: var(--Color-OpenCX-Dune-Lightest, #F8F6F0) !important;
+		width: calc(100% + 1px) !important;
+		margin: -0.5px !important;
 		gap: 36px !important;
 	}
 }
@@ -3431,24 +3439,27 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 }
 
 @media (max-width: 991px) {
+	.ocx-section.ocx-solaas-hero__section {
+		padding: var(--Section-Padding-padding-section-xsmall, 16px) 10px 0 10px !important;
+	}
 	.ocx-solaas-hero__outer {
 		width: 100% !important;
 		max-width: 100% !important;
 		min-height: auto !important;
 		margin: 0 auto !important;
-		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		background: var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border-radius: 0 !important;
 		box-sizing: border-box !important;
 	}
 	.ocx-solaas-hero__container {
-		width: 100% !important;
-		max-width: 100% !important;
+		width: calc(100% + 1px) !important;
+		max-width: none !important;
 		min-height: auto !important;
-		margin: 0 !important;
-		border: none !important;
-		border-radius: 0 !important;
-		background: transparent !important;
+		margin: -0.5px !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: var(--Radius-Small, 16px) !important;
+		background-color: var(--Color-OpenCX-White, #FCFBF9) !important;
 		box-sizing: border-box !important;
 	}
 	.ocx-solaas-hero__card {
@@ -3476,26 +3487,26 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 
 @media (max-width: 767.98px) {
 	.ocx-section.ocx-solaas-hero__section {
-		padding: 0 10px !important;
+		padding: var(--Section-Padding-padding-section-xsmall, 16px) 10px 0 10px !important;
 	}
 	.ocx-solaas-hero__outer {
 		width: 100% !important;
 		max-width: 100% !important;
 		min-height: auto !important;
 		margin: 0 auto !important;
-		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		background: var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border-radius: 0 !important;
 		box-sizing: border-box !important;
 	}
 	.ocx-solaas-hero__container {
-		width: 100% !important;
-		max-width: 100% !important;
+		width: calc(100% + 1px) !important;
+		max-width: none !important;
 		min-height: auto !important;
-		margin: 0 !important;
-		border: none !important;
-		border-radius: 0 !important;
-		background: transparent !important;
+		margin: -0.5px !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: var(--Radius-Small, 16px) !important;
+		background-color: var(--Color-OpenCX-White, #FCFBF9) !important;
 		box-sizing: border-box !important;
 	}
 	.ocx-solaas-hero__card {
@@ -4103,18 +4114,20 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		width: 100% !important;
 		max-width: 100% !important;
 		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
-		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		background: #426676 !important;
+		background-color: #426676 !important;
 		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border-radius: 0 !important;
 		box-sizing: border-box !important;
 	}
 	.ocx-solaas-benefits__container {
-		width: 100% !important;
-		max-width: 100% !important;
-		margin: 0 !important;
-		border: none !important;
-		border-radius: 0 !important;
-		background: transparent !important;
+		width: calc(100% + 1px) !important;
+		max-width: none !important;
+		margin: -0.5px !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: var(--Radius-Small, 16px) !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		background-color: var(--Color-OpenCX-White, #FCFBF9) !important;
 		box-sizing: border-box !important;
 	}
 	.ocx-solaas-benefit {
@@ -4153,7 +4166,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		max-width: 100% !important;
 		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
 		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
-		border-radius: 0 !important;
+		border-radius: 0 0 var(--Radius-Small, 16px) var(--Radius-Small, 16px) !important;
 		box-sizing: border-box !important;
 	}
 	.ocx-solaas-cta__heading {
@@ -4164,20 +4177,24 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 @media (max-width: 767px) {
 	.ocx-solaas-benefits__outer {
 		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
-		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		background: #426676 !important;
+		background-color: #426676 !important;
 		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border-radius: 0 !important;
 	}
 	.ocx-solaas-benefits__container {
-		border: none !important;
-		border-radius: 0 !important;
-		background: transparent !important;
-		margin: 0 !important;
+		width: calc(100% + 1px) !important;
+		max-width: none !important;
+		margin: -0.5px !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: var(--Radius-Small, 16px) !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		background-color: var(--Color-OpenCX-White, #FCFBF9) !important;
 	}
 	.ocx-solaas-cta__container {
 		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
 		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
-		border-radius: 0 !important;
+		border-radius: 0 0 var(--Radius-Small, 16px) var(--Radius-Small, 16px) !important;
 	}
 	.ocx-solaas-benefits__section {
 		padding: 0 10px !important;
@@ -12523,42 +12540,90 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		box-sizing: border-box !important;
 	}
 
-	/* Universal hairline border & flat container stabilization for Ecosystem, Industries & Solution */
+	/* Universal 0.5px hairline outer frame with themed corner backgrounds for Ecosystem, Industries & Solution */
 	.ocx-h62__outer,
-	.ocx-industries-hero__outer,
+	.ocx-industries-hero__outer {
+		margin: 0 auto !important;
+		background: var(--Color-OpenCX-Lighter, #B1C9D3) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+		box-sizing: border-box !important;
+	}
+
 	.ocx-solaas-hero__outer {
 		margin: 0 auto !important;
-		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		background: var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border-radius: 0 !important;
 		box-sizing: border-box !important;
 	}
 
-	.ocx-aios__outer,
-	.ocx-industries__outer,
-	.ocx-solaas-benefits__outer,
+	.ocx-aios__outer {
+		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
+		background: var(--Color-OpenCX-Lighter, #B1C9D3) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+		box-sizing: border-box !important;
+	}
+
 	.ocx-eco-pillars__outer {
 		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
-		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		background: #E5EDF0 !important;
 		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border-radius: 0 !important;
 		box-sizing: border-box !important;
 	}
 
+	.ocx-industries__outer {
+		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
+		background: var(--Color-Blackberry-Light, #8F459C) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+		box-sizing: border-box !important;
+	}
+
+	.ocx-solaas-benefits__outer {
+		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
+		background: #426676 !important;
+		background-color: #426676 !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 !important;
+		box-sizing: border-box !important;
+	}
+
+	/* Inner cards with 16px rounded corners, 0.5px hairline stroke & card background */
 	.ocx-h62__container,
 	.ocx-aios__container,
 	.ocx-industries-hero__container,
 	.ocx-industries__container,
 	.ocx-solaas-hero__container,
-	.ocx-solaas-benefits__container,
-	.ocx-solaas-cta__container,
+	.ocx-solaas-benefits__container {
+		width: calc(100% + 1px) !important;
+		max-width: none !important;
+		margin: -0.5px !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: var(--Radius-Small, 16px) !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		background-color: var(--Color-OpenCX-White, #FCFBF9) !important;
+		box-sizing: border-box !important;
+	}
+
 	.ocx-eco-pillars__card {
+		width: calc(100% + 1px) !important;
+		max-width: none !important;
+		margin: -0.5px !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: var(--Radius-Small, 16px) !important;
+		background: var(--Color-OpenCX-Dune-Lightest, #F8F6F0) !important;
+		box-sizing: border-box !important;
+	}
+
+	.ocx-solaas-cta__container {
 		width: 100% !important;
 		max-width: 100% !important;
-		margin: 0 !important;
-		border: none !important;
-		border-radius: 0 !important;
-		background: transparent !important;
+		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: 0 0 var(--Radius-Small, 16px) var(--Radius-Small, 16px) !important;
 		box-sizing: border-box !important;
 	}
 
@@ -13104,7 +13169,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		min-height: auto !important;
 		margin: 0 auto !important;
 		padding: 0 !important;
-		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-Blackberry-Light, #8F459C) !important;
 		background: var(--Color-OpenCX-White, #FCFBF9) !important;
 		border-radius: 0 !important;
 		box-sizing: border-box !important;
@@ -13114,18 +13179,18 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		display: flex !important;
 		height: 533px !important;
 		min-height: auto !important;
-		width: 100% !important;
+		width: calc(100% + 1px) !important;
 		max-width: none !important;
 		flex-direction: column !important;
 		justify-content: center !important;
 		align-items: center !important;
 		gap: 80px !important;
 		align-self: stretch !important;
-		border-radius: 0 !important;
-		border: none !important;
+		border-radius: var(--Radius-Small, 16px) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		background: var(--Color-Amber, #F2EEE1) !important;
 		padding: 0 !important;
-		margin: 0 !important;
+		margin: -0.5px !important;
 		box-sizing: border-box !important;
 	}
 
@@ -13435,11 +13500,8 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		min-height: auto !important;
 		margin: 0 auto !important;
 		padding: 0 !important;
-		background: var(--Color-OpenCX-White, #FCFBF9) !important;
-		border-left: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
-		border-right: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
-		border-top: none !important;
-		border-bottom: none !important;
+		background: var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border-radius: 0 !important;
 		position: relative !important;
 		box-sizing: border-box !important;
@@ -13452,15 +13514,15 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		justify-content: center !important;
 		align-items: center !important;
 		gap: 80px !important;
-		width: 100% !important;
-		max-width: 100% !important;
+		width: calc(100% + 1px) !important;
+		max-width: none !important;
 		height: auto !important;
 		min-height: auto !important;
-		margin: 0 !important;
+		margin: -0.5px !important;
 		padding: var(--Section-Padding-padding-section-small, 32px) var(--Section-Padding-padding-section-xsmall, 16px) !important;
-		border-radius: 0 !important;
-		border: none !important;
-		background: transparent !important;
+		border-radius: var(--Radius-Small, 16px) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
 		box-sizing: border-box !important;
 	}
 
@@ -13609,11 +13671,11 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		.ocx-h90__container {
 			padding: 40px 32px !important;
 			gap: 40px !important;
-			border-radius: 0 !important;
-			border: none !important;
-			background: transparent !important;
-			width: 100% !important;
-			margin: 0 !important;
+			border-radius: var(--Radius-Small, 16px) !important;
+			border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+			background: var(--Color-OpenCX-White, #FCFBF9) !important;
+			width: calc(100% + 1px) !important;
+			margin: -0.5px !important;
 		}
 
 		.ocx-h90__card {
@@ -13667,7 +13729,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		min-height: auto !important;
 		margin: 0 auto !important;
 		padding: 0 !important;
-		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-Blackberry-Light, #8F459C) !important;
 		background: var(--Color-OpenCX-White, #FCFBF9) !important;
 		border-radius: 0 !important;
 		box-sizing: border-box !important;
@@ -13676,9 +13738,9 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	.ocx-problem__component {
 		display: flex !important;
 		flex-direction: column !important;
-		width: 100% !important;
-		margin: 0 !important;
-		gap: 0 !important;
+		width: calc(100% + 1px) !important;
+		margin: -0.5px !important;
+		gap: -1px !important;
 		box-sizing: border-box !important;
 	}
 
@@ -13689,11 +13751,8 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		height: auto !important;
 		padding: 32px !important;
 		background: var(--Color-OpenCX-Dune-Lightest, #F8F6F0) !important;
-		border-top: none !important;
-		border-left: none !important;
-		border-right: none !important;
-		border-bottom: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
-		border-radius: 0 !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: var(--Radius-Small, 16px) !important;
 		box-sizing: border-box !important;
 	}
 
@@ -13717,8 +13776,8 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		height: auto !important;
 		padding: 32px !important;
 		background: var(--Color-OpenCX-Dune-Lightest, #F8F6F0) !important;
-		border: none !important;
-		border-radius: 0 !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: var(--Radius-Small, 16px) !important;
 		margin-left: 0 !important;
 		margin-top: 0 !important;
 		box-sizing: border-box !important;
@@ -15375,7 +15434,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 
 @media (max-width: 991.98px) {
 	.ocx-section.ocx-industries-hero__section {
-		padding: 0 10px 0 !important;
+		padding: var(--Section-Padding-padding-section-xsmall, 16px) 10px 0 10px !important;
 	}
 
 	.ocx-industries-hero__outer {
@@ -15384,22 +15443,22 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		height: auto !important;
 		min-height: auto !important;
 		margin: 0 auto !important;
-		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		background: var(--Color-OpenCX-Lighter, #B1C9D3) !important;
 		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border-radius: 0 !important;
 		box-sizing: border-box !important;
 	}
 
 	.ocx-industries-hero__container {
-		width: 100% !important;
-		max-width: 100% !important;
+		width: calc(100% + 1px) !important;
+		max-width: none !important;
 		height: auto !important;
 		min-height: auto !important;
-		margin: 0 !important;
+		margin: -0.5px !important;
 		padding: 48px 32px !important;
-		border: none !important;
-		border-radius: 0 !important;
-		background: transparent !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: var(--Radius-Small, 16px) !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
 		box-sizing: border-box !important;
 	}
 
@@ -15429,7 +15488,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 
 @media (max-width: 767.98px) {
 	.ocx-section.ocx-industries-hero__section {
-		padding: 0 10px 0 !important;
+		padding: var(--Section-Padding-padding-section-xsmall, 16px) 10px 0 10px !important;
 	}
 
 	.ocx-industries-hero__outer {
@@ -15438,22 +15497,22 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		height: auto !important;
 		min-height: auto !important;
 		margin: 0 auto !important;
-		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		background: var(--Color-OpenCX-Lighter, #B1C9D3) !important;
 		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border-radius: 0 !important;
 		box-sizing: border-box !important;
 	}
 
 	.ocx-industries-hero__container {
-		width: 100% !important;
-		max-width: 100% !important;
+		width: calc(100% + 1px) !important;
+		max-width: none !important;
 		height: auto !important;
 		min-height: auto !important;
-		margin: 0 !important;
+		margin: -0.5px !important;
 		padding: 36px 20px !important;
-		border: none !important;
-		border-radius: 0 !important;
-		background: transparent !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: var(--Radius-Small, 16px) !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
 		box-sizing: border-box !important;
 	}
 
@@ -15742,19 +15801,19 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		width: 100% !important;
 		max-width: 100% !important;
 		margin: calc(-1 * var(--Stroke-Hairline, 0.5px)) auto 0 !important;
-		background: var(--Color-OpenCX-White, #FCFBF9) !important;
+		background: var(--Color-Blackberry-Light, #8F459C) !important;
 		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 		border-radius: 0 !important;
 		box-sizing: border-box !important;
 	}
 
 	.ocx-industries__container {
-		width: 100% !important;
-		max-width: 100% !important;
-		margin: 0 !important;
-		border: none !important;
-		border-radius: 0 !important;
-		background: transparent !important;
+		width: calc(100% + 1px) !important;
+		max-width: none !important;
+		margin: -0.5px !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: var(--Radius-Small, 16px) !important;
+		background: var(--Color-OpenCX-White, #FCFBF9) !important;
 		box-sizing: border-box !important;
 		flex-direction: column !important;
 		padding: 48px 24px 64px !important;
@@ -15808,9 +15867,11 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	}
 
 	.ocx-industries__container {
+		width: calc(100% + 1px) !important;
+		margin: -0.5px !important;
+		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-radius: var(--Radius-Small, 16px) !important;
 		padding: 32px 16px 48px !important;
-		border: none !important;
-		border-radius: 0 !important;
 		gap: 32px !important;
 	}
 
