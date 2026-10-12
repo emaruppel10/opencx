@@ -949,7 +949,6 @@ html.has-modal-open {
   color: #313131;
 }
 /* stylelint-disable @stylistic/function-comma-space-after -- We can not use spacing because of WP multi site kses rule. */
-
 :root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background {
   background: linear-gradient(135deg, rgb(0, 208, 132) 0%, rgb(6, 147, 227) 100%);
 }
@@ -2012,7 +2011,7 @@ function getSessionSupportTests() {
 		) {
 			return item.supportTests;
 		}
-	}
+	} catch ( e ) {}
 	return null;
 }
 
@@ -2037,7 +2036,7 @@ function setSessionSupportTests( supportTests ) {
 			sessionStorageKey,
 			JSON.stringify( item )
 		);
-	}
+	} catch ( e ) {}
 }
 
 /**
@@ -2258,7 +2257,7 @@ function testEmojiSupports( tests, browserSupportsEmoji, emojiSetsRenderIdentica
 	context.textBaseline = 'top';
 	context.font = '600 32px Arial';
 
-;
+	const supports = {};
 	tests.forEach( ( test ) => {
 		supports[ test ] = browserSupportsEmoji( context, test, emojiSetsRenderIdentically, emojiRendersEmptyCenterPoint );
 	} );
@@ -2321,7 +2320,7 @@ new Promise( ( resolve ) => {
 				resolve( supportTests );
 			};
 			return;
-		}
+		} catch ( e ) {}
 	}
 
 	supportTests = testEmojiSupports( tests, browserSupportsEmoji, emojiSetsRenderIdentically, emojiRendersEmptyCenterPoint );
@@ -2353,7 +2352,7 @@ new Promise( ( resolve ) => {
 
 		// When the browser can not render everything we need to load a polyfill.
 		if ( ! settings.supports.everything ) {
-;
+			const src = settings.source || {};
 
 			if ( src.concatemoji ) {
 				addScript( src.concatemoji );
