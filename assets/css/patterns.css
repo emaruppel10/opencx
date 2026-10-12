@@ -2362,6 +2362,7 @@ body.page-template-page-contact .wp-site-blocks {
 	max-width: 940px !important;
 	box-sizing: border-box !important;
 	overflow-x: auto !important;
+	scroll-behavior: smooth !important;
 	-webkit-overflow-scrolling: touch !important;
 	scrollbar-width: thin;
 	scrollbar-color: var(--Color-Nile-Blue, #1C495A) rgba(28, 73, 90, 0.1);
@@ -2729,6 +2730,7 @@ body.page-template-page-contact .wp-site-blocks {
 	max-width: 864px !important;
 	box-sizing: border-box !important;
 	overflow-x: auto !important;
+	scroll-behavior: smooth !important;
 	-webkit-overflow-scrolling: touch !important;
 	scrollbar-width: thin;
 	scrollbar-color: var(--Color-Nile-Blue, #1C495A) rgba(28, 73, 90, 0.1);
@@ -2969,6 +2971,110 @@ body.page-template-page-contact .wp-site-blocks {
 		padding: 0 12px !important;
 		font-size: 14px !important;
 		line-height: 20px !important;
+	}
+}
+
+/*
+ * ==========================================================================
+ * Ecosystem: Mobile Comparison Table Swipe Hint
+ * ==========================================================================
+ */
+.ocx-eco-swipe-hint {
+	display: none !important;
+}
+
+@media (max-width: 767.98px) {
+	.ocx-eco-swipe-hint {
+		display: flex !important;
+		justify-content: center !important;
+		align-items: center !important;
+		width: 100% !important;
+		margin-top: -10px !important;
+		margin-bottom: -10px !important;
+		transition: opacity 0.35s ease, transform 0.35s ease !important;
+	}
+
+	.ocx-eco-swipe-hint.is-scrolled {
+		opacity: 0 !important;
+		transform: translateY(-4px) !important;
+		pointer-events: none !important;
+	}
+
+	.ocx-eco-swipe-hint__pill {
+		display: inline-flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+		gap: 8px !important;
+		padding: 7px 16px !important;
+		border-radius: 9999px !important;
+		border: var(--Stroke-Hairline, 0.5px) solid rgba(28, 73, 90, 0.22) !important;
+		background: rgba(28, 73, 90, 0.08) !important;
+		color: #162227 !important;
+		font-family: var(--wp--preset--font-family--widescreen, 'Widescreen', sans-serif) !important;
+		font-size: 12px !important;
+		font-weight: 500 !important;
+		line-height: 1.2 !important;
+		letter-spacing: 0.04em !important;
+		text-transform: uppercase !important;
+		cursor: pointer !important;
+		margin: 0 !important;
+		outline: none !important;
+		-webkit-appearance: none !important;
+		appearance: none !important;
+		-webkit-tap-highlight-color: transparent !important;
+		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03) !important;
+		backdrop-filter: blur(6px) !important;
+		-webkit-backdrop-filter: blur(6px) !important;
+		transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease !important;
+	}
+
+	.ocx-eco-swipe-hint__pill:active {
+		transform: scale(0.97) !important;
+	}
+
+	.ocx-eco-compare__card .ocx-eco-swipe-hint__pill {
+		background: rgba(255, 255, 255, 0.6) !important;
+		border-color: rgba(28, 73, 90, 0.25) !important;
+	}
+
+	.ocx-eco-llm__card .ocx-eco-swipe-hint__pill {
+		background: rgba(28, 73, 90, 0.06) !important;
+		border-color: rgba(28, 73, 90, 0.2) !important;
+	}
+
+	.ocx-eco-swipe-hint__icon {
+		display: block !important;
+		width: 17px !important;
+		height: 17px !important;
+		flex-shrink: 0 !important;
+		color: var(--Color-Nile-Blue, #1C495A) !important;
+		animation: ocxSwipeHandAnim 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite !important;
+	}
+
+	.ocx-eco-swipe-hint__arrow {
+		display: inline-block !important;
+		font-size: 13px !important;
+		line-height: 1 !important;
+		color: var(--Color-Nile-Blue, #1C495A) !important;
+		animation: ocxSwipeArrowAnim 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite !important;
+	}
+
+	@keyframes ocxSwipeHandAnim {
+		0%, 15%, 85%, 100% {
+			transform: translateX(0);
+		}
+		45%, 55% {
+			transform: translateX(5px);
+		}
+	}
+
+	@keyframes ocxSwipeArrowAnim {
+		0%, 15%, 85%, 100% {
+			transform: translateX(0);
+		}
+		45%, 55% {
+			transform: translateX(4px);
+		}
 	}
 }
 
