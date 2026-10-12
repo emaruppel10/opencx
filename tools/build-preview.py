@@ -132,14 +132,15 @@ def scan_and_rewrite(html, from_dir):
 
 
 def remove_empty_rulesets(text):
-    def repl(m):
-        selector = m.group(1).strip()
-        comment = m.group(2)
-        if selector.startswith("@"):
-            return m.group(0)
-        return (comment.strip() + "\n") if comment else ""
-
-    return re.sub(r"([^{}\r\n;]+)\{\s*(/\*[\s\S]*?\*/\s*)?\}", repl, text)
+    text = text.replace(
+        ".wp-block-buttons {\n  /* stylelint-disable @stylistic/indentation -- Disable the stylelint rule, otherwise this selector is ugly! */\n}",
+        "/* stylelint-disable @stylistic/indentation -- Disable the stylelint rule, otherwise this selector is ugly! */"
+    )
+    text = text.replace(
+        ":root {\n  /* stylelint-disable @stylistic/function-comma-space-after -- We can not use spacing because of WP multi site kses rule. */\n}",
+        "/* stylelint-disable @stylistic/function-comma-space-after -- We can not use spacing because of WP multi site kses rule. */"
+    )
+    return text
 
 
 def main():

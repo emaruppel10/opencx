@@ -169,7 +169,8 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
   display: table-caption;
   caption-side: bottom;
 }
-/*rtl:ignore*/
+.wp-block-image .alignleft {
+  /*rtl:ignore*/
   float: left;
   /*rtl:ignore*/
   margin-left: 0;
@@ -811,13 +812,12 @@ h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]) {
 .wp-block-buttons.aligncenter {
   text-align: center;
 }
-.wp-block-buttons {
-  /* stylelint-disable @stylistic/indentation -- Disable the stylelint rule, otherwise this selector is ugly! */
-
+/* stylelint-disable @stylistic/indentation -- Disable the stylelint rule, otherwise this selector is ugly! */
 .wp-block-buttons:not(.is-content-justification-space-between,
 .is-content-justification-right,
 .is-content-justification-left,
-/* stylelint-enable @stylistic/indentation */
+.is-content-justification-center) .wp-block-button.aligncenter {
+  /* stylelint-enable @stylistic/indentation */
   margin-left: auto;
   margin-right: auto;
   width: 100%;
@@ -1056,9 +1056,7 @@ h6.has-text-align-left[style*=writing-mode]:where([style*=vertical-lr]) {
 :root .has-very-dark-gray-color {
   color: #313131;
 }
-:root {
-  /* stylelint-disable @stylistic/function-comma-space-after -- We can not use spacing because of WP multi site kses rule. */
-
+/* stylelint-disable @stylistic/function-comma-space-after -- We can not use spacing because of WP multi site kses rule. */
 :root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background {
   background: linear-gradient(135deg, rgb(0, 208, 132) 0%, rgb(6, 147, 227) 100%);
 }
@@ -2636,7 +2634,7 @@ function getSessionSupportTests() {
 		) {
 			return item.supportTests;
 		}
-	}
+	} catch ( e ) {}
 	return null;
 }
 
@@ -2661,7 +2659,7 @@ function setSessionSupportTests( supportTests ) {
 			sessionStorageKey,
 			JSON.stringify( item )
 		);
-	}
+	} catch ( e ) {}
 }
 
 /**
@@ -2882,7 +2880,7 @@ function testEmojiSupports( tests, browserSupportsEmoji, emojiSetsRenderIdentica
 	context.textBaseline = 'top';
 	context.font = '600 32px Arial';
 
-;
+	const supports = {};
 	tests.forEach( ( test ) => {
 		supports[ test ] = browserSupportsEmoji( context, test, emojiSetsRenderIdentically, emojiRendersEmptyCenterPoint );
 	} );
@@ -2945,7 +2943,7 @@ new Promise( ( resolve ) => {
 				resolve( supportTests );
 			};
 			return;
-		}
+		} catch ( e ) {}
 	}
 
 	supportTests = testEmojiSupports( tests, browserSupportsEmoji, emojiSetsRenderIdentically, emojiRendersEmptyCenterPoint );
@@ -2977,7 +2975,7 @@ new Promise( ( resolve ) => {
 
 		// When the browser can not render everything we need to load a polyfill.
 		if ( ! settings.supports.everything ) {
-;
+			const src = settings.source || {};
 
 			if ( src.concatemoji ) {
 				addScript( src.concatemoji );
