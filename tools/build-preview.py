@@ -172,6 +172,14 @@ def main():
         except Exception as exc:  # noqa: BLE001
             print(f"[warn] no se pudo bajar {path}: {exc}", file=sys.stderr)
 
+    theme_assets = OUT / "wp-content/themes/OpenCX/assets"
+    if (REPO / "assets").exists():
+        shutil.copytree(REPO / "assets", theme_assets, dirs_exist_ok=True)
+        for css_file in theme_assets.rglob("*.css"):
+            clean_css = remove_empty_rulesets(css_file.read_text(encoding="utf-8"))
+            css_file.write_text(clean_css, encoding="utf-8")
+        print(f"[theme] assets sincronizados a {theme_assets.relative_to(REPO)}")
+
     print("\nPreview en:", str(OUT.relative_to(REPO)) + "/")
 
 
