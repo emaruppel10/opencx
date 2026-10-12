@@ -1,158 +1,260 @@
 /*
- * OpenCX stat count-up ("Layout / 55 /", the "Results that come from
- * understanding your business" section).
+ * OpenCX stat count-up (modern AI smooth counter animation).
  *
- * Progressive enhancement only: the numbers ship as real text in the HTML, so
- * the section is complete without this file, search engines and screen readers
- * read the final values, and the Site Editor can still edit the copy. This
- * file only replaces a number with the same number while it climbs to it.
+ * Progressive enhancement:
+ * - Real numbers ship in HTML for SEO, screen readers, and Site Editor copy.
+ * - Respects prefers-reduced-motion (skips animation entirely).
+ * - Triggers smoothly via IntersectionObserver when entering the viewport.
+ * - Re-triggers every time the section enters the viewport (re-animates on every pass).
+ * - Ultra-smooth custom ease-out curve (fluid deceleration without stalling).
+ * - Staggered micro-timing across cards in the same row.
+ * - Clean teardown & reset when completely scrolled off-screen (hysteresis prevents flicker).
  *
- * The target is parsed out of the element's own text rather than duplicated in
- * a data attribute, because the text is the only copy the editor ever touches.
- * A mismatch between a `data-count-to` and the visible copy would be a silent
- * lie; a parse failure just means no animation.
- *
- * What it adds, and nothing else:
- *   - counts each value up once, when the card is 40% into the viewport
- *   - decelerates into the target instead of overshooting it
- *   - keeps the source's own precision, so "3.5x" never passes through "3.4781x"
- *   - keeps the suffix, so "40%" and "3x" keep their unit
- *
- * No dependencies, no build step.
+ * Zero external dependencies.
  */
 ( function () {
 	'use strict';
 
-	var SELECTOR = '.ocx-l55__value';
-	var DURATION = 1600;
+	var SELECTOR = '.ocx-business-outcomes__card-value, .ocx-l55__value, [data-ocx-counter]';
+	var DURATION = 1450; // Milliseconds per counter animation
 
-	/** Leading number, then anything that follows it (the unit). */
-	var PATTERN = /^(\d+(?:\.\d+)?)(\D*)$/;
+	/** Matches optional prefix, the number (with optional decimals), and unit suffix. */
+	var PATTERN = /^([^\d.]*)(\d+(?:\.\d+)?)(\D*)$/;
 
 	/**
-	 * Reads the number and its unit out of an element's text.
+	 * Reads prefix, number, decimals and suffix from an element's text.
 	 *
-	 * Only a dot is accepted as a decimal separator, on purpose: treating a
-	 * comma as one would read "1,200" as 1.2.
-	 *
-	 * @param {string} text Trimmed text content.
-	 * @return {{target: number, decimals: number, suffix: string}|null} Null if there is no number.
+	 * @param {string} text Raw text content.
+	 * @return {{prefix: string, target: number, decimals: number, suffix: string, raw: string}|null}
 	 */
 	function parse( text ) {
 		var match = PATTERN.exec( text );
-		var decimals;
-
 		if ( ! match ) {
 			return null;
 		}
 
-		decimals = match[ 1 ].indexOf( '.' ) === -1 ? 0 : match[ 1 ].split( '.' )[ 1 ].length;
+		var numStr = match[ 2 ];
+		var decimals = numStr.indexOf( '.' ) === -1 ? 0 : numStr.split( '.' )[ 1 ].length;
 
 		return {
-			target: parseFloat( match[ 1 ] ),
+			prefix: match[ 1 ] || '',
+			target: parseFloat( numStr ),
 			decimals: decimals,
-			suffix: match[ 2 ]
+			suffix: match[ 3 ] || '',
+			raw: text
 		};
 	}
 
 	/**
-	 * Ease-out quintic: fast at the start, long settle at the end.
+	 * Custom smooth ease-out curve (power 3.2):
+	 * Starts with an energetic fluid sweep, then smoothly decelerates
+	 * and glides gently into the target value like modern AI landing pages.
 	 *
-	 * Deliberately not a spring. A spring overshoots its target, which for a
-	 * statistic means briefly showing 42% for a card that claims 40%, and the
-	 * number is the one thing on this section that has to be literally true.
-	 *
-	 * @param {number} p Progress, 0 to 1.
-	 * @return {number} Eased progress, 0 to 1.
+	 * @param {number} p Progress from 0 to 1.
+	 * @return {number} Eased progress from 0 to 1.
 	 */
-	function ease( p ) {
-		return 1 - Math.pow( 1 - p, 5 );
+	function easeOut( p ) {
+		return 1 - Math.pow( 1 - p, 3.2 );
 	}
 
 	/**
-	 * Runs the count.
+	 * Computes a subtle stagger delay for cards in the same horizontal row.
 	 *
-	 * @param {Element}  el     The `.ocx-l55__value` element.
-	 * @param {Object}   parsed Result of `parse`.
+	 * @param {Element} cardEl Card or trigger element.
+	 * @return {number} Delay in milliseconds.
 	 */
-	function count( el, parsed ) {
-		var start = null;
-
-		/**
-		 * One frame.
-		 *
-		 * @param {number} now Timestamp from rAF.
-		 */
-		function frame( now ) {
-			var p;
-
-			if ( null === start ) {
-				start = now;
-			}
-
-			p = Math.min( ( now - start ) / DURATION, 1 );
-
-			el.textContent = ( parsed.target * ease( p ) ).toFixed( parsed.decimals ) + parsed.suffix;
-
-			if ( p < 1 ) {
-				window.requestAnimationFrame( frame );
-			} else {
-				/* Land on the exact source text, not on a re-formatted copy of it. */
-				el.textContent = el.getAttribute( 'data-ocx-count-source' );
-				el.removeAttribute( 'data-ocx-count-source' );
-			}
+	function getStaggerDelay( cardEl ) {
+		var parent = cardEl.parentElement;
+		if ( ! parent ) {
+			return 0;
 		}
 
-		window.requestAnimationFrame( frame );
+		var siblings = Array.prototype.slice.call( parent.children );
+		var index = siblings.indexOf( cardEl );
+		if ( index <= 0 ) {
+			return 0;
+		}
+
+		// Only apply stagger if elements share the same vertical baseline (horizontal row)
+		var firstRect = siblings[ 0 ].getBoundingClientRect();
+		var thisRect = cardEl.getBoundingClientRect();
+		if ( Math.abs( firstRect.top - thisRect.top ) > 35 ) {
+			return 0; // Stacked vertically (mobile / 1 column)
+		}
+
+		return Math.min( index * 65, 300 );
 	}
 
 	/**
-	 * Wires one value.
+	 * Starts the smooth count-up animation for an item.
 	 *
-	 * @param {Element} el The `.ocx-l55__value` element.
+	 * @param {Object} item State object.
 	 */
-	function init( el ) {
-		var parsed = parse( ( el.textContent || '' ).trim() );
-		var observer;
-
-		if ( ! parsed || 0 === parsed.target ) {
+	function startCount( item ) {
+		if ( item.isAnimating || item.hasAnimated ) {
 			return;
 		}
 
-		/* Nothing to do without an observer, or when motion is not wanted: the
-		   markup already says the right number, so the element is left untouched. */
-		if ( ! window.IntersectionObserver || window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ) {
-			return;
-		}
+		item.isAnimating = true;
 
-		/* Stashed so the last frame can restore the editor's own string. */
-		el.setAttribute( 'data-ocx-count-source', el.textContent.trim() );
+		var delay = getStaggerDelay( item.triggerEl );
 
-		observer = new IntersectionObserver( function ( entries ) {
-			var i;
+		item.staggerTimer = setTimeout( function () {
+			var startTime = null;
 
-			for ( i = 0; i < entries.length; i++ ) {
-				if ( entries[ i ].isIntersecting ) {
-					observer.disconnect();
-					count( el, parsed );
-					return;
+			function frame( now ) {
+				if ( null === startTime ) {
+					startTime = now;
+				}
+
+				var elapsed = now - startTime;
+				var p = Math.min( elapsed / DURATION, 1 );
+				var eased = easeOut( p );
+
+				var currentNum;
+				if ( item.parsed.decimals === 0 ) {
+					currentNum = Math.round( item.parsed.target * eased );
+				} else {
+					currentNum = ( item.parsed.target * eased ).toFixed( item.parsed.decimals );
+				}
+
+				item.el.textContent = item.parsed.prefix + currentNum + item.parsed.suffix;
+
+				if ( p < 1 ) {
+					item.rafId = window.requestAnimationFrame( frame );
+				} else {
+					// Final frame lands precisely on the author's original string
+					item.el.textContent = item.parsed.raw;
+					item.isAnimating = false;
+					item.hasAnimated = true;
+					item.rafId = null;
 				}
 			}
-		}, { threshold: [ 0.4 ] } );
 
-		observer.observe( el );
+			item.rafId = window.requestAnimationFrame( frame );
+		}, delay );
 	}
 
 	/**
-	 * Sets up every value on the page.
+	 * Resets an item's counter back to zero when scrolled completely out of view.
+	 *
+	 * @param {Object} item State object.
+	 */
+	function resetCount( item ) {
+		if ( item.staggerTimer ) {
+			clearTimeout( item.staggerTimer );
+			item.staggerTimer = null;
+		}
+		if ( item.rafId ) {
+			window.cancelAnimationFrame( item.rafId );
+			item.rafId = null;
+		}
+
+		item.isAnimating = false;
+		item.hasAnimated = false;
+
+		// Reset value to 0 while off-screen so the next entrance starts cleanly
+		var zeroNum = ( 0 ).toFixed( item.parsed.decimals );
+		item.el.textContent = item.parsed.prefix + zeroNum + item.parsed.suffix;
+	}
+
+	/**
+	 * Initializes all counter elements on the page.
 	 */
 	function initAll() {
-		var values = document.querySelectorAll( SELECTOR );
-		var i;
-
-		for ( i = 0; i < values.length; i++ ) {
-			init( values[ i ] );
+		/* Accessibility check: users requesting reduced motion keep original copy */
+		if ( window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ) {
+			return;
 		}
+
+		/* Without IntersectionObserver, keep static numbers */
+		if ( ! window.IntersectionObserver ) {
+			return;
+		}
+
+		var elements = document.querySelectorAll( SELECTOR );
+		if ( ! elements.length ) {
+			return;
+		}
+
+		var items = [];
+		var triggerMap = new Map();
+
+		for ( var i = 0; i < elements.length; i++ ) {
+			var el = elements[ i ];
+			var text = ( el.textContent || '' ).trim();
+			var parsed = parse( text );
+
+			if ( ! parsed || 0 === parsed.target ) {
+				continue;
+			}
+
+			var triggerEl = el.closest( '.ocx-business-outcomes__card' ) ||
+			                el.closest( '.ocx-l55__card' ) ||
+			                el;
+
+			var item = {
+				el: el,
+				triggerEl: triggerEl,
+				parsed: parsed,
+				rafId: null,
+				staggerTimer: null,
+				isAnimating: false,
+				hasAnimated: false
+			};
+
+			items.push( item );
+
+			var list = triggerMap.get( triggerEl );
+			if ( ! list ) {
+				list = [];
+				triggerMap.set( triggerEl, list );
+			}
+			list.push( item );
+
+			// If initially outside the viewport, initialize to 0 so first scroll animates
+			var rect = triggerEl.getBoundingClientRect();
+			var inView = rect.top < window.innerHeight && rect.bottom > 0;
+			if ( ! inView ) {
+				var zeroNum = ( 0 ).toFixed( parsed.decimals );
+				el.textContent = parsed.prefix + zeroNum + parsed.suffix;
+			}
+		}
+
+		if ( ! items.length ) {
+			return;
+		}
+
+		var observer = new IntersectionObserver( function ( entries ) {
+			entries.forEach( function ( entry ) {
+				var targetItems = triggerMap.get( entry.target );
+				if ( ! targetItems ) {
+					return;
+				}
+
+				// When entering viewport (at least 15% visible)
+				if ( entry.isIntersecting && entry.intersectionRatio >= 0.15 ) {
+					targetItems.forEach( function ( it ) {
+						if ( ! it.hasAnimated && ! it.isAnimating ) {
+							startCount( it );
+						}
+					} );
+				}
+				// When completely scrolled off-screen (0% visible)
+				else if ( ! entry.isIntersecting || entry.intersectionRatio === 0 ) {
+					targetItems.forEach( function ( it ) {
+						resetCount( it );
+					} );
+				}
+			} );
+		}, {
+			root: null,
+			threshold: [ 0, 0.15 ]
+		} );
+
+		triggerMap.forEach( function ( _, triggerEl ) {
+			observer.observe( triggerEl );
+		} );
 	}
 
 	if ( 'loading' === document.readyState ) {

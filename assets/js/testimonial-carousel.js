@@ -342,6 +342,58 @@
 	}
 
 	/**
+	 * Sets up .ocx-testimonial__section slider.
+	 */
+	function initTestimonialSection( section ) {
+		var track = section.querySelector( '.ocx-testimonial__grid' );
+		var items = Array.prototype.slice.call( section.querySelectorAll( '.ocx-testimonial__item' ) );
+		var prev = section.querySelector( '.ocx-testimonial__arrow-btn--prev' );
+		var next = section.querySelector( '.ocx-testimonial__arrow-btn--next' );
+		var dots = Array.prototype.slice.call( section.querySelectorAll( '.ocx-testimonial__dot' ) );
+
+		if ( ! track || items.length < 2 || ! prev || ! next ) {
+			return;
+		}
+
+		function updateDots() {
+			if ( ! dots.length ) return;
+			var scrollLeft = track.scrollLeft;
+			var itemWidth = items[ 0 ].offsetWidth || 1;
+			var idx = Math.min( Math.round( scrollLeft / itemWidth ), dots.length - 1 );
+			dots.forEach( function ( d, i ) {
+				if ( i === idx ) {
+					d.classList.add( 'ocx-testimonial__dot--active' );
+				} else {
+					d.classList.remove( 'ocx-testimonial__dot--active' );
+				}
+			} );
+		}
+
+		prev.addEventListener( 'click', function ( e ) {
+			e.preventDefault();
+			var itemWidth = items[ 0 ].offsetWidth || 300;
+			track.scrollBy( { left: -itemWidth, behavior: 'smooth' } );
+		} );
+
+		next.addEventListener( 'click', function ( e ) {
+			e.preventDefault();
+			var itemWidth = items[ 0 ].offsetWidth || 300;
+			track.scrollBy( { left: itemWidth, behavior: 'smooth' } );
+		} );
+
+		track.addEventListener( 'scroll', updateDots, { passive: true } );
+
+		dots.forEach( function ( dot, i ) {
+			dot.style.cursor = 'pointer';
+			dot.addEventListener( 'click', function ( e ) {
+				e.preventDefault();
+				var itemWidth = items[ 0 ].offsetWidth || 300;
+				track.scrollTo( { left: i * itemWidth, behavior: 'smooth' } );
+			} );
+		} );
+	}
+
+	/**
 	 * Sets up every carousel on the page.
 	 */
 	function initAll() {
@@ -350,6 +402,11 @@
 
 		for ( i = 0; i < sections.length; i++ ) {
 			init( sections[ i ] );
+		}
+
+		var classicSections = document.querySelectorAll( '.ocx-testimonial__section' );
+		for ( i = 0; i < classicSections.length; i++ ) {
+			initTestimonialSection( classicSections[ i ] );
 		}
 	}
 

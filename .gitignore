@@ -1,10 +1,14 @@
 wordpress_env/
 .DS_Store
 .agents/
-OpenCX Wireframes V1.0.fig
+*.fig
 BACKLOG.md
 transcript_head.json
 step31.json
 restore_plan.json
 scratch.py
 scratch2.py
+scratch/
+Resources/
+Variables/Spacing & Sizing (1)*
+fix-btn.css

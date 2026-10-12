@@ -1,33 +1,59 @@
 <!-- wp:template-part {"slug":"header-home","tagName":"header"} /-->
 
-<!-- wp:group {"alignFullWidth":true,"className":"ocx-hero","style":{"spacing":{"padding":{"top":"80px","bottom":"51px","left":"64px","right":"64px"},"blockGap":"80px"},"color":{"background":"#ffffff"}},"layout":{"type":"default"}} -->
-<div class="wp-block-group alignfull ocx-hero has-background" style="padding-top:80px;padding-right:64px;padding-bottom:51px;padding-left:64px;background-color:var(--Color-White)">
+<!-- wp:group {"alignFullWidth":true,"className":"ocx-hero","style":{"spacing":{"padding":{"top":"60px","bottom":"0px","left":"80px","right":"80px"}},"color":{"background":"#F8F6F0"}},"layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull ocx-hero has-background" style="padding-top:60px;padding-right:80px;padding-bottom:0px;padding-left:80px;background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
 
-	<!-- wp:group {"className":"ocx-hero__frame","style":{"border":{"width":"1px","color":"#d8d8d8","radius":"16px"},"dimensions":{"minHeight":"413px"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center","verticalAlignment":"center"}} -->
-	<div class="wp-block-group ocx-hero__frame" style="border-color:var(--Color-Neutral-Lighter);border-radius:16px;border-width:1px;min-height:413px">
+	<!-- wp:group {"className":"ocx-hero__container","style":{"border":{"width":"0.5px","color":"#8F459C"},"dimensions":{"minHeight":"727px"},"color":{"background":"#FCFBF9"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center","verticalAlignment":"center"}} -->
+	<div class="wp-block-group ocx-hero__container has-background" style="border:var(--Stroke-Hairline, 0.5px) solid var(--Color-Blackberry-Light, #8F459C);background-color:var(--Color-OpenCX-White, #FCFBF9);min-height:727px">
 
-		<!-- wp:group {"className":"ocx-hero__actions","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"left"}} -->
-		<div class="wp-block-group ocx-hero__actions">
+		<!-- wp:group {"className":"ocx-hero__frame","style":{"border":{"width":"0.5px","color":"#CBBB85","radius":"20px"},"dimensions":{"minHeight":"727px"},"color":{"background":"#FAF8F4"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center","verticalAlignment":"center"}} -->
+		<div class="wp-block-group ocx-hero__frame has-background" style="border-radius:var(--Radius-Medium, 20px);border:var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85);background-color:var(--Color-Amber-Light, #FAF8F4);min-height:727px">
 
-			<!-- wp:site-logo {"className":"ocx-hero__logo","width":147} /-->
+			<!-- wp:group {"className":"ocx-hero__column","style":{"border":{"radius":"16px"},"spacing":{"blockGap":"32px"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center","verticalAlignment":"center"}} -->
+			<div class="wp-block-group ocx-hero__column" style="border-radius:16px">
 
-			<!-- wp:group {"className":"ocx-hero__form","style":{"position":{"type":"relative"},"spacing":{"blockGap":"0px"}},"dimensions":{"minHeight":"209px"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"space-between"}} -->
-			<div class="wp-block-group ocx-hero__form" style="position:relative;background-color:var(--Color-OpenCX-White-Lightest);border-radius:var(--Radius-Medium);min-height:209px">
+				<!-- wp:group {"className":"ocx-hero__logo-frame","style":{"spacing":{"blockGap":"10px"},"padding":{"top":"0px","bottom":"19px","left":"282px","right":"282px"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center","verticalAlignment":"center"}} -->
+				<div class="wp-block-group ocx-hero__logo-frame" style="padding-top:0px;padding-right:282px;padding-bottom:19px;padding-left:282px">
 
-				<!-- wp:paragraph {"className":"ocx-hero__field"} -->
-				<p class="ocx-hero__field">Ask about a challenge in your customer or employee operations, and see how OpenCX would approach it.</p>
-				<!-- /wp:paragraph -->
+					<!-- wp:image {"className":"ocx-hero__logo-361","sizeSlug":"large"} -->
+					<figure class="wp-block-image size-large ocx-hero__logo-361" style="width:231px;height:55px;aspect-ratio:21/5"><img src="/wp-content/themes/OpenCX/assets/images/logo-opencx.png" alt="OpenCX" width="231" height="55" style="width:231px;height:55px;aspect-ratio:21/5;object-fit:contain;background:transparent;"/></figure>
+					<!-- /wp:image -->
 
-				<!-- wp:group {"className":"ocx-hero__controls","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
-				<div class="wp-block-group ocx-hero__controls">
+				</div>
+				<!-- /wp:group -->
 
-					<!-- wp:button {"className":"ocx-hero__industry","style":{"position":{"type":"absolute","inset":{"top":"137px","left":"24.5px"}}}} -->
-					<div class="wp-block-button ocx-hero__industry" style="position:absolute;top:137px;left:24.5px"><a class="wp-block-button__link wp-element-button" href="/industries/">Industry <span aria-hidden="true" class="ocx-hero__caret">&#9662;</span></a></div>
-					<!-- /wp:button -->
+				<!-- wp:group {"className":"ocx-hero__actions","layout":{"type":"flex","justifyContent":"center","verticalAlignment":"center"}} -->
+				<div class="wp-block-group ocx-hero__actions">
 
-					<!-- wp:button {"className":"ocx-hero__submit","style":{"position":{"type":"absolute","inset":{"top":"169px","left":"732px"}}}} -->
-					<div class="wp-block-button ocx-hero__submit" style="position:absolute;top:169px;left:732px"><a class="wp-block-button__link wp-element-button" role="button" aria-label="Enviar consulta" href="/contact/"><img class="ocx-hero__arrow" src="/wp-content/themes/OpenCX/assets/images/icon-arrow-submit.svg" alt="" width="24" height="24" /></a></div>
-					<!-- /wp:button -->
+					<!-- wp:group {"className":"ocx-hero__form","style":{"position":{"type":"relative"},"border":{"width":"1px","color":"#F0EBDC","radius":"20px"},"color":{"background":"#ffffff"},"spacing":{"blockGap":"0px"}},"dimensions":{"minHeight":"166px"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"space-between"}} -->
+					<div class="wp-block-group ocx-hero__form has-background" style="position:relative;background-color:#ffffff;border:1px solid var(--Color-OpenCX-Dune-Lighter, #F0EBDC);border-radius:var(--Radius-Medium, 20px);min-height:166px">
+
+						<!-- wp:paragraph {"className":"ocx-hero__field"} -->
+						<p class="ocx-hero__field">Ask about a challenge in your customer or employee operations, and see how OpenCX would approach it.</p>
+						<!-- /wp:paragraph -->
+
+						<!-- wp:group {"className":"ocx-hero__controls","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
+						<div class="wp-block-group ocx-hero__controls">
+
+							<!-- wp:button {"className":"ocx-hero__industry"} -->
+							<div class="wp-block-button ocx-hero__industry"><a class="wp-block-button__link wp-element-button" href="/industries/">Industry <img class="ocx-hero__plus-icon" src="/wp-content/themes/OpenCX/assets/images/icon-plus.svg" alt="+" width="14" height="14" /></a></div>
+							<!-- /wp:button -->
+
+							<div class="ocx-hero__right-tools" style="display:flex;align-items:center;gap:14px;">
+								<!-- wp:button {"className":"ocx-hero__mic"} -->
+								<div class="wp-block-button ocx-hero__mic"><a class="wp-block-button__link wp-element-button" role="button" aria-label="Microphone" href="#"><img class="ocx-hero__mic-icon" src="/wp-content/themes/OpenCX/assets/images/hero-mic.svg" alt="Mic" width="24" height="24" /></a></div>
+								<!-- /wp:button -->
+
+								<!-- wp:button {"className":"ocx-hero__submit"} -->
+								<div class="wp-block-button ocx-hero__submit"><a class="wp-block-button__link wp-element-button" role="button" aria-label="Enviar consulta" href="/contact/"><img class="ocx-hero__arrow" src="/wp-content/themes/OpenCX/assets/images/hero-submit.svg" alt="Submit" width="36" height="36" /></a></div>
+								<!-- /wp:button -->
+							</div>
+
+						</div>
+						<!-- /wp:group -->
+
+					</div>
+					<!-- /wp:group -->
 
 				</div>
 				<!-- /wp:group -->
@@ -44,39 +70,69 @@
 </div>
 <!-- /wp:group -->
 
-<!-- wp:group {"alignFullWidth":true,"className":"ocx-section ocx-section--stretch","style":{"spacing":{"blockGap":"80px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group alignfull ocx-section ocx-section--stretch">
 
-	<!-- wp:group {"className":"ocx-h90__container","style":{"spacing":{"blockGap":"80px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-	<div class="wp-block-group ocx-h90__container">
 
-		<!-- wp:group {"className":"ocx-h90__card","style":{"spacing":{"blockGap":"8px"},"color":{"background":"#4c4c4c","text":"#ffffff"},"border":{"radius":"16px"},"dimensions":{"minHeight":"640px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-		<div class="wp-block-group has-background ocx-h90__card" style="background-color:#4c4c4c;color:#ffffff;border-radius:16px;min-height:640px">
+<!-- wp:group {"alignFullWidth":true,"className":"ocx-textured-divider","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull ocx-textured-divider" aria-hidden="true" style="padding-top:0px;padding-right:80px;padding-bottom:0px;padding-left:80px;background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
 
-			<!-- wp:group {"className":"ocx-h90__column","style":{"spacing":{"blockGap":"32px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-			<div class="wp-block-group ocx-h90__column">
+	<!-- wp:group {"className":"ocx-textured-divider__container","style":{"dimensions":{"minHeight":"80px"}},"layout":{"type":"default"}} -->
+	<div class="wp-block-group ocx-textured-divider__container" style="min-height:80px"></div>
+	<!-- /wp:group -->
 
-				<!-- wp:group {"className":"ocx-h90__content","style":{"spacing":{"blockGap":"24px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-h90__content">
+</div>
+<!-- /wp:group -->
 
-					<!-- wp:heading {"level":1} -->
-					<h1 class="wp-block-heading">AI-powered business results built on human insight, not just technology.</h1>
-					<!-- /wp:heading -->
 
-					<!-- wp:paragraph -->
-					<p>OpenCX is the AI operating system that connects your data, your team, and your workflows into one working system, trained on your business, not the open internet.</p>
-					<!-- /wp:paragraph -->
+
+<!-- wp:group {"alignFullWidth":true,"className":"ocx-value-prop","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull ocx-value-prop has-background" style="padding-top:0px;padding-right:80px;padding-bottom:0px;padding-left:80px;background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
+
+	<!-- wp:group {"className":"ocx-h90__outer","style":{"border":{"width":"0.5px","color":"#8F459C"},"dimensions":{"minHeight":"617px"},"color":{"background":"#CBBB85"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center","verticalAlignment":"center"}} -->
+	<div class="wp-block-group ocx-h90__outer has-background" style="border:var(--Stroke-Hairline, 0.5px) solid var(--Color-Blackberry-Light, #8F459C);background-color:var(--Color-OpenCX-Dune-Light, #CBBB85);min-height:617px">
+
+		<!-- wp:group {"className":"ocx-h90__container","style":{"border":{"width":"0.5px","color":"#CBBB85","radius":"20px"},"dimensions":{"minHeight":"617px"},"color":{"background":"#FAF8F4"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center","verticalAlignment":"center"}} -->
+		<div class="wp-block-group ocx-h90__container has-background" style="border-radius:var(--Radius-Medium, 20px);border:var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85);background-color:var(--Color-Amber-Light, #FAF8F4);min-height:617px">
+
+			<!-- wp:group {"className":"ocx-h90__card","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
+			<div class="wp-block-group ocx-h90__card">
+
+				<!-- wp:group {"className":"ocx-h90__column--left","style":{"spacing":{"blockGap":"32px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+				<div class="wp-block-group ocx-h90__column--left">
+
+					<!-- wp:group {"className":"ocx-h90__content","style":{"spacing":{"blockGap":"24px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+					<div class="wp-block-group ocx-h90__content">
+
+						<!-- wp:heading {"level":1} -->
+						<h1 class="wp-block-heading">AI-powered business results built on human understanding, <span class="ocx-blackberry">not just technology.</span></h1>
+						<!-- /wp:heading -->
+
+						<!-- wp:paragraph -->
+						<p>OpenCX is the AI operating system that connects your data, your team, and your workflows into one working system, trained on your business, not the open internet.</p>
+						<!-- /wp:paragraph -->
+
+					</div>
+					<!-- /wp:group -->
+
+					<!-- wp:buttons {"style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex"}} -->
+					<div class="wp-block-buttons">
+						<!-- wp:button {"className":"ocx-btn--dune"} -->
+						<div class="wp-block-button ocx-btn--dune"><a class="wp-block-button__link wp-element-button" href="/contact/">Let’s meet</a></div>
+						<!-- /wp:button -->
+					</div>
+					<!-- /wp:buttons -->
 
 				</div>
 				<!-- /wp:group -->
 
-				<!-- wp:buttons {"style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex"}} -->
-				<div class="wp-block-buttons">
-					<!-- wp:button {"className":"ocx-btn--invert"} -->
-					<div class="wp-block-button ocx-btn--invert"><a class="wp-block-button__link wp-element-button" href="/lets-meet/">Let’s meet</a></div>
-					<!-- /wp:button -->
+				<!-- wp:group {"className":"ocx-h90__column--right","layout":{"type":"flex","justifyContent":"center","verticalAlignment":"center"}} -->
+				<div class="wp-block-group ocx-h90__column--right">
+
+					<!-- wp:image {"className":"ocx-h90__image","sizeSlug":"large"} -->
+					<figure class="wp-block-image size-large ocx-h90__image"><img src="/wp-content/themes/OpenCX/assets/images/home-value-hero.png" alt="OpenCX Business Results" width="332" height="457"/></figure>
+					<!-- /wp:image -->
+
 				</div>
-				<!-- /wp:buttons -->
+				<!-- /wp:group -->
 
 			</div>
 			<!-- /wp:group -->
@@ -90,37 +146,43 @@
 </div>
 <!-- /wp:group -->
 
-<!-- wp:group {"alignFullWidth":true,"className":"ocx-section ocx-section--stretch ocx-section--large","style":{"spacing":{"blockGap":"80px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group alignfull ocx-section ocx-section--stretch ocx-section--large">
+<!-- wp:group {"alignFullWidth":true,"className":"ocx-textured-divider","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull ocx-textured-divider" aria-hidden="true" style="padding-top:0px;padding-right:80px;padding-bottom:0px;padding-left:80px;background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
 
-	<!-- wp:group {"className":"ocx-l71__container","style":{"spacing":{"blockGap":"80px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-	<div class="wp-block-group ocx-l71__container">
+	<!-- wp:group {"className":"ocx-textured-divider__container","style":{"dimensions":{"minHeight":"80px"}},"layout":{"type":"default"}} -->
+	<div class="wp-block-group ocx-textured-divider__container" style="min-height:80px"></div>
+	<!-- /wp:group -->
 
-		<!-- wp:group {"className":"ocx-l71__component","style":{"spacing":{"blockGap":"80px"}},"layout":{"type":"flex","orientation":"horizontal"}} -->
-		<div class="wp-block-group ocx-l71__component">
+</div>
+<!-- /wp:group -->
 
-			<!-- wp:group {"className":"ocx-l71__col ocx-l71__col--lead","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-			<div class="wp-block-group ocx-l71__col ocx-l71__col--lead">
+
+
+<!-- wp:group {"alignFullWidth":true,"className":"ocx-problem","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull ocx-problem has-background" style="padding-top:0px;padding-right:80px;padding-bottom:0px;padding-left:80px;background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
+
+	<!-- wp:group {"className":"ocx-problem__container","style":{"border":{"width":"0.5px","color":"#CBBB85"},"dimensions":{"minHeight":"308px"},"color":{"background":"#FCFBF9"}},"layout":{"type":"flex","justifyContent":"center","verticalAlignment":"center"}} -->
+	<div class="wp-block-group ocx-problem__container has-background" style="border:var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85);background-color:var(--Color-OpenCX-White, #FCFBF9);min-height:308px">
+
+		<!-- wp:group {"className":"ocx-problem__component","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"center","verticalAlignment":"stretch"}} -->
+		<div class="wp-block-group ocx-problem__component">
+
+			<!-- wp:group {"className":"ocx-problem__col--title","style":{"border":{"width":"0.5px","color":"#CBBB85"},"color":{"background":"#F8F6F0"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"flex-start"}} -->
+			<div class="wp-block-group ocx-problem__col--title has-background" style="border:var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85);background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
 
 				<!-- wp:heading {"level":2} -->
-				<h2 class="wp-block-heading">You don't need more tech. You need tech that gets your business.</h2>
+				<h2 class="wp-block-heading">You don't need more tech. You need tech that gets your.</h2>
 				<!-- /wp:heading -->
 
 			</div>
 			<!-- /wp:group -->
 
-			<!-- wp:group {"className":"ocx-l71__col","style":{"spacing":{"blockGap":"32px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-			<div class="wp-block-group ocx-l71__col">
+			<!-- wp:group {"className":"ocx-problem__col--text","style":{"border":{"width":"0.5px","color":"#CBBB85"},"color":{"background":"#F8F6F0"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"flex-end"}} -->
+			<div class="wp-block-group ocx-problem__col--text has-background" style="border:var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85);background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
 
-				<!-- wp:group {"className":"ocx-l71__content","style":{"spacing":{"blockGap":"32px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-l71__content">
-
-					<!-- wp:paragraph -->
-					<p>You already have technology. What you’re missing is understanding. Generic AI doesn’t know your customers, your processes, or how your business actually works. Without that context, technology just moves the problem faster.</p>
-					<!-- /wp:paragraph -->
-
-				</div>
-				<!-- /wp:group -->
+				<!-- wp:paragraph -->
+				<p>You already have technology. What you’re missing is understanding. Generic AI doesn’t know your customers, your processes, or how your business actually works. Without that context, technology just moves the problem faster.</p>
+				<!-- /wp:paragraph -->
 
 			</div>
 			<!-- /wp:group -->
@@ -134,23 +196,45 @@
 </div>
 <!-- /wp:group -->
 
-<!-- wp:group {"alignFullWidth":true,"className":"ocx-section ocx-section--stretch","style":{"spacing":{"blockGap":"80px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group alignfull ocx-section ocx-section--stretch">
+<!-- wp:group {"alignFullWidth":true,"className":"ocx-textured-divider","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull ocx-textured-divider" aria-hidden="true" style="padding-top:0px;padding-right:80px;padding-bottom:0px;padding-left:80px;background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
 
-	<!-- wp:group {"className":"ocx-h90__container","style":{"spacing":{"blockGap":"80px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-	<div class="wp-block-group ocx-h90__container">
+	<!-- wp:group {"className":"ocx-textured-divider__container","style":{"dimensions":{"minHeight":"80px"}},"layout":{"type":"default"}} -->
+	<div class="wp-block-group ocx-textured-divider__container" style="min-height:80px"></div>
+	<!-- /wp:group -->
 
-		<!-- wp:group {"className":"ocx-h90__card","style":{"spacing":{"blockGap":"8px"},"color":{"background":"#4c4c4c","text":"#ffffff"},"border":{"radius":"16px"},"dimensions":{"minHeight":"640px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-		<div class="wp-block-group has-background ocx-h90__card" style="background-color:#4c4c4c;color:#ffffff;border-radius:16px;min-height:640px">
+</div>
+<!-- /wp:group -->
 
-			<!-- wp:group {"className":"ocx-h90__column ocx-h90__column--right","style":{"spacing":{"blockGap":"32px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-			<div class="wp-block-group ocx-h90__column ocx-h90__column--right">
 
-				<!-- wp:group {"className":"ocx-h90__content","style":{"spacing":{"blockGap":"24px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-h90__content">
+
+<!-- wp:group {"alignFullWidth":true,"className":"ocx-meet","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull ocx-meet has-background" style="padding-top:0px;padding-right:80px;padding-bottom:0px;padding-left:80px;background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
+
+	<!-- wp:group {"className":"ocx-meet__container","style":{"border":{"width":"0.5px","color":"#CBBB85"},"dimensions":{"minHeight":"609px"},"color":{"background":"#F0EBDC"}},"layout":{"type":"flex","justifyContent":"center","verticalAlignment":"center"}} -->
+	<div class="wp-block-group ocx-meet__container has-background" style="border:var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85);background-color:var(--Color-OpenCX-Dune-Lighter, #F0EBDC);min-height:609px">
+
+		<!-- wp:group {"className":"ocx-meet__card","style":{"border":{"radius":"20px"},"dimensions":{"minHeight":"608px"},"color":{"background":"#8F459C"}},"layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"center","verticalAlignment":"center"}} -->
+		<div class="wp-block-group ocx-meet__card has-background" style="border-radius:var(--Radius-Medium, 20px);background-color:var(--Color-Blackberry-Light, #8F459C);min-height:608px">
+
+			<!-- wp:group {"className":"ocx-meet__graphic","layout":{"type":"flex","justifyContent":"center","verticalAlignment":"center"}} -->
+			<div class="wp-block-group ocx-meet__graphic">
+
+				<!-- wp:image {"sizeSlug":"large"} -->
+				<figure class="wp-block-image size-large"><img src="/wp-content/themes/OpenCX/assets/images/meet-opencx-graphic.svg" alt="Meet OpenCX Graphic" width="461" height="461"/></figure>
+				<!-- /wp:image -->
+
+			</div>
+			<!-- /wp:group -->
+
+			<!-- wp:group {"className":"ocx-meet__column--right","style":{"spacing":{"blockGap":"32px"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
+			<div class="wp-block-group ocx-meet__column--right">
+
+				<!-- wp:group {"className":"ocx-meet__content","style":{"spacing":{"blockGap":"24px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
+				<div class="wp-block-group ocx-meet__content">
 
 					<!-- wp:heading {"level":2} -->
-					<h2 class="wp-block-heading">AI that learns your business before it acts on it.</h2>
+					<h2 class="wp-block-heading">AI that learns your business <span class="ocx-meet__accent">before it acts on it.</span></h2>
 					<!-- /wp:heading -->
 
 					<!-- wp:paragraph -->
@@ -160,10 +244,10 @@
 				</div>
 				<!-- /wp:group -->
 
-				<!-- wp:buttons {"style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex"}} -->
+				<!-- wp:buttons {"layout":{"type":"flex"}} -->
 				<div class="wp-block-buttons">
-					<!-- wp:button {"className":"ocx-btn--invert"} -->
-					<div class="wp-block-button ocx-btn--invert"><a class="wp-block-button__link wp-element-button" href="/lets-meet/">Let’s meet</a></div>
+					<!-- wp:button {"className":"ocx-btn--meet"} -->
+					<div class="wp-block-button ocx-btn--meet"><a class="wp-block-button__link wp-element-button" href="/contact/">Let’s meet</a></div>
 					<!-- /wp:button -->
 				</div>
 				<!-- /wp:buttons -->
@@ -180,338 +264,56 @@
 </div>
 <!-- /wp:group -->
 
-	<!-- wp:group {"className":"ocx-section ocx-section--large ocx-section--stretch ocx-l210__section","style":{"spacing":{"padding":{"top":"var:preset|spacing|112","bottom":"var:preset|spacing|112","left":"var:preset|spacing|80","right":"var:preset|spacing|80"}},"backgroundColor":"base"},"layout":{"type":"flex","orientation":"vertical"}} -->
-	<div class="wp-block-group alignfull ocx-section ocx-section--large ocx-section--stretch ocx-l210__section has-base-background-color has-background" style="margin-top:0;margin-bottom:0">
+<!-- wp:group {"alignFullWidth":true,"className":"ocx-textured-divider","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull ocx-textured-divider" aria-hidden="true" style="padding-top:0px;padding-right:80px;padding-bottom:0px;padding-left:80px;background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
 
-	<!-- wp:group {"className":"ocx-l210__container","style":{"spacing":{"blockGap":"80px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-	<div class="wp-block-group ocx-l210__container">
+	<!-- wp:group {"className":"ocx-textured-divider__container","style":{"dimensions":{"minHeight":"80px"}},"layout":{"type":"default"}} -->
+	<div class="wp-block-group ocx-textured-divider__container" style="min-height:80px"></div>
+	<!-- /wp:group -->
 
-		<!-- wp:group {"className":"ocx-l210__component","style":{"spacing":{"blockGap":"80px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-		<div class="wp-block-group ocx-l210__component">
+</div>
+<!-- /wp:group -->
 
-			<!-- wp:group {"className":"ocx-l210__media","layout":{"type":"flex","orientation":"vertical"}} -->
-			<div class="wp-block-group ocx-l210__media">
-				<!-- wp:image {"sizeSlug":"large","linkDestination":"none","className":"ocx-l210__image"} -->
-				<figure class="wp-block-image size-large ocx-l210__image"><img src="/wp-content/themes/OpenCX/assets/images/placeholder-image.png" alt="" class="wp-image-616-640" width="616" height="640" style="border-radius:16px"/></figure>
-				<!-- /wp:image -->
+
+
+<!-- wp:group {"alignFullWidth":true,"className":"ocx-how-it-works","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull ocx-how-it-works has-background" style="padding-top:0px;padding-right:80px;padding-bottom:0px;padding-left:80px;background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
+
+	<!-- wp:group {"className":"ocx-how-it-works__outer","style":{"border":{"width":"0.5px","color":"#CBBB85"},"dimensions":{"minHeight":"726px"},"color":{"background":"#FCFBF9"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center","verticalAlignment":"center"}} -->
+	<div class="wp-block-group ocx-how-it-works__outer has-background" style="border:var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85);background-color:var(--Color-OpenCX-White, #FCFBF9);min-height:726px">
+
+		<!-- wp:group {"className":"ocx-how-it-works__card","style":{"border":{"width":"0.5px","color":"#CBBB85","radius":"20px"},"dimensions":{"minHeight":"726px"},"color":{"background":"#F8F6F0"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center","verticalAlignment":"center"}} -->
+		<div class="wp-block-group ocx-how-it-works__card has-background" style="border-radius:var(--Radius-Medium, 20px);border:var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85);background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0);min-height:726px">
+
+			<!-- wp:group {"className":"ocx-how-it-works__header","layout":{"type":"flex","orientation":"vertical","justifyContent":"center","verticalAlignment":"center"}} -->
+			<div class="wp-block-group ocx-how-it-works__header">
+				<h2 class="wp-block-heading ocx-how-it-works__heading">Human Understanding first.<br><span class="ocx-how-it-works__accent">Automation second.</span></h2>
 			</div>
 			<!-- /wp:group -->
 
-			<!-- wp:group {"className":"ocx-l210__content","style":{"spacing":{"blockGap":"32px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-			<div class="wp-block-group ocx-l210__content">
+			<!-- wp:group {"className":"ocx-how-it-works__body","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
+			<div class="wp-block-group ocx-how-it-works__body">
 
-				<!-- wp:group {"className":"ocx-l210__title","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-l210__title">
+				<!-- wp:group {"className":"ocx-how-it-works__media-col","layout":{"type":"flex","justifyContent":"center","verticalAlignment":"center"}} -->
+				<div class="wp-block-group ocx-how-it-works__media-col">
+					<figure class="wp-block-image size-large ocx-how-it-works__image"><img src="/wp-content/themes/OpenCX/assets/images/opencx-human-understanding.png" alt="OpenCX Human Understanding" width="452" height="452"/></figure>
+				</div>
+				<!-- /wp:group -->
 
-					<!-- wp:group {"className":"ocx-l210__title-content","style":{"spacing":{"blockGap":"24px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l210__title-content">
+				<!-- wp:group {"className":"ocx-how-it-works__text-col","layout":{"type":"flex","orientation":"vertical","justifyContent":"space-between"}} -->
+				<div class="wp-block-group ocx-how-it-works__text-col">
 
-						<!-- wp:heading {"level":2} -->
-						<h2 class="wp-block-heading">Human Understanding first. Automation second.</h2>
-						<!-- /wp:heading -->
-
-						<!-- wp:paragraph -->
+					<div class="ocx-how-it-works__paragraphs">
 						<p>OpenCX starts by learning about your business. It continuously gathers context from your existing systems and uses AI trained specifically on that information to understand how your business works.</p>
-						<!-- /wp:paragraph -->
-
-						<!-- wp:paragraph -->
 						<p>Only then does it coordinate agents to take action and deliver outcomes across every channel your customers and employees use.</p>
-						<!-- /wp:paragraph -->
-
-						<!-- wp:paragraph -->
 						<p>The intelligence doesn’t come from the model alone. It comes from what the model has learned about your business.</p>
-						<!-- /wp:paragraph -->
-
 					</div>
-					<!-- /wp:group -->
 
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:buttons {"className":"ocx-l210__actions","style":{"spacing":{"blockGap":"24px"}},"layout":{"type":"flex"}} -->
-				<div class="wp-block-buttons ocx-l210__actions">
-					<!-- wp:button {"className":"ocx-btn--link"} -->
-					<div class="wp-block-button ocx-btn--link"><a class="wp-block-button__link wp-element-button" href="/lets-meet/">Let’s meet<img class="ocx-btn__icon" src="/wp-content/themes/OpenCX/assets/images/chevron-right.svg" alt="" width="24" height="24" /></a></div>
-					<!-- /wp:button -->
-					<!-- wp:button {"className":"ocx-btn--link"} -->
-					<div class="wp-block-button ocx-btn--link"><a class="wp-block-button__link wp-element-button" href="/lets-meet/">AI Framework<img class="ocx-btn__icon" src="/wp-content/themes/OpenCX/assets/images/chevron-right.svg" alt="" width="24" height="24" /></a></div>
-					<!-- /wp:button -->
-				</div>
-				<!-- /wp:buttons -->
-
-			</div>
-			<!-- /wp:group -->
-
-		</div>
-		<!-- /wp:group -->
-
-	</div>
-	<!-- /wp:group -->
-
-</div>
-<!-- /wp:group -->
-
-<!-- wp:group {"className":"ocx-section ocx-section--large ocx-section--stretch ocx-l121__section","style":{"spacing":{"padding":{"top":"var:preset|spacing|112","bottom":"var:preset|spacing|112","left":"var:preset|spacing|80","right":"var:preset|spacing|80"}},"backgroundColor":"base"},"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group alignfull ocx-section ocx-section--large ocx-section--stretch ocx-l121__section has-base-background-color has-background" style="margin-top:0;margin-bottom:0">
-
-	<!-- wp:group {"className":"ocx-l121__container","style":{"spacing":{"blockGap":"80px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-	<div class="wp-block-group ocx-l121__container">
-
-		<!-- wp:group {"className":"ocx-l121__component","style":{"spacing":{"blockGap":"80px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-		<div class="wp-block-group ocx-l121__component">
-
-			<!-- wp:group {"className":"ocx-l121__column","style":{"spacing":{"blockGap":"32px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-			<div class="wp-block-group ocx-l121__column">
-
-				<!-- wp:group {"className":"ocx-l121__tagline","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-l121__tagline">
-
-					<!-- wp:paragraph {"className":"ocx-l121__label"} -->
-					<p class="ocx-l121__label">Why OpenCX</p>
-					<!-- /wp:paragraph -->
-
-					<!-- wp:heading {"level":2} -->
-					<h2 class="wp-block-heading">Built on human insight, not just built on AI.</h2>
-					<!-- /wp:heading -->
-
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:buttons {"className":"ocx-l121__actions","style":{"spacing":{"blockGap":"24px"}},"layout":{"type":"flex"}} -->
-				<div class="wp-block-buttons ocx-l121__actions">
-					<!-- wp:button {"className":"ocx-btn--link"} -->
-					<div class="wp-block-button ocx-btn--link"><a class="wp-block-button__link wp-element-button" href="/lets-meet/">Let’s meet<img class="ocx-btn__icon" src="/wp-content/themes/OpenCX/assets/images/chevron-right.svg" alt="" width="24" height="24" /></a></div>
-					<!-- /wp:button -->
-				</div>
-				<!-- /wp:buttons -->
-
-			</div>
-			<!-- /wp:group -->
-
-			<!-- wp:group {"className":"ocx-l121__timeline","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-			<div class="wp-block-group ocx-l121__timeline">
-
-				<!-- wp:group {"className":"ocx-l121__item ocx-l121__group","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-l121__item ocx-l121__group">
-					<!-- wp:heading {"level":3} -->
-					<h3 class="wp-block-heading">Human-Led</h3>
-					<!-- /wp:heading -->
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"className":"ocx-l121__item","style":{"spacing":{"blockGap":"40px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-l121__item">
-					<!-- wp:group {"className":"ocx-l121__marker","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l121__marker">
-						<img class="ocx-l121__icon" src="/wp-content/themes/OpenCX/assets/images/Relume.svg" alt="" width="48" height="48" />
-						<span class="ocx-l121__divider" aria-hidden="true"></span>
+					<div class="ocx-how-it-works__actions">
+						<a class="ocx-link-dune" href="/contact/">Let’s meet <img class="ocx-link-dune__chevron" src="/wp-content/themes/OpenCX/assets/images/chevron-right-dune.svg" alt="" width="7" height="13" /></a>
+						<a class="ocx-link-dune" href="/ecosystem/">Ecosystem <img class="ocx-link-dune__chevron" src="/wp-content/themes/OpenCX/assets/images/chevron-right-dune.svg" alt="" width="7" height="13" /></a>
 					</div>
-					<!-- /wp:group -->
-					<!-- wp:group {"className":"ocx-l121__body","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l121__body">
-						<!-- wp:heading {"level":4} -->
-						<h4 class="wp-block-heading">Human-led AI</h4>
-						<!-- /wp:heading -->
-						<!-- wp:paragraph -->
-						<p>Technology that makes your team sharper, because it was built to understand how they work, not to replace their judgment.</p>
-						<!-- /wp:paragraph -->
-					</div>
-					<!-- /wp:group -->
-				</div>
-				<!-- /wp:group -->
 
-				<!-- wp:group {"className":"ocx-l121__item","style":{"spacing":{"blockGap":"40px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-l121__item">
-					<!-- wp:group {"className":"ocx-l121__marker","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l121__marker">
-						<img class="ocx-l121__icon" src="/wp-content/themes/OpenCX/assets/images/Relume.svg" alt="" width="48" height="48" />
-						<span class="ocx-l121__divider" aria-hidden="true"></span>
-					</div>
-					<!-- /wp:group -->
-					<!-- wp:group {"className":"ocx-l121__body","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l121__body">
-						<!-- wp:heading {"level":4} -->
-						<h4 class="wp-block-heading">Autonomous Operations</h4>
-						<!-- /wp:heading -->
-						<!-- wp:paragraph -->
-						<p>A digital workforce that acts with the context to know when a human needs to step in.</p>
-						<!-- /wp:paragraph -->
-					</div>
-					<!-- /wp:group -->
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"className":"ocx-l121__item","style":{"spacing":{"blockGap":"40px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-l121__item">
-					<!-- wp:group {"className":"ocx-l121__marker","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l121__marker">
-						<img class="ocx-l121__icon" src="/wp-content/themes/OpenCX/assets/images/Relume.svg" alt="" width="48" height="48" />
-					</div>
-					<!-- /wp:group -->
-					<!-- wp:group {"className":"ocx-l121__body","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l121__body">
-						<!-- wp:heading {"level":4} -->
-						<h4 class="wp-block-heading">One Vendor, Start to Finish</h4>
-						<!-- /wp:heading -->
-						<!-- wp:paragraph -->
-						<p>People who understand your business alongside the platform that runs it, not a license and a goodbye.</p>
-						<!-- /wp:paragraph -->
-					</div>
-					<!-- /wp:group -->
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"className":"ocx-l121__item ocx-l121__group","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-l121__item ocx-l121__group">
-					<!-- wp:heading {"level":3} -->
-					<h3 class="wp-block-heading">Built to Be Trusted</h3>
-					<!-- /wp:heading -->
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"className":"ocx-l121__item","style":{"spacing":{"blockGap":"40px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-l121__item">
-					<!-- wp:group {"className":"ocx-l121__marker","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l121__marker">
-						<img class="ocx-l121__icon" src="/wp-content/themes/OpenCX/assets/images/Relume.svg" alt="" width="48" height="48" />
-						<span class="ocx-l121__divider" aria-hidden="true"></span>
-					</div>
-					<!-- /wp:group -->
-					<!-- wp:group {"className":"ocx-l121__body","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l121__body">
-						<!-- wp:heading {"level":4} -->
-						<h4 class="wp-block-heading">Own Your AI</h4>
-						<!-- /wp:heading -->
-						<!-- wp:paragraph -->
-						<p>Your data. Your models. Your IP. All of it is built on understanding your business; all of it stays with you.</p>
-						<!-- /wp:paragraph -->
-					</div>
-					<!-- /wp:group -->
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"className":"ocx-l121__item","style":{"spacing":{"blockGap":"40px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-l121__item">
-					<!-- wp:group {"className":"ocx-l121__marker","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l121__marker">
-						<img class="ocx-l121__icon" src="/wp-content/themes/OpenCX/assets/images/Relume.svg" alt="" width="48" height="48" />
-						<span class="ocx-l121__divider" aria-hidden="true"></span>
-					</div>
-					<!-- /wp:group -->
-					<!-- wp:group {"className":"ocx-l121__body","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l121__body">
-						<!-- wp:heading {"level":4} -->
-						<h4 class="wp-block-heading">Data Sovereignty</h4>
-						<!-- /wp:heading -->
-						<!-- wp:paragraph -->
-						<p>Your data stays where you say it stays, under your infrastructure and your rules, not scattered across a vendor's servers you don't control.</p>
-						<!-- /wp:paragraph -->
-					</div>
-					<!-- /wp:group -->
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"className":"ocx-l121__item","style":{"spacing":{"blockGap":"40px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-l121__item">
-					<!-- wp:group {"className":"ocx-l121__marker","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l121__marker">
-						<img class="ocx-l121__icon" src="/wp-content/themes/OpenCX/assets/images/Relume.svg" alt="" width="48" height="48" />
-						<span class="ocx-l121__divider" aria-hidden="true"></span>
-					</div>
-					<!-- /wp:group -->
-					<!-- wp:group {"className":"ocx-l121__body","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l121__body">
-						<!-- wp:heading {"level":4} -->
-						<h4 class="wp-block-heading">Own Your Workflows</h4>
-						<!-- /wp:heading -->
-						<!-- wp:paragraph -->
-						<p>The processes and procedures OpenCX learns and automates are documented and owned by you, not locked inside a system only we understand.</p>
-						<!-- /wp:paragraph -->
-					</div>
-					<!-- /wp:group -->
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"className":"ocx-l121__item","style":{"spacing":{"blockGap":"40px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-l121__item">
-					<!-- wp:group {"className":"ocx-l121__marker","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l121__marker">
-						<img class="ocx-l121__icon" src="/wp-content/themes/OpenCX/assets/images/Relume.svg" alt="" width="48" height="48" />
-						<span class="ocx-l121__divider" aria-hidden="true"></span>
-					</div>
-					<!-- /wp:group -->
-					<!-- wp:group {"className":"ocx-l121__body","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l121__body">
-						<!-- wp:heading {"level":4} -->
-						<h4 class="wp-block-heading">Built for Your Industry</h4>
-						<!-- /wp:heading -->
-						<!-- wp:paragraph -->
-						<p>Trained on the specifics of your sector, not a generalist model doing its best guess at your regulations, your terminology, and your edge cases.</p>
-						<!-- /wp:paragraph -->
-					</div>
-					<!-- /wp:group -->
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"className":"ocx-l121__item","style":{"spacing":{"blockGap":"40px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-l121__item">
-					<!-- wp:group {"className":"ocx-l121__marker","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l121__marker">
-						<img class="ocx-l121__icon" src="/wp-content/themes/OpenCX/assets/images/Relume.svg" alt="" width="48" height="48" />
-						<span class="ocx-l121__divider" aria-hidden="true"></span>
-					</div>
-					<!-- /wp:group -->
-					<!-- wp:group {"className":"ocx-l121__body","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l121__body">
-						<!-- wp:heading {"level":4} -->
-						<h4 class="wp-block-heading">Fewer Guesses, Fewer Hallucinations</h4>
-						<!-- /wp:heading -->
-						<!-- wp:paragraph -->
-						<p>Grounded in your own data instead of the open internet, so answers stay tied to what's actually true about your business, not what sounds plausible.</p>
-						<!-- /wp:paragraph -->
-					</div>
-					<!-- /wp:group -->
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"className":"ocx-l121__item","style":{"spacing":{"blockGap":"40px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-l121__item">
-					<!-- wp:group {"className":"ocx-l121__marker","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l121__marker">
-						<img class="ocx-l121__icon" src="/wp-content/themes/OpenCX/assets/images/Relume.svg" alt="" width="48" height="48" />
-						<span class="ocx-l121__divider" aria-hidden="true"></span>
-					</div>
-					<!-- /wp:group -->
-					<!-- wp:group {"className":"ocx-l121__body","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l121__body">
-						<!-- wp:heading {"level":4} -->
-						<h4 class="wp-block-heading">No Lock-In</h4>
-						<!-- /wp:heading -->
-						<!-- wp:paragraph -->
-						<p>Swap the underlying model as the market changes, without rebuilding what you've trained OpenCX to understand about your business.</p>
-						<!-- /wp:paragraph -->
-					</div>
-					<!-- /wp:group -->
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"className":"ocx-l121__item","style":{"spacing":{"blockGap":"40px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-l121__item">
-					<!-- wp:group {"className":"ocx-l121__marker","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l121__marker">
-						<img class="ocx-l121__icon" src="/wp-content/themes/OpenCX/assets/images/Relume.svg" alt="" width="48" height="48" />
-					</div>
-					<!-- /wp:group -->
-					<!-- wp:group {"className":"ocx-l121__body","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group ocx-l121__body">
-						<!-- wp:heading {"level":4} -->
-						<h4 class="wp-block-heading">Enterprise Ready</h4>
-						<!-- /wp:heading -->
-						<!-- wp:paragraph -->
-						<p>Connects to what you already run, because real understanding means fitting into your business, not asking your business to adapt to it.</p>
-						<!-- /wp:paragraph -->
-					</div>
-					<!-- /wp:group -->
 				</div>
 				<!-- /wp:group -->
 
@@ -527,169 +329,248 @@
 </div>
 <!-- /wp:group -->
 
-<!-- wp:group {"className":"ocx-section ocx-section--large ocx-section--stretch ocx-l59__section","style":{"spacing":{"padding":{"top":"var:preset|spacing|112","bottom":"var:preset|spacing|112","left":"var:preset|spacing|80","right":"var:preset|spacing|80"}},"backgroundColor":"base"},"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group alignfull ocx-section ocx-section--large ocx-section--stretch ocx-l59__section has-base-background-color has-background" style="margin-top:0;margin-bottom:0">
 
-	<!-- wp:group {"className":"ocx-l59__container","style":{"spacing":{"blockGap":"80px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-	<div class="wp-block-group ocx-l59__container">
 
-		<!-- wp:group {"className":"ocx-l59__component","style":{"spacing":{"blockGap":"80px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-		<div class="wp-block-group ocx-l59__component">
+<!-- wp:group {"alignFullWidth":true,"className":"ocx-textured-divider","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull ocx-textured-divider" aria-hidden="true" style="padding-top:0px;padding-right:80px;padding-bottom:0px;padding-left:80px;background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
 
-			<!-- wp:group {"className":"ocx-l59__column ocx-l59__column--text","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-			<div class="wp-block-group ocx-l59__column ocx-l59__column--text">
+	<!-- wp:group {"className":"ocx-textured-divider__container","style":{"dimensions":{"minHeight":"80px"}},"layout":{"type":"default"}} -->
+	<div class="wp-block-group ocx-textured-divider__container" style="min-height:80px"></div>
+	<!-- /wp:group -->
 
-				<!-- wp:paragraph {"className":"ocx-l59__label"} -->
-				<p class="ocx-l59__label">No AI Roadmap Yet? We Build It With You.</p>
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"alignFullWidth":true,"className":"ocx-why","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull ocx-why has-background" style="padding-top:0px;padding-right:80px;padding-bottom:0px;padding-left:80px;background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
+
+	<!-- wp:group {"className":"ocx-why__outer","style":{"border":{"width":"0.5px","color":"#CBBB85"},"dimensions":{"minHeight":"1081px"},"color":{"background":"#F0EBDC"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center","verticalAlignment":"center"}} -->
+	<div class="wp-block-group ocx-why__outer has-background" style="border:var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85);background-color:var(--Color-OpenCX-Dune-Lighter, #F0EBDC);min-height:1081px">
+
+		<!-- wp:group {"className":"ocx-why__card"} -->
+		<div class="wp-block-group ocx-why__card">
+
+			<!-- Left Column -->
+			<div class="ocx-why__col-left">
+				<div class="ocx-why__content">
+					<div class="ocx-why__tagline">
+						<img class="ocx-why__bracket" src="/wp-content/themes/OpenCX/assets/images/tagline-bracket.svg" alt="" width="24" height="24" />
+						<span class="ocx-why__tagline-text">Why OpenCX</span>
+						<img class="ocx-why__bracket" src="/wp-content/themes/OpenCX/assets/images/tagline-bracket-right.svg" alt="" width="24" height="24" />
+					</div>
+
+					<h2 class="wp-block-heading ocx-why__heading">Built on understanding,<br><span class="ocx-why__heading-accent">not just built on AI.</span></h2>
+
+					<div class="ocx-why__actions">
+						<a class="ocx-why__action-link" href="/contact/">Let’s meet <img class="ocx-why__action-chevron" src="/wp-content/themes/OpenCX/assets/images/chevron-right-dark.svg" alt="" width="7" height="13" /></a>
+					</div>
+				</div>
+
+				<img class="ocx-why__texture" src="/wp-content/themes/OpenCX/assets/images/why-opencx-texture.svg" alt="" width="600" height="400" />
+			</div>
+
+			<!-- Right Column Card: #1C495A -->
+			<div class="ocx-why__timeline-card">
+
+				<!-- Group 1: Human-led -->
+				<div class="ocx-why__group">
+					<h3 class="ocx-why__group-title">Human-led</h3>
+
+					<div class="ocx-why__timeline-list">
+						<!-- Item 1 -->
+						<div class="ocx-why__item is-active">
+							<div class="ocx-why__marker">
+								<img class="ocx-why__marker-icon ocx-why__marker-icon--minus" src="/wp-content/themes/OpenCX/assets/images/why-timeline-icon.svg" alt="" width="24" height="24" />
+								<img class="ocx-why__marker-icon ocx-why__marker-icon--plus" src="/wp-content/themes/OpenCX/assets/images/why-timeline-plus.svg" alt="" width="24" height="24" />
+								<span class="ocx-why__marker-line" aria-hidden="true"></span>
+							</div>
+							<div class="ocx-why__body">
+								<h4 class="ocx-why__item-title">Human-led AI</h4>
+								<p class="ocx-why__item-desc">Technology that makes your team sharper, because it was built to understand how they work, not to replace their judgment.</p>
+							</div>
+						</div>
+
+						<!-- Item 2 -->
+						<div class="ocx-why__item">
+							<div class="ocx-why__marker">
+								<img class="ocx-why__marker-icon ocx-why__marker-icon--minus" src="/wp-content/themes/OpenCX/assets/images/why-timeline-icon.svg" alt="" width="24" height="24" />
+								<img class="ocx-why__marker-icon ocx-why__marker-icon--plus" src="/wp-content/themes/OpenCX/assets/images/why-timeline-plus.svg" alt="" width="24" height="24" />
+								<span class="ocx-why__marker-line" aria-hidden="true"></span>
+							</div>
+							<div class="ocx-why__body">
+								<h4 class="ocx-why__item-title">Autonomous Operations</h4>
+								<p class="ocx-why__item-desc">A digital workforce that acts with the context to know when a human needs to step in.</p>
+							</div>
+						</div>
+
+						<!-- Item 3 -->
+						<div class="ocx-why__item ocx-why__item--last-in-group">
+							<div class="ocx-why__marker">
+								<img class="ocx-why__marker-icon ocx-why__marker-icon--minus" src="/wp-content/themes/OpenCX/assets/images/why-timeline-icon.svg" alt="" width="24" height="24" />
+								<img class="ocx-why__marker-icon ocx-why__marker-icon--plus" src="/wp-content/themes/OpenCX/assets/images/why-timeline-plus.svg" alt="" width="24" height="24" />
+							</div>
+							<div class="ocx-why__body">
+								<h4 class="ocx-why__item-title">One Vendor, Start to Finish</h4>
+								<p class="ocx-why__item-desc">People who understand your business alongside the platform that runs it, not a license and a goodbye.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Group 2: Built to Be Trusted -->
+				<div class="ocx-why__group">
+					<h3 class="ocx-why__group-title">Built to Be Trusted</h3>
+
+					<div class="ocx-why__timeline-list">
+						<!-- Item 4 -->
+						<div class="ocx-why__item">
+							<div class="ocx-why__marker">
+								<img class="ocx-why__marker-icon ocx-why__marker-icon--minus" src="/wp-content/themes/OpenCX/assets/images/why-timeline-icon.svg" alt="" width="24" height="24" />
+								<img class="ocx-why__marker-icon ocx-why__marker-icon--plus" src="/wp-content/themes/OpenCX/assets/images/why-timeline-plus.svg" alt="" width="24" height="24" />
+								<span class="ocx-why__marker-line" aria-hidden="true"></span>
+							</div>
+							<div class="ocx-why__body">
+								<h4 class="ocx-why__item-title">Own Your AI</h4>
+								<p class="ocx-why__item-desc">Your data. Your models. Your IP. All of it is built on understanding your business; all of it stays with you.</p>
+							</div>
+						</div>
+
+						<!-- Item 5 -->
+						<div class="ocx-why__item">
+							<div class="ocx-why__marker">
+								<img class="ocx-why__marker-icon ocx-why__marker-icon--minus" src="/wp-content/themes/OpenCX/assets/images/why-timeline-icon.svg" alt="" width="24" height="24" />
+								<img class="ocx-why__marker-icon ocx-why__marker-icon--plus" src="/wp-content/themes/OpenCX/assets/images/why-timeline-plus.svg" alt="" width="24" height="24" />
+								<span class="ocx-why__marker-line" aria-hidden="true"></span>
+							</div>
+							<div class="ocx-why__body">
+								<h4 class="ocx-why__item-title">Data Sovereignty</h4>
+								<p class="ocx-why__item-desc">Your data stays where you say it stays, under your infrastructure and your rules, not scattered across a vendor's servers you don't control.</p>
+							</div>
+						</div>
+
+						<!-- Item 6 -->
+						<div class="ocx-why__item">
+							<div class="ocx-why__marker">
+								<img class="ocx-why__marker-icon ocx-why__marker-icon--minus" src="/wp-content/themes/OpenCX/assets/images/why-timeline-icon.svg" alt="" width="24" height="24" />
+								<img class="ocx-why__marker-icon ocx-why__marker-icon--plus" src="/wp-content/themes/OpenCX/assets/images/why-timeline-plus.svg" alt="" width="24" height="24" />
+								<span class="ocx-why__marker-line" aria-hidden="true"></span>
+							</div>
+							<div class="ocx-why__body">
+								<h4 class="ocx-why__item-title">Own Your Workflows</h4>
+								<p class="ocx-why__item-desc">The processes and procedures OpenCX learns and automates are documented and owned by you, not locked inside a system only we understand.</p>
+							</div>
+						</div>
+
+						<!-- Item 7 -->
+						<div class="ocx-why__item">
+							<div class="ocx-why__marker">
+								<img class="ocx-why__marker-icon ocx-why__marker-icon--minus" src="/wp-content/themes/OpenCX/assets/images/why-timeline-icon.svg" alt="" width="24" height="24" />
+								<img class="ocx-why__marker-icon ocx-why__marker-icon--plus" src="/wp-content/themes/OpenCX/assets/images/why-timeline-plus.svg" alt="" width="24" height="24" />
+								<span class="ocx-why__marker-line" aria-hidden="true"></span>
+							</div>
+							<div class="ocx-why__body">
+								<h4 class="ocx-why__item-title">Built for Your Industry</h4>
+								<p class="ocx-why__item-desc">Trained on the specifics of your sector, not a generalist model doing its best guess at your regulations, your terminology, and your edge cases.</p>
+							</div>
+						</div>
+
+						<!-- Item 8 -->
+						<div class="ocx-why__item">
+							<div class="ocx-why__marker">
+								<img class="ocx-why__marker-icon ocx-why__marker-icon--minus" src="/wp-content/themes/OpenCX/assets/images/why-timeline-icon.svg" alt="" width="24" height="24" />
+								<img class="ocx-why__marker-icon ocx-why__marker-icon--plus" src="/wp-content/themes/OpenCX/assets/images/why-timeline-plus.svg" alt="" width="24" height="24" />
+								<span class="ocx-why__marker-line" aria-hidden="true"></span>
+							</div>
+							<div class="ocx-why__body">
+								<h4 class="ocx-why__item-title">Fewer Guesses, Fewer Hallucinations</h4>
+								<p class="ocx-why__item-desc">Grounded in your own data instead of the open internet, so answers stay tied to what's actually true about your business, not what sounds plausible.</p>
+							</div>
+						</div>
+
+						<!-- Item 9 -->
+						<div class="ocx-why__item">
+							<div class="ocx-why__marker">
+								<img class="ocx-why__marker-icon ocx-why__marker-icon--minus" src="/wp-content/themes/OpenCX/assets/images/why-timeline-icon.svg" alt="" width="24" height="24" />
+								<img class="ocx-why__marker-icon ocx-why__marker-icon--plus" src="/wp-content/themes/OpenCX/assets/images/why-timeline-plus.svg" alt="" width="24" height="24" />
+								<span class="ocx-why__marker-line" aria-hidden="true"></span>
+							</div>
+							<div class="ocx-why__body">
+								<h4 class="ocx-why__item-title">No Lock-In</h4>
+								<p class="ocx-why__item-desc">Swap the underlying model as the market changes, without rebuilding what you've trained OpenCX to understand about your business.</p>
+							</div>
+						</div>
+
+						<!-- Item 10 -->
+						<div class="ocx-why__item ocx-why__item--last">
+							<div class="ocx-why__marker">
+								<img class="ocx-why__marker-icon ocx-why__marker-icon--minus" src="/wp-content/themes/OpenCX/assets/images/why-timeline-icon.svg" alt="" width="24" height="24" />
+								<img class="ocx-why__marker-icon ocx-why__marker-icon--plus" src="/wp-content/themes/OpenCX/assets/images/why-timeline-plus.svg" alt="" width="24" height="24" />
+							</div>
+							<div class="ocx-why__body">
+								<h4 class="ocx-why__item-title">Enterprise Ready</h4>
+								<p class="ocx-why__item-desc">Connects to what you already run, because real understanding means fitting into your business, not asking your business to adapt to it.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		<!-- /wp:group -->
+
+	</div>
+	<!-- /wp:group -->
+
+</div>
+<!-- /wp:group -->
+
+
+
+<!-- wp:group {"alignFullWidth":true,"className":"ocx-textured-divider","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull ocx-textured-divider" aria-hidden="true" style="padding-top:0px;padding-right:80px;padding-bottom:0px;padding-left:80px;background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
+
+	<!-- wp:group {"className":"ocx-textured-divider__container","style":{"dimensions":{"minHeight":"80px"}},"layout":{"type":"default"}} -->
+	<div class="wp-block-group ocx-textured-divider__container" style="min-height:80px"></div>
+	<!-- /wp:group -->
+
+</div>
+<!-- /wp:group -->
+
+<!-- wp:group {"alignFullWidth":true,"className":"ocx-cta-roadmap","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull ocx-cta-roadmap has-background" style="padding-top:0px;padding-right:80px;padding-bottom:0px;padding-left:80px;background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
+
+	<!-- wp:group {"className":"ocx-cta-roadmap__outer","style":{"border":{"width":"0.5px","color":"#00C9C9"},"dimensions":{"minHeight":"437px"},"color":{"background":"#FCFBF9"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center","verticalAlignment":"center"}} -->
+	<div class="wp-block-group ocx-cta-roadmap__outer has-background" style="border:0.5px solid #00C9C9;background-color:var(--Color-OpenCX-White, #FCFBF9);min-height:437px">
+
+		<!-- wp:group {"className":"ocx-cta-roadmap__component","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"center","verticalAlignment":"stretch"}} -->
+		<div class="wp-block-group ocx-cta-roadmap__component">
+
+			<!-- wp:group {"className":"ocx-cta-roadmap__col--title","style":{"border":{"width":"0.5px","color":"#CBBB85"},"color":{"background":"#F8F6F0"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"flex-start"}} -->
+			<div class="wp-block-group ocx-cta-roadmap__col--title has-background" style="border:var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85);background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
+
+				<!-- wp:paragraph {"className":"ocx-cta-roadmap__tagline"} -->
+				<p class="ocx-cta-roadmap__tagline">No AI Roadmap Yet?<br>We Build It With You <span class="ocx-cta-roadmap__dash">&mdash;</span></p>
 				<!-- /wp:paragraph -->
 
-				<!-- wp:heading {"level":2} -->
-				<h2 class="wp-block-heading">Not sure where to start? Neither are most companies we work with.</h2>
+				<!-- wp:heading {"level":3,"className":"ocx-cta-roadmap__heading"} -->
+				<h3 class="wp-block-heading ocx-cta-roadmap__heading">Not sure where to start? Neither are most companies we work with.</h3>
 				<!-- /wp:heading -->
 
 			</div>
 			<!-- /wp:group -->
 
-			<!-- wp:group {"className":"ocx-l59__column ocx-l59__column--body","style":{"spacing":{"blockGap":"32px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-			<div class="wp-block-group ocx-l59__column ocx-l59__column--body">
+			<!-- wp:group {"className":"ocx-cta-roadmap__col--text","style":{"border":{"width":"0.5px","color":"#CBBB85"},"color":{"background":"#F8F6F0"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"space-between"}} -->
+			<div class="wp-block-group ocx-cta-roadmap__col--text has-background" style="border:var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85);background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
 
-				<!-- wp:group {"className":"ocx-l59__content","style":{"spacing":{"blockGap":"32px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-l59__content">
-
-					<!-- wp:paragraph -->
-					<p>You don&rsquo;t need a finished AI strategy to talk to us. Some clients come to us knowing exactly what they want automated. Others just know something isn&rsquo;t working and aren&rsquo;t sure where AI actually fits. Either way, we don&rsquo;t hand you a platform and leave you to figure it out. <strong>We sit down with your team, understand where the real friction is, and build the roadmap with you, not for you.</strong></p>
-					<!-- /wp:paragraph -->
-
+				<div class="ocx-cta-roadmap__text-content">
+					<p class="ocx-cta-roadmap__desc">You don't need a finished AI strategy to talk to us. Some clients come to us knowing exactly what they want automated. Others just know something isn't working and aren't sure where AI actually fits. Either way, we don't hand you a platform and leave you to figure it out.</p>
+					<p class="ocx-cta-roadmap__desc ocx-cta-roadmap__desc--bold"><strong>We sit down with your team, understand where the real friction is, and build the roadmap with you, not for you.</strong></p>
 				</div>
-				<!-- /wp:group -->
 
-				<!-- wp:buttons {"className":"ocx-l59__actions","style":{"spacing":{"blockGap":"24px"}},"layout":{"type":"flex"}} -->
-				<div class="wp-block-buttons ocx-l59__actions">
-					<!-- wp:button {"className":"ocx-btn--link"} -->
-					<div class="wp-block-button ocx-btn--link"><a class="wp-block-button__link wp-element-button" href="/lets-meet/">Let’s meet<img class="ocx-btn__icon" src="/wp-content/themes/OpenCX/assets/images/chevron-right.svg" alt="" width="24" height="24" /></a></div>
-					<!-- /wp:button -->
+				<div class="ocx-cta-roadmap__actions">
+					<a class="ocx-link-dune" href="/contact/">Let’s meet <img class="ocx-link-dune__chevron" src="/wp-content/themes/OpenCX/assets/images/chevron-right-dune.svg" alt="" width="7" height="13" /></a>
 				</div>
-				<!-- /wp:buttons -->
-
-			</div>
-			<!-- /wp:group -->
-
-		</div>
-		<!-- /wp:group -->
-
-	</div>
-	<!-- /wp:group -->
-
-</div>
-<!-- /wp:group -->
-
-<!-- wp:group {"className":"ocx-section ocx-section--large ocx-section--stretch ocx-l55__section","style":{"spacing":{"padding":{"top":"var:preset|spacing|112","bottom":"var:preset|spacing|112","left":"var:preset|spacing|80","right":"var:preset|spacing|80"}},"backgroundColor":"base"},"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group alignfull ocx-section ocx-section--large ocx-section--stretch ocx-l55__section has-base-background-color has-background" style="margin-top:0;margin-bottom:0">
-
-	<!-- wp:group {"className":"ocx-l55__container","style":{"spacing":{"blockGap":"80px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-	<div class="wp-block-group ocx-l55__container">
-
-		<!-- wp:group {"className":"ocx-l55__content","style":{"spacing":{"blockGap":"32px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-		<div class="wp-block-group ocx-l55__content">
-
-			<!-- wp:group {"className":"ocx-l55__intro","style":{"spacing":{"blockGap":"32px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-			<div class="wp-block-group ocx-l55__intro">
-				<!-- wp:heading {"level":2} -->
-				<h2 class="wp-block-heading">Results that come from understanding your business, not guesswork.</h2>
-				<!-- /wp:heading -->
-			</div>
-			<!-- /wp:group -->
-
-			<!-- wp:group {"className":"ocx-l55__stats","style":{"spacing":{"blockGap":"32px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-			<div class="wp-block-group ocx-l55__stats">
-
-				<!-- wp:group {"className":"ocx-l55__row","style":{"spacing":{"blockGap":"32px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-l55__row">
-					<!-- wp:group {"className":"ocx-l55__card ocx-l55__card--stat","style":{"color":{"background":"#f2f2f2"},"border":{"width":"1px","color":"rgba(0, 0, 0, 0.15)","radius":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group has-background ocx-l55__card ocx-l55__card--stat" style="background-color:#f2f2f2;border-color:rgba(0, 0, 0, 0.15);border-radius:16px;border-style:solid;border-width:1px">
-						<!-- wp:paragraph {"className":"ocx-l55__value"} -->
-						<p class="ocx-l55__value">40%</p>
-						<!-- /wp:paragraph -->
-						<!-- wp:paragraph {"className":"ocx-l55__label"} -->
-						<p class="ocx-l55__label">Reduce operational costs</p>
-						<!-- /wp:paragraph -->
-					</div>
-					<!-- /wp:group -->
-					<!-- wp:group {"className":"ocx-l55__card ocx-l55__card--stat","style":{"color":{"background":"#f2f2f2"},"border":{"width":"1px","color":"rgba(0, 0, 0, 0.15)","radius":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group has-background ocx-l55__card ocx-l55__card--stat" style="background-color:#f2f2f2;border-color:rgba(0, 0, 0, 0.15);border-radius:16px;border-style:solid;border-width:1px">
-						<!-- wp:paragraph {"className":"ocx-l55__value"} -->
-						<p class="ocx-l55__value">65%</p>
-						<!-- /wp:paragraph -->
-						<!-- wp:paragraph {"className":"ocx-l55__label"} -->
-						<p class="ocx-l55__label">Improve response times</p>
-						<!-- /wp:paragraph -->
-					</div>
-					<!-- /wp:group -->
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"className":"ocx-l55__row","style":{"spacing":{"blockGap":"32px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-l55__row">
-					<!-- wp:group {"className":"ocx-l55__card ocx-l55__card--stat","style":{"color":{"background":"#f2f2f2"},"border":{"width":"1px","color":"rgba(0, 0, 0, 0.15)","radius":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group has-background ocx-l55__card ocx-l55__card--stat" style="background-color:#f2f2f2;border-color:rgba(0, 0, 0, 0.15);border-radius:16px;border-style:solid;border-width:1px">
-						<!-- wp:paragraph {"className":"ocx-l55__value"} -->
-						<p class="ocx-l55__value">3x</p>
-						<!-- /wp:paragraph -->
-						<!-- wp:paragraph {"className":"ocx-l55__label"} -->
-						<p class="ocx-l55__label">Automate the repetitive work, without losing the judgment that mattered</p>
-						<!-- /wp:paragraph -->
-					</div>
-					<!-- /wp:group -->
-					<!-- wp:group {"className":"ocx-l55__card ocx-l55__card--stat","style":{"color":{"background":"#f2f2f2"},"border":{"width":"1px","color":"rgba(0, 0, 0, 0.15)","radius":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group has-background ocx-l55__card ocx-l55__card--stat" style="background-color:#f2f2f2;border-color:rgba(0, 0, 0, 0.15);border-radius:16px;border-style:solid;border-width:1px">
-						<!-- wp:paragraph {"className":"ocx-l55__value"} -->
-						<p class="ocx-l55__value">30%</p>
-						<!-- /wp:paragraph -->
-						<!-- wp:paragraph {"className":"ocx-l55__label"} -->
-						<p class="ocx-l55__label">Connect systems that have never spoken to each other</p>
-						<!-- /wp:paragraph -->
-					</div>
-					<!-- /wp:group -->
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"className":"ocx-l55__row","style":{"spacing":{"blockGap":"32px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-l55__row">
-					<!-- wp:group {"className":"ocx-l55__card ocx-l55__card--text","style":{"color":{"background":"#f2f2f2"},"border":{"width":"1px","color":"rgba(0, 0, 0, 0.15)","radius":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group has-background ocx-l55__card ocx-l55__card--text" style="background-color:#f2f2f2;border-color:rgba(0, 0, 0, 0.15);border-radius:16px;border-style:solid;border-width:1px">
-						<!-- wp:paragraph {"className":"ocx-l55__text"} -->
-						<p class="ocx-l55__text">Improve experiences for customers and employees, because both are understood, not just processed</p>
-						<!-- /wp:paragraph -->
-					</div>
-					<!-- /wp:group -->
-					<!-- wp:group {"className":"ocx-l55__card ocx-l55__card--text","style":{"color":{"background":"#f2f2f2"},"border":{"width":"1px","color":"rgba(0, 0, 0, 0.15)","radius":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group has-background ocx-l55__card ocx-l55__card--text" style="background-color:#f2f2f2;border-color:rgba(0, 0, 0, 0.15);border-radius:16px;border-style:solid;border-width:1px">
-						<!-- wp:paragraph {"className":"ocx-l55__text"} -->
-						<p class="ocx-l55__text">Cut hallucinations with answers grounded in your own verified data</p>
-						<!-- /wp:paragraph -->
-					</div>
-					<!-- /wp:group -->
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"className":"ocx-l55__row","style":{"spacing":{"blockGap":"32px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-l55__row">
-					<!-- wp:group {"className":"ocx-l55__card ocx-l55__card--text","style":{"color":{"background":"#f2f2f2"},"border":{"width":"1px","color":"rgba(0, 0, 0, 0.15)","radius":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group has-background ocx-l55__card ocx-l55__card--text" style="background-color:#f2f2f2;border-color:rgba(0, 0, 0, 0.15);border-radius:16px;border-style:solid;border-width:1px">
-						<!-- wp:paragraph {"className":"ocx-l55__text"} -->
-						<p class="ocx-l55__text">Adapt as your business and market change, without starting over</p>
-						<!-- /wp:paragraph -->
-					</div>
-					<!-- /wp:group -->
-					<!-- wp:group {"className":"ocx-l55__card ocx-l55__card--text ocx-l55__card--fixed","style":{"color":{"background":"#f2f2f2"},"border":{"width":"1px","color":"rgba(0, 0, 0, 0.15)","radius":"16px"}},"layout":{"type":"flex","orientation":"vertical"}} -->
-					<div class="wp-block-group has-background ocx-l55__card ocx-l55__card--text ocx-l55__card--fixed" style="background-color:#f2f2f2;border-color:rgba(0, 0, 0, 0.15);border-radius:16px;border-style:solid;border-width:1px">
-						<!-- wp:paragraph {"className":"ocx-l55__text"} -->
-						<p class="ocx-l55__text">Scale AI without losing what made it work in the first place</p>
-						<!-- /wp:paragraph -->
-					</div>
-					<!-- /wp:group -->
-				</div>
-				<!-- /wp:group -->
 
 			</div>
 			<!-- /wp:group -->
@@ -704,216 +585,379 @@
 <!-- /wp:group -->
 
 
-<!-- wp:group {"className":"ocx-section ocx-section--large ocx-section--stretch ocx-f3__section","style":{"spacing":{"padding":{"top":"var:preset|spacing|112","bottom":"var:preset|spacing|112","left":"var:preset|spacing|80","right":"var:preset|spacing|80"}},"backgroundColor":"base"},"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group alignfull ocx-section ocx-section--large ocx-section--stretch ocx-f3__section has-base-background-color has-background" style="margin-top:0;margin-bottom:0">
 
-	<!-- wp:group {"className":"ocx-f3__container","layout":{"type":"flex","orientation":"vertical"}} -->
-	<div class="wp-block-group ocx-f3__container">
+<!-- wp:group {"alignFullWidth":true,"className":"ocx-textured-divider","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull ocx-textured-divider" aria-hidden="true" style="padding-top:0px;padding-right:80px;padding-bottom:0px;padding-left:80px;background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
 
-		<!-- wp:group {"className":"ocx-f3__top","layout":{"type":"flex","orientation":"horizontal"}} -->
-		<div class="wp-block-group ocx-f3__top">
-
-			<!-- wp:group {"className":"ocx-f3__intro","layout":{"type":"flex","orientation":"vertical"}} -->
-			<div class="wp-block-group ocx-f3__intro">
-				<!-- wp:heading {"level":2,"className":"ocx-f3__heading"} -->
-				<h2 class="wp-block-heading ocx-f3__heading">Built for the industries where understanding the details isn’t optional</h2>
-				<!-- /wp:heading -->
-
-				<!-- wp:buttons {"className":"ocx-f3__actions"} -->
-				<div class="wp-block-buttons ocx-f3__actions">
-					<!-- wp:button {"className":"ocx-btn--link"} -->
-					<div class="wp-block-button ocx-btn--link"><a class="wp-block-button__link wp-element-button" href="/industries/">Explore Industries<img class="ocx-btn__icon" src="/wp-content/themes/OpenCX/assets/images/chevron-right.svg" alt="" width="24" height="24" /></a></div>
-					<!-- /wp:button -->
-				</div>
-				<!-- /wp:buttons -->
-			</div>
-			<!-- /wp:group -->
-
-			<!-- wp:group {"className":"ocx-f3__list","layout":{"type":"flex","orientation":"vertical"}} -->
-			<div class="wp-block-group ocx-f3__list">
-				<!-- wp:group {"className":"ocx-f3__item","layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-f3__item">
-					<!-- wp:heading {"level":4,"className":"ocx-f3__question","style":{"border":{"top":{"width":"1px","color":"#000000"}}}} -->
-					<h4 class="wp-block-heading ocx-f3__question" style="border-top-color:#000000;border-top-style:solid;border-top-width:1px"><a href="/industries/">Financial Services &gt;</a></h4>
-					<!-- /wp:heading -->
-
-					<!-- wp:paragraph {"className":"ocx-f3__answer"} -->
-					<p class="ocx-f3__answer">Smarter decisions. Stronger compliance. Lower risk.</p>
-					<!-- /wp:paragraph -->
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"className":"ocx-f3__item","layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-f3__item">
-					<!-- wp:heading {"level":4,"className":"ocx-f3__question","style":{"border":{"top":{"width":"1px","color":"#000000"}}}} -->
-					<h4 class="wp-block-heading ocx-f3__question" style="border-top-color:#000000;border-top-style:solid;border-top-width:1px"><a href="/industries/">Hospitality &gt;</a></h4>
-					<!-- /wp:heading -->
-
-					<!-- wp:paragraph {"className":"ocx-f3__answer"} -->
-					<p class="ocx-f3__answer">Every guest interaction, understood.</p>
-					<!-- /wp:paragraph -->
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"className":"ocx-f3__item","layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-f3__item">
-					<!-- wp:heading {"level":4,"className":"ocx-f3__question","style":{"border":{"top":{"width":"1px","color":"#000000"}}}} -->
-					<h4 class="wp-block-heading ocx-f3__question" style="border-top-color:#000000;border-top-style:solid;border-top-width:1px"><a href="/industries/">Retail &gt;</a></h4>
-					<!-- /wp:heading -->
-
-					<!-- wp:paragraph {"className":"ocx-f3__answer"} -->
-					<p class="ocx-f3__answer">Connected experiences from cart to customer.</p>
-					<!-- /wp:paragraph -->
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"className":"ocx-f3__item","layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-f3__item">
-					<!-- wp:heading {"level":4,"className":"ocx-f3__question","style":{"border":{"top":{"width":"1px","color":"#000000"}}}} -->
-					<h4 class="wp-block-heading ocx-f3__question" style="border-top-color:#000000;border-top-style:solid;border-top-width:1px"><a href="/industries/">Education &gt;</a></h4>
-					<!-- /wp:heading -->
-
-					<!-- wp:paragraph {"className":"ocx-f3__answer"} -->
-					<p class="ocx-f3__answer">Better outcomes for students and staff.</p>
-					<!-- /wp:paragraph -->
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"className":"ocx-f3__item","layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-f3__item">
-					<!-- wp:heading {"level":4,"className":"ocx-f3__question","style":{"border":{"top":{"width":"1px","color":"#000000"}}}} -->
-					<h4 class="wp-block-heading ocx-f3__question" style="border-top-color:#000000;border-top-style:solid;border-top-width:1px"><a href="/industries/">Healthcare &gt;</a></h4>
-					<!-- /wp:heading -->
-
-					<!-- wp:paragraph {"className":"ocx-f3__answer"} -->
-					<p class="ocx-f3__answer">Better patient experiences. Smarter operations.</p>
-					<!-- /wp:paragraph -->
-				</div>
-				<!-- /wp:group -->
-
-				<!-- wp:group {"className":"ocx-f3__item","layout":{"type":"flex","orientation":"vertical"}} -->
-				<div class="wp-block-group ocx-f3__item">
-					<!-- wp:heading {"level":4,"className":"ocx-f3__question","style":{"border":{"top":{"width":"1px","color":"#000000"}}}} -->
-					<h4 class="wp-block-heading ocx-f3__question" style="border-top-color:#000000;border-top-style:solid;border-top-width:1px"><a href="/industries/">Manufacturing &gt;</a></h4>
-					<!-- /wp:heading -->
-
-					<!-- wp:paragraph {"className":"ocx-f3__answer"} -->
-					<p class="ocx-f3__answer">Smarter operations. Less downtime. Greater efficiency.</p>
-					<!-- /wp:paragraph -->
-				</div>
-				<!-- /wp:group -->
-			</div>
-			<!-- /wp:group -->
-
-		</div>
-		<!-- /wp:group -->
-
-	</div>
+	<!-- wp:group {"className":"ocx-textured-divider__container","style":{"dimensions":{"minHeight":"80px"}},"layout":{"type":"default"}} -->
+	<div class="wp-block-group ocx-textured-divider__container" style="min-height:80px"></div>
 	<!-- /wp:group -->
 
 </div>
 <!-- /wp:group -->
 
+<!-- wp:group {"alignFullWidth":true,"className":"ocx-business-outcomes__section","layout":{"type":"default"}} -->
+<section class="wp-block-group alignfull ocx-business-outcomes__section has-background" style="padding-top:0px;padding-right:80px;padding-bottom:0px;padding-left:80px;background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
+	<div class="ocx-business-outcomes__container">
 
-<!-- wp:group {"className":"ocx-section ocx-section--large ocx-section--stretch ocx-t23__section","style":{"spacing":{"padding":{"top":"var:preset|spacing|112","bottom":"var:preset|spacing|112","left":"var:preset|spacing|80","right":"var:preset|spacing|80"}},"backgroundColor":"base"},"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group alignfull ocx-section ocx-section--large ocx-section--stretch ocx-t23__section has-base-background-color has-background" style="margin-top:0;margin-bottom:0">
-
-	<!-- wp:group {"className":"ocx-t23__container","layout":{"type":"flex","orientation":"vertical"}} -->
-	<div class="wp-block-group ocx-t23__container">
-
-		<!-- wp:group {"className":"ocx-t23__title","layout":{"type":"flex","orientation":"vertical"}} -->
-		<div class="wp-block-group ocx-t23__title">
-			<!-- wp:heading {"level":2,"className":"ocx-t23__heading"} -->
-			<h2 class="wp-block-heading ocx-t23__heading">Trusted by teams who needed more than a demo</h2>
-			<!-- /wp:heading -->
+		<!-- Centered Heading (Figma #10218:71524) -->
+		<div class="ocx-business-outcomes__header">
+			<h2 class="ocx-business-outcomes__heading">
+				Results that come from<br>
+				understanding your business,<br>
+				<span class="ocx-business-outcomes__heading-accent">not guessing at it.</span>
+			</h2>
 		</div>
-		<!-- /wp:group -->
 
-		<!-- wp:group {"className":"ocx-t23__body","layout":{"type":"flex","orientation":"vertical"}} -->
-		<div class="wp-block-group ocx-t23__body">
-
-						<!-- wp:group {"className":"ocx-t23__viewport","layout":{"type":"default"}} -->
-			<div class="wp-block-group ocx-t23__viewport">
-				<!-- wp:group {"className":"ocx-t23__track","layout":{"type":"flex","orientation":"horizontal"}} -->
-				<div class="wp-block-group ocx-t23__track">
-				<!-- wp:shortcode -->
-				[opencx_testimonials]
-				<!-- /wp:shortcode -->
+		<!-- Stats Grid: 2 Rows with #00C9C9 Hairlines (Figma #10218:71533) -->
+		<div class="ocx-business-outcomes__stats">
+			<!-- Row 1: 4 Cards -->
+			<div class="ocx-business-outcomes__row">
+				<div class="ocx-business-outcomes__card">
+					<div class="ocx-business-outcomes__card-top">
+						<span class="ocx-business-outcomes__card-value">20%</span>
+						<span class="ocx-business-outcomes__card-icon">
+							<img src="/wp-content/themes/OpenCX/assets/images/stat-trend-down.svg" alt="" width="30" height="30" />
+						</span>
+					</div>
+					<div class="ocx-business-outcomes__card-bottom">
+						<h4 class="ocx-business-outcomes__card-title">Lower operational costs</h4>
+						<p class="ocx-business-outcomes__card-desc">Because this is the starting point, savings compound as more of your operation gets automated</p>
+					</div>
 				</div>
-				<!-- /wp:group -->
 
-	<!-- wp:html -->
-	<div class="ocx-t23__arrows">
-		<button type="button" class="ocx-t23__arrow ocx-t23__arrow--prev" aria-label="Testimonio anterior" disabled><img src="/wp-content/themes/OpenCX/assets/images/t23-arrow-back.svg" alt="" width="48" height="48" /></button>
-		<button type="button" class="ocx-t23__arrow ocx-t23__arrow--next" aria-label="Testimonio siguiente" disabled><img src="/wp-content/themes/OpenCX/assets/images/t23-arrow-forward.svg" alt="" width="48" height="48" /></button>
-	</div>
-	<!-- /wp:html -->
+				<div class="ocx-business-outcomes__card">
+					<div class="ocx-business-outcomes__card-top">
+						<span class="ocx-business-outcomes__card-value">50%</span>
+						<span class="ocx-business-outcomes__card-icon">
+							<img src="/wp-content/themes/OpenCX/assets/images/stat-trend-up.svg" alt="" width="30" height="30" />
+						</span>
+					</div>
+					<div class="ocx-business-outcomes__card-bottom">
+						<h4 class="ocx-business-outcomes__card-title">Faster response times</h4>
+						<p class="ocx-business-outcomes__card-desc">Because AI deflection resolves routine questions immediately, so escalations reach your team faster</p>
+					</div>
+				</div>
+
+				<div class="ocx-business-outcomes__card">
+					<div class="ocx-business-outcomes__card-top">
+						<span class="ocx-business-outcomes__card-value">60%</span>
+						<span class="ocx-business-outcomes__card-icon">
+							<img src="/wp-content/themes/OpenCX/assets/images/stat-trend-up.svg" alt="" width="30" height="30" />
+						</span>
+					</div>
+					<div class="ocx-business-outcomes__card-bottom">
+						<h4 class="ocx-business-outcomes__card-title">Repetitive work automated</h4>
+						<p class="ocx-business-outcomes__card-desc">On well-defined, end-to-end workflows, so your team's judgment goes where it's actually needed</p>
+					</div>
+				</div>
+
+				<div class="ocx-business-outcomes__card">
+					<div class="ocx-business-outcomes__card-top">
+						<span class="ocx-business-outcomes__card-value">85%</span>
+						<span class="ocx-business-outcomes__card-icon">
+							<img src="/wp-content/themes/OpenCX/assets/images/stat-trend-up.svg" alt="" width="30" height="30" />
+						</span>
+					</div>
+					<div class="ocx-business-outcomes__card-bottom">
+						<h4 class="ocx-business-outcomes__card-title">Decision accuracy</h4>
+						<p class="ocx-business-outcomes__card-desc">Because centralized data connects systems that never spoke to each other, up from 70% when data stays siloed</p>
+					</div>
+				</div>
 			</div>
-			<!-- /wp:group -->
 
+			<!-- Row 2: 4 Cards -->
+			<div class="ocx-business-outcomes__row">
+				<div class="ocx-business-outcomes__card">
+					<div class="ocx-business-outcomes__card-top">
+						<span class="ocx-business-outcomes__card-value">40%</span>
+						<span class="ocx-business-outcomes__card-icon">
+							<img src="/wp-content/themes/OpenCX/assets/images/stat-trend-up.svg" alt="" width="30" height="30" />
+						</span>
+					</div>
+					<div class="ocx-business-outcomes__card-bottom">
+						<h4 class="ocx-business-outcomes__card-title">Faster feature releases</h4>
+						<p class="ocx-business-outcomes__card-desc">Because centralized data prevents logic drift as new systems get integrated</p>
+					</div>
+				</div>
 
-			<!-- wp:html -->
-			<div class="ocx-t23__dots">
-				<button type="button" class="ocx-t23__dot" aria-label="Ir a la posición 1 de 4" aria-current="true" disabled></button>
-				<button type="button" class="ocx-t23__dot" aria-label="Ir a la posición 2 de 4" disabled></button>
-				<button type="button" class="ocx-t23__dot" aria-label="Ir a la posición 3 de 4" disabled></button>
-				<button type="button" class="ocx-t23__dot" aria-label="Ir a la posición 4 de 4" disabled></button>
+				<div class="ocx-business-outcomes__card">
+					<div class="ocx-business-outcomes__card-top">
+						<span class="ocx-business-outcomes__card-value">80%</span>
+						<span class="ocx-business-outcomes__card-icon">
+							<img src="/wp-content/themes/OpenCX/assets/images/stat-trend-down.svg" alt="" width="30" height="30" />
+						</span>
+					</div>
+					<div class="ocx-business-outcomes__card-bottom">
+						<h4 class="ocx-business-outcomes__card-title">Handoff Reduction</h4>
+						<p class="ocx-business-outcomes__card-desc">Because 80% of customers' questions are answered on first contact</p>
+					</div>
+				</div>
+
+				<div class="ocx-business-outcomes__card">
+					<div class="ocx-business-outcomes__card-top">
+						<span class="ocx-business-outcomes__card-value">80%</span>
+						<span class="ocx-business-outcomes__card-icon">
+							<img src="/wp-content/themes/OpenCX/assets/images/stat-trend-down.svg" alt="" width="30" height="30" />
+						</span>
+					</div>
+					<div class="ocx-business-outcomes__card-bottom">
+						<h4 class="ocx-business-outcomes__card-title">Fewer hallucinations</h4>
+						<p class="ocx-business-outcomes__card-desc">Because every answer is grounded in your own verified data</p>
+					</div>
+				</div>
+
+				<div class="ocx-business-outcomes__card">
+					<div class="ocx-business-outcomes__card-top">
+						<span class="ocx-business-outcomes__card-value">75%</span>
+						<span class="ocx-business-outcomes__card-icon">
+							<img src="/wp-content/themes/OpenCX/assets/images/stat-trend-up.svg" alt="" width="30" height="30" />
+						</span>
+					</div>
+					<div class="ocx-business-outcomes__card-bottom">
+						<h4 class="ocx-business-outcomes__card-title">Faster time-to-market</h4>
+						<p class="ocx-business-outcomes__card-desc">Because the model adapts to new workflows without rebuilding from scratch</p>
+					</div>
+				</div>
 			</div>
-			<!-- /wp:html -->
-
-			<!-- wp:buttons -->
-			<div class="wp-block-buttons">
-				<!-- wp:button {"className":"ocx-btn--link"} -->
-				<div class="wp-block-button ocx-btn--link"><a class="wp-block-button__link wp-element-button" href="/customer-stories/">Explore Testimonials<img class="ocx-btn__icon" src="/wp-content/themes/OpenCX/assets/images/chevron-right.svg" alt="" width="24" height="24" /></a></div>
-				<!-- /wp:button -->
-			</div>
-			<!-- /wp:buttons -->
-
 		</div>
-		<!-- /wp:group -->
 
 	</div>
-	<!-- /wp:group -->
+</section>
+<!-- /wp:group -->
 
+<!-- wp:group {"alignFullWidth":true,"className":"ocx-textured-divider","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull ocx-textured-divider" aria-hidden="true" style="padding-top:0px;padding-right:80px;padding-bottom:0px;padding-left:80px;background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
+	<!-- wp:group {"className":"ocx-textured-divider__container","style":{"dimensions":{"minHeight":"80px"}},"layout":{"type":"default"}} -->
+	<div class="wp-block-group ocx-textured-divider__container" style="min-height:80px"></div>
+	<!-- /wp:group -->
 </div>
 <!-- /wp:group -->
 
-<!-- wp:group {"className":"ocx-section ocx-section--large ocx-section--stretch ocx-c25__section","style":{"backgroundColor":"base"},"layout":{"type":"flex","orientation":"vertical"}} -->
-<div class="wp-block-group alignfull ocx-section ocx-section--large ocx-section--stretch ocx-c25__section has-base-background-color has-background" style="margin-top:0;margin-bottom:0">
 
-	<!-- wp:group {"className":"ocx-c25__container","layout":{"type":"flex","orientation":"vertical"}} -->
-	<div class="wp-block-group ocx-c25__container">
+<!-- wp:group {"className":"ocx-industries-preview__section","layout":{"type":"default"}} -->
+<section class="wp-block-group ocx-industries-preview__section">
+	<div class="ocx-industries-preview__container">
 
-		<!-- wp:group {"className":"ocx-c25__content","layout":{"type":"flex","orientation":"vertical"}} -->
-		<div class="wp-block-group ocx-c25__content">
+		<!-- Left Column: Heading, Vector Artwork, Action Link -->
+		<div class="ocx-industries-preview__col-left">
+			<h2 class="ocx-industries-preview__heading">Built for the industries where understanding the details <span class="ocx-industries-preview__accent">isn’t optional.</span></h2>
+			<!-- Interactive Industries Scanner Slider -->
+			<div class="ocx-industries-scanner" id="ocxIndustriesScanner" aria-label="Industries Interactive Scanner" role="region">
+				<!-- Stationary Background Grid with isometric perspective -->
+				<div class="ocx-industries-scanner__grid" aria-hidden="true">
+					<img src="/wp-content/themes/OpenCX/assets/images/industries-scanner-grid.svg" alt="" width="622" height="154" loading="eager" />
+				</div>
 
-			<!-- wp:group {"className":"ocx-c25__text","layout":{"type":"flex","orientation":"vertical"}} -->
-			<div class="wp-block-group ocx-c25__text">
-				<!-- wp:heading {"level":2,"className":"ocx-c25__heading"} -->
-				<h2 class="wp-block-heading ocx-c25__heading">Ready to run your business on<br>human understanding?</h2>
-				<!-- /wp:heading -->
+				<!-- Edge Fade Masks (smooth fade at left and right edges) -->
+				<div class="ocx-industries-scanner__fade ocx-industries-scanner__fade--left" aria-hidden="true"></div>
+				<div class="ocx-industries-scanner__fade ocx-industries-scanner__fade--right" aria-hidden="true"></div>
 
-				<!-- wp:paragraph {"className":"ocx-c25__lead"} -->
-				<p class="ocx-c25__lead">See what it looks like when your data, your team, and your AI are finally working from the<br>same understanding of your business.</p>
-				<!-- /wp:paragraph -->
+				<!-- Sliding Buildings Track -->
+				<div class="ocx-industries-scanner__track" id="ocxIndustriesScannerTrack" role="list">
+					<div class="ocx-industries-scanner__item ocx-industries-scanner__item--active" data-index="0" data-industry="retail" role="listitem">
+						<img src="/wp-content/themes/OpenCX/assets/images/industries/store.svg" alt="Retail - Store" width="154" height="154" loading="eager" />
+					</div>
+					<div class="ocx-industries-scanner__item" data-index="1" data-industry="financial-services" role="listitem">
+						<img src="/wp-content/themes/OpenCX/assets/images/industries/bank.svg" alt="Financial Services - Bank" width="154" height="154" loading="eager" />
+					</div>
+					<div class="ocx-industries-scanner__item" data-index="2" data-industry="healthcare" role="listitem">
+						<img src="/wp-content/themes/OpenCX/assets/images/industries/healthcare.svg" alt="Healthcare" width="154" height="154" loading="eager" />
+					</div>
+					<div class="ocx-industries-scanner__item" data-index="3" data-industry="hospitality" role="listitem">
+						<img src="/wp-content/themes/OpenCX/assets/images/industries/hospitality.svg" alt="Hospitality" width="154" height="154" loading="eager" />
+					</div>
+					<div class="ocx-industries-scanner__item" data-index="4" data-industry="education" role="listitem">
+						<img src="/wp-content/themes/OpenCX/assets/images/industries/college.svg" alt="Education - College" width="154" height="154" loading="eager" />
+					</div>
+					<div class="ocx-industries-scanner__item" data-index="5" data-industry="manufacturing" role="listitem">
+						<img src="/wp-content/themes/OpenCX/assets/images/industries/manufacturing.svg" alt="Manufacturing" width="154" height="154" loading="eager" />
+					</div>
+				</div>
+
+				<!-- Fixed Center Viewfinder (Cuadrado fijo en el medio) -->
+				<div class="ocx-industries-scanner__viewfinder" aria-hidden="true">
+					<div class="ocx-industries-scanner__corner ocx-industries-scanner__corner--tl"></div>
+					<div class="ocx-industries-scanner__corner ocx-industries-scanner__corner--tr"></div>
+					<div class="ocx-industries-scanner__corner ocx-industries-scanner__corner--bl"></div>
+					<div class="ocx-industries-scanner__corner ocx-industries-scanner__corner--br"></div>
+					<div class="ocx-industries-scanner__laser"></div>
+					<div class="ocx-industries-scanner__crosshair"></div>
+					<div class="ocx-industries-scanner__hud-tag">SCAN // OCX</div>
+					<div class="ocx-industries-scanner__hud" id="ocxScannerHud">IND // 01</div>
+				</div>
 			</div>
-			<!-- /wp:group -->
-
-			<!-- wp:buttons {"className":"ocx-c25__actions","style":{"spacing":{"blockGap":"16px"}},"layout":{"type":"flex","justifyContent":"center"}} -->
-			<div class="wp-block-buttons ocx-c25__actions">
-				<!-- wp:button {"className":"ocx-btn--primary ocx-c25__btn"} -->
-				<div class="wp-block-button ocx-btn--primary ocx-c25__btn"><a class="wp-block-button__link wp-element-button" href="/lets-meet/">Let’s meet</a></div>
-				<!-- /wp:button -->
+			<div class="ocx-industries-preview__actions">
+				<a href="/industries/" class="ocx-link-dune">Explore Industries <img class="ocx-link-dune__chevron" src="/wp-content/themes/OpenCX/assets/images/chevron-right-dune.svg" alt="" width="6" height="12" /></a>
 			</div>
-			<!-- /wp:buttons -->
-
 		</div>
-		<!-- /wp:group -->
+
+		<!-- Right Column: Card with Dune Border and Radius, 6 Industries -->
+		<div class="ocx-industries-preview__col-right">
+			<div class="ocx-industries-preview__list">
+				<!-- 1. Retail (Active default) -->
+				<div class="ocx-industries-preview__item ocx-industries-preview__item--active">
+					<a href="/industries/#retail" class="ocx-industries-preview__item-header">
+						<span class="ocx-industries-preview__item-icon">
+							<img src="/wp-content/themes/OpenCX/assets/images/industry-accordion-arrow.svg" alt="" width="24" height="24" />
+						</span>
+						<h4 class="ocx-industries-preview__item-title">Retail</h4>
+					</a>
+					<p class="ocx-industries-preview__item-desc">Connected experiences from cart to customer</p>
+				</div>
+
+				<!-- 2. Financial Services -->
+				<div class="ocx-industries-preview__item">
+					<a href="/industries/#financial-services" class="ocx-industries-preview__item-header">
+						<span class="ocx-industries-preview__item-icon">
+							<img src="/wp-content/themes/OpenCX/assets/images/industry-accordion-arrow.svg" alt="" width="24" height="24" />
+						</span>
+						<h4 class="ocx-industries-preview__item-title">Financial Services</h4>
+					</a>
+					<p class="ocx-industries-preview__item-desc">Smarter decisions. Stronger compliance. Lower risk</p>
+				</div>
+
+				<!-- 3. Healthcare -->
+				<div class="ocx-industries-preview__item">
+					<a href="/industries/#healthcare" class="ocx-industries-preview__item-header">
+						<span class="ocx-industries-preview__item-icon">
+							<img src="/wp-content/themes/OpenCX/assets/images/industry-accordion-arrow.svg" alt="" width="24" height="24" />
+						</span>
+						<h4 class="ocx-industries-preview__item-title">Healthcare</h4>
+					</a>
+					<p class="ocx-industries-preview__item-desc">Better patient experiences. Smarter operations</p>
+				</div>
+
+				<!-- 4. Hospitality -->
+				<div class="ocx-industries-preview__item">
+					<a href="/industries/#hospitality" class="ocx-industries-preview__item-header">
+						<span class="ocx-industries-preview__item-icon">
+							<img src="/wp-content/themes/OpenCX/assets/images/industry-accordion-arrow.svg" alt="" width="24" height="24" />
+						</span>
+						<h4 class="ocx-industries-preview__item-title">Hospitality</h4>
+					</a>
+					<p class="ocx-industries-preview__item-desc">Every guest interaction, understood</p>
+				</div>
+
+				<!-- 5. Education -->
+				<div class="ocx-industries-preview__item">
+					<a href="/industries/#education" class="ocx-industries-preview__item-header">
+						<span class="ocx-industries-preview__item-icon">
+							<img src="/wp-content/themes/OpenCX/assets/images/industry-accordion-arrow.svg" alt="" width="24" height="24" />
+						</span>
+						<h4 class="ocx-industries-preview__item-title">Education</h4>
+					</a>
+					<p class="ocx-industries-preview__item-desc">Better outcomes for students and staff</p>
+				</div>
+
+				<!-- 6. Manufacturing -->
+				<div class="ocx-industries-preview__item">
+					<a href="/industries/#manufacturing" class="ocx-industries-preview__item-header">
+						<span class="ocx-industries-preview__item-icon">
+							<img src="/wp-content/themes/OpenCX/assets/images/industry-accordion-arrow.svg" alt="" width="24" height="24" />
+						</span>
+						<h4 class="ocx-industries-preview__item-title">Manufacturing</h4>
+					</a>
+					<p class="ocx-industries-preview__item-desc">Smarter operations. Less downtime. Greater efficiency.</p>
+				</div>
+			</div>
+		</div>
 
 	</div>
-	<!-- /wp:group -->
+</section>
+<!-- /wp:group -->
 
+<!-- wp:group {"alignFullWidth":true,"className":"ocx-textured-divider","layout":{"type":"default"}} -->
+<div class="wp-block-group alignfull ocx-textured-divider" aria-hidden="true" style="padding-top:0px;padding-right:80px;padding-bottom:0px;padding-left:80px;background-color:var(--Color-OpenCX-Dune-Lightest, #F8F6F0)">
+	<!-- wp:group {"className":"ocx-textured-divider__container","style":{"dimensions":{"minHeight":"80px"}},"layout":{"type":"default"}} -->
+	<div class="wp-block-group ocx-textured-divider__container" style="min-height:80px"></div>
+	<!-- /wp:group -->
 </div>
+<!-- /wp:group -->
+
+
+<!-- wp:group {"className":"ocx-testimonial__section","layout":{"type":"default"}} -->
+<section class="wp-block-group ocx-testimonial__section">
+	<div class="ocx-testimonial__outer">
+		<div class="ocx-testimonial__card">
+
+			<!-- Header -->
+			<div class="ocx-testimonial__header">
+				<h2 class="ocx-testimonial__heading">Trusted by teams who needed<br><span class="ocx-gold">more than a demo.</span></h2>
+			</div>
+
+			<!-- Slider Container with side arrows and 3-column table -->
+			<div class="ocx-testimonial__slider-container">
+				<button type="button" class="ocx-testimonial__arrow-btn ocx-testimonial__arrow-btn--prev" aria-label="Previous Testimonial">
+					<img src="/wp-content/themes/OpenCX/assets/images/slider-arrow-left.svg" alt="" width="48" height="48" />
+				</button>
+
+				<div class="ocx-testimonial__grid">
+					<!-- Testimonial 1 -->
+					<div class="ocx-testimonial__item">
+						<p class="ocx-testimonial__quote">"Missing a phone call for our catering truck means losing a $1,750 order to a competitor. Since OpenCX, I'm not losing that revenue, and my team gets to focus on the customer in front of them instead of running back and forth to the phone."</p>
+						<div class="ocx-testimonial__author-info">
+							<span class="ocx-testimonial__author-name">Dimitrios Politis</span>
+							<span class="ocx-testimonial__author-role">Nexx Burger</span>
+						</div>
+					</div>
+
+					<!-- Testimonial 2 -->
+					<div class="ocx-testimonial__item">
+						<p class="ocx-testimonial__quote">“I keep ownership of everything we've built. If anything ever changes, it comes with me. That's the part that won me over."</p>
+						<div class="ocx-testimonial__author-info">
+							<span class="ocx-testimonial__author-name">Catalina Aristizabal</span>
+							<span class="ocx-testimonial__author-role">RL Funeral Services</span>
+						</div>
+					</div>
+
+					<!-- Testimonial 3 -->
+					<div class="ocx-testimonial__item">
+						<p class="ocx-testimonial__quote">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel nunc vulputate neque pellentesque consectetur. Aliquam dapibus arcu ante, id porttitor metus consequat vitae.</p>
+						<div class="ocx-testimonial__author-info">
+							<span class="ocx-testimonial__author-name">Lorem ipsum</span>
+							<span class="ocx-testimonial__author-role">Lorem ipsum</span>
+						</div>
+					</div>
+				</div>
+
+				<button type="button" class="ocx-testimonial__arrow-btn ocx-testimonial__arrow-btn--next" aria-label="Next Testimonial">
+					<img src="/wp-content/themes/OpenCX/assets/images/slider-arrow-right.svg" alt="" width="48" height="48" />
+				</button>
+			</div>
+
+			<!-- Slider Dots -->
+			<div class="ocx-testimonial__dots">
+				<span class="ocx-testimonial__dot ocx-testimonial__dot--active"></span>
+				<span class="ocx-testimonial__dot"></span>
+				<span class="ocx-testimonial__dot"></span>
+				<span class="ocx-testimonial__dot"></span>
+				<span class="ocx-testimonial__dot"></span>
+				<span class="ocx-testimonial__dot"></span>
+			</div>
+
+		</div>
+	</div>
+</section>
+<!-- /wp:group -->
+
+<!-- wp:group {"className":"ocx-c25__section","layout":{"type":"default"}} -->
+<section class="wp-block-group ocx-c25__section">
+	<div class="ocx-cta-homepage__container">
+
+		<div class="ocx-c25__content">
+			<div class="ocx-c25__text">
+				<h2 class="ocx-c25__heading">Ready to run your business on human understanding?</h2>
+				<p class="ocx-c25__lead">See what it looks like when your data, your team, and your AI are finally working from the same understanding of your business.</p>
+			</div>
+
+			<div class="ocx-c25__actions">
+				<a class="ocx-cta-homepage__btn-primary" href="/contact/">Let's meet</a>
+			</div>
+		</div>
+
+	</div>
+</section>
 <!-- /wp:group -->
 
 <!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

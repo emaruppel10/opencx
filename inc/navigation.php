@@ -38,17 +38,11 @@ const OPENCX_NAV_CARET_CLASS = 'ocx-nav--caret';
  *
  * Matched on the label, not on the URL, so it survives a slug change.
  */
-const OPENCX_NAV_CARET_ITEMS = array( 'Ecosystem' );
-
+const OPENCX_NAV_CARET_ITEMS = array( 'Ecosystem', 'Industries' );
 
 /**
  * Classes marking a core/navigation block as fed by a footer classic menu,
  * mapped to the nav menu location that holds it.
- *
- * The footer lists are marked separately from OPENCX_NAV_MENU_CLASS on purpose:
- * patterns.css sizes the header row with that class (fixed 532px track, 217px
- * offset, nowrap), which would force the footer's two short lists into the same
- * one-line track.
  */
 const OPENCX_NAV_FOOTER_CLASSES = array(
 	'ocx-nav--footer--a' => 'footer_a',
@@ -84,16 +78,6 @@ function opencx_navigation_location( $class_name ) {
  * render_block_core_navigation() builds the markup. Doing it on render_block
  * instead would mean replacing the <nav> element by hand and losing the
  * overlay menu that core ships.
- *
- * core/navigation has a __unstableLocation attribute that does exactly this,
- * but every function backing it (block_core_navigation_get_menu_items_at_location()
- * and friends) is declared inside `if ( defined( 'IS_GUTENBERG_PLUGIN' ) )`
- * in wp-includes/blocks/navigation.php, so it does not exist unless the
- * Gutenberg plugin is active. This theme ships no plugins, hence this filter.
- *
- * A `ref` attribute is deliberately not supported: core reads it as the id of a
- * wp_navigation post and replaces the injected inner blocks with that post's
- * content, so a classic menu would never render.
  *
  * @param array $block Parsed block about to be rendered.
  * @return array
@@ -146,12 +130,8 @@ add_filter( 'render_block_data', 'opencx_navigation_inject_menu' );
 /**
  * Converts the flat list of menu items into a block tree.
  *
- * wp_get_nav_menu_items() returns every item in a single flat array related by
- * menu_item_parent, so the hierarchy is rebuilt level by level.
- *
- * @param array  $items       Menu items as returned by wp_get_nav_menu_items().
- * @param bool   $with_carets Whether the rendering navigation block asked for the
- *                           decorative carets of OPENCX_NAV_CARET_ITEMS.
+ * @param array $items       Menu items as returned by wp_get_nav_menu_items().
+ * @param bool  $with_carets Whether the rendering navigation block asked for decorative carets.
  * @return array[] Block definitions for core/navigation-link|Submenu.
  */
 function opencx_navigation_group_items( array $items, $with_carets = false ) {
@@ -182,15 +162,25 @@ function opencx_navigation_build_level( array $by_parent, $parent_id, $with_care
 	foreach ( $by_parent[ $parent_id ] as $item ) {
 		$children = opencx_navigation_build_level( $by_parent, (int) $item->ID, $with_carets );
 
+		// Detect if this link points to the current page.
+		$is_current = false;
+		if ( ! empty( $_SERVER['REQUEST_URI'] ) && ! empty( $item->url ) ) {
+			$req_path  = untrailingslashit( (string) wp_parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ) );
+			$item_path = untrailingslashit( (string) wp_parse_url( $item->url, PHP_URL_PATH ) );
+			if ( '' !== $item_path && $req_path === $item_path ) {
+				$is_current = true;
+			}
+		}
+
 		$attrs = array(
-			'label'         => $item->title,
-			'type'          => 'custom',
-			'url'           => $item->url,
+			'label'          => $item->title,
+			'type'           => 'custom',
+			'url'            => $item->url,
 			'isTopLevelLink' => empty( $children ),
+			'className'      => $is_current ? 'current-menu-item ocx-nav-link--active' : '',
 		);
 
-		// Only the top level carries a caret: deeper items are already inside an
-		// open submenu, where core already draws one for the submenu itself.
+		// Top level decorative caret for items in OPENCX_NAV_CARET_ITEMS.
 		if ( $with_carets && 0 === $parent_id && in_array( $item->title, OPENCX_NAV_CARET_ITEMS, true ) ) {
 			$attrs['ocxCaret'] = true;
 		}
@@ -220,18 +210,7 @@ function opencx_navigation_build_level( array $by_parent, $parent_id, $with_care
 }
 
 /**
- * Appends the decorative caret to the navigation links that asked for one.
- *
- * core/navigation-link has no slot for an icon, and turning "Ecosystem" into a
- * core/navigation-submenu would render it as a toggle button that opens nothing.
- * So the same chevron core uses for real submenus is appended to the link, inside
- * a span that reuses core's `.wp-block-navigation__submenu-icon` class, which is
- * what supplies the 0.6em box, the 0.25em gap and the `stroke: currentColor`.
- * Reusing the class is the point: the caret is then the same 12x12 glyph and the
- * same colour as the one on "Industries", with no new CSS to keep in sync.
- *
- * The svg carries `aria-hidden="true"`, so the accessible name of the link stays
- * "Ecosystem" and the caret is not announced.
+ * Appends the OpenCX plus caret to the navigation links that asked for one.
  *
  * @param string $block_content Rendered markup of the block.
  * @param array  $block         Parsed block.
@@ -242,10 +221,185 @@ function opencx_navigation_decorative_caret( $block_content, $block ) {
 		return $block_content;
 	}
 
-	$caret = '<span class="wp-block-navigation__submenu-icon">'
-		. block_core_shared_navigation_render_submenu_icon()
-		. '</span>';
+	$caret = '<span class="ocx-nav-plus" aria-hidden="true" style="display:inline-flex;align-items:center;margin-left:6px;">'
+		. '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">'
+		. '<path d="M5 12H19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>'
+		. '<path d="M12 5V19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>'
+		. '</svg></span>';
 
 	return str_replace( '</a>', $caret . '</a>', $block_content );
 }
 add_filter( 'render_block', 'opencx_navigation_decorative_caret', 10, 2 );
+
+/**
+ * Ensures header template parts dynamically render links from the Primary menu
+ * for both desktop navbar and mobile drawer.
+ *
+ * @param string $block_content Rendered block HTML.
+ * @param array  $block         Parsed block.
+ * @return string
+ */
+function opencx_dynamic_header_nav( $block_content, $block ) {
+	if ( 'core/template-part' !== ( $block['blockName'] ?? '' ) ) {
+		return $block_content;
+	}
+
+	$slug = $block['attrs']['slug'] ?? '';
+	if ( ! str_contains( $slug, 'header' ) ) {
+		return $block_content;
+	}
+
+	$locations = get_nav_menu_locations();
+	$menu_id   = $locations['primary'] ?? 0;
+	if ( ! $menu_id ) {
+		return $block_content;
+	}
+
+	$items = wp_get_nav_menu_items( $menu_id, array( 'update_post_term_cache' => false ) );
+	if ( empty( $items ) ) {
+		return $block_content;
+	}
+
+	// Group items by parent ID.
+	$by_parent = array();
+	foreach ( $items as $it ) {
+		$parent_id = (int) $it->menu_item_parent;
+		$by_parent[ $parent_id ][] = $it;
+	}
+
+	$top_items = $by_parent[0] ?? array();
+	$current_path = ! empty( $_SERVER['REQUEST_URI'] ) ? untrailingslashit( (string) wp_parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ) ) : '';
+
+	// Build desktop HTML.
+	$desktop_links = '';
+	foreach ( $top_items as $item ) {
+		$item_path  = untrailingslashit( (string) wp_parse_url( $item->url, PHP_URL_PATH ) );
+		$is_active  = ( '' !== $item_path && $current_path === $item_path );
+		$active_cls = $is_active ? ' ocx-nav-link--active' : '';
+
+		$children   = $by_parent[ (int) $item->ID ] ?? array();
+		$has_caret  = ! empty( $children ) || in_array( $item->title, OPENCX_NAV_CARET_ITEMS, true );
+		$caret_svg  = '';
+		if ( $has_caret ) {
+			$caret_svg = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="ocx-nav-plus" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">'
+				. '<path d="M5 12H19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>'
+				. '<path d="M12 5V19" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>'
+				. '</svg>';
+		}
+
+		if ( ! empty( $children ) ) {
+			$dropdown_links = '';
+			foreach ( $children as $child ) {
+				$child_path       = untrailingslashit( (string) wp_parse_url( $child->url, PHP_URL_PATH ) );
+				$is_child_active  = ( '' !== $child_path && $current_path === $child_path );
+				$child_active_cls = $is_child_active ? ' ocx-nav-dropdown__link--active' : '';
+
+				$dropdown_links .= sprintf(
+					'<a href="%s" class="ocx-nav-dropdown__link%s" role="menuitem"><span>%s</span></a>',
+					esc_url( $child->url ),
+					esc_attr( $child_active_cls ),
+					esc_html( $child->title )
+				);
+			}
+
+			$desktop_links .= sprintf(
+				'<div class="ocx-nav-item ocx-nav-item--has-dropdown">' .
+					'<a href="%s" class="ocx-nav-link%s" aria-haspopup="true" aria-expanded="false"><span>%s</span>%s</a>' .
+					'<div class="ocx-nav-dropdown" role="menu" aria-label="%s Submenu">%s</div>' .
+				'</div>',
+				esc_url( $item->url ),
+				esc_attr( $active_cls ),
+				esc_html( $item->title ),
+				$caret_svg,
+				esc_attr( $item->title ),
+				$dropdown_links
+			);
+		} else {
+			$desktop_links .= sprintf(
+				'<div class="ocx-nav-item">' .
+					'<a href="%s" class="ocx-nav-link%s"><span>%s</span>%s</a>' .
+				'</div>',
+				esc_url( $item->url ),
+				esc_attr( $active_cls ),
+				esc_html( $item->title ),
+				$caret_svg
+			);
+		}
+	}
+
+	// Build mobile drawer HTML.
+	$mobile_items = '';
+	foreach ( $top_items as $item ) {
+		$item_path  = untrailingslashit( (string) wp_parse_url( $item->url, PHP_URL_PATH ) );
+		$is_active  = ( '' !== $item_path && $current_path === $item_path );
+		$active_cls = $is_active ? ' ocx-mobile-nav__link--active' : '';
+
+		$children   = $by_parent[ (int) $item->ID ] ?? array();
+		$has_caret  = ! empty( $children ) || in_array( $item->title, OPENCX_NAV_CARET_ITEMS, true );
+		$caret_img  = '';
+		if ( $has_caret ) {
+			$caret_img = '<img src="/wp-content/themes/OpenCX/assets/images/icon-nav-plus.svg" alt="" class="ocx-mobile-nav__plus" width="18" height="18" aria-hidden="true" />';
+		}
+
+		if ( ! empty( $children ) ) {
+			$mobile_sublinks = '';
+			foreach ( $children as $child ) {
+				$child_path       = untrailingslashit( (string) wp_parse_url( $child->url, PHP_URL_PATH ) );
+				$is_child_active  = ( '' !== $child_path && $current_path === $child_path );
+				$child_active_cls = $is_child_active ? ' ocx-mobile-nav__sublink--active' : '';
+
+				$mobile_sublinks .= sprintf(
+					'<li class="ocx-mobile-nav__subitem"><a href="%s" class="ocx-mobile-nav__sublink%s">%s</a></li>',
+					esc_url( $child->url ),
+					esc_attr( $child_active_cls ),
+					esc_html( $child->title )
+				);
+			}
+
+			$mobile_items .= sprintf(
+				'<li class="ocx-mobile-nav__item ocx-mobile-nav__item--has-dropdown">' .
+					'<div class="ocx-mobile-nav__row">' .
+						'<a href="%s" class="ocx-mobile-nav__link%s"><span>%s</span></a>' .
+						'<button type="button" class="ocx-mobile-nav__toggle" aria-expanded="false" aria-label="Toggle %s submenu">' .
+							'%s' .
+						'</button>' .
+					'</div>' .
+					'<ul class="ocx-mobile-nav__submenu" aria-hidden="true">%s</ul>' .
+				'</li>',
+				esc_url( $item->url ),
+				esc_attr( $active_cls ),
+				esc_html( $item->title ),
+				esc_attr( $item->title ),
+				$caret_img,
+				$mobile_sublinks
+			);
+		} else {
+			$mobile_items .= sprintf(
+				'<li class="ocx-mobile-nav__item">' .
+					'<a href="%s" class="ocx-mobile-nav__link%s"><span>%s</span>%s</a>' .
+				'</li>',
+				esc_url( $item->url ),
+				esc_attr( $active_cls ),
+				esc_html( $item->title ),
+				$caret_img
+			);
+		}
+	}
+
+	// Replace inside <nav class="ocx-nav--menu"...> or <div class="ocx-nav--menu"...>
+	$block_content = preg_replace(
+		'/(<(?:nav|div)[^>]*class="[^"]*ocx-nav--menu[^"]*"[^>]*>).*?(<\/(?:nav|div)>(?=\s*(?:<!--.*?-->\s*)?<div[^>]*class="[^"]*ocx-header__actions))/s',
+		'$1' . $desktop_links . '$2',
+		$block_content
+	);
+
+	// Replace inside <ul class="ocx-mobile-nav__list"...>
+	$block_content = preg_replace(
+		'/(<ul[^>]*class="[^"]*ocx-mobile-nav__list[^"]*"[^>]*>).*?(<\/ul>(?=\s*<div[^>]*class="[^"]*ocx-mobile-nav__actions))/s',
+		'$1' . $mobile_items . '$2',
+		$block_content
+	);
+
+	return $block_content;
+}
+add_filter( 'render_block', 'opencx_dynamic_header_nav', 20, 2 );

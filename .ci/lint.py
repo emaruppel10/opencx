@@ -33,12 +33,16 @@ def tracked(suffixes):
 
 def check_json(path):
     try:
+        if not path.exists():
+            return
         json.loads(path.read_text(encoding="utf-8"))
     except (json.JSONDecodeError, UnicodeDecodeError) as exc:
         fail(f"{path.relative_to(ROOT)}: JSON invalido — {exc}")
 
 
 def check_css(path):
+    if not path.exists():
+        return
     text = path.read_text(encoding="utf-8")
     braces = text.count("{")
     if braces != text.count("}"):

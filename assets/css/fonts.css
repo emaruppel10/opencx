@@ -1,0 +1,78 @@
+/*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * widescreen:
+ *   - http://typekit.com/eulas/00000000000000007735fb5c
+ *   - http://typekit.com/eulas/00000000000000007735fb68
+ *   - http://typekit.com/eulas/00000000000000007735fb5b
+ * widescreen-ex:
+ *   - http://typekit.com/eulas/00000000000000007735fb72
+ *   - http://typekit.com/eulas/00000000000000007735fb65
+ *   - http://typekit.com/eulas/00000000000000007735fb61
+ *
+ * © 2009-2026 Adobe Systems Incorporated. All Rights Reserved.
+ */
+/*{"last_published":"2026-10-02 19:53:07 UTC"}*/
+
+@import url("https://p.typekit.net/p.css?s=1&k=yas5ftt&ht=tk&f=49670.49672.49673.49679.49681.49682&a=192539427&app=typekit&e=css");
+
+@font-face {
+font-family:"widescreen";
+src:url("https://use.typekit.net/af/77ca5e/00000000000000007735fb5c/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff2"),url("https://use.typekit.net/af/77ca5e/00000000000000007735fb5c/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff"),url("https://use.typekit.net/af/77ca5e/00000000000000007735fb5c/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:300;font-stretch:normal;
+}
+
+@font-face {
+font-family:"widescreen";
+src:url("https://use.typekit.net/af/326cc2/00000000000000007735fb68/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/326cc2/00000000000000007735fb68/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/326cc2/00000000000000007735fb68/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+font-family:"widescreen";
+src:url("https://use.typekit.net/af/e2079b/00000000000000007735fb5b/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("woff2"),url("https://use.typekit.net/af/e2079b/00000000000000007735fb5b/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("woff"),url("https://use.typekit.net/af/e2079b/00000000000000007735fb5b/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:600;font-stretch:normal;
+}
+
+@font-face {
+font-family:"widescreen-ex";
+src:url("https://use.typekit.net/af/714d18/00000000000000007735fb72/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff2"),url("https://use.typekit.net/af/714d18/00000000000000007735fb72/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff"),url("https://use.typekit.net/af/714d18/00000000000000007735fb72/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:300;font-stretch:normal;
+}
+
+@font-face {
+font-family:"widescreen-ex";
+src:url("https://use.typekit.net/af/ac578e/00000000000000007735fb65/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/ac578e/00000000000000007735fb65/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/ac578e/00000000000000007735fb65/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+font-family:"widescreen-ex";
+src:url("https://use.typekit.net/af/e21764/00000000000000007735fb61/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("woff2"),url("https://use.typekit.net/af/e21764/00000000000000007735fb61/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("woff"),url("https://use.typekit.net/af/e21764/00000000000000007735fb61/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:600;font-stretch:normal;
+}
+
+@font-face {
+font-family:"Widescreen Ex";
+src:url("https://use.typekit.net/af/ac578e/00000000000000007735fb65/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/ac578e/00000000000000007735fb65/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/ac578e/00000000000000007735fb65/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+font-family:"Widescreen Ex";
+src:url("https://use.typekit.net/af/e21764/00000000000000007735fb61/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("woff2"),url("https://use.typekit.net/af/e21764/00000000000000007735fb61/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("woff"),url("https://use.typekit.net/af/e21764/00000000000000007735fb61/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:600;font-stretch:normal;
+}
+
+.tk-widescreen { font-family: "widescreen", sans-serif; }
+.tk-widescreen-ex { font-family: "widescreen-ex", "Widescreen Ex", sans-serif; }
+
+:root {
+	--Font-Widescreen: "widescreen", sans-serif;
+	--Font-Widescreen-Ex: "widescreen-ex", "Widescreen Ex", sans-serif;
+	--wp--preset--font-family--widescreen: "widescreen", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	--wp--preset--font-family--widescreen-ex: "widescreen-ex", "Widescreen Ex", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
