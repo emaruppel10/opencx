@@ -7174,7 +7174,14 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	background-color: var(--Color-OpenCX-Dune-Lightest, #F8F6F0);
 	border-radius: 4px;
 	user-select: none;
+	-webkit-user-select: none;
 	touch-action: pan-y;
+	cursor: grab;
+}
+
+.ocx-industries-scanner:active,
+.ocx-industries-scanner.is-dragging {
+	cursor: grabbing;
 }
 
 .ocx-industries-scanner__grid {
@@ -7227,10 +7234,12 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	z-index: 2;
 	cursor: grab;
 	will-change: transform;
+	touch-action: pan-y;
 	transition: transform 0.75s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.ocx-industries-scanner__track:active {
+.ocx-industries-scanner__track:active,
+.ocx-industries-scanner.is-dragging .ocx-industries-scanner__track {
 	cursor: grabbing;
 }
 
@@ -7243,6 +7252,8 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	justify-content: center;
 	opacity: 0.38;
 	filter: grayscale(25%);
+	cursor: pointer;
+	-webkit-user-drag: none;
 	transform: scale(0.82);
 	transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.45s ease, filter 0.45s ease;
 }
