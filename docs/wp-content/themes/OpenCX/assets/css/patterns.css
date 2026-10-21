@@ -3531,8 +3531,8 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 	bottom: 0 !important;
 	right: 100% !important;
 	width: 1200px !important;
-	height: var(--Stroke-Hairline, 0.5px) !important;
-	background-color: var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+	height: 0 !important;
+	border-bottom: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 	pointer-events: none !important;
 	z-index: 2 !important;
 }
@@ -3544,8 +3544,8 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 	bottom: 0 !important;
 	left: 100% !important;
 	width: 1200px !important;
-	height: var(--Stroke-Hairline, 0.5px) !important;
-	background-color: var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+	height: 0 !important;
+	border-bottom: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 	pointer-events: none !important;
 	z-index: 2 !important;
 }
@@ -13063,7 +13063,10 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	.ocx-solaas-hero__outer {
 		margin: 0 auto !important;
 		background: var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
-		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-top: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-left: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-right: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-bottom: none !important;
 		border-radius: 0 !important;
 		box-sizing: border-box !important;
 	}
@@ -13116,6 +13119,10 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		background: var(--Color-OpenCX-White, #FCFBF9) !important;
 		background-color: var(--Color-OpenCX-White, #FCFBF9) !important;
 		box-sizing: border-box !important;
+	}
+
+	.ocx-solaas-hero__container {
+		border-bottom: none !important;
 	}
 
 	.ocx-eco-pillars__card {
