@@ -85,7 +85,13 @@ body.page-template-page-about .wp-site-blocks {
 .page-about .ocx-footer,
 .page-id-72 .ocx-footer,
 .page-about footer.wp-block-template-part,
-.page-id-72 footer.wp-block-template-part {
+.page-id-72 footer.wp-block-template-part,
+.page-about .ocx-solaas-cta__section,
+.page-id-72 .ocx-solaas-cta__section,
+.page-template-page-about .ocx-solaas-cta__section,
+.page-about .ocx-solaas-cta__container,
+.page-id-72 .ocx-solaas-cta__container,
+.page-template-page-about .ocx-solaas-cta__container {
 	background-color: var(--Color-OpenCX-Dune-Lightest, #F8F6F0) !important;
 }
 
@@ -11555,13 +11561,13 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	background: var(--Color-OpenCX-Dune-Lightest, #F8F6F0);
 }
 
-/* `#12852:1510`: 1280 fijos, fill #FCFBF9, stroke #00C9C9 0.5px. */
+/* `#12852:1510`: 1280 fijos, canvas #F8F6F0, stroke #00C9C9 0.5px. */
 .ocx-about-vision__container {
 	width: 100%;
 	max-width: var(--Container-container-large, 1280px);
 	margin: 0 auto;
 	box-sizing: border-box;
-	background: var(--Color-OpenCX-White, #fcfbf9);
+	background: var(--Color-OpenCX-Dune-Lightest, #f8f6f0);
 	border: var(--Stroke-Hairline, 0.5px) solid #00c9c9;
 }
 
@@ -11668,7 +11674,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	max-width: var(--Container-container-large, 1280px);
 	margin: 0 auto;
 	padding: var(--Section-Padding-padding-section-medium, 80px);
-	background: var(--Color-OpenCX-White, #fcfbf9);
+	background: var(--Color-OpenCX-Dune-Lightest, #f8f6f0);
 	border: var(--Stroke-Hairline, 0.5px) solid #00c9c9;
 	border-top: 0;
 }
@@ -11998,6 +12004,22 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 .ocx-solaas-cta__heading.ocx-about-cta__heading {
 	font-family: var(--wp--preset--font-family--widescreen, "widescreen", sans-serif) !important;
 	font-weight: 400 !important;
+}
+
+.page-about .ocx-solaas-cta__section,
+.page-id-72 .ocx-solaas-cta__section,
+.page-template-page-about .ocx-solaas-cta__section {
+	background-color: var(--Color-OpenCX-Dune-Lightest, #F8F6F0) !important;
+	background: var(--Color-OpenCX-Dune-Lightest, #F8F6F0) !important;
+}
+
+.page-about .ocx-solaas-cta__container,
+.page-id-72 .ocx-solaas-cta__container,
+.page-template-page-about .ocx-solaas-cta__container {
+	background-color: var(--Color-OpenCX-Dune-Lightest, #F8F6F0) !important;
+	background-image: url('../images/pattern-tile.svg') !important;
+	background-repeat: repeat !important;
+	background-size: 60px 60px !important;
 }
 
 /* --------------------------------------------------------------------------
