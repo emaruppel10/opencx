@@ -3335,7 +3335,10 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 	max-width: var(--Container-container-large, 1280px) !important;
 	min-height: 952px !important;
 	margin: 0 auto !important;
-	border: var(--Stroke-Hairline, 0.5px) solid var(--Color-Deep-Blue-Light, #607F8B) !important;
+	border-top: var(--Stroke-Hairline, 0.5px) solid var(--Color-Deep-Blue-Light, #607F8B) !important;
+	border-left: var(--Stroke-Hairline, 0.5px) solid var(--Color-Deep-Blue-Light, #607F8B) !important;
+	border-right: var(--Stroke-Hairline, 0.5px) solid var(--Color-Deep-Blue-Light, #607F8B) !important;
+	border-bottom: none !important;
 	background: var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 	box-sizing: border-box !important;
 	display: flex !important;
@@ -3356,7 +3359,10 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 	min-height: 952px !important;
 	margin: -1px !important;
 	border-radius: var(--Radius-Medium, 20px) !important;
-	border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+	border-top: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+	border-left: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+	border-right: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+	border-bottom: none !important;
 	background-color: var(--Color-OpenCX-White, #FCFBF9) !important;
 	padding: 0 !important;
 	box-sizing: border-box !important;
@@ -3365,7 +3371,7 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 
 /* Background Layer 1: Gradient #1 (Figma #12824:16518: 1280x871 at y:81px) */
 /* Background Layer 2: Texture #2 (Figma #12905:3642: 1280x871 at y:80px) */
-/* Card Wrapper (Figma 12824:16519: 1120px wide, y:80.5px, gap:48px) */
+/* Card Wrapper (Figma 12824:16519: 1120px wide, y:80.5px, gap:32px) */
 .ocx-solaas-hero__card {
 	position: relative !important;
 	z-index: 3 !important;
@@ -3378,7 +3384,7 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 	flex-direction: column !important;
 	align-items: center !important;
 	justify-content: space-between !important;
-	gap: 48px !important;
+	gap: 32px !important;
 	box-sizing: border-box !important;
 }
 
@@ -3504,26 +3510,59 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 
 /* Solution Hero Visual Stage (Figma #12824:16527 & multi-card composition) */
 .ocx-solaas-hero__stage {
+	--stage-scale: 1;
 	position: relative !important;
-	width: 100% !important;
-	max-width: 666px !important;
+	width: calc(660.9296875px * var(--stage-scale)) !important;
+	max-width: 100% !important;
+	height: calc(439px * var(--stage-scale)) !important;
 	display: flex !important;
 	flex-direction: column !important;
 	align-items: center !important;
 	margin-top: auto !important;
+	margin-bottom: 0 !important;
 	box-sizing: border-box !important;
+	z-index: 3 !important;
 }
 
-/* Central Dashboard Graphic Column (Figma 12824:16527: 666px wide, 20px top radius, 0.5px border #CBBB85) */
+/* 0.5px horizontal border continuity on the left side of central dashboard */
+.ocx-solaas-hero__stage::before {
+	content: '' !important;
+	position: absolute !important;
+	bottom: 0 !important;
+	right: 100% !important;
+	width: 1200px !important;
+	height: var(--Stroke-Hairline, 0.5px) !important;
+	background-color: var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+	pointer-events: none !important;
+	z-index: 2 !important;
+}
+
+/* 0.5px horizontal border continuity on the right side of central dashboard */
+.ocx-solaas-hero__stage::after {
+	content: '' !important;
+	position: absolute !important;
+	bottom: 0 !important;
+	left: 100% !important;
+	width: 1200px !important;
+	height: var(--Stroke-Hairline, 0.5px) !important;
+	background-color: var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+	pointer-events: none !important;
+	z-index: 2 !important;
+}
+
+/* Central Dashboard Graphic Column (Figma: 660.9296875 x 439, Radius/Medium, Stroke/Hairline top/left/right, NO bottom border) */
 .ocx-solaas-hero__dashboard-wrap {
 	display: flex !important;
 	position: relative !important;
 	width: 100% !important;
-	max-width: 666px !important;
+	height: 100% !important;
 	flex-direction: column !important;
-	justify-content: center !important;
+	justify-content: flex-start !important;
 	align-items: center !important;
-	border-radius: var(--Radius-Medium, 20px) var(--Radius-Medium, 20px) 0 0 !important;
+	border-top-left-radius: calc(var(--Radius-Medium, 20px) * var(--stage-scale)) !important;
+	border-top-right-radius: calc(var(--Radius-Medium, 20px) * var(--stage-scale)) !important;
+	border-bottom-left-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
 	border-top: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 	border-right: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 	border-left: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
@@ -3531,24 +3570,27 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 	overflow: hidden !important;
 	box-sizing: border-box !important;
 	background: #FFFFFF !important;
+	opacity: 1 !important;
 	z-index: 2 !important;
 }
 
 .ocx-solaas-hero__dashboard-content {
 	display: flex !important;
 	width: 100% !important;
+	height: 100% !important;
 	flex-direction: column !important;
-	justify-content: center !important;
+	justify-content: flex-start !important;
 	align-items: center !important;
 	box-sizing: border-box !important;
 }
 
 .ocx-solaas-hero__dashboard-img {
 	width: 100% !important;
+	height: 100% !important;
 	max-width: 100% !important;
-	height: auto !important;
 	display: block !important;
 	object-fit: cover !important;
+	object-position: top center !important;
 	flex-shrink: 0 !important;
 }
 
@@ -3584,33 +3626,36 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 	object-position: top center !important;
 }
 
-/* Card 1: Agent Configuration (Top-Left) */
+/* Card 1: Agent Configuration (AgentsUI.webp: width 134, height 160, opacity 0.76, r:10px, top: 620, left: 160) */
 .ocx-solaas-hero__card-float--config {
-	left: -168px !important;
-	top: 142px !important;
-	width: 154px !important;
-	height: 193px !important;
-	border-radius: 14px !important;
+	left: calc(-149.535px * var(--stage-scale)) !important;
+	top: calc(107px * var(--stage-scale)) !important;
+	width: calc(134px * var(--stage-scale)) !important;
+	height: calc(160px * var(--stage-scale)) !important;
+	border-radius: calc(10px * var(--stage-scale)) !important;
+	opacity: 0.76 !important;
 	z-index: 4 !important;
 }
 
-/* Card 2: Agent Behavior (Bottom-Left) */
+/* Card 2: Agent Behavior (AgentsUI01.webp: width 122, height 119, opacity 1, r:10px, top: 800, left: 249) */
 .ocx-solaas-hero__card-float--behavior {
-	left: -60px !important;
-	bottom: 12px !important;
-	width: 138px !important;
-	height: 140px !important;
-	border-radius: 14px !important;
+	left: calc(-60.535px * var(--stage-scale)) !important;
+	top: calc(287px * var(--stage-scale)) !important;
+	width: calc(122px * var(--stage-scale)) !important;
+	height: calc(119px * var(--stage-scale)) !important;
+	border-radius: calc(10px * var(--stage-scale)) !important;
+	opacity: 1 !important;
 	z-index: 5 !important;
 }
 
-/* Card 3: Tool Integration (Right) */
+/* Card 3: Tool Integration (Integration.webp: width 216, height 200, opacity 1, Radius/Small (16px), top: 560, left: 874) */
 .ocx-solaas-hero__card-float--tools {
-	right: -110px !important;
-	top: 54px !important;
-	width: 236px !important;
-	height: 201px !important;
-	border-radius: 18px !important;
+	right: calc(-119.535px * var(--stage-scale)) !important;
+	top: calc(47px * var(--stage-scale)) !important;
+	width: calc(216px * var(--stage-scale)) !important;
+	height: calc(200px * var(--stage-scale)) !important;
+	border-radius: calc(var(--Radius-Small, 16px) * var(--stage-scale)) !important;
+	opacity: 1 !important;
 	z-index: 4 !important;
 }
 
@@ -3624,28 +3669,7 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 		line-height: 48px !important;
 	}
 	.ocx-solaas-hero__stage {
-		max-width: 580px !important;
-	}
-	.ocx-solaas-hero__dashboard-wrap {
-		max-width: 580px !important;
-	}
-	.ocx-solaas-hero__card-float--config {
-		left: -115px !important;
-		top: 90px !important;
-		width: 118px !important;
-		height: 148px !important;
-	}
-	.ocx-solaas-hero__card-float--behavior {
-		left: -48px !important;
-		bottom: 8px !important;
-		width: 108px !important;
-		height: 110px !important;
-	}
-	.ocx-solaas-hero__card-float--tools {
-		right: -95px !important;
-		top: 40px !important;
-		width: 190px !important;
-		height: 162px !important;
+		--stage-scale: 0.82;
 	}
 }
 
@@ -3659,7 +3683,10 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 		min-height: auto !important;
 		margin: 0 auto !important;
 		background: var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
-		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-top: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-left: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-right: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-bottom: none !important;
 		border-radius: 0 !important;
 		box-sizing: border-box !important;
 	}
@@ -3668,14 +3695,17 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 		max-width: none !important;
 		min-height: auto !important;
 		margin: -0.5px !important;
-		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-top: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-left: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-right: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-bottom: none !important;
 		border-radius: var(--Radius-Small, 16px) !important;
 		background-color: var(--Color-OpenCX-White, #FCFBF9) !important;
 		box-sizing: border-box !important;
 	}
 	.ocx-solaas-hero__card {
 		padding: 50px 24px 0 !important;
-		gap: 40px !important;
+		gap: 32px !important;
 	}
 	.ocx-solaas-hero__col-text {
 		gap: 36px !important;
@@ -3692,28 +3722,7 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 		line-height: 24px !important;
 	}
 	.ocx-solaas-hero__stage {
-		max-width: 520px !important;
-	}
-	.ocx-solaas-hero__dashboard-wrap {
-		max-width: 520px !important;
-	}
-	.ocx-solaas-hero__card-float--config {
-		left: -65px !important;
-		top: 70px !important;
-		width: 95px !important;
-		height: 119px !important;
-	}
-	.ocx-solaas-hero__card-float--behavior {
-		left: -25px !important;
-		bottom: 6px !important;
-		width: 86px !important;
-		height: 88px !important;
-	}
-	.ocx-solaas-hero__card-float--tools {
-		right: -55px !important;
-		top: 32px !important;
-		width: 152px !important;
-		height: 130px !important;
+		--stage-scale: 0.68;
 	}
 }
 
@@ -3727,7 +3736,10 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 		min-height: auto !important;
 		margin: 0 auto !important;
 		background: var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
-		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-top: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-left: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-right: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-bottom: none !important;
 		border-radius: 0 !important;
 		box-sizing: border-box !important;
 	}
@@ -3736,17 +3748,20 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 		max-width: none !important;
 		min-height: auto !important;
 		margin: -0.5px !important;
-		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-top: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-left: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-right: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		border-bottom: none !important;
 		border-radius: var(--Radius-Small, 16px) !important;
 		background-color: var(--Color-OpenCX-White, #FCFBF9) !important;
 		box-sizing: border-box !important;
 	}
 	.ocx-solaas-hero__card {
 		padding: 36px 16px 0 !important;
-		gap: 32px !important;
+		gap: 28px !important;
 	}
 	.ocx-solaas-hero__col-text {
-		gap: 28px !important;
+		gap: 24px !important;
 	}
 	.ocx-solaas-hero__content {
 		gap: 16px !important;
@@ -3772,21 +3787,22 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 		line-height: 22px !important;
 	}
 	.ocx-solaas-hero__stage {
-		width: 100% !important;
-		max-width: 100% !important;
-	}
-	.ocx-solaas-hero__dashboard-wrap {
-		width: 100% !important;
-		max-width: 100% !important;
-		border-radius: 14px 14px 0 0 !important;
-	}
-	.ocx-solaas-hero__dashboard-img {
-		width: 100% !important;
-		max-width: 100% !important;
-		height: auto !important;
+		--stage-scale: 0.42;
 	}
 	.ocx-solaas-hero__card-float {
-		display: none !important;
+		display: block !important;
+	}
+}
+
+@media (max-width: 400px) {
+	.ocx-solaas-hero__stage {
+		--stage-scale: 0.36;
+	}
+}
+
+@media (max-width: 350px) {
+	.ocx-solaas-hero__stage {
+		--stage-scale: 0.32;
 	}
 }
 
