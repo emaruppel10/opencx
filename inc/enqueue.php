@@ -86,14 +86,16 @@ if ( ! function_exists( 'opencx_enqueue_scripts' ) ) {
 		 * what kept `navigation.js` a harmless stub while the nav is CSS-only.
 		 */
 		$scripts = array(
-			'navigation'          => '/assets/js/navigation.js',
-			'testimonial-carousel' => '/assets/js/testimonial-carousel.js',
-			'stat-count-up'        => '/assets/js/stat-count-up.js',
-			'logo-intro'           => '/assets/js/logo-intro.js',
-			'why-accordion'        => '/assets/js/why-accordion.js',
+			'navigation'              => '/assets/js/navigation.js',
+			'testimonial-carousel'    => '/assets/js/testimonial-carousel.js',
+			'stat-count-up'           => '/assets/js/stat-count-up.js',
+			'logo-intro'              => '/assets/js/logo-intro.js',
+			'why-accordion'           => '/assets/js/why-accordion.js',
 			'ecosystem-nav'           => '/assets/js/ecosystem-nav.js',
 			'industries-nav'          => '/assets/js/industries-nav.js',
 			'industries-preview-loop' => '/assets/js/industries-preview-loop.js',
+			'lottie'                  => '/assets/js/lottie.min.js',
+			'hero-logo'               => '/assets/js/hero-logo.js',
 		);
 
 		foreach ( $scripts as $slug => $relative_path ) {
@@ -103,10 +105,12 @@ if ( ! function_exists( 'opencx_enqueue_scripts' ) ) {
 				continue;
 			}
 
+			$deps = ( 'hero-logo' === $slug ) ? array( 'opencx-lottie' ) : array();
+
 			wp_enqueue_script(
 				'opencx-' . $slug,
 				$theme_uri . $relative_path,
-				array(),
+				$deps,
 				(string) filemtime( $script_path ),
 				array( 'strategy' => 'defer', 'in_footer' => true )
 			);
