@@ -42,13 +42,61 @@
 				<!-- wp:group {"className":"ocx-hero__controls","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 				<div class="wp-block-group ocx-hero__controls">
 
-					<!-- wp:button {"className":"ocx-hero__industry","style":{"position":{"type":"absolute","inset":{"top":"137px","left":"24.5px"}}}} -->
-					<div class="wp-block-button ocx-hero__industry" style="position:absolute;top:137px;left:24.5px"><a class="wp-block-button__link wp-element-button" href="/industries/">Industry <span aria-hidden="true" class="ocx-hero__caret">&#9662;</span></a></div>
+					<!-- wp:button {"className":"ocx-hero__industry"} -->
+					<div class="wp-block-button ocx-hero__industry ocx-hero__industry-picker">
+						<button type="button" class="wp-block-button__link wp-element-button ocx-hero__industry-btn" id="ocxHeroIndustryBtn" aria-expanded="false" aria-haspopup="dialog" aria-controls="ocxHeroIndustryPopover">
+							<span class="ocx-hero__industry-icon-slot" aria-hidden="true"></span>
+							<span class="ocx-hero__industry-label">Industry</span>
+							<img class="ocx-hero__plus-icon" src="/wp-content/themes/OpenCX/assets/images/icon-plus.svg" alt="+" width="14" height="14" />
+							<span class="ocx-hero__industry-clear" id="ocxHeroIndustryClear" role="button" aria-label="Clear industry selection" tabindex="0" title="Clear selection">×</span>
+						</button>
+
+						<!-- Floating Industry Capsules Tray (Option 1) -->
+						<div class="ocx-hero__industry-popover" id="ocxHeroIndustryPopover" role="dialog" aria-label="Choose Industry" aria-hidden="true">
+							<div class="ocx-hero__industry-popover-header">
+								<span class="ocx-hero__industry-popover-title">Industry Context</span>
+								<span class="ocx-hero__industry-popover-hint">Select a sector to tailor OpenCX AI</span>
+							</div>
+							<div class="ocx-hero__industry-chips" role="listbox">
+								<button type="button" class="ocx-hero__industry-chip" role="option" data-industry="financial-services" data-label="Financial Services" data-icon="/wp-content/themes/OpenCX/assets/images/industry-icon-financial.svg" data-prompt="Ask how OpenCX streamlines dispute resolution, fraud alerts, and compliance workflows in banking.">
+									<img src="/wp-content/themes/OpenCX/assets/images/industry-icon-financial.svg" alt="" width="18" height="18" class="ocx-hero__chip-icon" />
+									<span class="ocx-hero__chip-text">Financial Services</span>
+								</button>
+								<button type="button" class="ocx-hero__industry-chip" role="option" data-industry="retail" data-label="Retail" data-icon="/wp-content/themes/OpenCX/assets/images/industry-icon-retail.svg" data-prompt="Ask how OpenCX unifies omnichannel loyalty, inventory visibility, and personalized customer journeys.">
+									<img src="/wp-content/themes/OpenCX/assets/images/industry-icon-retail.svg" alt="" width="18" height="18" class="ocx-hero__chip-icon" />
+									<span class="ocx-hero__chip-text">Retail</span>
+								</button>
+								<button type="button" class="ocx-hero__industry-chip" role="option" data-industry="healthcare" data-label="Healthcare" data-icon="/wp-content/themes/OpenCX/assets/images/industry-icon-healthcare.svg" data-prompt="Ask how OpenCX orchestrates patient intake, provider coordination, and HIPAA-compliant care pathways.">
+									<img src="/wp-content/themes/OpenCX/assets/images/industry-icon-healthcare.svg" alt="" width="18" height="18" class="ocx-hero__chip-icon" />
+									<span class="ocx-hero__chip-text">Healthcare</span>
+								</button>
+								<button type="button" class="ocx-hero__industry-chip" role="option" data-industry="hospitality" data-label="Hospitality" data-icon="/wp-content/themes/OpenCX/assets/images/industry-icon-hospitality.svg" data-prompt="Ask how OpenCX elevates guest reservations, concierge requests, and real-time loyalty experiences.">
+									<img src="/wp-content/themes/OpenCX/assets/images/industry-icon-hospitality.svg" alt="" width="18" height="18" class="ocx-hero__chip-icon" />
+									<span class="ocx-hero__chip-text">Hospitality</span>
+								</button>
+								<button type="button" class="ocx-hero__industry-chip" role="option" data-industry="education" data-label="Education" data-icon="/wp-content/themes/OpenCX/assets/images/industry-icon-education.svg" data-prompt="Ask how OpenCX simplifies student admissions, academic advising, and unified campus operations.">
+									<img src="/wp-content/themes/OpenCX/assets/images/industry-icon-education.svg" alt="" width="18" height="18" class="ocx-hero__chip-icon" />
+									<span class="ocx-hero__chip-text">Education</span>
+								</button>
+								<button type="button" class="ocx-hero__industry-chip" role="option" data-industry="manufacturing" data-label="Manufacturing" data-icon="/wp-content/themes/OpenCX/assets/images/industry-icon-manufacturing.svg" data-prompt="Ask how OpenCX accelerates supply chain coordination, predictive maintenance, and vendor workflows.">
+									<img src="/wp-content/themes/OpenCX/assets/images/industry-icon-manufacturing.svg" alt="" width="18" height="18" class="ocx-hero__chip-icon" />
+									<span class="ocx-hero__chip-text">Manufacturing</span>
+								</button>
+							</div>
+						</div>
+						<input type="hidden" name="industry" id="ocxHeroIndustryInput" value="" />
+					</div>
 					<!-- /wp:button -->
 
-					<!-- wp:button {"className":"ocx-hero__submit","style":{"position":{"type":"absolute","inset":{"top":"169px","left":"732px"}}}} -->
-					<div class="wp-block-button ocx-hero__submit" style="position:absolute;top:169px;left:732px"><a class="wp-block-button__link wp-element-button" role="button" aria-label="Enviar consulta" href="/contact/"><img class="ocx-hero__arrow" src="/wp-content/themes/OpenCX/assets/images/icon-arrow-submit.svg" alt="" width="24" height="24" /></a></div>
-					<!-- /wp:button -->
+					<div class="ocx-hero__right-tools" style="display:flex;align-items:center;gap:14px;">
+						<!-- wp:button {"className":"ocx-hero__mic"} -->
+						<div class="wp-block-button ocx-hero__mic"><a class="wp-block-button__link wp-element-button" role="button" aria-label="Microphone" href="#"><img class="ocx-hero__mic-icon" src="/wp-content/themes/OpenCX/assets/images/hero-mic.svg" alt="Mic" width="24" height="24" /></a></div>
+						<!-- /wp:button -->
+
+						<!-- wp:button {"className":"ocx-hero__submit"} -->
+						<div class="wp-block-button ocx-hero__submit"><a class="wp-block-button__link wp-element-button" role="button" aria-label="Enviar consulta" href="/contact/" id="ocxHeroSubmitBtn"><img class="ocx-hero__arrow" src="/wp-content/themes/OpenCX/assets/images/hero-submit.svg" alt="Submit" width="36" height="36" /></a></div>
+						<!-- /wp:button -->
+					</div>
 
 				</div>
 				<!-- /wp:group -->

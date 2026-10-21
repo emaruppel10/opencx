@@ -96,6 +96,7 @@ if ( ! function_exists( 'opencx_enqueue_scripts' ) ) {
 			'industries-preview-loop' => '/assets/js/industries-preview-loop.js',
 			'lottie'                  => '/assets/js/lottie.min.js',
 			'hero-logo'               => '/assets/js/hero-logo.js',
+			'hero-industry-selector'  => '/assets/js/hero-industry-selector.js',
 		);
 
 		foreach ( $scripts as $slug => $relative_path ) {

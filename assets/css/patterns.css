@@ -5844,29 +5844,239 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
  * Figma "Text/Medium/Normal": Manrope 400 at 18px with a 150% line height, which
  * is the 27px the spec annotates. 18px is --Text-Sizes-Text-Medium.
  */
+.ocx-hero__industry-picker {
+	position: relative !important;
+	display: inline-flex !important;
+	align-items: center !important;
+}
+
 .ocx-hero__industry .wp-block-button__link {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	gap: 5px;
+	gap: 6px;
 	box-sizing: border-box;
 	background: var(--Color-OpenCX-Dune-Lighter, #F0EBDC);
 	color: var(--Color-OpenCX-Dune, #B69E52);
 	border: 1px solid rgba(203, 187, 133, 0.4);
-	border-radius: 5px;
+	border-radius: 6px;
 	padding: 6px 14px;
 	height: 38px;
 	font-family: var(--wp--preset--font-family--widescreen, "Widescreen", sans-serif);
-	font-size: 16px;
+	font-size: 15px;
 	font-style: normal;
-	font-weight: 400;
-	line-height: 165%;
+	font-weight: 500;
+	line-height: 1;
 	text-decoration: none;
 	cursor: pointer;
+	transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+	user-select: none;
+	-webkit-user-select: none;
 }
 
 .ocx-hero__industry .wp-block-button__link:hover {
 	background: #E8E1CF;
+	border-color: rgba(182, 158, 82, 0.7);
+}
+
+.ocx-hero__industry .wp-block-button__link:focus-visible {
+	outline: 2px solid var(--Color-OpenCX-Dune, #B69E52);
+	outline-offset: 2px;
+}
+
+/* Active Selected Capsule State */
+.ocx-hero__industry .wp-block-button__link.has-selection {
+	background: #FAF8F4 !important;
+	color: #1B2428 !important;
+	border: 1px solid var(--Color-OpenCX-Dune, #B69E52) !important;
+	border-radius: 9999px !important;
+	padding: 5px 10px 5px 12px !important;
+	gap: 8px !important;
+	box-shadow: 0 2px 10px rgba(182, 158, 82, 0.15) !important;
+}
+
+.ocx-hero__industry-icon-slot {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	width: 18px;
+	height: 18px;
+	flex-shrink: 0;
+}
+
+.ocx-hero__industry .wp-block-button__link.has-selection .ocx-hero__industry-icon-slot {
+	display: inline-flex;
+}
+
+.ocx-hero__industry-icon-slot img {
+	width: 18px;
+	height: 18px;
+	display: block;
+	object-fit: contain;
+}
+
+.ocx-hero__industry .wp-block-button__link.has-selection .ocx-hero__plus-icon {
+	display: none !important;
+}
+
+/* Clear Selection Button (×) */
+.ocx-hero__industry-clear {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	width: 18px;
+	height: 18px;
+	margin-left: 2px;
+	border-radius: 50%;
+	background: rgba(182, 158, 82, 0.18);
+	color: #604E1D;
+	font-size: 14px;
+	line-height: 1;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.18s ease;
+}
+
+.ocx-hero__industry .wp-block-button__link.has-selection .ocx-hero__industry-clear {
+	display: inline-flex;
+}
+
+.ocx-hero__industry-clear:hover {
+	background: #B69E52;
+	color: #FFFFFF;
+	transform: scale(1.1);
+}
+
+/* Floating Industry Popover Card (Option 1) */
+.ocx-hero__industry-popover {
+	position: absolute;
+	left: 0;
+	top: calc(100% + 10px);
+	width: 395px;
+	max-width: calc(100vw - 32px);
+	background: #FFFFFF;
+	border: 1px solid var(--Color-OpenCX-Dune-Lighter, #F0EBDC);
+	border-radius: 16px;
+	padding: 14px 16px 16px 16px;
+	box-shadow: 0 16px 40px -6px rgba(27, 36, 40, 0.14), 0 4px 16px rgba(27, 36, 40, 0.06);
+	z-index: 200;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-8px) scale(0.97);
+	pointer-events: none;
+	transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+	            transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+	            visibility 0.22s;
+	box-sizing: border-box;
+}
+
+.ocx-hero__industry-popover.is-open {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0) scale(1);
+	pointer-events: auto;
+}
+
+/* Header inside Popover */
+.ocx-hero__industry-popover-header {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	margin-bottom: 12px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid #F5F1E8;
+}
+
+.ocx-hero__industry-popover-title {
+	font-family: var(--wp--preset--font-family--widescreen, "Widescreen", sans-serif);
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--Color-OpenCX-Dune, #B69E52);
+}
+
+.ocx-hero__industry-popover-hint {
+	font-family: var(--wp--preset--font-family--manrope, "Manrope", sans-serif);
+	font-size: 12px;
+	color: #6C7A82;
+	line-height: 1.35;
+}
+
+/* Capsules Flex Container */
+.ocx-hero__industry-chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+/* Individual Capsule Pill */
+.ocx-hero__industry-chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	padding: 7px 12px;
+	background: #FAF8F4;
+	border: 1px solid rgba(203, 187, 133, 0.35);
+	border-radius: 9999px; /* Modern capsule shape */
+	font-family: var(--wp--preset--font-family--widescreen, "Widescreen", sans-serif);
+	font-size: 12.5px;
+	font-weight: 500;
+	color: #1B2428;
+	cursor: pointer;
+	box-sizing: border-box;
+	white-space: nowrap;
+	transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+	outline: none;
+}
+
+.ocx-hero__industry-chip:hover {
+	background: #F0EBDC;
+	border-color: var(--Color-OpenCX-Dune, #B69E52);
+	transform: translateY(-1px);
+	box-shadow: 0 4px 10px rgba(182, 158, 82, 0.18);
+}
+
+.ocx-hero__industry-chip:active {
+	transform: translateY(0);
+}
+
+.ocx-hero__industry-chip:focus-visible {
+	border-color: var(--Color-OpenCX-Dune, #B69E52);
+	box-shadow: 0 0 0 2px rgba(182, 158, 82, 0.3);
+}
+
+.ocx-hero__industry-chip.is-selected {
+	background: #1B2428;
+	color: #FAF8F4;
+	border-color: #1B2428;
+	box-shadow: 0 4px 12px rgba(27, 36, 40, 0.2);
+}
+
+.ocx-hero__industry-chip.is-selected .ocx-hero__chip-text {
+	color: #FAF8F4;
+}
+
+.ocx-hero__chip-icon {
+	width: 17px;
+	height: 17px;
+	flex-shrink: 0;
+	display: block;
+	object-fit: contain;
+}
+
+.ocx-hero__chip-text {
+	line-height: 1;
+}
+
+/* Prompt Field Cross-fade */
+.ocx-hero__field {
+	transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ocx-hero__field.is-changing {
+	opacity: 0;
+	transform: translateY(-3px);
 }
 
 .ocx-hero__industry .ocx-hero__caret {
@@ -13466,7 +13676,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 
 	.ocx-hero__industry {
 		order: 2 !important;
-		width: 200px !important;
+		width: auto !important;
 		margin: 0 auto !important;
 	}
 
@@ -13502,6 +13712,39 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		background: url('../images/hero-chevron-down.svg') no-repeat center center !important;
 		background-size: contain !important;
 		flex-shrink: 0 !important;
+	}
+
+	/* Mobile styles for active pill selection */
+	.ocx-hero__industry .wp-block-button__link.has-selection {
+		width: auto !important;
+		max-width: 90vw !important;
+		border: 1px solid #B69E52 !important;
+		border-radius: 9999px !important;
+		background: #FAF8F4 !important;
+		padding: 6px 14px !important;
+	}
+
+	.ocx-hero__industry .wp-block-button__link.has-selection::after {
+		content: none !important;
+		display: none !important;
+	}
+
+	/* Mobile styles for popover tray */
+	.ocx-hero__industry-popover {
+		left: 50% !important;
+		top: auto !important;
+		bottom: calc(100% + 14px) !important;
+		transform: translateX(-50%) translateY(8px) scale(0.97) !important;
+		width: min(340px, 92vw) !important;
+		padding: 14px !important;
+	}
+
+	.ocx-hero__industry-popover.is-open {
+		transform: translateX(-50%) translateY(0) scale(1) !important;
+	}
+
+	.ocx-hero__industry-chips {
+		justify-content: center !important;
 	}
 
 	/* Tablet adaptation (576px to 991.98px) */

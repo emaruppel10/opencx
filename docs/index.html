@@ -1407,7 +1407,7 @@ html :where(.is-position-sticky) {
 <link rel='stylesheet' id='opencx-fonts-local-css' href='wp-content/themes/OpenCX/assets/css/fonts.css?ver=1791682979' media='all' />
 <link rel='stylesheet' id='opencx-fonts-css' href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&#038;family=Manrope:wght@300;400;500;600;700;800&#038;family=Roboto:wght@400;500;600;700&#038;display=swap' media='all' />
 <link rel='stylesheet' id='opencx-tokens-css' href='wp-content/themes/OpenCX/assets/css/tokens.css?ver=1791691416' media='all' />
-<link rel='stylesheet' id='opencx-patterns-css' href='wp-content/themes/OpenCX/assets/css/patterns.css?ver=1792594905' media='all' />
+<link rel='stylesheet' id='opencx-patterns-css' href='wp-content/themes/OpenCX/assets/css/patterns.css?ver=1792599410' media='all' />
 <link rel="https://api.w.org/" href="#" /><link rel="alternate" title="JSON" type="application/json" href="#" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="#" />
 <meta name="generator" content="WordPress 7.1.3" />
 <link rel="canonical" href="index.html" />
@@ -1505,14 +1505,56 @@ html :where(.is-position-sticky) {
 					<div class="wp-block-group ocx-hero__form has-background is-layout-flow wp-block-group-is-layout-flow" style="position:relative;background-color:#ffffff;border:1px solid var(--Color-OpenCX-Dune-Lighter, #F0EBDC);border-radius:var(--Radius-Medium, 20px);min-height:166px">
 
 						
-						<p class="ocx-hero__field wp-block-paragraph">Ask about a challenge in your customer or employee operations, and see how OpenCX would approach it.</p>
+						<p class="ocx-hero__field wp-block-paragraph" id="ocxHeroPromptField" data-default="Ask about a challenge in your customer or employee operations, and see how OpenCX would approach it.">Ask about a challenge in your customer or employee operations, and see how OpenCX would approach it.</p>
 						
 
 						
 						<div class="wp-block-group ocx-hero__controls is-content-justification-space-between is-nowrap is-layout-flex wp-container-core-group-is-layout-d83feba8 wp-block-group-is-layout-flex">
 
 							
-							<div class="wp-block-button ocx-hero__industry"><a class="wp-block-button__link wp-element-button" href="industries/index.html">Industry <img class="ocx-hero__plus-icon" src="wp-content/themes/OpenCX/assets/images/icon-plus.svg" alt="+" width="14" height="14" /></a></div>
+							<div class="wp-block-button ocx-hero__industry ocx-hero__industry-picker">
+								<button type="button" class="wp-block-button__link wp-element-button ocx-hero__industry-btn" id="ocxHeroIndustryBtn" aria-expanded="false" aria-haspopup="dialog" aria-controls="ocxHeroIndustryPopover">
+									<span class="ocx-hero__industry-icon-slot" aria-hidden="true"></span>
+									<span class="ocx-hero__industry-label">Industry</span>
+									<img class="ocx-hero__plus-icon" src="wp-content/themes/OpenCX/assets/images/icon-plus.svg" alt="+" width="14" height="14" />
+									<span class="ocx-hero__industry-clear" id="ocxHeroIndustryClear" role="button" aria-label="Clear industry selection" tabindex="0" title="Clear selection">×</span>
+								</button>
+
+								<!-- Floating Industry Capsules Tray (Option 1) -->
+								<div class="ocx-hero__industry-popover" id="ocxHeroIndustryPopover" role="dialog" aria-label="Choose Industry" aria-hidden="true">
+									<div class="ocx-hero__industry-popover-header">
+										<span class="ocx-hero__industry-popover-title">Industry Context</span>
+										<span class="ocx-hero__industry-popover-hint">Select a sector to tailor OpenCX AI</span>
+									</div>
+									<div class="ocx-hero__industry-chips" role="listbox">
+										<button type="button" class="ocx-hero__industry-chip" role="option" data-industry="financial-services" data-label="Financial Services" data-icon="/wp-content/themes/OpenCX/assets/images/industry-icon-financial.svg" data-prompt="Ask how OpenCX streamlines dispute resolution, fraud alerts, and compliance workflows in banking.">
+											<img src="wp-content/themes/OpenCX/assets/images/industry-icon-financial.svg" alt="" width="18" height="18" class="ocx-hero__chip-icon" />
+											<span class="ocx-hero__chip-text">Financial Services</span>
+										</button>
+										<button type="button" class="ocx-hero__industry-chip" role="option" data-industry="retail" data-label="Retail" data-icon="/wp-content/themes/OpenCX/assets/images/industry-icon-retail.svg" data-prompt="Ask how OpenCX unifies omnichannel loyalty, inventory visibility, and personalized customer journeys.">
+											<img src="wp-content/themes/OpenCX/assets/images/industry-icon-retail.svg" alt="" width="18" height="18" class="ocx-hero__chip-icon" />
+											<span class="ocx-hero__chip-text">Retail</span>
+										</button>
+										<button type="button" class="ocx-hero__industry-chip" role="option" data-industry="healthcare" data-label="Healthcare" data-icon="/wp-content/themes/OpenCX/assets/images/industry-icon-healthcare.svg" data-prompt="Ask how OpenCX orchestrates patient intake, provider coordination, and HIPAA-compliant care pathways.">
+											<img src="wp-content/themes/OpenCX/assets/images/industry-icon-healthcare.svg" alt="" width="18" height="18" class="ocx-hero__chip-icon" />
+											<span class="ocx-hero__chip-text">Healthcare</span>
+										</button>
+										<button type="button" class="ocx-hero__industry-chip" role="option" data-industry="hospitality" data-label="Hospitality" data-icon="/wp-content/themes/OpenCX/assets/images/industry-icon-hospitality.svg" data-prompt="Ask how OpenCX elevates guest reservations, concierge requests, and real-time loyalty experiences.">
+											<img src="wp-content/themes/OpenCX/assets/images/industry-icon-hospitality.svg" alt="" width="18" height="18" class="ocx-hero__chip-icon" />
+											<span class="ocx-hero__chip-text">Hospitality</span>
+										</button>
+										<button type="button" class="ocx-hero__industry-chip" role="option" data-industry="education" data-label="Education" data-icon="/wp-content/themes/OpenCX/assets/images/industry-icon-education.svg" data-prompt="Ask how OpenCX simplifies student admissions, academic advising, and unified campus operations.">
+											<img src="wp-content/themes/OpenCX/assets/images/industry-icon-education.svg" alt="" width="18" height="18" class="ocx-hero__chip-icon" />
+											<span class="ocx-hero__chip-text">Education</span>
+										</button>
+										<button type="button" class="ocx-hero__industry-chip" role="option" data-industry="manufacturing" data-label="Manufacturing" data-icon="/wp-content/themes/OpenCX/assets/images/industry-icon-manufacturing.svg" data-prompt="Ask how OpenCX accelerates supply chain coordination, predictive maintenance, and vendor workflows.">
+											<img src="wp-content/themes/OpenCX/assets/images/industry-icon-manufacturing.svg" alt="" width="18" height="18" class="ocx-hero__chip-icon" />
+											<span class="ocx-hero__chip-text">Manufacturing</span>
+										</button>
+									</div>
+								</div>
+								<input type="hidden" name="industry" id="ocxHeroIndustryInput" value="" />
+							</div>
 							
 
 							<div class="ocx-hero__right-tools" style="display:flex;align-items:center;gap:14px;">
@@ -1521,7 +1563,7 @@ html :where(.is-position-sticky) {
 								
 
 								
-								<div class="wp-block-button ocx-hero__submit"><a class="wp-block-button__link wp-element-button" role="button" aria-label="Enviar consulta" href="contact/index.html"><img class="ocx-hero__arrow" src="wp-content/themes/OpenCX/assets/images/hero-submit.svg" alt="Submit" width="36" height="36" /></a></div>
+								<div class="wp-block-button ocx-hero__submit"><a class="wp-block-button__link wp-element-button" role="button" aria-label="Enviar consulta" href="contact/index.html" id="ocxHeroSubmitBtn"><img class="ocx-hero__arrow" src="wp-content/themes/OpenCX/assets/images/hero-submit.svg" alt="Submit" width="36" height="36" /></a></div>
 								
 							</div>
 
@@ -2546,6 +2588,7 @@ var wpcf7 = {
 <script data-wp-strategy="defer" defer id="opencx-industries-preview-loop-js" src="wp-content/themes/OpenCX/assets/js/industries-preview-loop.js?ver=1791850463"></script>
 <script data-wp-strategy="defer" defer id="opencx-lottie-js" src="wp-content/themes/OpenCX/assets/js/lottie.min.js?ver=1792594238"></script>
 <script data-wp-strategy="defer" defer id="opencx-hero-logo-js" src="wp-content/themes/OpenCX/assets/js/hero-logo.js?ver=1792595018"></script>
+<script data-wp-strategy="defer" defer id="opencx-hero-industry-selector-js" src="wp-content/themes/OpenCX/assets/js/hero-industry-selector.js?ver=1792598713"></script>
 <script id="wp-emoji-settings" type="application/json">
 {"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"wpemoji":"wp-includes/js/wp-emoji.js","twemoji":"wp-includes/js/twemoji.js"}}
 </script>
