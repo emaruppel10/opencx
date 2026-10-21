@@ -1231,7 +1231,7 @@ html :where(.is-position-sticky) {
 <link rel='stylesheet' id='opencx-fonts-local-css' href='../wp-content/themes/OpenCX/assets/css/fonts.css?ver=1791682979' media='all' />
 <link rel='stylesheet' id='opencx-fonts-css' href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&#038;family=Manrope:wght@300;400;500;600;700;800&#038;family=Roboto:wght@400;500;600;700&#038;display=swap' media='all' />
 <link rel='stylesheet' id='opencx-tokens-css' href='../wp-content/themes/OpenCX/assets/css/tokens.css?ver=1791691416' media='all' />
-<link rel='stylesheet' id='opencx-patterns-css' href='../wp-content/themes/OpenCX/assets/css/patterns.css?ver=1792604545' media='all' />
+<link rel='stylesheet' id='opencx-patterns-css' href='../wp-content/themes/OpenCX/assets/css/patterns.css?ver=1792608032' media='all' />
 <link rel="https://api.w.org/" href="#" /><link rel="alternate" title="JSON" type="application/json" href="#" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="#" />
 <meta name="generator" content="WordPress 7.1.3" />
 <link rel="canonical" href="index.html" />
@@ -1353,10 +1353,34 @@ html :where(.is-position-sticky) {
 
 				</div>
 
-				<!-- Dashboard Graphic Column (Figma #12824:16527: 666px wide, 20px top radius, 0.5px border #CBBB85) -->
-				<div class="ocx-solaas-hero__dashboard-wrap">
-					<div class="ocx-solaas-hero__dashboard-content">
-						<img src="../wp-content/themes/OpenCX/assets/images/solaas-hero-dashboard.png" alt="OpenCX Solution as a Service Dashboard" class="ocx-solaas-hero__dashboard-img" width="768" height="460" loading="eager" />
+				<!-- Solution Hero Visual Composition: Central BI Dashboard + 3 Floating Parameter Cards -->
+				<div class="ocx-solaas-hero__stage">
+					<!-- Floating Card: Agent Configuration (Top-Left) -->
+					<div class="ocx-solaas-hero__card-float ocx-solaas-hero__card-float--config" aria-hidden="true">
+						<div class="ocx-solaas-hero__card-crop">
+							<img src="../wp-content/themes/OpenCX/assets/images/solaas-agent-config.webp" alt="OpenCX Agent Configuration Parameters" class="ocx-solaas-hero__card-img" width="453" height="567" loading="eager" />
+						</div>
+					</div>
+
+					<!-- Central Dashboard Frame -->
+					<div class="ocx-solaas-hero__dashboard-wrap">
+						<div class="ocx-solaas-hero__dashboard-content">
+							<img src="../wp-content/themes/OpenCX/assets/images/solaas-bi-dashboard.webp" alt="OpenCX Solution as a Service BI Dashboard" class="ocx-solaas-hero__dashboard-img" width="1707" height="1060" loading="eager" />
+						</div>
+					</div>
+
+					<!-- Floating Card: Agent Behavior (Bottom-Left) -->
+					<div class="ocx-solaas-hero__card-float ocx-solaas-hero__card-float--behavior" aria-hidden="true">
+						<div class="ocx-solaas-hero__card-crop">
+							<img src="../wp-content/themes/OpenCX/assets/images/solaas-agent-behavior.webp" alt="OpenCX Agent Behavior Parameters" class="ocx-solaas-hero__card-img" width="453" height="461" loading="eager" />
+						</div>
+					</div>
+
+					<!-- Floating Card: Tool Integration (Right) -->
+					<div class="ocx-solaas-hero__card-float ocx-solaas-hero__card-float--tools" aria-hidden="true">
+						<div class="ocx-solaas-hero__card-crop">
+							<img src="../wp-content/themes/OpenCX/assets/images/solaas-tool-integration.webp" alt="OpenCX Tool Integration and Connectors" class="ocx-solaas-hero__card-img" width="1070" height="912" loading="eager" />
+						</div>
 					</div>
 				</div>
 

@@ -3371,10 +3371,13 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 	z-index: 3 !important;
 	width: 100% !important;
 	max-width: 1120px !important;
+	height: 100% !important;
+	flex-grow: 1 !important;
 	padding-top: 80.5px !important;
 	display: flex !important;
 	flex-direction: column !important;
 	align-items: center !important;
+	justify-content: space-between !important;
 	gap: 48px !important;
 	box-sizing: border-box !important;
 }
@@ -3499,15 +3502,27 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 	border-color: #b69e52 !important;
 }
 
-/* Dashboard Graphic Column (Figma 12824:16527: 666px wide, 20px top radius, 0.5px border #CBBB85) */
+/* Solution Hero Visual Stage (Figma #12824:16527 & multi-card composition) */
+.ocx-solaas-hero__stage {
+	position: relative !important;
+	width: 100% !important;
+	max-width: 666px !important;
+	display: flex !important;
+	flex-direction: column !important;
+	align-items: center !important;
+	margin-top: auto !important;
+	box-sizing: border-box !important;
+}
+
+/* Central Dashboard Graphic Column (Figma 12824:16527: 666px wide, 20px top radius, 0.5px border #CBBB85) */
 .ocx-solaas-hero__dashboard-wrap {
 	display: flex !important;
+	position: relative !important;
 	width: 100% !important;
 	max-width: 666px !important;
 	flex-direction: column !important;
 	justify-content: center !important;
 	align-items: center !important;
-	gap: 32px !important;
 	border-radius: var(--Radius-Medium, 20px) var(--Radius-Medium, 20px) 0 0 !important;
 	border-top: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
 	border-right: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
@@ -3515,25 +3530,88 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 	border-bottom: none !important;
 	overflow: hidden !important;
 	box-sizing: border-box !important;
-	margin-top: auto !important;
+	background: #FFFFFF !important;
+	z-index: 2 !important;
 }
 
 .ocx-solaas-hero__dashboard-content {
 	display: flex !important;
+	width: 100% !important;
 	flex-direction: column !important;
 	justify-content: center !important;
 	align-items: center !important;
-	gap: 24px !important;
 	box-sizing: border-box !important;
 }
 
 .ocx-solaas-hero__dashboard-img {
-	width: 768px !important;
+	width: 100% !important;
 	max-width: 100% !important;
-	height: 460px !important;
+	height: auto !important;
 	display: block !important;
 	object-fit: cover !important;
 	flex-shrink: 0 !important;
+}
+
+/* Floating Parameter Cards: fine hairline borders, rounded corners, soft depth shadow */
+.ocx-solaas-hero__card-float {
+	position: absolute !important;
+	border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+	box-shadow: 0 14px 34px rgba(22, 34, 39, 0.08), 0 2px 6px rgba(22, 34, 39, 0.04) !important;
+	background-color: #FFFFFF !important;
+	overflow: hidden !important;
+	box-sizing: border-box !important;
+	pointer-events: auto !important;
+	transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.ocx-solaas-hero__card-float:hover {
+	transform: translateY(-2px) !important;
+	box-shadow: 0 18px 40px rgba(22, 34, 39, 0.12), 0 4px 10px rgba(22, 34, 39, 0.06) !important;
+}
+
+.ocx-solaas-hero__card-crop {
+	position: relative !important;
+	width: 100% !important;
+	height: 100% !important;
+	overflow: hidden !important;
+}
+
+.ocx-solaas-hero__card-img {
+	width: 100% !important;
+	height: 100% !important;
+	display: block !important;
+	object-fit: cover !important;
+	object-position: top center !important;
+}
+
+/* Card 1: Agent Configuration (Top-Left) */
+.ocx-solaas-hero__card-float--config {
+	left: -168px !important;
+	top: 142px !important;
+	width: 154px !important;
+	height: 193px !important;
+	border-radius: 14px !important;
+	z-index: 4 !important;
+}
+
+/* Card 2: Agent Behavior (Bottom-Left) */
+.ocx-solaas-hero__card-float--behavior {
+	left: -60px !important;
+	bottom: 12px !important;
+	width: 138px !important;
+	height: 140px !important;
+	border-radius: 14px !important;
+	z-index: 5 !important;
+}
+
+/* Card 3: Tool Integration (Right) */
+.ocx-solaas-hero__card-float--tools {
+	right: -110px !important;
+	top: 54px !important;
+	width: 236px !important;
+	height: 201px !important;
+	border-radius: 18px !important;
+	z-index: 4 !important;
 }
 
 /* Responsive Overrides */
@@ -3545,8 +3623,29 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 		font-size: 46px !important;
 		line-height: 48px !important;
 	}
+	.ocx-solaas-hero__stage {
+		max-width: 580px !important;
+	}
 	.ocx-solaas-hero__dashboard-wrap {
 		max-width: 580px !important;
+	}
+	.ocx-solaas-hero__card-float--config {
+		left: -115px !important;
+		top: 90px !important;
+		width: 118px !important;
+		height: 148px !important;
+	}
+	.ocx-solaas-hero__card-float--behavior {
+		left: -48px !important;
+		bottom: 8px !important;
+		width: 108px !important;
+		height: 110px !important;
+	}
+	.ocx-solaas-hero__card-float--tools {
+		right: -95px !important;
+		top: 40px !important;
+		width: 190px !important;
+		height: 162px !important;
 	}
 }
 
@@ -3592,8 +3691,29 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 		font-size: 16px !important;
 		line-height: 24px !important;
 	}
+	.ocx-solaas-hero__stage {
+		max-width: 520px !important;
+	}
 	.ocx-solaas-hero__dashboard-wrap {
 		max-width: 520px !important;
+	}
+	.ocx-solaas-hero__card-float--config {
+		left: -65px !important;
+		top: 70px !important;
+		width: 95px !important;
+		height: 119px !important;
+	}
+	.ocx-solaas-hero__card-float--behavior {
+		left: -25px !important;
+		bottom: 6px !important;
+		width: 86px !important;
+		height: 88px !important;
+	}
+	.ocx-solaas-hero__card-float--tools {
+		right: -55px !important;
+		top: 32px !important;
+		width: 152px !important;
+		height: 130px !important;
 	}
 }
 
@@ -3651,6 +3771,10 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 		font-size: 15px !important;
 		line-height: 22px !important;
 	}
+	.ocx-solaas-hero__stage {
+		width: 100% !important;
+		max-width: 100% !important;
+	}
 	.ocx-solaas-hero__dashboard-wrap {
 		width: 100% !important;
 		max-width: 100% !important;
@@ -3660,6 +3784,9 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 		width: 100% !important;
 		max-width: 100% !important;
 		height: auto !important;
+	}
+	.ocx-solaas-hero__card-float {
+		display: none !important;
 	}
 }
 
