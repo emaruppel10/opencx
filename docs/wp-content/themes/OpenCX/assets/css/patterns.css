@@ -62,6 +62,24 @@ body.page-template-page-industries .wp-site-blocks {
 }
 
 /*
+ * Industries Testimonial Section (#12876:2495)
+ * Match page canvas and card background to #FCFBF9
+ */
+.page-industries .ocx-testimonial__section,
+.page-id-66 .ocx-testimonial__section,
+.page-template-page-industries .ocx-testimonial__section {
+	background-color: var(--Color-OpenCX-White, #FCFBF9) !important;
+	background: var(--Color-OpenCX-White, #FCFBF9) !important;
+}
+
+.page-industries .ocx-testimonial__card,
+.page-id-66 .ocx-testimonial__card,
+.page-template-page-industries .ocx-testimonial__card {
+	background-color: var(--Color-OpenCX-White, #FCFBF9) !important;
+	background: var(--Color-OpenCX-White, #FCFBF9) !important;
+}
+
+/*
  * Global About Page Background
  * Canvas background token var(--Color-OpenCX-Dune-Lightest, #F8F6F0).
  */
@@ -11562,9 +11580,14 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	margin: -1px;
 	width: calc(100% + 2px);
 	padding: 80px;
-	background: #1c495a;
+	background-color: #1c495a;
+	background-image: url("/wp-content/themes/OpenCX/assets/images/about-hero.webp");
+	background-repeat: no-repeat;
+	background-position: center right;
+	background-size: cover;
 	border: var(--Stroke-Hairline, 0.5px) solid #cbbb85;
 	border-radius: var(--Radius-Medium, 20px);
+	overflow: hidden;
 }
 
 /* `#12852:1498`: grid `minmax(0, 1.5fr) minmax(0, 1fr)` con gap 33. */
@@ -11802,7 +11825,6 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
  */
 .ocx-section.ocx-about-team__section {
 	padding: 0 var(--Section-Padding-padding-section-medium, 80px);
-	min-height: 2157px;
 	background: var(--Color-OpenCX-Dune-Lightest, #F8F6F0);
 }
 
@@ -12052,14 +12074,17 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 .ocx-about-why__component {
 	display: flex;
 	align-items: center;
-	gap: 80px;
+	justify-content: space-between;
+	gap: 40px;
 	min-height: 640px;
 	box-sizing: border-box;
 }
 
-/* `#12852:1605`: el gap de 32 es inerte (un solo hijo). */
+/* `#12852:1605` */
 .ocx-about-why__content {
-	flex: 1 1 0;
+	flex: 0 1 611px;
+	max-width: 611px;
+	width: 100%;
 	min-width: 0;
 	display: flex;
 	flex-direction: column;
@@ -12097,7 +12122,11 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 .ocx-about-why__body {
 	display: flex;
 	flex-direction: column;
-	gap: 24px;
+	gap: 32px;
+	width: 611px;
+	max-width: 100%;
+	min-height: 332px;
+	opacity: 1;
 }
 
 /* `#12852:1610`, estilo "Heading/H2" con fill #000 (Widescreen, ver nota arriba). */
@@ -12122,17 +12151,15 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 }
 
 /*
- * `#12852:1612`: 520x554.67 a 1440 (el `flex: 1 1 0` reparte los 1120 del
- * Component menos el gap de 80). `scaleMode: FILL`, radius 16.
+ * `#12852:1612`: 371x369.
  */
 .ocx-about-why__image {
 	display: block;
-	flex: 1 1 0;
-	min-width: 0;
-	width: 100%;
-	height: 554.67px;
-	object-fit: cover;
-	border-radius: var(--Radius-Large, 16px);
+	flex: 0 0 371px;
+	width: 371px;
+	height: 369px;
+	object-fit: contain;
+	opacity: 1;
 }
 
 /* --------------------------------------------------------------------------
@@ -12163,6 +12190,13 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	background-image: url('../images/pattern-tile.svg') !important;
 	background-repeat: repeat !important;
 	background-size: 60px 60px !important;
+}
+
+.page-about .ocx-textured-divider__container,
+.page-id-72 .ocx-textured-divider__container,
+.page-template-page-about .ocx-textured-divider__container {
+	border-left-color: #00c9c9 !important;
+	border-right-color: #00c9c9 !important;
 }
 
 /* --------------------------------------------------------------------------
@@ -12224,12 +12258,18 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	}
 
 	.ocx-about-hero__container {
-		padding: 32px;
+		padding: 48px 32px;
+		background-image: linear-gradient(to right, rgba(28, 73, 90, 0.95) 0%, rgba(28, 73, 90, 0.88) 55%, rgba(28, 73, 90, 0.6) 100%), url("/wp-content/themes/OpenCX/assets/images/about-hero.webp");
+		background-position: 75% center;
 	}
 
 	.ocx-about-hero__card {
 		grid-template-columns: minmax(0, 1fr);
 		gap: 32px;
+	}
+
+	.ocx-about-hero__col-media {
+		display: none;
 	}
 
 	.ocx-about-hero__heading {
@@ -12282,26 +12322,33 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	.ocx-about-why__content {
 		flex: none;
 		width: 100%;
+		max-width: 100%;
+	}
+
+	.ocx-about-why__body {
+		width: 100%;
+		min-height: auto;
 	}
 
 	.ocx-about-why__image {
 		flex: none;
+		width: 100%;
+		max-width: 371px;
 		height: auto;
+		aspect-ratio: 371 / 369;
+		margin: 0 auto;
 	}
 }
 
 @media (max-width: 767.98px) {
 	.ocx-about-hero__container {
-		padding: 24px 20px;
+		padding: 36px 20px;
+		background-image: linear-gradient(180deg, rgba(28, 73, 90, 0.95) 0%, rgba(28, 73, 90, 0.88) 60%, rgba(28, 73, 90, 0.75) 100%), url("/wp-content/themes/OpenCX/assets/images/about-hero.webp");
+		background-position: center center;
 	}
 
 	.ocx-about-hero__heading {
 		font-size: 32px;
-	}
-
-	.ocx-about-hero__media,
-	.ocx-about-hero__image {
-		width: 100%;
 	}
 
 	.ocx-about-hero__btn {
@@ -15843,7 +15890,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	width: calc(100% + 2px) !important;
 	min-height: 600px !important;
 	margin: -1px !important;
-	padding: var(--Section-Padding-padding-section-medium, 80px) !important;
+	padding: 68.5px var(--Section-Padding-padding-section-medium, 80px) !important;
 	flex-direction: column !important;
 	justify-content: center !important;
 	align-items: center !important;
@@ -15952,13 +15999,26 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	opacity: 0.95 !important;
 }
 
+.ocx-industries-hero__col-media,
 .ocx-industries-hero__col-spacer {
 	grid-row: span 1 !important;
 	grid-column: span 1 !important;
 	display: flex !important;
-	width: 100%;
-	max-width: 474px;
+	width: 100% !important;
+	max-width: 444px !important;
+	height: 463px !important;
 	justify-self: end !important;
+	justify-content: center !important;
+	align-items: center !important;
+	box-sizing: border-box !important;
+}
+
+.ocx-industries-hero__img {
+	width: 100% !important;
+	max-width: 428px !important;
+	height: 463px !important;
+	display: block !important;
+	object-fit: contain !important;
 }
 
 /* -------------------------------------------------------------------------
@@ -15979,6 +16039,17 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 
 	.ocx-industries-hero__paragraph {
 		font-size: 17px !important;
+	}
+
+	.ocx-industries-hero__col-media,
+	.ocx-industries-hero__col-spacer {
+		max-width: 380px !important;
+		height: auto !important;
+	}
+
+	.ocx-industries-hero__img {
+		max-width: 360px !important;
+		height: auto !important;
 	}
 }
 
@@ -16024,6 +16095,23 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 
 	.ocx-industries-hero__col-spacer {
 		display: none !important;
+	}
+
+	.ocx-industries-hero__col-media {
+		display: flex !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		height: auto !important;
+		justify-self: center !important;
+		justify-content: center !important;
+		align-items: center !important;
+		order: 2 !important;
+	}
+
+	.ocx-industries-hero__img {
+		max-width: 380px !important;
+		height: auto !important;
+		margin: 0 auto !important;
 	}
 
 	.ocx-industries-hero__heading {
@@ -16081,6 +16169,23 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 
 	.ocx-industries-hero__paragraph {
 		font-size: 15px !important;
+	}
+
+	.ocx-industries-hero__col-media {
+		display: flex !important;
+		width: 100% !important;
+		max-width: 100% !important;
+		height: auto !important;
+		justify-self: center !important;
+		justify-content: center !important;
+		align-items: center !important;
+		order: 2 !important;
+	}
+
+	.ocx-industries-hero__img {
+		max-width: 300px !important;
+		height: auto !important;
+		margin: 0 auto !important;
 	}
 }
 
@@ -16215,11 +16320,41 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 
 .ocx-industries__card-header {
 	display: flex !important;
+	flex-direction: row !important;
+	justify-content: space-between !important;
+	align-items: flex-end !important;
+	gap: 32px !important;
+	width: 100% !important;
+	box-sizing: border-box !important;
+}
+
+.ocx-industries__card-header-main {
+	display: flex !important;
 	flex-direction: column !important;
 	align-items: flex-start !important;
 	gap: 48px !important;
-	max-width: 580px !important;
+	max-width: 510px !important;
+	flex: 1 1 auto !important;
 	box-sizing: border-box !important;
+}
+
+.ocx-industries__card-visual {
+	display: flex !important;
+	justify-content: flex-end !important;
+	align-items: flex-end !important;
+	flex-shrink: 0 !important;
+	width: 250px !important;
+	height: 250px !important;
+	box-sizing: border-box !important;
+}
+
+.ocx-industries__card-visual-img {
+	width: 192px !important;
+	height: 192px !important;
+	max-width: 100% !important;
+	aspect-ratio: 1 / 1 !important;
+	object-fit: contain !important;
+	display: block !important;
 }
 
 .ocx-industries__icon-badge {
@@ -16409,6 +16544,16 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	.ocx-industries__card-title {
 		font-size: clamp(28px, 4vw, 36px) !important;
 	}
+
+	.ocx-industries__card-visual {
+		width: 180px !important;
+		height: 180px !important;
+	}
+
+	.ocx-industries__card-visual-img {
+		width: 150px !important;
+		height: 150px !important;
+	}
 }
 
 @media (max-width: 767.98px) {
@@ -16433,7 +16578,26 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	}
 
 	.ocx-industries__card-header {
+		flex-direction: column !important;
+		align-items: flex-start !important;
 		gap: 24px !important;
+	}
+
+	.ocx-industries__card-header-main {
+		gap: 24px !important;
+		max-width: 100% !important;
+	}
+
+	.ocx-industries__card-visual {
+		width: 100% !important;
+		height: auto !important;
+		justify-content: flex-start !important;
+		align-items: center !important;
+	}
+
+	.ocx-industries__card-visual-img {
+		width: 140px !important;
+		height: 140px !important;
 	}
 
 	.ocx-industries__card-title {
