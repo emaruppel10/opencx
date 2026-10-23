@@ -11919,6 +11919,11 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	max-width: 768px;
 }
 
+.ocx-about-team__heading-accent {
+	font-family: var(--wp--preset--font-family--widescreen-ex, "widescreen-ex", "Widescreen Ex", sans-serif);
+	color: #00C9C9;
+}
+
 /* `#12852:1526`, estilo "Text/Medium/Normal (12529:83500)", fill #000. Espacio vertical de 32px debajo del parrafo. */
 .ocx-about-team__lead {
 	margin: 0 0 32px;
