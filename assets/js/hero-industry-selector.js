@@ -86,7 +86,9 @@
 				labelSlot.textContent = industryLabel;
 			}
 			if (iconSlot) {
-				iconSlot.innerHTML = '<img src="' + industryIcon + '" alt="" width="18" height="18" />';
+				var chipImg = chip.querySelector('.ocx-hero__chip-icon');
+				var resolvedSrc = (chipImg && (chipImg.getAttribute('src') || chipImg.src)) ? (chipImg.getAttribute('src') || chipImg.src) : industryIcon;
+				iconSlot.innerHTML = '<img src="' + resolvedSrc + '" alt="" width="18" height="18" />';
 			}
 			btn.classList.add('has-selection');
 

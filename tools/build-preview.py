@@ -40,7 +40,7 @@ ROUTES = {url.rstrip("/"): dest for url, dest in PAGES.values()}
 # rutas internas que NO son assets ni pages exportadas -> link muerto controlado
 DEAD_LINK = "#"
 
-ASSET_ATTR = re.compile(r"(\b(?:href|src|srcset)=)([\"'])(.*?)\2")
+ASSET_ATTR = re.compile(r"(\b(?:href|src|srcset|data-icon)=)([\"'])(.*?)\2")
 ANY_ASSET_URL = re.compile(r"http://localhost:8888(?P<path>/wp-(?:content|includes)/[^\s'\"<>]+)")
 
 
