@@ -1022,7 +1022,7 @@ body.page-template-page-contact .wp-site-blocks {
 	margin: 0 !important;
 	font-family: var(--wp--preset--font-family--widescreen, 'Widescreen', sans-serif) !important;
 	font-size: 18px !important;
-	font-weight: 400 !important;
+	font-weight: 300 !important;
 	line-height: 1.5 !important;
 	color: #162227 !important;
 	text-align: left !important;
@@ -1607,7 +1607,7 @@ body.page-template-page-contact .wp-site-blocks {
 .ocx-aios__desc {
 	font-family: var(--wp--preset--font-family--widescreen, "Manrope", sans-serif);
 	font-size: 18px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 1.6;
 	color: #162227;
 	margin: 0;
@@ -1816,7 +1816,7 @@ body.page-template-page-contact .wp-site-blocks {
 .ocx-eco-pillars__subtitle {
 	font-family: var(--wp--preset--font-family--widescreen, 'Widescreen', sans-serif) !important;
 	font-size: 18px !important;
-	font-weight: 400 !important;
+	font-weight: 300 !important;
 	line-height: 1.5 !important;
 	color: #162227 !important;
 	margin: 0 !important;
@@ -2000,7 +2000,7 @@ body.page-template-page-contact .wp-site-blocks {
 .ocx-eco-pillar-card__text {
 	font-family: var(--wp--preset--font-family--manrope, 'Manrope', sans-serif) !important;
 	font-size: 18px !important;
-	font-weight: 400 !important;
+	font-weight: 300 !important;
 	line-height: 1.5 !important;
 	color: #162227 !important;
 	margin: 0 !important;
@@ -2160,7 +2160,7 @@ body.page-template-page-contact .wp-site-blocks {
 .ocx-eco-sec__text p {
 	font-family: var(--wp--preset--font-family--widescreen, 'Widescreen', sans-serif) !important;
 	font-size: var(--Text-Sizes-Text-Medium, 18px) !important;
-	font-weight: 400 !important;
+	font-weight: 300 !important;
 	line-height: 27px !important;
 	color: var(--Color-OpenCX-White, #FCFBF9) !important;
 	margin: 0 !important;
@@ -2372,7 +2372,7 @@ body.page-template-page-contact .wp-site-blocks {
 .ocx-eco-compare__desc p {
 	font-family: var(--wp--preset--font-family--widescreen, 'Widescreen', sans-serif) !important;
 	font-size: var(--Text-Sizes-Text-Medium, 18px) !important;
-	font-weight: 400 !important;
+	font-weight: 300 !important;
 	line-height: 27px !important;
 	letter-spacing: 0 !important;
 	color: #162227 !important;
@@ -2740,7 +2740,7 @@ body.page-template-page-contact .wp-site-blocks {
 .ocx-eco-llm__desc p {
 	font-family: var(--wp--preset--font-family--manrope, "Manrope", sans-serif) !important;
 	font-size: var(--Text-Sizes-Text-Medium, 18px) !important;
-	font-weight: 400 !important;
+	font-weight: 300 !important;
 	line-height: 27px !important;
 	letter-spacing: 0 !important;
 	color: #162227 !important;
@@ -3180,7 +3180,7 @@ body.page-template-page-contact .wp-site-blocks {
 .ocx-eco-cta__desc {
 	font-family: var(--wp--preset--font-family--widescreen, 'Widescreen', sans-serif) !important;
 	font-size: 18px !important;
-	font-weight: 400 !important;
+	font-weight: 300 !important;
 	line-height: 27px !important;
 	letter-spacing: 0 !important;
 	color: #162227 !important;
@@ -3486,7 +3486,7 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 	font-family: var(--wp--preset--font-family--widescreen, 'Widescreen', sans-serif) !important;
 	font-size: var(--Text-Sizes-Text-Medium, 18px) !important;
 	font-style: normal !important;
-	font-weight: 400 !important;
+	font-weight: 300 !important;
 	line-height: 150% !important; /* 27px */
 	box-sizing: border-box !important;
 }
@@ -4168,7 +4168,7 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 	font-family: var(--wp--preset--font-family--widescreen, widescreen, sans-serif) !important;
 	font-size: 16px !important;
 	line-height: 1.5 !important;
-	font-weight: 400 !important;
+	font-weight: 300 !important;
 	margin: 0 !important;
 }
 
@@ -4203,6 +4203,7 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 	font-family: var(--wp--preset--font-family--widescreen, widescreen, sans-serif) !important;
 	font-size: 16px !important;
 	line-height: 1.5 !important;
+	font-weight: 300 !important;
 }
 
 .ocx-solaas-benefit--agents .ocx-solaas-benefit__bullets li {
@@ -4330,7 +4331,7 @@ body:has(.ocx-eco-cta__section) footer.wp-block-template-part {
 
 .ocx-solaas-cta__desc {
 	font-family: var(--wp--preset--font-family--widescreen, widescreen, sans-serif) !important;
-	font-weight: 400 !important;
+	font-weight: 300 !important;
 	font-size: 18px !important;
 	line-height: 1.5 !important;
 	color: var(--Color-OpenCX-Shark, #162227) !important;
@@ -5115,7 +5116,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	margin: 0;
 	font-family: var(--wp--preset--font-family--widescreen, "Widescreen", sans-serif);
 	font-size: 18px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 27px;
 	letter-spacing: 0px;
 	color: #162227;
@@ -5326,7 +5327,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	margin: 0;
 	font-family: var(--wp--preset--font-family--widescreen, "Widescreen", sans-serif);
 	font-size: 18px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 27px;
 	color: #162227;
 	text-align: left;
@@ -5493,7 +5494,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	margin: 0 !important;
 	font-family: var(--wp--preset--font-family--widescreen, "Widescreen", sans-serif) !important;
 	font-size: 18px !important;
-	font-weight: 400 !important;
+	font-weight: 300 !important;
 	line-height: 27px !important; /* 1.5 */
 	color: var(--Color-OpenCX-White, #FCFBF9) !important;
 	text-align: left !important;
@@ -5720,7 +5721,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	margin: 0 !important;
 	font-family: var(--wp--preset--font-family--widescreen, "Widescreen", sans-serif) !important;
 	font-size: 18px !important;
-	font-weight: 400 !important;
+	font-weight: 300 !important;
 	line-height: 27px !important;
 	color: #162227 !important;
 	text-align: left !important;
@@ -6828,7 +6829,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	margin: 0 !important;
 	font-family: var(--wp--preset--font-family--widescreen, "Widescreen", sans-serif) !important;
 	font-size: 18px !important;
-	font-weight: 400 !important;
+	font-weight: 300 !important;
 	line-height: 27px !important;
 	color: #162227 !important;
 	text-align: left !important;
@@ -8409,7 +8410,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	font-family: var(--wp--preset--font-family--widescreen, 'Widescreen', sans-serif);
 	font-size: 18px;
 	line-height: 27px;
-	font-weight: 400;
+	font-weight: 300;
 	color: #162227;
 	margin: 0;
 }
@@ -9121,7 +9122,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
  */
 .wp-block-button.ocx-c25__btn .wp-block-button__link {
 	border: 1px solid var(--Color-Husk, #b69e52);
-	font-weight: 500;
+	font-weight: 400;
 	color: var(--Color-White, #fff);
 	border-radius: 0px !important;
 }
@@ -9193,7 +9194,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	font-family: var(--wp--preset--font-family--widescreen, 'Widescreen', sans-serif);
 	font-size: 18px;
 	line-height: 27px;
-	font-weight: 400;
+	font-weight: 300;
 	color: #162227;
 	text-align: center;
 	margin: 0;
@@ -11646,7 +11647,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 .ocx-about-hero__lead {
 	margin: 0;
 	font-family: var(--wp--preset--font-family--widescreen, "widescreen", sans-serif);
-	font-weight: 400;
+	font-weight: 300;
 	font-size: 18px;
 	line-height: 1.5;
 	color: #e8ecee;
@@ -11813,7 +11814,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 .ocx-about-vision__lead {
 	margin: 0;
 	font-family: var(--wp--preset--font-family--widescreen, "widescreen", sans-serif);
-	font-weight: 400;
+	font-weight: 300;
 	font-size: 18px;
 	line-height: 1.5;
 	color: #162227;
@@ -11928,7 +11929,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 .ocx-about-team__lead {
 	margin: 0 0 32px;
 	font-family: var(--wp--preset--font-family--widescreen, "widescreen", sans-serif);
-	font-weight: 400;
+	font-weight: 300;
 	font-size: 18px;
 	line-height: 1.5;
 	color: #000;
@@ -12019,7 +12020,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 .ocx-about-team__bio {
 	margin: 0;
 	font-family: var(--wp--preset--font-family--widescreen, "widescreen", sans-serif);
-	font-weight: 400;
+	font-weight: 300;
 	font-size: 16px;
 	line-height: 1.5;
 	color: #000;
@@ -12153,7 +12154,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 .ocx-about-why__lead {
 	margin: 0;
 	font-family: var(--wp--preset--font-family--widescreen, "widescreen", sans-serif);
-	font-weight: 400;
+	font-weight: 300;
 	font-size: 18px;
 	line-height: 1.5;
 	color: #000;
@@ -14206,7 +14207,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	.ocx-h90__card p {
 		font-family: var(--wp--preset--font-family--widescreen, "Widescreen", sans-serif) !important;
 		font-size: 16px !important;
-		font-weight: 400 !important;
+		font-weight: 300 !important;
 		line-height: 1.5em !important;
 		letter-spacing: 0 !important;
 		color: #162227 !important;
@@ -15969,7 +15970,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	margin: 0 !important;
 	font-family: 'Manrope', var(--wp--preset--font-family--manrope, sans-serif) !important;
 	font-size: var(--Text-Sizes-Text-Medium, 18px) !important;
-	font-weight: 400 !important;
+	font-weight: 300 !important;
 	line-height: 1.5em !important;
 	color: #000000 !important;
 	text-align: left !important;
@@ -16440,7 +16441,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 .ocx-industries__cell-text {
 	font-family: "Widescreen", var(--font-heading), sans-serif !important;
 	font-style: normal !important;
-	font-weight: 400 !important;
+	font-weight: 300 !important;
 	font-size: 16px !important;
 	line-height: 1.5em !important;
 	color: #000000 !important;
@@ -16519,23 +16520,51 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		position: sticky !important;
 		top: 0 !important;
 		z-index: 100 !important;
-		background: var(--Color-OpenCX-White, #FCFBF9) !important;
-		padding: 24px 0 !important;
-		border-bottom: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		background: #FCFBF9 !important;
+		padding: 32px 0 !important;
+		border-bottom: 1px solid rgba(177, 201, 211, 0.4) !important;
 	}
 
 	.ocx-industries__nav {
 		position: relative !important;
 		flex-direction: row !important;
 		overflow-x: auto !important;
-		-webkit-overflow-scrolling: touch !important;
 		white-space: nowrap !important;
-		gap: 24px !important;
-		padding-bottom: 4px !important;
+		scrollbar-width: none !important;
+		-webkit-overflow-scrolling: touch !important;
+		gap: 10px !important;
+		padding: 0 !important;
+		margin: 0 !important;
 	}
 
 	.ocx-industries__nav::-webkit-scrollbar {
 		display: none !important;
+	}
+
+	.ocx-industries__nav-item {
+		padding: 8px 18px !important;
+		border-radius: 9999px !important;
+		background: rgba(177, 201, 211, 0.15) !important;
+		font-size: 15px !important;
+		line-height: 1.5 !important;
+		font-weight: 400 !important;
+		color: #426676 !important;
+		gap: 10px !important;
+		transition: color 0.2s ease, opacity 0.2s ease, background-color 0.2s ease !important;
+	}
+
+	.ocx-industries__nav-item:hover {
+		color: #162227 !important;
+	}
+
+	.ocx-industries__nav-item.is-active {
+		background: #4A2B4F !important;
+		color: #FFFFFF !important;
+		font-weight: 600 !important;
+	}
+
+	.ocx-industries__nav-item.is-active .ocx-industries__nav-indicator {
+		filter: brightness(0) invert(1) !important;
 	}
 
 	.ocx-industries__feed {
@@ -16727,7 +16756,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 .ocx-contact-hero__lead {
 	margin: 0 !important;
 	font-family: var(--wp--preset--font-family--widescreen, "widescreen", sans-serif) !important;
-	font-weight: 400 !important;
+	font-weight: 300 !important;
 	font-size: 18px !important;
 	line-height: 1.5 !important;
 	color: #162227 !important;
@@ -17422,7 +17451,7 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 .ocx-interview__qa-text {
 	font-family: var(--wp--preset--font-family--widescreen, 'Widescreen', sans-serif);
 	font-size: 16px;
-	font-weight: 400;
+	font-weight: 300;
 	line-height: 1.5;
 	color: var(--Color-Neutral-Darkest, #000000);
 	margin: 0;
