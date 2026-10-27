@@ -43,7 +43,7 @@
 								<span class="ocx-portal-author-name" id="author-display-name">Author</span>
 								<span class="ocx-portal-author-role" id="author-role-label">Contributor &bull; OpenCX Staff</span>
 							</div>
-							<a href="/wp-login.php?action=logout" class="ocx-portal-logout-link" id="author-logout-link">Cerrar sesión</a>
+							<a href="/wp-login.php?action=logout" class="ocx-portal-logout-link" id="author-logout-link">Sign Out</a>
 						</div>
 					</div>
 
@@ -138,16 +138,16 @@
 													<line x1="12" y1="3" x2="12" y2="15"/>
 												</svg>
 											</div>
-											<p class="ocx-portal-dropzone-text" id="dropzone-main-text">Arrastra una imagen aquí o <span style="text-decoration: underline; color: var(--Color-Blackberry-Light, #8F459C);">selecciona un archivo</span></p>
-											<p class="ocx-portal-dropzone-sub">PNG, JPG o WEBP recomendados (mínimo 174 &times; 186 px)</p>
+											<p class="ocx-portal-dropzone-text" id="dropzone-main-text">Drag and drop an image here or <span style="text-decoration: underline; color: var(--Color-Blackberry-Light, #8F459C);">browse files</span></p>
+											<p class="ocx-portal-dropzone-sub">PNG, JPG, or WEBP recommended (minimum 174 &times; 186 px)</p>
 										</div>
 
 										<div class="ocx-portal-dropzone-preview-wrap" id="dropzone-preview-wrap">
 											<img src="" alt="Thumbnail" class="ocx-portal-dropzone-thumb" id="dropzone-thumb-img" />
 											<div class="ocx-portal-dropzone-meta">
-												<p class="ocx-portal-dropzone-filename" id="dropzone-filename">archivo.jpg</p>
+												<p class="ocx-portal-dropzone-filename" id="dropzone-filename">artwork.jpg</p>
 												<p class="ocx-portal-dropzone-filesize" id="dropzone-filesize">0 KB</p>
-												<button type="button" class="ocx-portal-dropzone-remove" id="btn-remove-cover">Quitar o cambiar imagen</button>
+												<button type="button" class="ocx-portal-dropzone-remove" id="btn-remove-cover">Remove or replace image</button>
 											</div>
 										</div>
 									</div>
@@ -180,7 +180,7 @@
 										<div class="ocx-qa-card" data-qa-idx="1">
 											<div class="ocx-qa-card-header">
 												<span class="ocx-qa-item-num">Question &amp; Answer #1</span>
-												<button type="button" class="ocx-qa-btn-remove" onclick="removeQaItem(this)">Eliminar</button>
+												<button type="button" class="ocx-qa-btn-remove" onclick="removeQaItem(this)">Delete</button>
 											</div>
 											<div class="ocx-portal-group" style="margin-bottom: 10px;">
 												<input type="text" class="ocx-portal-input qa-speaker" placeholder="Speaker name (e.g. OpenCX)" value="OpenCX" style="padding: 8px 12px; font-size: 14px;" />
@@ -194,7 +194,7 @@
 										<div class="ocx-qa-card" data-qa-idx="2">
 											<div class="ocx-qa-card-header">
 												<span class="ocx-qa-item-num">Question &amp; Answer #2</span>
-												<button type="button" class="ocx-qa-btn-remove" onclick="removeQaItem(this)">Eliminar</button>
+												<button type="button" class="ocx-qa-btn-remove" onclick="removeQaItem(this)">Delete</button>
 											</div>
 											<div class="ocx-portal-group" style="margin-bottom: 10px;">
 												<input type="text" class="ocx-portal-input qa-speaker" placeholder="Speaker name (e.g. Catalina)" value="Client" style="padding: 8px 12px; font-size: 14px;" />
@@ -207,7 +207,7 @@
 
 									<button type="button" class="ocx-qa-btn-add" id="btn-add-qa-pair">
 										<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-										Añadir otra pregunta / respuesta (Q&amp;A)
+										Add another question &amp; answer (Q&amp;A)
 									</button>
 								</div>
 
@@ -215,7 +215,7 @@
 								     FULL CONTENT / RICH WYSIWYG EDITOR
 								     ============================================== -->
 								<div class="ocx-portal-group" id="group-full-content">
-									<label class="ocx-portal-label">Full Article Body <span class="ocx-portal-hint">(Rich Text Editor con Fuentes, Tamaños, Colores, Multimedia y HTML)</span></label>
+									<label class="ocx-portal-label">Full Article Body <span class="ocx-portal-hint">(Rich Text Editor with Fonts, Sizes, Colors, Multimedia &amp; HTML)</span></label>
 									
 									<div class="ocx-rich-editor" id="rich-editor-wrapper">
 										
@@ -224,90 +224,90 @@
 											
 											<!-- Heading Format -->
 											<div class="ocx-rich-toolgroup">
-												<select class="ocx-rich-select" id="tool-format" title="Estilo de párrafo">
-													<option value="p">Párrafo normal</option>
-													<option value="h2">Encabezado H2</option>
-													<option value="h3">Encabezado H3</option>
-													<option value="blockquote">Cita / Quote</option>
+												<select class="ocx-rich-select" id="tool-format" title="Paragraph Style">
+													<option value="p">Paragraph</option>
+													<option value="h2">Heading 2</option>
+													<option value="h3">Heading 3</option>
+													<option value="blockquote">Blockquote</option>
 												</select>
 											</div>
 
 											<!-- Font Size -->
 											<div class="ocx-rich-toolgroup">
-												<select class="ocx-rich-select" id="tool-fontsize" title="Tamaño de fuente">
+												<select class="ocx-rich-select" id="tool-fontsize" title="Font Size">
 													<option value="3">Normal (16px)</option>
-													<option value="2">Pequeña (14px)</option>
-													<option value="4">Mediana (18px)</option>
-													<option value="5">Grande (24px)</option>
-													<option value="6">Extra Grande (32px)</option>
+													<option value="2">Small (14px)</option>
+													<option value="4">Medium (18px)</option>
+													<option value="5">Large (24px)</option>
+													<option value="6">Extra Large (32px)</option>
 												</select>
 											</div>
 
 											<!-- Text Styles -->
 											<div class="ocx-rich-toolgroup">
-												<button type="button" class="ocx-rich-btn" data-command="bold" title="Negrita (Ctrl+B)"><strong>B</strong></button>
-												<button type="button" class="ocx-rich-btn" data-command="italic" title="Cursiva (Ctrl+I)"><em>I</em></button>
-												<button type="button" class="ocx-rich-btn" data-command="underline" title="Subrayado (Ctrl+U)"><span style="text-decoration: underline;">U</span></button>
-												<button type="button" class="ocx-rich-btn" data-command="strikeThrough" title="Tachado"><span style="text-decoration: line-through;">S</span></button>
+												<button type="button" class="ocx-rich-btn" data-command="bold" title="Bold (Ctrl+B)"><strong>B</strong></button>
+												<button type="button" class="ocx-rich-btn" data-command="italic" title="Italic (Ctrl+I)"><em>I</em></button>
+												<button type="button" class="ocx-rich-btn" data-command="underline" title="Underline (Ctrl+U)"><span style="text-decoration: underline;">U</span></button>
+												<button type="button" class="ocx-rich-btn" data-command="strikeThrough" title="Strikethrough"><span style="text-decoration: line-through;">S</span></button>
 											</div>
 
 											<!-- Colors -->
 											<div class="ocx-rich-toolgroup">
-												<span style="font-size: 11px; margin-right: 4px; font-weight: 600;" title="Color del texto">A:</span>
-												<input type="color" class="ocx-rich-color-picker" id="tool-forecolor" value="#000000" title="Color del texto" />
-												<span style="font-size: 11px; margin-left: 6px; margin-right: 4px; font-weight: 600;" title="Color de resaltado">Fondo:</span>
-												<input type="color" class="ocx-rich-color-picker" id="tool-backcolor" value="#FFFFFF" title="Color de resaltado" />
+												<span style="font-size: 11px; margin-right: 4px; font-weight: 600;" title="Text Color">A:</span>
+												<input type="color" class="ocx-rich-color-picker" id="tool-forecolor" value="#000000" title="Text Color" />
+												<span style="font-size: 11px; margin-left: 6px; margin-right: 4px; font-weight: 600;" title="Highlight Background Color">Bg:</span>
+												<input type="color" class="ocx-rich-color-picker" id="tool-backcolor" value="#FFFFFF" title="Highlight Background Color" />
 											</div>
 
 											<!-- Alignment -->
 											<div class="ocx-rich-toolgroup">
-												<button type="button" class="ocx-rich-btn" data-command="justifyLeft" title="Alinear a la izquierda">
+												<button type="button" class="ocx-rich-btn" data-command="justifyLeft" title="Align Left">
 													<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" y1="6" x2="3" y2="6"/><line x1="15" y1="12" x2="3" y2="12"/><line x1="17" y1="18" x2="3" y2="18"/></svg>
 												</button>
-												<button type="button" class="ocx-rich-btn" data-command="justifyCenter" title="Centrar">
+												<button type="button" class="ocx-rich-btn" data-command="justifyCenter" title="Align Center">
 													<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="6"/><line x1="21" y1="12" x2="3" y2="12"/><line x1="18" y1="18" x2="6" y2="18"/></svg>
 												</button>
-												<button type="button" class="ocx-rich-btn" data-command="justifyRight" title="Alinear a la derecha">
+												<button type="button" class="ocx-rich-btn" data-command="justifyRight" title="Align Right">
 													<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="12" x2="9" y2="12"/><line x1="21" y1="18" x2="7" y2="18"/></svg>
 												</button>
 											</div>
 
 											<!-- Lists -->
 											<div class="ocx-rich-toolgroup">
-												<button type="button" class="ocx-rich-btn" data-command="insertUnorderedList" title="Viñetas">
+												<button type="button" class="ocx-rich-btn" data-command="insertUnorderedList" title="Bullet List">
 													<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="4" cy="6" r="1.5" fill="currentColor"/><circle cx="4" cy="12" r="1.5" fill="currentColor"/><circle cx="4" cy="18" r="1.5" fill="currentColor"/></svg>
 												</button>
-												<button type="button" class="ocx-rich-btn" data-command="insertOrderedList" title="Lista numerada">
+												<button type="button" class="ocx-rich-btn" data-command="insertOrderedList" title="Numbered List">
 													<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="6" x2="21" y2="6"/><line x1="10" y1="12" x2="21" y2="12"/><line x1="10" y1="18" x2="21" y2="18"/><text x="2" y="8" font-size="8" fill="currentColor">1</text><text x="2" y="14" font-size="8" fill="currentColor">2</text><text x="2" y="20" font-size="8" fill="currentColor">3</text></svg>
 												</button>
 											</div>
 
 											<!-- Link & Media -->
 											<div class="ocx-rich-toolgroup">
-												<button type="button" class="ocx-rich-btn" id="btn-tool-link" title="Insertar enlace">
+												<button type="button" class="ocx-rich-btn" id="btn-tool-link" title="Insert Link">
 													<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
 												</button>
 												<!-- Upload Local Photo -->
-												<button type="button" class="ocx-rich-btn ocx-rich-btn-media" id="btn-tool-upload-image" title="Subir foto o imagen local">
+												<button type="button" class="ocx-rich-btn ocx-rich-btn-media" id="btn-tool-upload-image" title="Upload Local Photo or Image">
 													<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-													<span>Foto</span>
+													<span>Photo</span>
 												</button>
 												<!-- Upload Local Video -->
-												<button type="button" class="ocx-rich-btn ocx-rich-btn-media" id="btn-tool-upload-video" title="Subir video local (MP4/WebM)">
+												<button type="button" class="ocx-rich-btn ocx-rich-btn-media" id="btn-tool-upload-video" title="Upload Local Video (MP4/WebM)">
 													<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
 													<span>Video</span>
 												</button>
 												<!-- YouTube Video -->
-												<button type="button" class="ocx-rich-btn ocx-rich-btn-media" id="btn-tool-youtube" title="Insertar video de YouTube">
+												<button type="button" class="ocx-rich-btn ocx-rich-btn-media" id="btn-tool-youtube" title="Embed YouTube Video">
 													<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
 													<span>YouTube</span>
 												</button>
 												<!-- Podcast / Audio -->
-												<button type="button" class="ocx-rich-btn ocx-rich-btn-media" id="btn-tool-podcast" title="Subir / Insertar Podcast o archivo de audio">
+												<button type="button" class="ocx-rich-btn ocx-rich-btn-media" id="btn-tool-podcast" title="Upload or Embed Podcast Audio">
 													<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
 													<span>Podcast</span>
 												</button>
-												<button type="button" class="ocx-rich-btn" data-command="insertHorizontalRule" title="Línea divisoria">&minus;</button>
+												<button type="button" class="ocx-rich-btn" data-command="insertHorizontalRule" title="Horizontal Divider">&minus;</button>
 											</div>
 
 											<!-- Hidden inputs for media upload -->
@@ -317,8 +317,8 @@
 
 											<!-- HTML Source View Toggle -->
 											<div class="ocx-rich-toolgroup">
-												<button type="button" class="ocx-rich-btn" id="btn-tool-html" title="Ver / Editar código HTML">&lt;/&gt;</button>
-												<button type="button" class="ocx-rich-btn" data-command="removeFormat" title="Limpiar formato">&empty;</button>
+												<button type="button" class="ocx-rich-btn" id="btn-tool-html" title="View / Edit HTML Source">&lt;/&gt;</button>
+												<button type="button" class="ocx-rich-btn" data-command="removeFormat" title="Clear Formatting">&empty;</button>
 											</div>
 
 										</div>
@@ -326,12 +326,12 @@
 										<!-- Upload Progress Indicator -->
 										<div id="editor-upload-status" style="display: none; padding: 8px 14px; background: #FAF8F4; border-bottom: 0.5px solid #CBBB85; font-size: 13px; color: #8F459C; font-family: var(--wp--preset--font-family--manrope, sans-serif);">
 											<span class="ocx-rich-upload-spinner"></span>
-											<span id="editor-upload-status-text">Subiendo archivo multimedia...</span>
+											<span id="editor-upload-status-text">Uploading media file...</span>
 										</div>
 
 										<!-- Visual Canvas -->
 										<div class="ocx-rich-canvas" id="rich-canvas" contenteditable="true">
-											<p>Comienza a escribir aquí tu artículo con formato enriquecido. Puedes añadir títulos, cambiar fuentes, colores de marca OpenCX, citas y enlaces.</p>
+											<p>Start typing your article here. You can add headings, quotes, links, media, and customize colors to match OpenCX brand standards.</p>
 										</div>
 
 										<!-- Raw HTML Code Editor (Toggled) -->
@@ -356,7 +356,7 @@
 							
 							<div class="ocx-portal-preview-header">
 								<span class="ocx-portal-preview-badge">Live Resources Card Preview</span>
-								<span style="font-family: var(--wp--preset--font-family--manrope, sans-serif); font-size: 11px; color: var(--Color-Neutral, #7F7F7F);">Escala 1:1</span>
+								<span style="font-family: var(--wp--preset--font-family--manrope, sans-serif); font-size: 11px; color: var(--Color-Neutral, #7F7F7F);">Scale 1:1</span>
 							</div>
 
 							<!-- Mirrored .ocx-res-card -->
@@ -373,13 +373,13 @@
 							<!-- Live Q&A Preview Accordion (Only for Client Perspective) -->
 							<div id="preview-qa-box" style="display: none; background: #FAF8F4; border: 0.5px solid var(--Color-OpenCX-Dune-Light, #CBBB85); border-radius: 12px; padding: 16px;">
 								<span style="font-family: var(--wp--preset--font-family--widescreen, 'Widescreen', sans-serif); font-size: 13px; color: var(--Color-Blackberry-Light, #8F459C); display: block; margin-bottom: 8px;">
-									Vista previa del panel desplegable de entrevista:
+									Interview expandable panel preview:
 								</span>
 								<div id="preview-qa-items-render" style="display: flex; flex-direction: column; gap: 8px; font-size: 13px;"></div>
 							</div>
 
 							<p style="font-family: var(--wp--preset--font-family--manrope, sans-serif); font-size: 12px; color: var(--Color-Neutral, #7F7F7F); line-height: 1.4; margin: 0;">
-								Esta tarjeta se actualiza en tiempo real reflejando el autor autenticado, tu portada subida localmente y el diseño idéntico a <strong>Resources</strong>.
+								This card updates in real time, reflecting the authenticated author, your uploaded cover artwork, and the exact design on <strong>Resources</strong>.
 							</p>
 
 						</div>
@@ -596,7 +596,7 @@
 
 		function handleFileSelection(file) {
 			if (!file.type.startsWith('image/')) {
-				alert('Por favor selecciona un archivo de imagen válido (PNG, JPG, WEBP).');
+				alert('Please select a valid image file (PNG, JPG, WEBP).');
 				return;
 			}
 			coverFile = file;
@@ -696,7 +696,7 @@
 			const uploadStatus = document.getElementById('editor-upload-status');
 			const uploadStatusText = document.getElementById('editor-upload-status-text');
 			if (uploadStatus && uploadStatusText) {
-				uploadStatusText.textContent = `Subiendo ${typeName} (${file.name})...`;
+				uploadStatusText.textContent = `Uploading ${typeName} (${file.name})...`;
 				uploadStatus.style.display = 'block';
 			}
 
@@ -716,20 +716,20 @@
 				if (uploadStatus) uploadStatus.style.display = 'none';
 
 				if (data.error) {
-					alert('Error subiendo multimedia: ' + data.error);
+					alert('Media upload failed: ' + data.error);
 					return null;
 				}
 				return data;
 			} catch (err) {
 				if (uploadStatus) uploadStatus.style.display = 'none';
-				alert('Error de conexión al subir multimedia: ' + err.message);
+				alert('Network error while uploading media: ' + err.message);
 				return null;
 			}
 		}
 
 		// Insert Hyperlink
 		btnToolLink.addEventListener('click', function() {
-			const url = prompt('Introduce la URL del enlace:', 'https://');
+			const url = prompt('Enter link URL:', 'https://');
 			if (url && url !== 'https://') {
 				document.execCommand('createLink', false, url);
 			}
@@ -740,9 +740,9 @@
 		inputMediaImage.addEventListener('change', async () => {
 			if (!inputMediaImage.files || !inputMediaImage.files[0]) return;
 			const file = inputMediaImage.files[0];
-			const res = await uploadMediaFile(file, 'foto');
+			const res = await uploadMediaFile(file, 'photo');
 			if (res && res.url) {
-				const caption = prompt('Pie de foto opcional (dejar vacío si no aplica):', file.name) || '';
+				const caption = prompt('Optional image caption (leave empty if not applicable):', file.name) || '';
 				const captionHtml = caption ? `<figcaption>${escapeHtml(caption)}</figcaption>` : '';
 				const figureHtml = `<figure class="ocx-media-figure"><img src="${res.url}" alt="${escapeHtml(file.name)}" loading="lazy" />${captionHtml}</figure><p><br></p>`;
 				insertHtmlAtCursor(figureHtml);
@@ -757,7 +757,7 @@
 			const file = inputMediaVideo.files[0];
 			const res = await uploadMediaFile(file, 'video');
 			if (res && res.url) {
-				const caption = prompt('Descripción / Pie de video opcional:', file.name) || '';
+				const caption = prompt('Optional video caption:', file.name) || '';
 				const captionHtml = caption ? `<figcaption>${escapeHtml(caption)}</figcaption>` : '';
 				const videoHtml = `<figure class="ocx-media-figure ocx-video-figure"><video controls playsinline preload="metadata" src="${res.url}"></video>${captionHtml}</figure><p><br></p>`;
 				insertHtmlAtCursor(videoHtml);
@@ -767,7 +767,7 @@
 
 		// Insert YouTube Video
 		btnToolYoutube.addEventListener('click', () => {
-			const rawUrl = prompt('Pega la URL del video de YouTube (ejemplo: https://www.youtube.com/watch?v=... o https://youtu.be/...):');
+			const rawUrl = prompt('Paste YouTube video URL (e.g., https://www.youtube.com/watch?v=... or https://youtu.be/...):');
 			if (!rawUrl) return;
 			
 			let videoId = '';
@@ -776,7 +776,7 @@
 			if (match && match[2].length === 11) {
 				videoId = match[2];
 			} else {
-				alert('No se pudo reconocer el ID del video de YouTube. Asegúrate de pegar una URL válida.');
+				alert('Could not parse a valid YouTube video ID. Please paste a valid YouTube URL.');
 				return;
 			}
 
@@ -786,13 +786,13 @@
 
 		// Upload / Insert Podcast or Audio
 		btnToolPodcast.addEventListener('click', () => {
-			const choice = confirm('¿Deseas subir un archivo de audio local (MP3, WAV o M4A)?\n\nHaz clic en "Aceptar" para subir archivo local, o "Cancelar" para ingresar la URL de un podcast o streaming.');
+			const choice = confirm('Would you like to upload a local audio file (MP3, WAV, or M4A)?\n\nClick "OK" to upload a local file, or "Cancel" to enter a podcast or stream URL.');
 			if (choice) {
 				inputMediaAudio.click();
 			} else {
-				const audioUrl = prompt('Ingresa la URL del archivo de audio o podcast (MP3/Stream):', 'https://');
+				const audioUrl = prompt('Enter podcast or audio stream URL (MP3/Stream):', 'https://');
 				if (audioUrl && audioUrl !== 'https://') {
-					const title = prompt('Título o nombre del episodio de podcast:', 'Podcast Episode') || 'Podcast Episode';
+					const title = prompt('Podcast episode title or name:', 'Podcast Episode') || 'Podcast Episode';
 					const audioHtml = `<div class="ocx-podcast-card"><div class="ocx-podcast-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg></div><div class="ocx-podcast-details"><span class="ocx-podcast-label">${escapeHtml(title)}</span><audio controls preload="metadata" src="${audioUrl}"></audio></div></div><p><br></p>`;
 					insertHtmlAtCursor(audioHtml);
 				}
@@ -804,7 +804,7 @@
 			const file = inputMediaAudio.files[0];
 			const res = await uploadMediaFile(file, 'audio / podcast');
 			if (res && res.url) {
-				const title = prompt('Título o nombre del episodio / audio:', file.name) || 'Podcast Episode';
+				const title = prompt('Podcast episode or audio title:', file.name) || 'Podcast Episode';
 				const audioHtml = `<div class="ocx-podcast-card"><div class="ocx-podcast-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg></div><div class="ocx-podcast-details"><span class="ocx-podcast-label">${escapeHtml(title)}</span><audio controls preload="metadata" src="${res.url}"></audio></div></div><p><br></p>`;
 				insertHtmlAtCursor(audioHtml);
 			}
@@ -841,7 +841,7 @@
 				card.remove();
 				updatePreview();
 			} else {
-				alert('Debe haber al menos un intercambio de Q&A en la entrevista.');
+				alert('An interview must contain at least one Q&A item.');
 			}
 		};
 
@@ -853,7 +853,7 @@
 			card.innerHTML = `
 				<div class="ocx-qa-card-header">
 					<span class="ocx-qa-item-num">Question &amp; Answer #${qaIndex}</span>
-					<button type="button" class="ocx-qa-btn-remove" onclick="removeQaItem(this)">Eliminar</button>
+					<button type="button" class="ocx-qa-btn-remove" onclick="removeQaItem(this)">Delete</button>
 				</div>
 				<div class="ocx-portal-group" style="margin-bottom: 10px;">
 					<input type="text" class="ocx-portal-input qa-speaker" placeholder="Speaker name (e.g. OpenCX or Client)" value="${qaIndex % 2 === 1 ? 'OpenCX' : 'Client'}" style="padding: 8px 12px; font-size: 14px;" />
@@ -900,7 +900,7 @@
 				const name = inputIntervieweeName.value.trim();
 				const role = inputIntervieweeRole.value.trim();
 				if (!name || !role) {
-					showAlert('Por favor ingresa el nombre y cargo del cliente para la entrevista.', true);
+					showAlert('Please enter the client name and role for the interview.', true);
 					inputIntervieweeName.focus();
 					return;
 				}
@@ -908,7 +908,7 @@
 			} else {
 				title = inputTitle.value.trim();
 				if (!title) {
-					showAlert('Por favor ingresa un título para la publicación.', true);
+					showAlert('Please enter a headline or title for the post.', true);
 					inputTitle.focus();
 					return;
 				}
@@ -916,7 +916,7 @@
 
 			btnSubmit.disabled = true;
 			btnDraft.disabled = true;
-			btnSubmit.textContent = 'Enviando...';
+			btnSubmit.textContent = 'Submitting...';
 
 			// Get content
 			const bodyContent = isHtmlMode ? richHtmlSource.value : richCanvas.innerHTML;
@@ -970,13 +970,13 @@
 				btnSubmit.textContent = 'Submit for Editorial Review';
 
 				if (data.error) {
-					showAlert('Error al guardar: ' + data.error, true);
+					showAlert('Error saving post: ' + data.error, true);
 				} else {
-					showAlert('<strong>&check; ¡Contenido registrado con éxito!</strong> Publicación creada como <strong>' + (status === 'pending' ? 'Pendiente de Revisión Editorial' : 'Borrador') + '</strong> por <em>' + (data.author_name || 'Autor') + '</em> para el canal ' + currentChannel.toUpperCase() + '.', false);
+					showAlert('<strong>&check; Content successfully submitted!</strong> Post created as <strong>' + (status === 'pending' ? 'Pending Editorial Review' : 'Draft') + '</strong> by <em>' + (data.author_name || 'Author') + '</em> for the ' + currentChannel.toUpperCase() + ' channel.', false);
 					
 					// Clear form
 					inputTitle.value = '';
-					richCanvas.innerHTML = '<p>Contenido publicado con éxito.</p>';
+					richCanvas.innerHTML = '<p>Start typing your next article here...</p>';
 					document.getElementById('post-excerpt').value = '';
 					updatePreview();
 				}
@@ -985,7 +985,7 @@
 				btnSubmit.disabled = false;
 				btnDraft.disabled = false;
 				btnSubmit.textContent = 'Submit for Editorial Review';
-				showAlert('Conectado pero con respuesta inesperada. ' + err.message, true);
+				showAlert('Connected with unexpected response: ' + err.message, true);
 			});
 		}
 

@@ -102,3 +102,17 @@ function opencx_body_classes( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'opencx_body_classes' );
+
+/**
+ * Strips pasted third-party font families (e.g. Calibri, Arial) from published post content
+ * so articles strictly inherit OpenCX theme typography (Widescreen 300 / 400).
+ */
+add_filter( 'the_content', function( $content ) {
+	if ( empty( $content ) ) {
+		return $content;
+	}
+	// Strip inline font-family declarations
+	$content = preg_replace( '/font-family\s*:\s*[^;"]+;?/i', '', $content );
+	return $content;
+}, 20 );
+

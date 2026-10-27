@@ -17834,27 +17834,40 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 .ocx-article__content {
 	border-top: 1px solid var(--Color-OpenCX-Dune-Light, #CBBB85);
 	padding: 40px 0 0 0;
-	font-family: var(--wp--preset--font-family--manrope, 'Manrope', sans-serif);
+	font-family: var(--wp--preset--font-family--widescreen, "widescreen", sans-serif) !important;
+	font-weight: 300 !important;
 	font-size: 18px;
 	line-height: 1.75;
 	color: var(--Color-Neutral-Darker, #191919);
 }
 
 .ocx-article__lead {
+	font-family: var(--wp--preset--font-family--widescreen, "widescreen", sans-serif) !important;
 	font-size: 21px;
 	line-height: 1.6;
 	color: var(--Color-Neutral-Darkest, #000000);
-	font-weight: 500;
+	font-weight: 400 !important;
 	margin-bottom: 28px;
 }
 
+.ocx-article__content h1,
 .ocx-article__content h2,
-.ocx-article__content h3 {
-	font-family: var(--wp--preset--font-family--widescreen, 'Widescreen', sans-serif);
-	font-weight: 400;
+.ocx-article__content h3,
+.ocx-article__content h4,
+.ocx-article__content h5,
+.ocx-article__content h6,
+.ocx-article__content h1 *,
+.ocx-article__content h2 *,
+.ocx-article__content h3 *,
+.ocx-article__content h4 *,
+.ocx-article__content h5 *,
+.ocx-article__content h6 * {
+	font-family: var(--wp--preset--font-family--widescreen, "widescreen", sans-serif) !important;
+	font-weight: 400 !important;
 	color: var(--Color-Neutral-Darkest, #000000);
 	margin: 36px 0 16px 0;
 	line-height: 1.25;
+	letter-spacing: -0.01em;
 }
 
 .ocx-article__content h2 {
@@ -17865,8 +17878,25 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	font-size: 24px;
 }
 
+.ocx-article__content p,
+.ocx-article__content p *,
+.ocx-article__content li,
+.ocx-article__content li * {
+	font-family: var(--wp--preset--font-family--widescreen, "widescreen", sans-serif) !important;
+	font-weight: 300 !important;
+}
+
 .ocx-article__content p {
 	margin-bottom: 24px;
+	line-height: 1.75;
+}
+
+.ocx-article__content p strong,
+.ocx-article__content p b,
+.ocx-article__content p strong *,
+.ocx-article__content p b * {
+	font-family: var(--wp--preset--font-family--widescreen, "widescreen", sans-serif) !important;
+	font-weight: 600 !important;
 }
 
 .ocx-article__content blockquote {
@@ -19048,4 +19078,124 @@ body:has(.ocx-interview-page) .ocx-footer {
 	.ocx-portal-row {
 		grid-template-columns: 1fr;
 	}
+}
+
+/* ==========================================================================
+   Article & Single Post Typography Standards
+   - Párrafos: Widescreen 300 Light
+   - Títulos / Headings: Widescreen 400 Regular
+   ========================================================================== */
+body.single,
+body.single-post,
+body.single-opencx_news,
+body.single-opencx_interview,
+.ocx-single-post-page,
+.single .ocx-single-post-page {
+	font-family: var(--wp--preset--font-family--widescreen, "widescreen", sans-serif) !important;
+	font-weight: 300 !important;
+}
+
+/* Titles and Headings: Widescreen 400 */
+body.single h1,
+body.single h2,
+body.single h3,
+body.single h4,
+body.single h5,
+body.single h6,
+body.single h1 *,
+body.single h2 *,
+body.single h3 *,
+body.single h4 *,
+body.single h5 *,
+body.single h6 *,
+body.single .wp-block-post-title,
+body.single .wp-block-post-title *,
+body.single .entry-title,
+body.single .entry-title *,
+.ocx-single-post__title,
+.ocx-single-post__title *,
+.ocx-single-post__body h1,
+.ocx-single-post__body h2,
+.ocx-single-post__body h3,
+.ocx-single-post__body h4,
+.ocx-single-post__body h5,
+.ocx-single-post__body h6,
+.ocx-single-post__body h1 *,
+.ocx-single-post__body h2 *,
+.ocx-single-post__body h3 *,
+.ocx-single-post__body h4 *,
+.ocx-single-post__body h5 *,
+.ocx-single-post__body h6 *,
+.entry-content h1,
+.entry-content h2,
+.entry-content h3,
+.entry-content h4,
+.entry-content h5,
+.entry-content h6,
+.entry-content h1 *,
+.entry-content h2 *,
+.entry-content h3 *,
+.entry-content h4 *,
+.entry-content h5 *,
+.entry-content h6 *,
+.wp-block-post-content h1,
+.wp-block-post-content h2,
+.wp-block-post-content h3,
+.wp-block-post-content h4,
+.wp-block-post-content h5,
+.wp-block-post-content h6,
+.wp-block-post-content h1 *,
+.wp-block-post-content h2 *,
+.wp-block-post-content h3 *,
+.wp-block-post-content h4 *,
+.wp-block-post-content h5 *,
+.wp-block-post-content h6 * {
+	font-family: var(--wp--preset--font-family--widescreen, "widescreen", sans-serif) !important;
+	font-weight: 400 !important;
+	color: var(--Color-Neutral-Darkest, #000000);
+	letter-spacing: -0.01em;
+}
+
+/* Paragraphs, List Items & Body Text: Widescreen 300 Light */
+body.single .entry-content p,
+body.single .entry-content p *,
+body.single .entry-content li,
+body.single .entry-content li *,
+body.single .wp-block-post-content p,
+body.single .wp-block-post-content p *,
+body.single .wp-block-post-content li,
+body.single .wp-block-post-content li *,
+.ocx-single-post__body p,
+.ocx-single-post__body p *,
+.ocx-single-post__body li,
+.ocx-single-post__body li *,
+.ocx-single-post__content-container p,
+.ocx-single-post__content-container p *,
+.ocx-article__content p,
+.ocx-article__content p *,
+.ocx-article__content li,
+.ocx-article__content li * {
+	font-family: var(--wp--preset--font-family--widescreen, "widescreen", sans-serif) !important;
+	font-weight: 300 !important;
+}
+
+/* Bold / Strong emphasis inside paragraphs retains Widescreen 600 Semi-bold */
+body.single .entry-content p strong,
+body.single .entry-content p b,
+body.single .entry-content p strong *,
+body.single .entry-content p b *,
+body.single .wp-block-post-content p strong,
+body.single .wp-block-post-content p b,
+body.single .wp-block-post-content p strong *,
+body.single .wp-block-post-content p b *,
+.ocx-single-post__body p strong,
+.ocx-single-post__body p b,
+.ocx-single-post__body p strong *,
+.ocx-single-post__body p b *,
+.ocx-article__content p strong,
+.ocx-article__content p b,
+.ocx-article__content p strong *,
+.ocx-article__content p b * {
+	font-family: var(--wp--preset--font-family--widescreen, "widescreen", sans-serif) !important;
+	font-weight: 600 !important;
 }

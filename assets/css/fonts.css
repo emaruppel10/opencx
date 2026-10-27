@@ -67,12 +67,31 @@ src:url("https://use.typekit.net/af/e21764/00000000000000007735fb61/31/l?primer=
 font-display:auto;font-style:normal;font-weight:600;font-stretch:normal;
 }
 
-.tk-widescreen { font-family: "widescreen", sans-serif; }
+@font-face {
+font-family:"Widescreen";
+src:url("https://use.typekit.net/af/77ca5e/00000000000000007735fb5c/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff2"),url("https://use.typekit.net/af/77ca5e/00000000000000007735fb5c/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("woff"),url("https://use.typekit.net/af/77ca5e/00000000000000007735fb5c/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:300;font-stretch:normal;
+}
+
+@font-face {
+font-family:"Widescreen";
+src:url("https://use.typekit.net/af/326cc2/00000000000000007735fb68/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),url("https://use.typekit.net/af/326cc2/00000000000000007735fb68/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),url("https://use.typekit.net/af/326cc2/00000000000000007735fb68/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:400;font-stretch:normal;
+}
+
+@font-face {
+font-family:"Widescreen";
+src:url("https://use.typekit.net/af/e2079b/00000000000000007735fb5b/31/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("woff2"),url("https://use.typekit.net/af/e2079b/00000000000000007735fb5b/31/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("woff"),url("https://use.typekit.net/af/e2079b/00000000000000007735fb5b/31/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3") format("opentype");
+font-display:auto;font-style:normal;font-weight:600;font-stretch:normal;
+}
+
+.tk-widescreen { font-family: "widescreen", "Widescreen", sans-serif; }
 .tk-widescreen-ex { font-family: "widescreen-ex", "Widescreen Ex", sans-serif; }
 
 :root {
-	--Font-Widescreen: "widescreen", sans-serif;
+	--Font-Widescreen: "widescreen", "Widescreen", sans-serif;
 	--Font-Widescreen-Ex: "widescreen-ex", "Widescreen Ex", sans-serif;
-	--wp--preset--font-family--widescreen: "widescreen", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	--wp--preset--font-family--widescreen: "widescreen", "Widescreen", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 	--wp--preset--font-family--widescreen-ex: "widescreen-ex", "Widescreen Ex", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
+
