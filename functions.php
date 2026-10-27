@@ -17,4 +17,6 @@ require_once get_template_directory() . '/inc/navigation.php';
 require_once get_template_directory() . '/inc/custom-post-types.php';
 require_once get_template_directory() . '/inc/portal.php';
 require_once get_template_directory() . '/inc/resources.php';
+require_once get_template_directory() . '/inc/team-testimonials.php';
 require_once get_template_directory() . '/inc/login.php';
+

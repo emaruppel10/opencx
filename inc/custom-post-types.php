@@ -79,6 +79,56 @@ if ( ! function_exists( 'opencx_get_post_types' ) ) {
 				'icon'        => 'dashicons-testimonial',
 				'taxonomies'  => array( 'post_tag' ),
 			),
+			'opencx_team' => array(
+				'slug'        => 'opencx_team',
+				'labels'      => array(
+					'name'               => __( 'Team Members', 'opencx' ),
+					'singular_name'      => __( 'Team Member', 'opencx' ),
+					'menu_name'          => __( 'Team', 'opencx' ),
+					'all_items'          => __( 'All Team Members', 'opencx' ),
+					'add_new'            => __( 'Add Team Member', 'opencx' ),
+					'add_new_item'       => __( 'Add New Team Member', 'opencx' ),
+					'edit_item'          => __( 'Edit Team Member', 'opencx' ),
+					'new_item'           => __( 'New Team Member', 'opencx' ),
+					'view_item'          => __( 'View Team Member', 'opencx' ),
+					'search_items'       => __( 'Search Team', 'opencx' ),
+					'not_found'          => __( 'No team members found', 'opencx' ),
+					'not_found_in_trash' => __( 'No team members found in trash', 'opencx' ),
+				),
+				'supports'    => array( 'title', 'editor', 'thumbnail', 'page-attributes', 'custom-fields' ),
+				'has_archive' => false,
+				'public'      => true,
+				'show_ui'     => true,
+				'show_in_rest'=> true,
+				'menu_position'=> 21,
+				'icon'        => 'dashicons-groups',
+				'rewrite'     => array( 'slug' => 'team' ),
+			),
+			'opencx_testimonial' => array(
+				'slug'        => 'opencx_testimonial',
+				'labels'      => array(
+					'name'               => __( 'Testimonials', 'opencx' ),
+					'singular_name'      => __( 'Testimonial', 'opencx' ),
+					'menu_name'          => __( 'Testimonials', 'opencx' ),
+					'all_items'          => __( 'All Testimonials', 'opencx' ),
+					'add_new'            => __( 'Add Testimonial', 'opencx' ),
+					'add_new_item'       => __( 'Add New Testimonial', 'opencx' ),
+					'edit_item'          => __( 'Edit Testimonial', 'opencx' ),
+					'new_item'           => __( 'New Testimonial', 'opencx' ),
+					'view_item'          => __( 'View Testimonial', 'opencx' ),
+					'search_items'       => __( 'Search Testimonials', 'opencx' ),
+					'not_found'          => __( 'No testimonials found', 'opencx' ),
+					'not_found_in_trash' => __( 'No testimonials found in trash', 'opencx' ),
+				),
+				'supports'    => array( 'title', 'editor', 'thumbnail', 'page-attributes', 'custom-fields' ),
+				'has_archive' => false,
+				'public'      => true,
+				'show_ui'     => true,
+				'show_in_rest'=> true,
+				'menu_position'=> 22,
+				'icon'        => 'dashicons-format-quote',
+				'rewrite'     => array( 'slug' => 'testimonials' ),
+			),
 		);
 
 		/**
@@ -167,7 +217,7 @@ add_action( 'init', 'opencx_register_content_types' );
 
 if ( ! function_exists( 'opencx_register_news_meta' ) ) {
 	/**
-	 * Registers REST API meta fields for opencx_news.
+	 * Registers REST API meta fields for opencx_news, interviews, team, and testimonials.
 	 *
 	 * @return void
 	 */
@@ -206,6 +256,47 @@ if ( ! function_exists( 'opencx_register_news_meta' ) ) {
 		foreach ( $interview_meta as $meta_key => $type ) {
 			register_post_meta(
 				'opencx_interview',
+				$meta_key,
+				array(
+					'show_in_rest'  => true,
+					'single'        => true,
+					'type'          => $type,
+					'auth_callback' => function() {
+						return current_user_can( 'edit_posts' );
+					},
+				)
+			);
+		}
+
+		$team_meta = array(
+			'opencx_team_role'     => 'string',
+			'opencx_team_linkedin' => 'string',
+			'opencx_team_bio'      => 'string',
+		);
+
+		foreach ( $team_meta as $meta_key => $type ) {
+			register_post_meta(
+				'opencx_team',
+				$meta_key,
+				array(
+					'show_in_rest'  => true,
+					'single'        => true,
+					'type'          => $type,
+					'auth_callback' => function() {
+						return current_user_can( 'edit_posts' );
+					},
+				)
+			);
+		}
+
+		$testimonial_meta = array(
+			'opencx_testimonial_company' => 'string',
+			'opencx_testimonial_quote'   => 'string',
+		);
+
+		foreach ( $testimonial_meta as $meta_key => $type ) {
+			register_post_meta(
+				'opencx_testimonial',
 				$meta_key,
 				array(
 					'show_in_rest'  => true,
