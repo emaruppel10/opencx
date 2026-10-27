@@ -16268,45 +16268,109 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 		height: auto !important;
 		min-height: auto !important;
 		margin: -0.5px !important;
-		padding: 36px 20px !important;
+		padding: 36px 20px 48px 20px !important;
 		border: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
-		border-radius: var(--Radius-Small, 16px) !important;
+		border-radius: var(--Radius-Medium, 20px) !important;
 		background: var(--Color-OpenCX-White, #FCFBF9) !important;
 		box-sizing: border-box !important;
 	}
 
+	.ocx-industries-hero__card {
+		display: flex !important;
+		flex-direction: column !important;
+		width: 100% !important;
+		gap: 0 !important;
+	}
+
 	.ocx-industries-hero__col-content {
-		gap: 24px !important;
+		display: contents !important;
 	}
 
 	.ocx-industries-hero__text-group {
+		order: 1 !important;
+		display: flex !important;
+		flex-direction: column !important;
 		gap: 16px !important;
+		width: 100% !important;
 	}
 
 	.ocx-industries-hero__heading {
-		font-size: 32px !important;
-		line-height: 1.15em !important;
+		font-size: 38px !important;
+		line-height: 1.1em !important;
+		letter-spacing: -0.01em !important;
+		margin: 0 !important;
+		text-align: left !important;
+	}
+
+	.ocx-industries-hero__heading-gold {
+		font-family: var(--wp--preset--font-family--widescreen-ex, 'widescreen-ex', sans-serif) !important;
+		color: var(--Color-OpenCX-Dune, #B69E52) !important;
+		letter-spacing: -0.03em !important;
 	}
 
 	.ocx-industries-hero__paragraph {
-		font-size: 15px !important;
+		font-family: 'Manrope', var(--wp--preset--font-family--manrope, sans-serif) !important;
+		font-size: 16px !important;
+		font-weight: 300 !important;
+		line-height: 1.5em !important;
+		color: #000000 !important;
+		margin: 0 !important;
+		text-align: left !important;
 	}
 
 	.ocx-industries-hero__col-media {
+		order: 2 !important;
 		display: flex !important;
 		width: 100% !important;
 		max-width: 100% !important;
 		height: auto !important;
-		justify-self: center !important;
 		justify-content: center !important;
 		align-items: center !important;
-		order: 2 !important;
+		margin: 32px 0 32px 0 !important;
+	}
+
+	.ocx-industries-hero__picture {
+		display: block !important;
+		width: 100% !important;
+		max-width: 100% !important;
 	}
 
 	.ocx-industries-hero__img {
-		max-width: 300px !important;
+		width: 100% !important;
+		max-width: 100% !important;
 		height: auto !important;
+		display: block !important;
 		margin: 0 auto !important;
+		object-fit: contain !important;
+	}
+
+	.ocx-industries-hero__actions {
+		order: 3 !important;
+		display: flex !important;
+		width: 100% !important;
+		justify-content: center !important;
+		align-items: center !important;
+		margin: 0 auto !important;
+	}
+
+	.ocx-industries-hero__btn {
+		display: inline-flex !important;
+		padding: 12px 28px !important;
+		justify-content: center !important;
+		align-items: center !important;
+		gap: 8px !important;
+		border: 1px solid var(--Color-OpenCX-Dune-Light, #CBBB85) !important;
+		background: var(--Color-OpenCX-Dune-Lighter, #F0EBDC) !important;
+		border-radius: 0px !important;
+		color: var(--Color-OpenCX-Dune, #B69E52) !important;
+		font-family: var(--wp--preset--font-family--widescreen, 'Widescreen', sans-serif) !important;
+		font-size: 16px !important;
+		font-weight: 300 !important;
+		line-height: 1.5em !important;
+		letter-spacing: 0px !important;
+		text-decoration: none !important;
+		box-sizing: border-box !important;
+		cursor: pointer !important;
 	}
 }
 
