@@ -8381,18 +8381,30 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 
 .ocx-testimonial__grid {
 	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
 	width: 1003px;
 	max-width: 1003px;
 	margin: 0 auto;
 	background: transparent;
 	border: none;
 	box-sizing: border-box;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	-webkit-overflow-scrolling: touch;
+}
+
+.ocx-testimonial__grid::-webkit-scrollbar {
+	display: none;
 }
 
 .ocx-testimonial__item {
-	flex: 1 1 0;
-	min-width: 0;
+	flex: 0 0 334.33px;
 	width: 334.33px;
+	min-width: 334.33px;
+	max-width: 334.33px;
 	height: 396px;
 	padding: 32px;
 	box-sizing: border-box;
@@ -8404,6 +8416,8 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	border-bottom: var(--Stroke-Border-Width, 0) solid var(--Color-OpenCX-Dune-Light, #CBBB85);
 	border-left: var(--Stroke-Hairline, 0.5px) solid var(--Color-OpenCX-Dune-Light, #CBBB85);
 	background: var(--Color-Scheme-1-Foreground, #FCFBF9);
+	scroll-snap-align: start;
+	overflow: hidden;
 }
 
 .ocx-testimonial__quote {
@@ -8413,6 +8427,8 @@ body:not(.page-about):not(.page-id-72):not(.page-contact):not(.page-id-79):has(.
 	font-weight: 300;
 	color: #162227;
 	margin: 0;
+	overflow-y: auto;
+	scrollbar-width: none;
 }
 
 .ocx-testimonial__author-info {
