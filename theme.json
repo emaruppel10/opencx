@@ -623,6 +623,11 @@
 	},
 	"customTemplates": [
 		{
+			"name": "page-home",
+			"title": "Home",
+			"postTypes": ["page"]
+		},
+		{
 			"name": "page-resources",
 			"title": "Resources",
 			"postTypes": ["page"]
@@ -630,6 +635,11 @@
 		{
 			"name": "page-interview",
 			"title": "Interview",
+			"postTypes": ["page"]
+		},
+		{
+			"name": "page-portal",
+			"title": "Employee Portal",
 			"postTypes": ["page"]
 		}
 	]

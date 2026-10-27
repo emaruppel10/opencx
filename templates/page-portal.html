@@ -1,0 +1,1023 @@
+<!-- wp:template-part {"slug":"header-resources","tagName":"header"} /-->
+
+<main class="ocx-resources-page ocx-portal-page">
+
+	<!-- Hero - Employee Editorial Studio -->
+	<section class="ocx-res-hero__section">
+		<div class="ocx-res-hero__outer">
+			<div class="ocx-res-hero__card">
+				<div class="ocx-res-hero__content">
+					<p class="ocx-res-hero__tagline">Employee Portal</p>
+					<h1 class="ocx-res-hero__title">Editorial Studio for <span class="ocx-res-hero__accent">Blog, Newsroom &amp; Perspectives.</span></h1>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Textured Divider with Channel Switcher (3 Tabs) -->
+	<section class="ocx-res-divider__section">
+		<div class="ocx-res-divider__container">
+			<div class="ocx-res-divider__filters" role="tablist" aria-label="Editorial Channel Selection">
+				<button type="button" class="ocx-res-filter-btn ocx-res-filter-btn--active" id="tab-channel-blog" role="tab" aria-selected="true" data-channel="blog">Blog Article</button>
+				<button type="button" class="ocx-res-filter-btn" id="tab-channel-newsroom" role="tab" aria-selected="false" data-channel="newsroom">Newsroom Release</button>
+				<button type="button" class="ocx-res-filter-btn" id="tab-channel-perspective" role="tab" aria-selected="false" data-channel="client-perspective">Client Perspective</button>
+			</div>
+		</div>
+	</section>
+
+	<!-- Editorial Workspace Section -->
+	<section class="ocx-res-perspective__section">
+		<div class="ocx-res-perspective__wrapper">
+			<div class="ocx-res-perspective__outer">
+				<div class="ocx-res-perspective__inner">
+
+					<!-- Topbar: Channel Heading & Logged-in User Badge -->
+					<div class="ocx-portal-topbar">
+						<div>
+							<h2 class="ocx-res-perspective__heading" id="portal-heading">Create Blog<br>Article</h2>
+						</div>
+
+						<div class="ocx-portal-author-card" id="portal-author-card">
+							<img src="/wp-content/themes/OpenCX/assets/images/team-member.png" alt="Author Avatar" class="ocx-portal-author-avatar" id="author-avatar-img" />
+							<div class="ocx-portal-author-info">
+								<span class="ocx-portal-author-name" id="author-display-name">Author</span>
+								<span class="ocx-portal-author-role" id="author-role-label">Contributor &bull; OpenCX Staff</span>
+							</div>
+							<a href="/wp-login.php?action=logout" class="ocx-portal-logout-link" id="author-logout-link">Cerrar sesión</a>
+						</div>
+					</div>
+
+					<div class="ocx-portal-layout">
+
+						<!-- Left Column: Form & Content Builder -->
+						<div class="ocx-portal-form">
+							<form id="ocx-editorial-form" novalidate>
+
+								<!-- ==============================================
+								     COMMON / BLOG / NEWSROOM TITLE FIELD
+								     ============================================== -->
+								<div class="ocx-portal-group" id="group-title-standard">
+									<label for="post-title" class="ocx-portal-label">Headline / Title <span class="ocx-portal-hint">(Required)</span></label>
+									<input type="text" id="post-title" class="ocx-portal-input" placeholder="e.g. Why AI Customer Experience Needs Human Guardrails" required />
+								</div>
+
+								<!-- ==============================================
+								     CLIENT PERSPECTIVE FIELDS (Interviewee Info)
+								     ============================================== -->
+								<div id="perspective-exclusive-fields" style="display: none;">
+									<div class="ocx-portal-row ocx-portal-group">
+										<div>
+											<label for="interviewee-name" class="ocx-portal-label">Client / Executive Name <span class="ocx-portal-hint">(Required)</span></label>
+											<input type="text" id="interviewee-name" class="ocx-portal-input" placeholder="e.g. Catalina Aristizabal" />
+										</div>
+										<div>
+											<label for="interviewee-role" class="ocx-portal-label">Role &amp; Company <span class="ocx-portal-hint">(Required)</span></label>
+											<input type="text" id="interviewee-role" class="ocx-portal-input" placeholder="e.g. RL Funeral Service" />
+										</div>
+									</div>
+								</div>
+
+								<!-- ==============================================
+								     BLOG METADATA ROW
+								     ============================================== -->
+								<div class="ocx-portal-row ocx-portal-group" id="group-blog-meta">
+									<div>
+										<label for="post-tagline" class="ocx-portal-label">Category / Pillar</label>
+										<input type="text" id="post-tagline" class="ocx-portal-input" placeholder="e.g. Thought Leadership" value="Blog" />
+									</div>
+									<div>
+										<label for="post-reading-time" class="ocx-portal-label">Estimated Read Time</label>
+										<input type="text" id="post-reading-time" class="ocx-portal-input" placeholder="e.g. 5 min read" value="5 min read" />
+									</div>
+								</div>
+
+								<!-- ==============================================
+								     NEWSROOM METADATA ROW
+								     ============================================== -->
+								<div id="newsroom-exclusive-fields" style="display: none;">
+									<div class="ocx-portal-row ocx-portal-group">
+										<div>
+											<label for="post-news-type" class="ocx-portal-label">Newsroom Classification</label>
+											<select id="post-news-type" class="ocx-portal-select">
+												<option value="Press Release">Press Release</option>
+												<option value="In The News">In The News</option>
+												<option value="Corporate Notice">Corporate Notice</option>
+												<option value="Events &amp; Keynote">Events &amp; Keynote</option>
+											</select>
+										</div>
+										<div>
+											<label for="post-news-source" class="ocx-portal-label">Media Outlet / Source</label>
+											<input type="text" id="post-news-source" class="ocx-portal-input" placeholder="e.g. Forbes, TechCrunch, OpenCX Official" />
+										</div>
+									</div>
+									<div class="ocx-portal-row ocx-portal-group">
+										<div>
+											<label for="post-external-url" class="ocx-portal-label">External Coverage Link <span class="ocx-portal-hint">(Optional)</span></label>
+											<input type="url" id="post-external-url" class="ocx-portal-input" placeholder="https://forbes.com/..." />
+										</div>
+										<div>
+											<label for="post-press-contact" class="ocx-portal-label">Media &amp; PR Contact Email</label>
+											<input type="email" id="post-press-contact" class="ocx-portal-input" placeholder="press@opencx.ai" />
+										</div>
+									</div>
+								</div>
+
+								<!-- ==============================================
+								     LOCAL FILE UPLOAD (Cover Artwork / Avatar)
+								     ============================================== -->
+								<div class="ocx-portal-group">
+									<label class="ocx-portal-label" id="label-cover-artwork">Cover Artwork Image <span class="ocx-portal-hint">(Upload local file)</span></label>
+									<div class="ocx-portal-dropzone" id="cover-dropzone">
+										<input type="file" id="cover-file-input" accept="image/*" style="display: none;" />
+										
+										<div id="dropzone-idle-state">
+											<div class="ocx-portal-dropzone-icon">
+												<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+													<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+													<polyline points="17 8 12 3 7 8"/>
+													<line x1="12" y1="3" x2="12" y2="15"/>
+												</svg>
+											</div>
+											<p class="ocx-portal-dropzone-text" id="dropzone-main-text">Arrastra una imagen aquí o <span style="text-decoration: underline; color: var(--Color-Blackberry-Light, #8F459C);">selecciona un archivo</span></p>
+											<p class="ocx-portal-dropzone-sub">PNG, JPG o WEBP recomendados (mínimo 174 &times; 186 px)</p>
+										</div>
+
+										<div class="ocx-portal-dropzone-preview-wrap" id="dropzone-preview-wrap">
+											<img src="" alt="Thumbnail" class="ocx-portal-dropzone-thumb" id="dropzone-thumb-img" />
+											<div class="ocx-portal-dropzone-meta">
+												<p class="ocx-portal-dropzone-filename" id="dropzone-filename">archivo.jpg</p>
+												<p class="ocx-portal-dropzone-filesize" id="dropzone-filesize">0 KB</p>
+												<button type="button" class="ocx-portal-dropzone-remove" id="btn-remove-cover">Quitar o cambiar imagen</button>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- ==============================================
+								     EXCERPT / SUMMARY
+								     ============================================== -->
+								<div class="ocx-portal-group">
+									<label for="post-excerpt" class="ocx-portal-label">Executive Summary / Excerpt</label>
+									<textarea id="post-excerpt" class="ocx-portal-textarea" style="min-height: 70px;" placeholder="Brief lead paragraph or summary..."></textarea>
+								</div>
+
+								<!-- ==============================================
+								     TAGS / TOPICS
+								     ============================================== -->
+								<div class="ocx-portal-group" id="group-post-tags">
+									<label for="post-tags" class="ocx-portal-label">Tags / Topics <span class="ocx-portal-hint">(Separated by commas, e.g. AI, Omni-channel, Compliance, Voice)</span></label>
+									<input type="text" id="post-tags" class="ocx-portal-input" placeholder="e.g. Generative AI, Automation, Safety, Latency" />
+								</div>
+
+								<!-- ==============================================
+								     CLIENT PERSPECTIVE Q&A BUILDER
+								     ============================================== -->
+								<div id="perspective-qa-section" style="display: none;" class="ocx-portal-group">
+									<label class="ocx-portal-label">Interview Q&amp;A Builder <span class="ocx-portal-hint">(Interactive Conversation Pairs)</span></label>
+									
+									<div class="ocx-qa-list" id="qa-items-container">
+										<!-- Initial Q&A Item 1 -->
+										<div class="ocx-qa-card" data-qa-idx="1">
+											<div class="ocx-qa-card-header">
+												<span class="ocx-qa-item-num">Question &amp; Answer #1</span>
+												<button type="button" class="ocx-qa-btn-remove" onclick="removeQaItem(this)">Eliminar</button>
+											</div>
+											<div class="ocx-portal-group" style="margin-bottom: 10px;">
+												<input type="text" class="ocx-portal-input qa-speaker" placeholder="Speaker name (e.g. OpenCX)" value="OpenCX" style="padding: 8px 12px; font-size: 14px;" />
+											</div>
+											<div>
+												<textarea class="ocx-portal-textarea qa-text" placeholder="Question or answer text..." style="min-height: 60px; font-size: 14px;">What does a day running the operation actually look like for you?</textarea>
+											</div>
+										</div>
+
+										<!-- Initial Q&A Item 2 -->
+										<div class="ocx-qa-card" data-qa-idx="2">
+											<div class="ocx-qa-card-header">
+												<span class="ocx-qa-item-num">Question &amp; Answer #2</span>
+												<button type="button" class="ocx-qa-btn-remove" onclick="removeQaItem(this)">Eliminar</button>
+											</div>
+											<div class="ocx-portal-group" style="margin-bottom: 10px;">
+												<input type="text" class="ocx-portal-input qa-speaker" placeholder="Speaker name (e.g. Catalina)" value="Client" style="padding: 8px 12px; font-size: 14px;" />
+											</div>
+											<div>
+												<textarea class="ocx-portal-textarea qa-text" placeholder="Question or answer text..." style="min-height: 60px; font-size: 14px;">We focus on putting the customer journey first, then work our way back to optimize efficiency.</textarea>
+											</div>
+										</div>
+									</div>
+
+									<button type="button" class="ocx-qa-btn-add" id="btn-add-qa-pair">
+										<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+										Añadir otra pregunta / respuesta (Q&amp;A)
+									</button>
+								</div>
+
+								<!-- ==============================================
+								     FULL CONTENT / RICH WYSIWYG EDITOR
+								     ============================================== -->
+								<div class="ocx-portal-group" id="group-full-content">
+									<label class="ocx-portal-label">Full Article Body <span class="ocx-portal-hint">(Rich Text Editor con Fuentes, Tamaños, Colores, Multimedia y HTML)</span></label>
+									
+									<div class="ocx-rich-editor" id="rich-editor-wrapper">
+										
+										<!-- Rich Text Toolbar -->
+										<div class="ocx-rich-toolbar">
+											
+											<!-- Heading Format -->
+											<div class="ocx-rich-toolgroup">
+												<select class="ocx-rich-select" id="tool-format" title="Estilo de párrafo">
+													<option value="p">Párrafo normal</option>
+													<option value="h2">Encabezado H2</option>
+													<option value="h3">Encabezado H3</option>
+													<option value="blockquote">Cita / Quote</option>
+												</select>
+											</div>
+
+											<!-- Font Size -->
+											<div class="ocx-rich-toolgroup">
+												<select class="ocx-rich-select" id="tool-fontsize" title="Tamaño de fuente">
+													<option value="3">Normal (16px)</option>
+													<option value="2">Pequeña (14px)</option>
+													<option value="4">Mediana (18px)</option>
+													<option value="5">Grande (24px)</option>
+													<option value="6">Extra Grande (32px)</option>
+												</select>
+											</div>
+
+											<!-- Text Styles -->
+											<div class="ocx-rich-toolgroup">
+												<button type="button" class="ocx-rich-btn" data-command="bold" title="Negrita (Ctrl+B)"><strong>B</strong></button>
+												<button type="button" class="ocx-rich-btn" data-command="italic" title="Cursiva (Ctrl+I)"><em>I</em></button>
+												<button type="button" class="ocx-rich-btn" data-command="underline" title="Subrayado (Ctrl+U)"><span style="text-decoration: underline;">U</span></button>
+												<button type="button" class="ocx-rich-btn" data-command="strikeThrough" title="Tachado"><span style="text-decoration: line-through;">S</span></button>
+											</div>
+
+											<!-- Colors -->
+											<div class="ocx-rich-toolgroup">
+												<span style="font-size: 11px; margin-right: 4px; font-weight: 600;" title="Color del texto">A:</span>
+												<input type="color" class="ocx-rich-color-picker" id="tool-forecolor" value="#000000" title="Color del texto" />
+												<span style="font-size: 11px; margin-left: 6px; margin-right: 4px; font-weight: 600;" title="Color de resaltado">Fondo:</span>
+												<input type="color" class="ocx-rich-color-picker" id="tool-backcolor" value="#FFFFFF" title="Color de resaltado" />
+											</div>
+
+											<!-- Alignment -->
+											<div class="ocx-rich-toolgroup">
+												<button type="button" class="ocx-rich-btn" data-command="justifyLeft" title="Alinear a la izquierda">
+													<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" y1="6" x2="3" y2="6"/><line x1="15" y1="12" x2="3" y2="12"/><line x1="17" y1="18" x2="3" y2="18"/></svg>
+												</button>
+												<button type="button" class="ocx-rich-btn" data-command="justifyCenter" title="Centrar">
+													<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="6"/><line x1="21" y1="12" x2="3" y2="12"/><line x1="18" y1="18" x2="6" y2="18"/></svg>
+												</button>
+												<button type="button" class="ocx-rich-btn" data-command="justifyRight" title="Alinear a la derecha">
+													<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="12" x2="9" y2="12"/><line x1="21" y1="18" x2="7" y2="18"/></svg>
+												</button>
+											</div>
+
+											<!-- Lists -->
+											<div class="ocx-rich-toolgroup">
+												<button type="button" class="ocx-rich-btn" data-command="insertUnorderedList" title="Viñetas">
+													<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/><circle cx="4" cy="6" r="1.5" fill="currentColor"/><circle cx="4" cy="12" r="1.5" fill="currentColor"/><circle cx="4" cy="18" r="1.5" fill="currentColor"/></svg>
+												</button>
+												<button type="button" class="ocx-rich-btn" data-command="insertOrderedList" title="Lista numerada">
+													<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="10" y1="6" x2="21" y2="6"/><line x1="10" y1="12" x2="21" y2="12"/><line x1="10" y1="18" x2="21" y2="18"/><text x="2" y="8" font-size="8" fill="currentColor">1</text><text x="2" y="14" font-size="8" fill="currentColor">2</text><text x="2" y="20" font-size="8" fill="currentColor">3</text></svg>
+												</button>
+											</div>
+
+											<!-- Link & Media -->
+											<div class="ocx-rich-toolgroup">
+												<button type="button" class="ocx-rich-btn" id="btn-tool-link" title="Insertar enlace">
+													<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+												</button>
+												<!-- Upload Local Photo -->
+												<button type="button" class="ocx-rich-btn ocx-rich-btn-media" id="btn-tool-upload-image" title="Subir foto o imagen local">
+													<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+													<span>Foto</span>
+												</button>
+												<!-- Upload Local Video -->
+												<button type="button" class="ocx-rich-btn ocx-rich-btn-media" id="btn-tool-upload-video" title="Subir video local (MP4/WebM)">
+													<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+													<span>Video</span>
+												</button>
+												<!-- YouTube Video -->
+												<button type="button" class="ocx-rich-btn ocx-rich-btn-media" id="btn-tool-youtube" title="Insertar video de YouTube">
+													<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+													<span>YouTube</span>
+												</button>
+												<!-- Podcast / Audio -->
+												<button type="button" class="ocx-rich-btn ocx-rich-btn-media" id="btn-tool-podcast" title="Subir / Insertar Podcast o archivo de audio">
+													<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
+													<span>Podcast</span>
+												</button>
+												<button type="button" class="ocx-rich-btn" data-command="insertHorizontalRule" title="Línea divisoria">&minus;</button>
+											</div>
+
+											<!-- Hidden inputs for media upload -->
+											<input type="file" id="portal-media-image-input" accept="image/*" style="display: none;" />
+											<input type="file" id="portal-media-video-input" accept="video/mp4,video/webm,video/quicktime" style="display: none;" />
+											<input type="file" id="portal-media-audio-input" accept="audio/mpeg,audio/mp3,audio/wav,audio/ogg,audio/m4a" style="display: none;" />
+
+											<!-- HTML Source View Toggle -->
+											<div class="ocx-rich-toolgroup">
+												<button type="button" class="ocx-rich-btn" id="btn-tool-html" title="Ver / Editar código HTML">&lt;/&gt;</button>
+												<button type="button" class="ocx-rich-btn" data-command="removeFormat" title="Limpiar formato">&empty;</button>
+											</div>
+
+										</div>
+
+										<!-- Upload Progress Indicator -->
+										<div id="editor-upload-status" style="display: none; padding: 8px 14px; background: #FAF8F4; border-bottom: 0.5px solid #CBBB85; font-size: 13px; color: #8F459C; font-family: var(--wp--preset--font-family--manrope, sans-serif);">
+											<span class="ocx-rich-upload-spinner"></span>
+											<span id="editor-upload-status-text">Subiendo archivo multimedia...</span>
+										</div>
+
+										<!-- Visual Canvas -->
+										<div class="ocx-rich-canvas" id="rich-canvas" contenteditable="true">
+											<p>Comienza a escribir aquí tu artículo con formato enriquecido. Puedes añadir títulos, cambiar fuentes, colores de marca OpenCX, citas y enlaces.</p>
+										</div>
+
+										<!-- Raw HTML Code Editor (Toggled) -->
+										<textarea class="ocx-rich-html-editor" id="rich-html-source"></textarea>
+
+									</div>
+								</div>
+
+								<!-- Action Buttons -->
+								<div class="ocx-portal-actions">
+									<button type="button" id="btn-submit-review" class="ocx-portal-btn-primary">Submit for Editorial Review</button>
+									<button type="button" id="btn-save-draft" class="ocx-portal-btn-secondary">Save Draft</button>
+								</div>
+
+								<div id="portal-alert" class="ocx-portal-alert"></div>
+
+							</form>
+						</div>
+
+						<!-- Right Column: Live Card Preview -->
+						<div class="ocx-portal-preview-col">
+							
+							<div class="ocx-portal-preview-header">
+								<span class="ocx-portal-preview-badge">Live Resources Card Preview</span>
+								<span style="font-family: var(--wp--preset--font-family--manrope, sans-serif); font-size: 11px; color: var(--Color-Neutral, #7F7F7F);">Escala 1:1</span>
+							</div>
+
+							<!-- Mirrored .ocx-res-card -->
+							<article class="ocx-res-card" id="live-card-preview">
+								<div class="ocx-res-card__body">
+									<span class="ocx-res-card__tagline" id="preview-tagline">Blog &bull; 5 min read</span>
+									<h3 class="ocx-res-card__title" id="preview-title">Why AI CX Needs Human Guardrails</h3>
+								</div>
+								<div class="ocx-res-card__media">
+									<img id="preview-img" src="/wp-content/themes/OpenCX/assets/images/about-human-led-ai.webp" alt="Card Preview" class="ocx-res-card__img" width="174" height="186" loading="lazy" />
+								</div>
+							</article>
+
+							<!-- Live Q&A Preview Accordion (Only for Client Perspective) -->
+							<div id="preview-qa-box" style="display: none; background: #FAF8F4; border: 0.5px solid var(--Color-OpenCX-Dune-Light, #CBBB85); border-radius: 12px; padding: 16px;">
+								<span style="font-family: var(--wp--preset--font-family--widescreen, 'Widescreen', sans-serif); font-size: 13px; color: var(--Color-Blackberry-Light, #8F459C); display: block; margin-bottom: 8px;">
+									Vista previa del panel desplegable de entrevista:
+								</span>
+								<div id="preview-qa-items-render" style="display: flex; flex-direction: column; gap: 8px; font-size: 13px;"></div>
+							</div>
+
+							<p style="font-family: var(--wp--preset--font-family--manrope, sans-serif); font-size: 12px; color: var(--Color-Neutral, #7F7F7F); line-height: 1.4; margin: 0;">
+								Esta tarjeta se actualiza en tiempo real reflejando el autor autenticado, tu portada subida localmente y el diseño idéntico a <strong>Resources</strong>.
+							</p>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+</main>
+
+<script>
+(function() {
+	function initEditorialStudio() {
+		let currentChannel = 'blog';
+		let coverFile = null;
+		let isHtmlMode = false;
+
+		// Session & User Attribution
+		const user = window.OpenCX_User || null;
+		if (user) {
+			const authorNameEl = document.getElementById('author-display-name');
+			const authorRoleEl = document.getElementById('author-role-label');
+			const authorAvatarEl = document.getElementById('author-avatar-img');
+			const authorLogoutEl = document.getElementById('author-logout-link');
+
+			if (authorNameEl) authorNameEl.textContent = user.name || user.login;
+			if (authorRoleEl) authorRoleEl.textContent = (user.role_label || 'Staff') + ' • OpenCX';
+			if (authorAvatarEl && user.avatar) authorAvatarEl.src = user.avatar;
+			if (authorLogoutEl && user.logout_url) authorLogoutEl.href = user.logout_url;
+		}
+
+		// Channel Tabs
+		const tabBlog = document.getElementById('tab-channel-blog');
+		const tabNewsroom = document.getElementById('tab-channel-newsroom');
+		const tabPerspective = document.getElementById('tab-channel-perspective');
+		const heading = document.getElementById('portal-heading');
+
+		// Exclusive Field Containers
+		const groupTitleStandard = document.getElementById('group-title-standard');
+		const groupBlogMeta = document.getElementById('group-blog-meta');
+		const newsExclusiveFields = document.getElementById('newsroom-exclusive-fields');
+		const perspectiveExclusiveFields = document.getElementById('perspective-exclusive-fields');
+		const perspectiveQaSection = document.getElementById('perspective-qa-section');
+		const groupFullContent = document.getElementById('group-full-content');
+		const labelCoverArtwork = document.getElementById('label-cover-artwork');
+		const previewQaBox = document.getElementById('preview-qa-box');
+
+		// Inputs
+		const inputTitle = document.getElementById('post-title');
+		const inputTagline = document.getElementById('post-tagline');
+		const inputReadTime = document.getElementById('post-reading-time');
+		const selectNewsType = document.getElementById('post-news-type');
+		const inputNewsSource = document.getElementById('post-news-source');
+		const inputIntervieweeName = document.getElementById('interviewee-name');
+		const inputIntervieweeRole = document.getElementById('interviewee-role');
+
+		// Preview Elements
+		const previewTagline = document.getElementById('preview-tagline');
+		const previewTitle = document.getElementById('preview-title');
+		const previewImg = document.getElementById('preview-img');
+		const previewQaRender = document.getElementById('preview-qa-items-render');
+
+		// Dropzone Elements
+		const dropzone = document.getElementById('cover-dropzone');
+		const fileInput = document.getElementById('cover-file-input');
+		const idleState = document.getElementById('dropzone-idle-state');
+		const previewWrap = document.getElementById('dropzone-preview-wrap');
+		const thumbImg = document.getElementById('dropzone-thumb-img');
+		const filenameEl = document.getElementById('dropzone-filename');
+		const filesizeEl = document.getElementById('dropzone-filesize');
+		const btnRemoveCover = document.getElementById('btn-remove-cover');
+
+		// Rich Text Elements
+		const richCanvas = document.getElementById('rich-canvas');
+		const richHtmlSource = document.getElementById('rich-html-source');
+		const btnToolHtml = document.getElementById('btn-tool-html');
+		const toolFormat = document.getElementById('tool-format');
+		const toolFontSize = document.getElementById('tool-fontsize');
+		const toolForeColor = document.getElementById('tool-forecolor');
+		const toolBackColor = document.getElementById('tool-backcolor');
+		const btnToolLink = document.getElementById('btn-tool-link');
+		const btnToolUploadImage = document.getElementById('btn-tool-upload-image');
+		const btnToolUploadVideo = document.getElementById('btn-tool-upload-video');
+		const btnToolYoutube = document.getElementById('btn-tool-youtube');
+		const btnToolPodcast = document.getElementById('btn-tool-podcast');
+		const inputMediaImage = document.getElementById('portal-media-image-input');
+		const inputMediaVideo = document.getElementById('portal-media-video-input');
+		const inputMediaAudio = document.getElementById('portal-media-audio-input');
+		const inputTags = document.getElementById('post-tags');
+
+		// Actions
+		const btnSubmit = document.getElementById('btn-submit-review');
+		const btnDraft = document.getElementById('btn-save-draft');
+		const alertBox = document.getElementById('portal-alert');
+
+		// -------------------------------------------------------------
+		// Live Preview Updater
+		// -------------------------------------------------------------
+		function updatePreview() {
+			if (currentChannel === 'blog') {
+				previewTitle.textContent = inputTitle.value.trim() || 'Headline will appear here...';
+				const tag = inputTagline.value.trim() || 'Blog';
+				const time = inputReadTime.value.trim() || '5 min read';
+				previewTagline.innerHTML = tag + ' &bull; ' + time;
+				previewQaBox.style.display = 'none';
+			} else if (currentChannel === 'newsroom') {
+				previewTitle.textContent = inputTitle.value.trim() || 'Corporate Announcement Headline...';
+				const newsType = selectNewsType.value || 'Press Release';
+				const source = inputNewsSource.value.trim();
+				const now = new Date();
+				const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+				const dateStr = monthNames[now.getMonth()] + ' ' + now.getFullYear();
+				previewTagline.innerHTML = newsType + ' &bull; ' + (source ? source : dateStr);
+				previewQaBox.style.display = 'none';
+			} else if (currentChannel === 'client-perspective') {
+				const name = inputIntervieweeName.value.trim() || 'Dimitrios Politis';
+				const role = inputIntervieweeRole.value.trim() || 'Owner, Nexx Burger';
+				previewTitle.innerHTML = name + ',<br>' + role;
+				previewTagline.innerHTML = 'Interview';
+
+				// Update Q&A live preview
+				previewQaBox.style.display = 'block';
+				const qaItems = gatherQaData();
+				previewQaRender.innerHTML = '';
+				qaItems.slice(0, 3).forEach(item => {
+					const row = document.createElement('div');
+					row.innerHTML = '<strong>' + (item.speaker || 'Speaker') + ':</strong> ' + (item.text || '...');
+					previewQaRender.appendChild(row);
+				});
+			}
+		}
+
+		// -------------------------------------------------------------
+		// Channel Switcher
+		// -------------------------------------------------------------
+		function setChannel(channel) {
+			currentChannel = channel;
+			[tabBlog, tabNewsroom, tabPerspective].forEach(tab => {
+				const isTarget = tab.dataset.channel === channel;
+				tab.classList.toggle('ocx-res-filter-btn--active', isTarget);
+				tab.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+			});
+
+			if (channel === 'blog') {
+				heading.innerHTML = 'Create Blog<br>Article';
+				groupTitleStandard.style.display = 'block';
+				groupBlogMeta.style.display = 'grid';
+				newsExclusiveFields.style.display = 'none';
+				perspectiveExclusiveFields.style.display = 'none';
+				perspectiveQaSection.style.display = 'none';
+				groupFullContent.style.display = 'block';
+				labelCoverArtwork.innerHTML = 'Cover Artwork Image <span class="ocx-portal-hint">(Upload local file)</span>';
+				if (!coverFile) previewImg.src = '/wp-content/themes/OpenCX/assets/images/about-human-led-ai.webp';
+			} else if (channel === 'newsroom') {
+				heading.innerHTML = 'Create Newsroom<br>Release';
+				groupTitleStandard.style.display = 'block';
+				groupBlogMeta.style.display = 'none';
+				newsExclusiveFields.style.display = 'block';
+				perspectiveExclusiveFields.style.display = 'none';
+				perspectiveQaSection.style.display = 'none';
+				groupFullContent.style.display = 'block';
+				labelCoverArtwork.innerHTML = 'Press Asset / Hero Artwork <span class="ocx-portal-hint">(Upload local file)</span>';
+				if (!coverFile) previewImg.src = '/wp-content/themes/OpenCX/assets/images/solaas-workflow-automation.png';
+			} else if (channel === 'client-perspective') {
+				heading.innerHTML = 'Create Client<br>Perspective';
+				groupTitleStandard.style.display = 'none';
+				groupBlogMeta.style.display = 'none';
+				newsExclusiveFields.style.display = 'none';
+				perspectiveExclusiveFields.style.display = 'block';
+				perspectiveQaSection.style.display = 'block';
+				groupFullContent.style.display = 'none';
+				labelCoverArtwork.innerHTML = 'Interviewee Portrait Photo <span class="ocx-portal-hint">(Upload local portrait)</span>';
+				if (!coverFile) previewImg.src = '/wp-content/themes/OpenCX/assets/images/ins-dimitrios-politis.png';
+			}
+			updatePreview();
+		}
+
+		tabBlog.addEventListener('click', () => setChannel('blog'));
+		tabNewsroom.addEventListener('click', () => setChannel('newsroom'));
+		tabPerspective.addEventListener('click', () => setChannel('client-perspective'));
+
+		// -------------------------------------------------------------
+		// Local File Upload / Dropzone
+		// -------------------------------------------------------------
+		dropzone.addEventListener('click', (e) => {
+			if (e.target !== btnRemoveCover) fileInput.click();
+		});
+
+		dropzone.addEventListener('dragover', (e) => {
+			e.preventDefault();
+			dropzone.classList.add('is-dragover');
+		});
+
+		dropzone.addEventListener('dragleave', () => {
+			dropzone.classList.remove('is-dragover');
+		});
+
+		dropzone.addEventListener('drop', (e) => {
+			e.preventDefault();
+			dropzone.classList.remove('is-dragover');
+			if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+				handleFileSelection(e.dataTransfer.files[0]);
+			}
+		});
+
+		fileInput.addEventListener('change', () => {
+			if (fileInput.files && fileInput.files[0]) {
+				handleFileSelection(fileInput.files[0]);
+			}
+		});
+
+		function handleFileSelection(file) {
+			if (!file.type.startsWith('image/')) {
+				alert('Por favor selecciona un archivo de imagen válido (PNG, JPG, WEBP).');
+				return;
+			}
+			coverFile = file;
+			filenameEl.textContent = file.name;
+			filesizeEl.textContent = (file.size / 1024).toFixed(1) + ' KB';
+
+			const reader = new FileReader();
+			reader.onload = function(evt) {
+				const dataUrl = evt.target.result;
+				thumbImg.src = dataUrl;
+				previewImg.src = dataUrl;
+				idleState.style.display = 'none';
+				previewWrap.style.display = 'flex';
+			};
+			reader.readAsDataURL(file);
+		}
+
+		btnRemoveCover.addEventListener('click', (e) => {
+			e.stopPropagation();
+			coverFile = null;
+			fileInput.value = '';
+			idleState.style.display = 'block';
+			previewWrap.style.display = 'none';
+			// Revert to default channel cover
+			if (currentChannel === 'blog') {
+				previewImg.src = '/wp-content/themes/OpenCX/assets/images/about-human-led-ai.webp';
+			} else if (currentChannel === 'newsroom') {
+				previewImg.src = '/wp-content/themes/OpenCX/assets/images/solaas-workflow-automation.png';
+			} else {
+				previewImg.src = '/wp-content/themes/OpenCX/assets/images/ins-dimitrios-politis.png';
+			}
+		});
+
+		// -------------------------------------------------------------
+		// Rich WYSIWYG Editor Actions
+		// -------------------------------------------------------------
+		document.querySelectorAll('.ocx-rich-btn[data-command]').forEach(btn => {
+			btn.addEventListener('click', function(e) {
+				e.preventDefault();
+				const cmd = btn.dataset.command;
+				document.execCommand(cmd, false, null);
+				richCanvas.focus();
+			});
+		});
+
+		toolFormat.addEventListener('change', function() {
+			const tag = toolFormat.value;
+			document.execCommand('formatBlock', false, '<' + tag + '>');
+			richCanvas.focus();
+		});
+
+		toolFontSize.addEventListener('change', function() {
+			document.execCommand('fontSize', false, toolFontSize.value);
+			richCanvas.focus();
+		});
+
+		toolForeColor.addEventListener('input', function() {
+			document.execCommand('foreColor', false, toolForeColor.value);
+		});
+
+		toolBackColor.addEventListener('input', function() {
+			document.execCommand('hiliteColor', false, toolBackColor.value);
+		});
+
+		function escapeHtml(str) {
+			const div = document.createElement('div');
+			div.textContent = str;
+			return div.innerHTML;
+		}
+
+		function insertHtmlAtCursor(html) {
+			richCanvas.focus();
+			const sel = window.getSelection();
+			if (sel && sel.getRangeAt && sel.rangeCount) {
+				const range = sel.getRangeAt(0);
+				range.deleteContents();
+				const el = document.createElement('div');
+				el.innerHTML = html;
+				const frag = document.createDocumentFragment();
+				let node, lastNode;
+				while ((node = el.firstChild)) {
+					lastNode = frag.appendChild(node);
+				}
+				range.insertNode(frag);
+				if (lastNode) {
+					range.setStartAfter(lastNode);
+					range.collapse(true);
+					sel.removeAllRanges();
+					sel.addRange(range);
+				}
+			} else {
+				richCanvas.innerHTML += html;
+			}
+		}
+
+		async function uploadMediaFile(file, typeName) {
+			const uploadStatus = document.getElementById('editor-upload-status');
+			const uploadStatusText = document.getElementById('editor-upload-status-text');
+			if (uploadStatus && uploadStatusText) {
+				uploadStatusText.textContent = `Subiendo ${typeName} (${file.name})...`;
+				uploadStatus.style.display = 'block';
+			}
+
+			const formData = new FormData();
+			formData.append('media_file', file);
+
+			const uploadUrl = user && user.rest_url ? user.rest_url + 'opencx/v1/upload-media' : '/wp-json/opencx/v1/upload-media';
+			const nonce = user && user.nonce ? user.nonce : '';
+
+			try {
+				const res = await fetch(uploadUrl, {
+					method: 'POST',
+					headers: { 'X-WP-Nonce': nonce },
+					body: formData
+				});
+				const data = await res.json();
+				if (uploadStatus) uploadStatus.style.display = 'none';
+
+				if (data.error) {
+					alert('Error subiendo multimedia: ' + data.error);
+					return null;
+				}
+				return data;
+			} catch (err) {
+				if (uploadStatus) uploadStatus.style.display = 'none';
+				alert('Error de conexión al subir multimedia: ' + err.message);
+				return null;
+			}
+		}
+
+		// Insert Hyperlink
+		btnToolLink.addEventListener('click', function() {
+			const url = prompt('Introduce la URL del enlace:', 'https://');
+			if (url && url !== 'https://') {
+				document.execCommand('createLink', false, url);
+			}
+		});
+
+		// Upload Local Photo
+		btnToolUploadImage.addEventListener('click', () => inputMediaImage.click());
+		inputMediaImage.addEventListener('change', async () => {
+			if (!inputMediaImage.files || !inputMediaImage.files[0]) return;
+			const file = inputMediaImage.files[0];
+			const res = await uploadMediaFile(file, 'foto');
+			if (res && res.url) {
+				const caption = prompt('Pie de foto opcional (dejar vacío si no aplica):', file.name) || '';
+				const captionHtml = caption ? `<figcaption>${escapeHtml(caption)}</figcaption>` : '';
+				const figureHtml = `<figure class="ocx-media-figure"><img src="${res.url}" alt="${escapeHtml(file.name)}" loading="lazy" />${captionHtml}</figure><p><br></p>`;
+				insertHtmlAtCursor(figureHtml);
+			}
+			inputMediaImage.value = '';
+		});
+
+		// Upload Local Video
+		btnToolUploadVideo.addEventListener('click', () => inputMediaVideo.click());
+		inputMediaVideo.addEventListener('change', async () => {
+			if (!inputMediaVideo.files || !inputMediaVideo.files[0]) return;
+			const file = inputMediaVideo.files[0];
+			const res = await uploadMediaFile(file, 'video');
+			if (res && res.url) {
+				const caption = prompt('Descripción / Pie de video opcional:', file.name) || '';
+				const captionHtml = caption ? `<figcaption>${escapeHtml(caption)}</figcaption>` : '';
+				const videoHtml = `<figure class="ocx-media-figure ocx-video-figure"><video controls playsinline preload="metadata" src="${res.url}"></video>${captionHtml}</figure><p><br></p>`;
+				insertHtmlAtCursor(videoHtml);
+			}
+			inputMediaVideo.value = '';
+		});
+
+		// Insert YouTube Video
+		btnToolYoutube.addEventListener('click', () => {
+			const rawUrl = prompt('Pega la URL del video de YouTube (ejemplo: https://www.youtube.com/watch?v=... o https://youtu.be/...):');
+			if (!rawUrl) return;
+			
+			let videoId = '';
+			const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+			const match = rawUrl.match(regExp);
+			if (match && match[2].length === 11) {
+				videoId = match[2];
+			} else {
+				alert('No se pudo reconocer el ID del video de YouTube. Asegúrate de pegar una URL válida.');
+				return;
+			}
+
+			const embedHtml = `<div class="ocx-embed-responsive ocx-embed-youtube"><iframe src="https://www.youtube-nocookie.com/embed/${videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><p><br></p>`;
+			insertHtmlAtCursor(embedHtml);
+		});
+
+		// Upload / Insert Podcast or Audio
+		btnToolPodcast.addEventListener('click', () => {
+			const choice = confirm('¿Deseas subir un archivo de audio local (MP3, WAV o M4A)?\n\nHaz clic en "Aceptar" para subir archivo local, o "Cancelar" para ingresar la URL de un podcast o streaming.');
+			if (choice) {
+				inputMediaAudio.click();
+			} else {
+				const audioUrl = prompt('Ingresa la URL del archivo de audio o podcast (MP3/Stream):', 'https://');
+				if (audioUrl && audioUrl !== 'https://') {
+					const title = prompt('Título o nombre del episodio de podcast:', 'Podcast Episode') || 'Podcast Episode';
+					const audioHtml = `<div class="ocx-podcast-card"><div class="ocx-podcast-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg></div><div class="ocx-podcast-details"><span class="ocx-podcast-label">${escapeHtml(title)}</span><audio controls preload="metadata" src="${audioUrl}"></audio></div></div><p><br></p>`;
+					insertHtmlAtCursor(audioHtml);
+				}
+			}
+		});
+
+		inputMediaAudio.addEventListener('change', async () => {
+			if (!inputMediaAudio.files || !inputMediaAudio.files[0]) return;
+			const file = inputMediaAudio.files[0];
+			const res = await uploadMediaFile(file, 'audio / podcast');
+			if (res && res.url) {
+				const title = prompt('Título o nombre del episodio / audio:', file.name) || 'Podcast Episode';
+				const audioHtml = `<div class="ocx-podcast-card"><div class="ocx-podcast-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg></div><div class="ocx-podcast-details"><span class="ocx-podcast-label">${escapeHtml(title)}</span><audio controls preload="metadata" src="${res.url}"></audio></div></div><p><br></p>`;
+				insertHtmlAtCursor(audioHtml);
+			}
+			inputMediaAudio.value = '';
+		});
+
+		// HTML Source View Toggle
+		btnToolHtml.addEventListener('click', function() {
+			if (!isHtmlMode) {
+				richHtmlSource.value = richCanvas.innerHTML;
+				richCanvas.style.display = 'none';
+				richHtmlSource.style.display = 'block';
+				btnToolHtml.classList.add('is-active');
+				isHtmlMode = true;
+			} else {
+				richCanvas.innerHTML = richHtmlSource.value;
+				richHtmlSource.style.display = 'none';
+				richCanvas.style.display = 'block';
+				btnToolHtml.classList.remove('is-active');
+				isHtmlMode = false;
+			}
+		});
+
+		// -------------------------------------------------------------
+		// Client Perspective Q&A Builder
+		// -------------------------------------------------------------
+		let qaIndex = 2;
+		const qaContainer = document.getElementById('qa-items-container');
+		const btnAddQa = document.getElementById('btn-add-qa-pair');
+
+		window.removeQaItem = function(btn) {
+			const card = btn.closest('.ocx-qa-card');
+			if (card && qaContainer.children.length > 1) {
+				card.remove();
+				updatePreview();
+			} else {
+				alert('Debe haber al menos un intercambio de Q&A en la entrevista.');
+			}
+		};
+
+		btnAddQa.addEventListener('click', function() {
+			qaIndex++;
+			const card = document.createElement('div');
+			card.className = 'ocx-qa-card';
+			card.dataset.qaIdx = qaIndex;
+			card.innerHTML = `
+				<div class="ocx-qa-card-header">
+					<span class="ocx-qa-item-num">Question &amp; Answer #${qaIndex}</span>
+					<button type="button" class="ocx-qa-btn-remove" onclick="removeQaItem(this)">Eliminar</button>
+				</div>
+				<div class="ocx-portal-group" style="margin-bottom: 10px;">
+					<input type="text" class="ocx-portal-input qa-speaker" placeholder="Speaker name (e.g. OpenCX or Client)" value="${qaIndex % 2 === 1 ? 'OpenCX' : 'Client'}" style="padding: 8px 12px; font-size: 14px;" />
+				</div>
+				<div>
+					<textarea class="ocx-portal-textarea qa-text" placeholder="Question or answer text..." style="min-height: 60px; font-size: 14px;"></textarea>
+				</div>
+			`;
+			qaContainer.appendChild(card);
+
+			card.querySelectorAll('input, textarea').forEach(el => {
+				el.addEventListener('input', updatePreview);
+			});
+			updatePreview();
+		});
+
+		function gatherQaData() {
+			const items = [];
+			qaContainer.querySelectorAll('.ocx-qa-card').forEach(card => {
+				const speaker = card.querySelector('.qa-speaker').value.trim();
+				const text = card.querySelector('.qa-text').value.trim();
+				if (speaker || text) {
+					items.push({ speaker: speaker, text: text });
+				}
+			});
+			return items;
+		}
+
+		// Attach input listeners for live updates
+		[inputTitle, inputTagline, inputReadTime, inputNewsSource, inputIntervieweeName, inputIntervieweeRole].forEach(el => {
+			if (el) el.addEventListener('input', updatePreview);
+		});
+		selectNewsType.addEventListener('change', updatePreview);
+		qaContainer.querySelectorAll('input, textarea').forEach(el => {
+			el.addEventListener('input', updatePreview);
+		});
+
+		// -------------------------------------------------------------
+		// Form Submission (REST API)
+		// -------------------------------------------------------------
+		function submitPost(status) {
+			let title = '';
+			if (currentChannel === 'client-perspective') {
+				const name = inputIntervieweeName.value.trim();
+				const role = inputIntervieweeRole.value.trim();
+				if (!name || !role) {
+					showAlert('Por favor ingresa el nombre y cargo del cliente para la entrevista.', true);
+					inputIntervieweeName.focus();
+					return;
+				}
+				title = name + ', ' + role;
+			} else {
+				title = inputTitle.value.trim();
+				if (!title) {
+					showAlert('Por favor ingresa un título para la publicación.', true);
+					inputTitle.focus();
+					return;
+				}
+			}
+
+			btnSubmit.disabled = true;
+			btnDraft.disabled = true;
+			btnSubmit.textContent = 'Enviando...';
+
+			// Get content
+			const bodyContent = isHtmlMode ? richHtmlSource.value : richCanvas.innerHTML;
+			const excerpt = document.getElementById('post-excerpt').value;
+
+			const formData = new FormData();
+			formData.append('channel', currentChannel);
+			formData.append('status', status); // 'pending' or 'draft'
+			formData.append('title', title);
+			formData.append('content', bodyContent);
+			formData.append('excerpt', excerpt);
+
+			if (coverFile) {
+				formData.append('cover_artwork', coverFile);
+			}
+
+			const tagsVal = inputTags ? inputTags.value.trim() : '';
+			if (tagsVal) {
+				formData.append('tags', tagsVal);
+			}
+
+			if (currentChannel === 'blog') {
+				formData.append('tagline', inputTagline.value.trim());
+				formData.append('read_time', inputReadTime.value.trim());
+			} else if (currentChannel === 'newsroom') {
+				formData.append('news_type', selectNewsType.value);
+				formData.append('source', inputNewsSource.value.trim());
+				formData.append('external_url', document.getElementById('post-external-url').value.trim());
+				formData.append('press_contact', document.getElementById('post-press-contact').value.trim());
+			} else if (currentChannel === 'client-perspective') {
+				formData.append('interviewee_name', inputIntervieweeName.value.trim());
+				formData.append('interviewee_role', inputIntervieweeRole.value.trim());
+				formData.append('interviewee_company', inputIntervieweeRole.value.trim());
+				formData.append('qa_json', JSON.stringify(gatherQaData()));
+			}
+
+			const restUrl = user && user.rest_url ? user.rest_url + 'opencx/v1/submit-content' : '/wp-json/opencx/v1/submit-content';
+			const nonce = user && user.nonce ? user.nonce : '';
+
+			fetch(restUrl, {
+				method: 'POST',
+				headers: {
+					'X-WP-Nonce': nonce
+				},
+				body: formData
+			})
+			.then(res => res.json())
+			.then(data => {
+				btnSubmit.disabled = false;
+				btnDraft.disabled = false;
+				btnSubmit.textContent = 'Submit for Editorial Review';
+
+				if (data.error) {
+					showAlert('Error al guardar: ' + data.error, true);
+				} else {
+					showAlert('<strong>&check; ¡Contenido registrado con éxito!</strong> Publicación creada como <strong>' + (status === 'pending' ? 'Pendiente de Revisión Editorial' : 'Borrador') + '</strong> por <em>' + (data.author_name || 'Autor') + '</em> para el canal ' + currentChannel.toUpperCase() + '.', false);
+					
+					// Clear form
+					inputTitle.value = '';
+					richCanvas.innerHTML = '<p>Contenido publicado con éxito.</p>';
+					document.getElementById('post-excerpt').value = '';
+					updatePreview();
+				}
+			})
+			.catch(err => {
+				btnSubmit.disabled = false;
+				btnDraft.disabled = false;
+				btnSubmit.textContent = 'Submit for Editorial Review';
+				showAlert('Conectado pero con respuesta inesperada. ' + err.message, true);
+			});
+		}
+
+		function showAlert(html, isError) {
+			alertBox.style.display = 'block';
+			if (isError) {
+				alertBox.className = 'ocx-portal-alert';
+				alertBox.style.borderColor = '#E74C3C';
+				alertBox.style.backgroundColor = '#FDEDEC';
+				alertBox.style.color = '#922B21';
+			} else {
+				alertBox.className = 'ocx-portal-alert ocx-portal-alert--success';
+				alertBox.style.borderColor = '#2ECC71';
+				alertBox.style.backgroundColor = '#EBF8F1';
+				alertBox.style.color = '#196F3D';
+			}
+			alertBox.innerHTML = html;
+			alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+		}
+
+		btnSubmit.addEventListener('click', () => submitPost('pending'));
+		btnDraft.addEventListener('click', () => submitPost('draft'));
+
+		updatePreview();
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initEditorialStudio);
+	} else {
+		initEditorialStudio();
+	}
+})();
+</script>
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
